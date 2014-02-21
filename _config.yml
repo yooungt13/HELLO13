@@ -1,0 +1,8 @@
+baseurl:     /
+url:         http://localhost:4000
+source:      .
+destination: ./_site
+encoding:    utf-8
+permalink:   /:title
+pygments:    true
+markdown:    rdiscount

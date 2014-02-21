@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Hello 13 | Green Run</title>
+
+   <!-- syntax highlighting CSS -->
+   <link rel="stylesheet" href="../../public/stylesheets/syntax.css" type="text/css" />
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="../../public/stylesheets/screen.css" type="text/css" media="screen, projection" />
+
+   <!-- Game CSS/Js -->
+   <link href="style.css" rel="stylesheet" type="text/css"></link>
+   <script src="Run.js" type="text/javascript" ></script>
+
+</head>
+<body onkeydown="KeyDown(event)">
+<div class="wrap"></div>
+<div class="top">
+  <div class="title">
+    <div class="signal"><a href="/">Words may be false. </a></div>
+    <div class="menu">
+      <dl><a class="extra" href="/home.html">Home</a></dl>
+      <dl id="posts" class="list maki">
+        <dt><a class="extra" href="/posts.html">Posts</a></dt>
+        <dd><a href="#">DtStruc</a></dd>
+        <dd><a href="#">Sicily</a></dd>
+        <dd><a href="#">JScripts</a></dd>
+        <dd><a href="#">Jquery</a></dd>
+      </dl>
+      <dl id="projects" class="list maki">
+        <dt><a class="extra" href="/projects.html">Projects</a></dt>
+        <dd><a href="/projects/green/index.html">Green</a></dd>
+        <dd><a href="/projects/dip/index.html">Dip</a></dd>
+      </dl>
+      <dl><a class="extra" href="/me.html">About Me</a></dl>
+    </div>
+  </div>
+</div>
+
+<div class="site">
+  <div class="content">
+    <div id="home">
+      <strong>Introduction：</strong><br>
+      The project is called Green Run, designed from 天天酷跑.<br>
+      A Greenman keeps running to get coins.<br>
+      Maybe need a little time to load the map.<br>
+      And a flash bug exists still.<br>
+
+      <br>
+        <div id="container" >   
+            <div>
+                <span>&nbsp;Score</span>
+                <span id="score">0</span>
+            </div>
+            <div id="map" style="margin-bottom:10px;"></div>    
+            <div>
+                <input id="start" value="开始游戏" type="button"/>
+                <input id="speed" value="加快速度" type="button" onclick="javascript:SetSpeed(100);"/>
+                <input id="grid" value="使用网格" type="button" onclick="javascript:SetGrid();"/>           
+            </div>
+        </div>
+    </div>
+  </div>
+  
+  <div class="footer">
+    <div class="contact">
+      <p>
+        Copyright  @有田十三<br />
+        NewComer  of  <a href="http://github.com/">GitHub</a><br />
+        yooungt13@gmail.com
+      </p>
+    </div>
+    <div class="contact">
+      <p>
+        <a href="http://weibo.com/yooungt/">weibo.com/yooungt</a><br />
+        <a href="http://github.com/yooungt13/">github.com/yooungt13</a><br />
+        <a href="http://blog.csdn.net/yooungt13/">blog.csdn.net/yooungt13</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<a href="http://github.com/yooungt13"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" /></a>
+
+<script src="/public/javascripts/jquery.js" type="text/javascript"></script>
+<script src="/public/javascripts/makisu.js" type="text/javascript"></script>
+<script src="/public/javascripts/plugins.js" type="text/javascript"></script>
+
+</body>
+</html>

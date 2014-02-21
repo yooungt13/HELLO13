@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>0303 Spatial Filter</title>
+
+</head>
+<body>
+	<div style="float:left;">
+		<img id='original' title='Before'/>
+		<p>Before Processing</p>
+	</div>
+	<div style="float:left;">&nbsp;&nbsp;&nbsp;</div>
+	<div style="float:left;">
+		<canvas id="canvas" title='After'></canvas>
+		<p>After Processing with the mask(1,1,1,1,1,1,1,1,1)</p>
+	</div>
+	<script src="./public/javascripts/dip_core.js"></script>
+	<script src="./public/javascripts/fft.js"></script>
+	<script src="./public/javascripts/dip_tool.js"></script>
+	<script>
+		var img = document.getElementById("original");
+		img.onload = function(){
+			var mat = imread(img);
+			var h = [1,4,1,4,16,4,1,4,1];
+			var h1 = [1,1,1,1,1,1,1,1,1];
+			var mat2 = spatialFilter(RGBA2Gray(mat),h1);
+
+			imshow(mat2);
+		};
+		img.src = "./public/images/a.jpg";
+
+		var canvas = document.getElementById("canvas"),
+			ctx = canvas.getContext("2d");
+
+		function imshow( mat ){
+			canvas.width = mat.col;
+			canvas.height = mat.row;
+			ctx.putImageData( RGBA2ImageData(mat), 0, 0 );
+		}
+	</script>	
+</body>
+</html>

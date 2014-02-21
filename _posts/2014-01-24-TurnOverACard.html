@@ -1,0 +1,168 @@
+---
+layout: post
+title: Turn Over a Card
+tag: CSS
+---
+<style>
+strong {
+  color: #a6e22e;
+}
+#post .attr {
+  color: #66d9ef;
+  font-weight: normal;
+}
+#cardflip {
+  width: 200px;
+  height: 260px;
+  position: relative;
+  margin: 60px auto;
+  border: 1px solid #fff;
+  -webkit-perspective: 800px;
+  -moz-perspective: 800px;
+  -o-perspective: 800px;
+  perspective: 800px;
+}
+#card {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  -webkit-transition: -webkit-transform 1s;
+  -moz-transition: -moz-transform 1s;
+  -o-transition: -o-transform 1s;
+  transition: transform 1s;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+#card div{
+  font-size: 140px;
+  font-weight: bold;
+  font-family: "微软雅黑","Arial","Helvetica","sans-serif";
+  color: white;
+  line-height: 260px;	
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+#card .front {
+  background: #e74c3c;
+}
+#card .back {
+  background: #3498db;
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+#card.flipped {
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+
+}
+</style>
+<p>翻纸牌,不看广告看疗效：</p>
+	<div id="cardflip">
+		<div id="card">
+			<div class="front">1</div>
+			<div class="back">2</div>
+		</div>
+	</div>
+  <div id="post">
+  <p>其实结构很简单：<span style="color:#aaa;font-size:0.9em;">(为介绍方便已简化代码，如想达到演示效果请查看源码)</span></p>
+
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;cardflip&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;card&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;front&quot;</span><span class="nt">&gt;</span>1<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;back&quot;</span><span class="nt">&gt;</span>2<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div>
+
+<p><strong>.cardflip</strong>是整个3D效果的容器，<strong>#card</strong>是翻转效果的元素，<strong>.front</strong>和<strong>.back</strong>是翻转的两面。添加样式：</p>
+
+<div class="highlight"><pre><code class="css"><span class="nf">#cardflip</span> <span class="p">{</span>
+  <span class="k">width</span><span class="o">:</span> <span class="m">200px</span><span class="p">;</span>
+  <span class="k">height</span><span class="o">:</span> <span class="m">260px</span><span class="p">;</span>
+  <span class="k">position</span><span class="o">:</span> <span class="k">relative</span><span class="p">;</span>
+  <span class="n">perspective</span><span class="o">:</span> <span class="m">800px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nf">#card</span> <span class="p">{</span>
+  <span class="k">width</span><span class="o">:</span> <span class="m">100</span><span class="o">%</span><span class="p">;</span>
+  <span class="k">height</span><span class="o">:</span> <span class="m">100</span><span class="o">%</span><span class="p">;</span>
+  <span class="k">position</span><span class="o">:</span> <span class="k">absolute</span><span class="p">;</span>
+  <span class="n">transform</span><span class="o">-</span><span class="n">style</span><span class="o">:</span> <span class="n">preserve</span><span class="m">-3</span><span class="n">d</span><span class="p">;</span>
+  <span class="n">transition</span><span class="o">:</span> <span class="n">transform</span> <span class="m">1s</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+<p>首先给<strong>#cardflip</strong>添加<strong class="attr">perspective</strong>属性，这样才能触发3D变换，之后<strong>#card</strong>就在父元素的3D空间中了，用了<strong class="attr">absolute</strong>来定位子元素，设置宽高都是100%，这样就可以让<strong class="attr">transform-origin</strong>在元素的中心点，这个后面再讨论。</p>
+
+<p><strong class="attr">transform-style</strong>有两个值，一个是默认的<strong class="attr">flat</strong>一个是<strong class="attr">preserve-3d</strong>，由于<strong class="attr">perspective</strong>的3D空间，只能作用于直接的子元素，那么<strong>.front</strong>和<strong>.back</strong>也需要<strong>#cardflip</strong>的3D空间的话，就需要给<strong>#card</strong>添加这个属性，</p>
+
+<div class="highlight"><pre><code class="css"><span class="nf">#card</span> <span class="nt">div</span><span class="p">{</span>
+  <span class="k">position</span><span class="o">:</span> <span class="k">absolute</span><span class="p">;</span>
+  <span class="k">width</span><span class="o">:</span> <span class="m">100</span><span class="o">%</span><span class="p">;</span>
+  <span class="k">height</span><span class="o">:</span> <span class="m">100</span><span class="o">%</span><span class="p">;</span>
+  <span class="n">backface</span><span class="o">-</span><span class="k">visibility</span><span class="o">:</span> <span class="k">hidden</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+<p>只有<strong>#card_div</strong>元素共享了外层元素的3D空间之后，3D变换的属性才能生效，这时候的<strong class="attr">backface-visibility</strong>才有效，设置为<strong class="attr">hidden</strong>。</p>
+
+<div class="highlight"><pre><code class="css"><span class="nf">#card</span> <span class="nc">.front</span> <span class="p">{</span>
+    <span class="k">background</span><span class="o">:</span> <span class="nb">red</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nf">#card</span> <span class="nc">.back</span> <span class="p">{</span>
+    <span class="k">background</span><span class="o">:</span> <span class="nb">blue</span><span class="p">;</span>
+    <span class="n">transform</span><span class="o">:</span> <span class="n">rotateY</span><span class="p">(</span> <span class="m">180</span><span class="n">deg</span> <span class="p">);</span>
+<span class="p">}</span>
+<span class="nf">#card</span><span class="nc">.flipped</span> <span class="p">{</span>
+    <span class="n">transform</span><span class="o">:</span> <span class="n">rotateY</span><span class="p">(</span> <span class="m">180</span><span class="n">deg</span> <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+<p>因为设置了<strong class="attr">backface-visibility</strong>，而<strong>.back</strong>默认就是以Y轴旋转了180度，空间想象一下，<strong>.back</strong>就转到背面去了，所以<strong class="attr">hidden</strong>属性生效，就看不到<strong>.back</strong>了。</p>
+
+<p>通过jquery控制<strong>#card</strong>添加<strong>.flipped</strong>的样式，当添加样式时触发旋转，<strong>#card</strong>以Y轴旋转了180度，这时候<strong>.front</strong>转到了背面，而<strong>.back</strong>从背面转到了前面，所以就完成了切换。</p>
+
+<div class="highlight"><pre><code class="js"><span class="kd">var</span> <span class="nx">isfront</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+<span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#card&quot;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">isfront</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;flipped&quot;</span><span class="p">);</span>
+      <span class="nx">isfront</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;flipped&quot;</span><span class="p">);</span>
+      <span class="nx">isfront</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+<br>
+</div>
+	<script src="/public/javascripts/jquery.js"></script>
+	<script>	
+		var isfront = true;
+		$(document).ready(function(){ 
+			$("#card").click(function(){
+				if( isfront ){
+					$(this).addClass("flipped"); 
+					isfront = false;
+				}else{
+					$(this).removeClass("flipped"); 
+					isfront = true;
+				}    	       
+			});
+		});
+	</script>

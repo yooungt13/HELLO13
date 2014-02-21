@@ -1,0 +1,101 @@
+---
+layout: post
+title: Amazing Toggle
+tag: CSS
+---
+<style type="text/css">
+	/* lists styles */
+	.lists {
+
+	    -webkit-transform-style: preserve-3d;
+	    -moz-transform-style: preserve-3d;
+	    -ms-transform-style: preserve-3d;
+	    -o-transform-style: preserve-3d;
+	    transform-style: preserve-3d;
+	    
+	    text-transform: uppercase;
+	    margin-right: 2em;
+	}
+
+	.lists a {
+	    text-decoration: none;
+	    display: block;
+	    color: #fff;
+	}
+
+	.lists a:hover {
+	    text-indent: 20px;
+	}
+
+	.lists dt, .lists dd {
+	    text-indent: 10px;
+	    line-height: 55px;
+	    background: #000;
+	    margin: 0;
+	    height: 55px;
+	    width: 270px;
+	    color: #fff;
+	}
+
+	.lists dt {
+	    /* Since we're hiding elements behind here, we need it in 3d */
+	    -webkit-transform: translateZ(0.3px);
+	    -moz-transform: translateZ(0.3px);
+	    -ms-transform: translateZ(0.3px);
+	    -o-transform: translateZ(0.3px);
+	    transform: translateZ(0.3px);
+
+	    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+	    font-size: 15px;
+	}
+
+	.lists dd {
+
+	    border-top: 1px dashed rgba(255,255,255,0.3);
+	    line-height: 35px;
+	    font-size: 11px;
+	    height: 35px;
+	    margin: 0;
+	}
+
+	/* Individual styles */
+	.maki {
+	    -webkit-transform: perspective(600px) translateZ(1px) !important;
+	    -moz-transform: perspective(600px) translateZ(1px) !important;
+	    -ms-transform: perspective(600px) translateZ(1px) !important;
+	    -o-transform: perspective(600px) translateZ(1px) !important;
+	    transform: perspective(600px) translateZ(1px) !important;
+	}
+</style>
+<div style="width:100%; height: 19em;">
+<dl class="lists maki" style="float:left;">
+    <dt>Maki</dt>
+    <dd><a href="#">Ana-kyu</a></dd>
+    <dd><a href="#">Chutoro</a></dd>
+    <dd><a href="#">Kaiware</a></dd>
+    <dd><a href="#">Kampyo</a></dd>
+    <dd><a href="#">Kappa</a></dd>
+    <dd><a href="#">Natto</a></dd>
+    <dd><a href="#">Negitoro</a></dd>
+    <dd><a href="#">Oshinko</a></dd>
+    <dd><a href="#">Otoro</a></dd>
+    <dd><a href="#">Tekka</a></dd>
+</dl>
+<a href="#" class="toggle">Toggle</a>
+</div>
+
+<script src="/public/javascripts/jquery.js"></script>
+<script src="/public/javascripts/makisu.js"></script>
+<script>    // The `enabled` flag will be `false` if CSS 3D isn't available
+  var $maki = $( '.maki' );    // Create Makisus
+  $maki.makisu({
+      selector: 'dd',
+      overlap: 0.6,
+      speed: 0.85
+  });
+  // Open all            
+  $( '.lists' ).makisu( 'open' );    // Toggle on click
+  $( '.toggle' ).on( 'click', function() {
+      $( '.lists' ).makisu( 'toggle' );
+  });
+</script>

@@ -1,0 +1,77 @@
+---
+layout: post
+title: Flappy Bird is flying
+tag: CSS
+---
+<style type="text/css">
+	#bird td{ width:18px; height:18px; }
+</style>
+<script>
+	var bird_up = [
+		[0,0,0,0,0, 0,1,1,1,1, 1,1,0,0,0, 0,0],
+		[0,0,0,0,1, 1,5,5,5,1, 5,5,1,0,0, 0,0],
+
+		[0,0,0,1,5, 5,2,2,1,5, 5,5,5,1,0, 0,0],
+		[0,1,1,1,1, 2,2,2,1,5, 5,5,1,5,1, 0,0],
+		[1,5,5,5,5, 1,2,2,1,5, 5,5,1,5,1, 0,0],
+		[1,5,5,5,5, 5,1,2,2,1, 5,5,5,5,1, 0,0],
+		[1,2,5,5,5, 2,1,2,2,2, 1,1,1,1,1, 1,0],
+
+		[0,1,2,2,2, 1,2,2,2,1, 4,4,4,4,4, 4,1],
+		[0,0,1,1,1, 3,3,3,1,4, 1,1,1,1,1, 1,0],
+		[0,0,1,3,3, 3,3,3,3,1, 4,4,4,4,4, 1,0],
+		[0,0,0,1,1, 3,3,3,3,3, 1,1,1,1,1, 0,0],
+		[0,0,0,0,0, 1,1,1,1,1, 0,0,0,0,0, 0,0]
+	];
+	var bird_down = [
+		[0,0,0,0,0, 0,1,1,1,1, 1,1,0,0,0, 0,0],
+		[0,0,0,0,1, 1,5,5,5,1, 5,5,1,0,0, 0,0],
+
+		[0,0,0,1,5, 5,2,2,1,5, 5,5,5,1,0, 0,0],
+		[0,0,1,5,2, 2,2,2,1,5, 5,5,1,5,1, 0,0],
+		[0,1,5,2,2, 2,2,2,1,5, 5,5,1,5,1, 0,0],
+		[0,1,5,2,2, 2,2,2,2,1, 5,5,5,5,1, 0,0],
+		[0,1,1,1,1, 1,2,2,2,2, 1,1,1,1,1, 1,0],
+
+		[1,2,2,2,2, 2,1,2,2,1, 4,4,4,4,4, 4,1],
+		[1,2,5,5,5, 1,3,3,1,4, 1,1,1,1,1, 1,0],
+		[1,5,5,5,1, 3,3,3,3,1, 4,4,4,4,4, 1,0],
+		[0,1,1,1,3, 3,3,3,3,3, 1,1,1,1,1, 0,0],
+		[0,0,0,0,1, 1,1,1,1,1, 0,0,0,0,0, 0,0]
+	];
+	var bird = bird_up;	
+	var post = document.getElementById('post');
+
+	var flyTimer = setInterval(function(){
+		if( bird === bird_up ) bird = bird_down;
+		else bird = bird_up;
+		var tmp = document.getElementById('bird');
+		if( tmp ) post.removeChild(tmp);
+		var table = document.createElement("table");
+		table.id = "bird";
+		var tbody = document.createElement("tbody");
+		table.cellPadding = 0;
+		table.cellSpacing = 0;
+		table.appendChild(tbody);
+		for (var i = 0; i < 12; i++) {
+			var tr = document.createElement("tr");
+			for (var j = 0; j < 17; j++) {
+				var td = document.createElement("td");
+				// 绘制背景地图
+				var color = "";
+				switch(bird[i][j]){
+					case 1: color = "#000"; break;
+					case 2: color = "#fcf521"; break;
+					case 3: color = "#fbbb11"; break;
+					case 4: color = "#ff664c"; break;
+					case 5: color = "#fff"; break;
+					default: break;
+				}
+				td.style.backgroundColor = color;
+				tr.appendChild(td);
+			}
+			tbody.appendChild(tr);
+		}
+		post.appendChild(table);
+	},300);	
+</script>

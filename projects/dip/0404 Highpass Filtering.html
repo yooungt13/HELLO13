@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>0404 Highpass Filtering</title>
+
+</head>
+<body>
+	<div style="float:left;">
+		<img id='original' title='Before'/>
+		<p>Before processing</p>
+	</div>
+	<div style="float:left;">&nbsp;&nbsp;&nbsp;</div>
+	<div style="float:left;">
+		<canvas id="canvas" title='After'></canvas>
+		<p>After processing with Ghpf</p>
+	</div>
+	<script src="./public/javascripts/dip_core.js"></script>
+	<script src="./public/javascripts/fft.js"></script>
+	<script src="./public/javascripts/dip_tool.js"></script>
+	<script>
+		var img = document.getElementById("original");
+		img.onload = function(){
+			var mat = imread(img);
+			var mat2 = ghpfilter( mat,200 );
+
+			imshow(mat2);
+		};
+		img.src = "./public/images/a128.jpg";
+
+		var canvas = document.getElementById("canvas"),
+			ctx = canvas.getContext("2d");
+
+		function imshow( mat ){
+			canvas.width = mat.col;
+			canvas.height = mat.row;
+			ctx.putImageData( RGBA2ImageData(mat), 0, 0 );
+		}
+	</script>	
+</body>
+</html>

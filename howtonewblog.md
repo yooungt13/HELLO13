@@ -44,6 +44,6 @@ $ git init
 $ touch README
 $ git add README                    
 $ git commit -m "first commit"    
-$ git remote add origin git@github.com:defnngj/hello-world.git     
+$ git remote add origin https://github.com/yooungt13/hello-world.git     
 $ git push -u origin master     
 {% endhighlight %}

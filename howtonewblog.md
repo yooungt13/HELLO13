@@ -35,7 +35,7 @@ Recommend <strong>[Monokai.css](https://github.com/richleland/pygments-css/blob/
     
     
 <br>    
-<strong style="color:#a6e22e;">Create Project</strong> and <strong style="color:#a6e22e;">Upload to Github</strong>
+<strong style="color:#a6e22e;">Create Repo</strong> and <strong style="color:#a6e22e;">Upload to Github</strong>
     
 {% highlight python %}
 $ makdir ~/hello-world    

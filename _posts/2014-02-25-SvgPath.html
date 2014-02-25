@@ -1,0 +1,98 @@
+---
+layout: post
+title: Draw a Moving Line
+tag: CSS
+---
+
+<strong>原文链接：</strong> <a href="http://www.webhek.com/animated-line-drawing-in-svg/">[传送门]</a><br>
+<br>
+<div class="containner">
+	<svg height="30%" width="30%" onclick="RunLine();">
+		<path d="M43 74
+		C43 74 41 74 41 74
+		C41 79 43 74 46 84
+		C54 84 61 79 61 74
+		C61 62 54 54 46 54
+		C32 54 21 62 21 74
+		C21 90 32 104 46 104
+		C65 104 81 90 81 74
+		C81 51 65 34 46 34
+		C21 34 1 51 1 74
+		C1 101 21 124 46 124
+		C76 124 101 101 101 74
+		C101 40 76 14 46 14"
+		style="fill:none;stroke:white;stroke-width:2"/>
+	</svg>
+</div>
+<br>
+
+SVG里用来定义路径的格式堪比正则表达式的怪异：<br><br>
+{% highlight html %}
+<path d="M43 74
+	C43 74 41 74 41 74
+	C41 79 43 74 46 84
+	C54 84 61 79 61 74
+	C61 62 54 54 46 54
+	C32 54 21 62 21 74
+	C21 90 32 104 46 104
+	C65 104 81 90 81 74
+	C81 51 65 34 46 34
+	C21 34 1 51 1 74
+	C1 101 21 124 46 124
+	C76 124 101 101 101 74
+	C101 40 76 14 46 14"
+	style="fill:white;stroke:black;stroke-width:2"/>
+{% endhighlight %}
+<br>
+属性d里的每一部分都是告诉浏览器生成一个动作，比如移动到某一个点，开始画一条线，画一个贝齐尔弧线，等等。<br>
+<br>
+　　关于这些数据是如何变成动画，变成一条慢慢画出的线，这是个非常复杂的问题，幸运的是，我们不用考虑这些。我可以使用颜色和设置点的宽度，让SVG路径变成一段一段的点线，并控制点的偏移量：<br>
+<br>
+　　属性stroke-dasharray是让你指定画出的线段每段的长度，第二个值是各段之间空隙的长度。属性stroke-dashoffset是让你指定每个小段的起始偏移量。将线段长度与线段间隔设置为路径长度，通过改变线段起始偏移量可以则可以使线段动起来。<br>
+<br>
+{% highlight javascript %}
+function RunLine () {		
+    var path = document.querySelector('.containner path');
+    var length = path.getTotalLength();
+
+    // 清除之前的动作
+    path.style.transition = 'none';
+
+    // 设置起始点
+    path.style.strokeDasharray = length + ' ' + length;
+    path.style.strokeDashoffset = length;
+
+    // 获取区域及相关样式，让浏览器寻找起点
+    path.getBoundingClientRect();
+
+    // 定义动作
+    path.style.transition = 'stroke-dashoffset 2s ease-in-out';
+    // Go!
+    path.style.strokeDashoffset = '0';
+}
+{% endhighlight %}
+
+	
+<script>
+	function RunLine () {		
+		var path = document.querySelector('.containner path');
+		var length = path.getTotalLength();
+
+		// 清除之前的动作
+		path.style.transition = path.style.WebkitTransition = 'none';
+
+		// 设置起始点
+		path.style.strokeDasharray = length + ' ' + length;
+		path.style.strokeDashoffset = length;
+
+		// 获取区域及相关样式，让浏览器寻找起点
+		path.getBoundingClientRect();
+
+		// 定义动作
+		path.style.transition = path.style.WebkitTransition = 'stroke-dashoffset 2s ease-in-out';
+		// Go!
+		path.style.strokeDashoffset = '0';
+	}
+	window.onload = RunLine;
+</script>
+

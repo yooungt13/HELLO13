@@ -1,0 +1,120 @@
+---
+layout: post
+title: 捕捉鼠标移动事件
+tag: JS
+---
+<style type="text/css"> 
+	#screen {
+	    background:#000;
+	    position: absolute;
+	    width: 100%;
+	    height: 100%;
+	    overflow: hidden;
+	}
+	#screen span {
+	    background: #0f0;
+	    position: absolute;
+	    font-size: 0;
+	    overflow: hidden;
+	    width: 2px;
+	    height: 2px;
+	}
+</style> 
+<script>
+	var Follow = function(){
+		var $ = function(id){ return document.getElementById(id); },
+			addEvent = function(o,e,f){
+				o.addEventListener ? o.addEventListener(e,f,false) : o.attachEvent('on'+e,function(){f.call(o)})
+			},
+			OBJ = [], sp, rs, N = 0, m;
+
+		var init = function(id,config){
+			this.config = config || {};
+			this.obj = $(id);
+			sp = this.config.speed || 4;  // 移动速度
+			rs = this.config.animR || 1;  // 震荡幅度
+			m = {
+				x: $(id).offsetWidth * 0.5,
+				y: $(id).offsetHeight * 0.5
+			};
+			this.setXY();
+			this.start();
+		};
+		init.prototype = {
+			setXY: function(){
+				addEvent(this.obj,'mousemove',function(e){
+					e = e || window.event;
+					m.x = e.clientX;  // 获得鼠标在浏览器位置
+					m.y = e.clientY;
+				});
+			},
+			start: function(){
+				var OO, o, fn = this.config.fn;
+				// 创建鼠标位置中心点
+				OBJ[N++] = OO = new Cobj(null,0,0);
+				for( var i = 0; i < 360; i += 10 ){ // 每一圈的点数
+					var O = OO;
+					for( var j = 10; j < 35; j += 1 ){ // 圈数
+						var x = fn(i,j).x,
+							y = fn(i,j).y;
+						OBJ[N++] = o = new Cobj(O,x,y);
+						O = o;
+					}
+				}
+				setInterval(function(){
+					for( var i = 0; i < N; i++ ) OBJ[i].run();
+				}, 20);
+			}
+		};
+
+		var Cobj = function(parent,cx,cy){
+			var obj = document.createElement("span");
+			this.css = obj.style;
+			this.css.zIndex = 1000 - N;
+			$("screen").appendChild(obj);
+			this.ddx = 0;
+			this.ddy = 0;
+			this.PX = 0;
+			this.PY = 0;
+			this.x = 0;
+			this.y = 0;
+			this.x0 = 0;
+			this.y0 = 0;
+			this.cx = cx;
+			this.cy = cy;
+			this.parent = parent;
+		};
+
+		Cobj.prototype = {
+			run: function(){
+				if(!this.parent){
+					this.x0 = m.x;
+					this.y0 = m.y;
+				}else{
+					this.x0 = this.parent.x;
+					this.y0 = this.parent.y;
+				}
+				this.x = this.PX += (this.ddx += ((this.x0 - this.PX - this.ddx) + this.cx) / rs) / sp;
+				this.y = this.PY += (this.ddy += ((this.y0 - this.PY - this.ddy) + this.cy) / rs) / sp;
+				this.css.left = Math.round(this.x) + 'px';
+				this.css.top = Math.round(this.y) + 'px';
+			}
+		};
+
+		return init;
+	}();
+</script>
+<div id="screen"></div> 
+<script>
+	new Follow('screen',{
+		speed: 4,
+		animR: 2,
+		fn: function(i,j){
+			// 圆形坐标函数
+			return {
+				x: j / 4 * Math.cos(i),
+				y: j / 4 * Math.sin(i)
+			};
+		}
+	});
+</script>

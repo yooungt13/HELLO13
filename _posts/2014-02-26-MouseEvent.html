@@ -55,7 +55,7 @@ tag: JS
 				OBJ[N++] = OO = new Cobj(null,0,0);
 				for( var i = 0; i < 360; i += 10 ){ // 每一圈的点数
 					var O = OO;
-					for( var j = 10; j < 35; j += 1 ){ // 圈数
+					for( var j = 15; j < 25; j += 1 ){ // 圈数
 						var x = fn(i,j).x,
 							y = fn(i,j).y;
 						OBJ[N++] = o = new Cobj(O,x,y);
@@ -106,7 +106,23 @@ tag: JS
 	}();
 </script>
 
-<p>占楼。</p>
+<strong>原文链接：</strong><a style="position:relative; z-index:1002;" href="http://www.cnblogs.com/hongru/archive/2011/01/26/1945661.html">[传送门]</a><br>
+<p>纯JavaScript实现，若想保证良好体验效果，请使用现代浏览器。</p>
+
+<br>
+面对JavaScript与数学的强大结合，我实在无力。<br>
+但是还是学习到了获得跟踪鼠标事件的方法。<br><br>
+
+{% highlight javascript %}
+setXY: function(){
+    addEvent(obj,'mousemove',function(e){
+        var e = e || window.event;
+        obj.x = e.clientX;  // 获得鼠标在浏览器位置
+        obj.y = e.clientY;
+    });
+}
+{% endhighlight %}
+
 <div id="screen"></div> 
 <script>
 	new Follow('screen',{

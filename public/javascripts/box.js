@@ -27,6 +27,7 @@ Box.prototype = {
 			this.IsBar = (config.isBar !== undefined) ? config.isBar : this.IsBar;
 			this.IsShut = (config.isShut !== undefined) ? config.isShut : this.IsShut;
 		}
+
 	},
 	open: function(config) {
 		this.init(config);
@@ -46,18 +47,19 @@ Box.prototype = {
 		this.zoomIn();
 
 		if (this.IsBar) {
-			var bar = $$("bar"),
-				_this = this;
-			addEvent(bar, 'mousedown', function(e) {
-				e = e || window.event;
-				//_this.close();
-			});
-		}
+			this.setDragListener();
 
-		if (this.IsShut) {
-			var shut = $$("box_shut"),
-				_this = this;
-			addEvent(shut, 'click', function(e) {
+			if (this.IsShut) {
+				var shut = $$("box_shut"),
+					_this = this;
+				addEvent(shut, 'click', function(e) {
+					_this.fillTitle("");
+					_this.zoomOut();
+				});
+			}
+		}else{
+			var _this = this;
+			addEvent(this.box, 'click', function(e) {
 				_this.zoomOut();
 			});
 		}
@@ -138,8 +140,10 @@ Box.prototype = {
 		var coe = 10,
 			tmpWidth, tmpHeight;
 		this.fillContent("");
-		this.fillTitle("");
 		this.removeMask();
+
+		var desX = this.getLeft(this.BoxWidth)-parseInt(this.box.style.left),
+			desY = this.getTop(this.BoxHeight)-parseInt(this.box.style.top);
 
 		var zoomOutTimer = setInterval(function() {
 			tmpWidth = this.BoxWidth * coe / 10,
@@ -151,11 +155,49 @@ Box.prototype = {
 			} else {
 				this.box.style.width = tmpWidth + 'px';
 				this.box.style.height = tmpHeight + 'px';
-				this.box.style.left = this.getLeft(tmpWidth) + 'px';
-				this.box.style.top = this.getTop(tmpHeight) + 'px';
+				this.box.style.left = this.getLeft(tmpWidth) - desX + 'px';
+				this.box.style.top = this.getTop(tmpHeight) - desY + 'px';
 				coe--;
 			}
 		}.bind(this), 10);
+	},
+	setDragListener: function() {
+		var bar = $$("bar"),
+			_this = this;
+
+		var params = {
+			startX: 0,
+			startY: 0,
+			_X: 0,
+			_Y: 0,
+			isDrag: false
+		};
+		addEvent(bar, 'mousedown', function(e) {
+			var e = e || window.event;
+			params.isDrag = true;
+			params._X = e.clientX;
+			params._Y = e.clientY;
+			params.startX = _this.box.style.left;
+			params.startY = _this.box.style.top;
+		});
+
+		addEvent(document, 'mouseup', function(e) {
+			params.isDrag = false;
+		});
+
+		addEvent(document, 'mousemove', function(e) {
+			var e = e || window.event;
+
+			if (params.isDrag) {
+				var currX = e.clientX,
+					currY = e.clientY,
+					desX = currX - params._X + parseInt(params.startX),
+					desY = currY - params._Y + parseInt(params.startY);
+
+				_this.box.style.left = desX + 'px';
+				_this.box.style.top = desY + 'px';
+			}
+		});
 	},
 	fillContent: function(content) {
 		$$("content").innerHTML = content;
@@ -167,6 +209,6 @@ Box.prototype = {
 		return (document.body.offsetWidth - width) / 2;
 	},
 	getTop: function(height) {
-		return (document.documentElement.clientHeight - height) / 2;
+		return (document.body.offsetHeight - height) / 2 + document.body.scrollTop ;
 	}
 }

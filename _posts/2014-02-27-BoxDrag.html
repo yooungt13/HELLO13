@@ -15,6 +15,62 @@ tag: JS
 {% endhighlight %}
 <br>
 
+<h1>利用<strong>onmousedown</strong>、<strong>onmouseup</strong>、<strong>onmousemove</strong>实现拖拽功能</h1>
+
+　　在触发<strong>onmousedown</strong>时记录初始鼠标位置_X/_Y以及初始Box位置startX/startY，鼠标移动过程中触发<strong>onmousemove</strong>同时记录当前鼠标位置currX/currY,此时Box的位置即为startX+(_X-currX)。这里需要一个结构体记录相关位置信息，结构体如下：
+
+{% highlight javascript %}
+var params = {
+    startX: 0,
+    startY: 0,
+    _X: 0,
+    _Y: 0,
+    isDrag: false
+};
+{% endhighlight %}
+
+在Box打开后SetDragListener即可。
+{% highlight javascript %}
+setDragListener: function() {
+    var bar = $$("bar"),
+        _this = this;
+
+    var params = {
+        startX: 0,
+        startY: 0,
+        _X: 0,
+        _Y: 0,
+        isDrag: false
+    };
+    addEvent(bar, 'mousedown', function(e) {
+        var e = e || window.event;
+        params.isDrag = true;
+        params._X = e.clientX;
+        params._Y = e.clientY;
+        params.startX = _this.box.style.left;
+        params.startY = _this.box.style.top;
+    });
+
+    addEvent(document, 'mouseup', function(e) {
+        params.isDrag = false;
+    });
+
+    addEvent(document, 'mousemove', function(e) {
+        var e = e || window.event;
+
+        if (params.isDrag) {
+            var currX = e.clientX,
+                currY = e.clientY,
+                desX = currX - params._X + parseInt(params.startX),
+                desY = currY - params._Y + parseInt(params.startY);
+
+            _this.box.style.left = desX + 'px';
+            _this.box.style.top = desY + 'px';
+        }
+    });
+}
+{% endhighlight %}
+<br>
 
 附Box.js源码：<a href="https://github.com/yooungt13/yooungt13.github.com/blob/master/public/javascripts/box.js">[传送门]</a>
 

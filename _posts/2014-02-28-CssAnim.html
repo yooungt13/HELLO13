@@ -1,0 +1,83 @@
+---
+layout: post
+title: MT's Attack Effect
+tag: CSS
+---
+<style>
+	.attack {
+		position: relative;
+		background: url('../public/images/cy.png') no-repeat;
+		width: 329px;
+		height: 360px;
+		top: 30px;
+		margin: 0 auto;
+		margin-bottom: 50px;
+		animation:shake 1s infinite;
+		-moz-animation:shake 1s infinite; /* Firefox */
+		-webkit-animation:shake 1s infinite; /* Safari and Chrome */
+		-o-animation:shake 1s infinite; /* Opera */
+	}
+	@keyframs mymove {
+		0%   {top:10px; left:0px;}
+		7.5%  {top:10px; -webkit-transform:rotate(-10deg); }
+		15%  {top:10px; }	
+		22.5%  {top:10px; -webkit-transform:rotate(10deg); }
+		30%  {top:10px; -webkit-transform:rotate(-3deg);}		
+		50% {top:30px; }
+	}
+	@-moz-keyframes mymove /* Firefox */
+	{
+		0%   {top:10px; left:0px;}
+		7.5%  {top:10px; -webkit-transform:rotate(-10deg); }
+		15%  {top:10px; }	
+		22.5%  {top:10px; -webkit-transform:rotate(10deg); }
+		30%  {top:10px; -webkit-transform:rotate(-3deg);}		
+		50% {top:30px; }
+	}
+	@-webkit-keyframes shake /* Safari and Chrome */
+	{
+		0%   {top:10px; left:0px;}
+		7.5%  {top:10px; -webkit-transform:rotate(-10deg); }
+		15%  {top:10px; }	
+		22.5%  {top:10px; -webkit-transform:rotate(10deg); }
+		30%  {top:10px; -webkit-transform:rotate(-3deg);}		
+		50% {top:30px; }
+	}
+	@-o-keyframes mymove /* Opera */
+	{
+		0%   {top:10px; left:0px;}
+		7.5%  {top:10px; -webkit-transform:rotate(-10deg); }
+		15%  {top:10px; }	
+		22.5%  {top:10px; -webkit-transform:rotate(10deg); }
+		30%  {top:10px; -webkit-transform:rotate(-3deg);}		
+		50% {top:30px; }
+	}
+</style>
+
+<div class="attack"></div>
+<br>
+其实就是Css animation，调整关键帧达到抖动效果。
+
+{% highlight css %}
+.attack {
+    background: url('cy.png') no-repeat;
+    width: 329px;
+    height: 360px;
+    top: 30px;
+    animation:shake 1s infinite;
+    -moz-animation:shake 1s infinite; /* Firefox */
+    -webkit-animation:shake 1s infinite; /* Safari and Chrome */
+    -o-animation:shake 1s infinite; /* Opera */
+}
+@keyframs mymove {
+    0%   {top:10px; left:0px;}
+    7.5%  {top:10px; -webkit-transform:rotate(-10deg); }
+    15%  {top:10px; }	
+    22.5%  {top:10px; -webkit-transform:rotate(10deg); }
+    30%  {top:10px; -webkit-transform:rotate(-3deg);}		
+    50% {top:30px; }
+}
+{% endhighlight %}
+
+
+

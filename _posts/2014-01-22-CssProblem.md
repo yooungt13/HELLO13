@@ -39,4 +39,15 @@ tag: CSS
 getTop: function(height) {
     return (document.body.offsetHeight - height) / 2 + document.body.scrollTop ;
 }
+{% endhighlight%}    
+
+5. GetStyle
+---------------
+由于js只能修改html内部的css样式代码，获得CssDeclaration中样式的方法如下。
+{% highlight javascript %}
+function getStyle(o,key) { //'currentStyle' only for ie5.0+
+    return o.currentStyle ? 
+        o.currentStyle[key] : 
+        document.defaultView.getComputedStyle(o,null)[key];
+}
 {% endhighlight%}

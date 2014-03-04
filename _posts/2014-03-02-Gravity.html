@@ -1,56 +1,77 @@
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<style>
-		#container {
-			border: 1px solid #000;
-			position: relative;
-			width: 600px;
-			height: 500px;
-		}
-		#move {
-			position: absolute;
-			background: #000;
-			width: 50px;
-			height: 50px;
-			border-radius: 50% 50%;
-		}
-	</style>
-</head>
-<body>
-	<div id="container">
-		<div id="move" style="left:0px;top:0px"></div>
-	</div>
-	<script>
-		var $$ = function(id) { return document.getElementById(id); }
-		var move = function () {
-			var conEl = document.getElementById("container"),
-				moveEl = $$("move"),
-				maxDis = (conEl.offsetHeight - parseInt(moveEl.style.height)) || (500 - 50),
-				nowTop, nowLeft, topDis, stepDis = 1;
+---
+layout: post
+title: JavaScript模拟简单运动学
+tag: JS
+---
+<style>
+	#container {
+		background: rgba(0,0,0,0.6);
+		border: 1px solid #fff;
+		position: relative;
+		width: 600px;
+		height: 300px;
+	}
+	#move {
+		position: absolute;
+		background: #fff;
+		width: 10px;
+		height: 10px;
+		border-radius: 50% 50%;
+	}
+</style>
 
-			var moveTimer = setInterval(function(){
-				
-				nowTop = parseInt(moveEl.style.top);
-				nowLeft = parseInt(moveEl.style.left);
+<div id="container">
+	<div id="move" style="left:0px;top:0px"></div>
+</div>
+<button id='g_btn'>Click</button>
+<script>
+	var $$ = function(id) { return document.getElementById(id); }
+	var drop = function () {
+		var conEl = $$("container"),
+			moveEl = $$("move"),
+			maxDis = (conEl.offsetHeight - parseInt(moveEl.style.height)) || (300 - 10),
+			nowTop, nowLeft, topDis, stepDis = 1, direction = "down";
 
-				nowTop += stepDis * 0.05;	
-				nowLeft += 5;			
+		// 恢复初始状态
+		moveEl.style.top = 0 + 'px';
+		moveEl.style.left = 0 + 'px';
 
-				if( nowTop >= maxDis ){
-					clearInterval(moveTimer);
-					return;
-				}
+		var moveTimer = setInterval(function(){
+			
+			nowTop = parseInt(moveEl.style.top);
+			nowLeft = parseInt(moveEl.style.left);
+
+			nowLeft += 1;			
+			switch(direction) {
+				case "up": moveUp(); break;
+				case "down": moveDown(); break;
+			}
+			function moveDown(){
+				nowTop += stepDis * 0.05;
 				stepDis += 2;
-				moveEl.style.top = nowTop + 'px';
-				moveEl.style.left = nowLeft + 'px';
-				//alert(moveEl.style.left);
-			},10);
-		}
-
-		move();
-	</script>
-</body>
-</html>
+				if( nowTop > maxDis ){
+					direction = "up";
+				}
+			}
+			function moveUp(){
+				nowTop -= stepDis * 0.05 / 2;
+				stepDis -= 2;
+				if( nowTop <= 0 || stepDis < 0 ){
+					direction = "down";
+				}
+			}
+			if( nowLeft > 590 ){
+				clearInterval(moveTimer);
+				g_btn.removeAttribute("disabled");
+				return;
+			}
+			moveEl.style.top = nowTop + 'px';
+			moveEl.style.left = nowLeft + 'px';
+		},10);
+	}
+	var g_btn = $$('g_btn');
+	g_btn.onclick = function(){
+		drop();
+		this.disabled = "disabled";
+	}
+</script>

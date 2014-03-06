@@ -58,6 +58,3 @@ $('#projects').hover(function() {}, function() {
   }
 });
 
-// 百度统计
-var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F78bbe26f8e0ea4154a3ab176ed98aa8f' type='text/javascript'%3E%3C/script%3E"));

@@ -1,0 +1,88 @@
+---
+layout: post
+title: Pseudo Class
+tag: CSS
+---
+<style>
+#wrap{
+    background:rgba(230,230,230,0.9);
+    height:380px;
+    position:relative;
+    z-index:9;
+    border:5px solid #fff;
+    box-shadow: 0px 0px 50px #000;
+}
+#box{
+    position: absolute;
+    top:40px; 
+    left: 15%;
+    width: 70%;
+    height: 300px;
+    background: #fff;
+    text-align: center;
+    font: bold 5em/300px "Microsoft Yahei"; 
+    color: #000;
+}
+#box::before, #box::after{
+    position: absolute;
+    content: '';
+    background: #fff;
+    width: 40%;
+    height: 94%;
+    top: 15px;
+    box-shadow: 0px 8px 20px #000;
+    z-index: -1;           
+}
+#box::before{ 
+    left: 10px; 
+    transform:rotate(-2deg);
+    -webkit-transform:rotate(-2deg); 
+    -moz-transform:rotate(-2deg); 
+    -o-transform:rotate(-2deg); 
+}
+#box::after{
+    left: 58%;
+    transform:rotate(2deg);
+    -webkit-transform:rotate(2deg); 
+    -moz-transform:rotate(2deg); 
+    -o-transform:rotate(2deg); 
+}
+</style>
+<p><strong>原文链接：</strong><a href="http://www.igooda.cn/jzjl/20131009384.html">传送门</a></p>
+<div id="wrap">
+<div id="box">Pseudo.</div>
+</div>
+
+<p>阴影效果利用到了两个伪类：<strong>:before</strong>和<strong>:after</strong></p>
+分别设置伪类的css，通过z-index置于父div下，达到角阴影的效果。<br>
+这里注意：若想控制子div的z-index在父div之上，要将父div的position设为relative，子div设为absolute。即便父div不设置z-index的值，将默认为0，子div可通过z-index值正负控制为父div上或下。
+{% highlight css %}
+#box::before, #box::after{
+    position: absolute;
+    content: '';
+    background: #fff;
+    width: 40%;
+    height: 94%;
+    top: 15px;
+    box-shadow: 0px 8px 20px #000;
+    z-index: -1;           
+}
+#box::before{ 
+    left: 10px; 
+    transform:rotate(-2deg);
+    -webkit-transform:rotate(-2deg); 
+    -moz-transform:rotate(-2deg); 
+    -o-transform:rotate(-2deg); 
+}
+#box::after{
+    left: 58%;
+    transform:rotate(2deg);
+    -webkit-transform:rotate(2deg); 
+    -moz-transform:rotate(2deg); 
+    -o-transform:rotate(2deg); 
+}
+{% endhighlight %}
+
+<p>实际<strong>:before</strong>、<strong>:before</strong>样式如如下效果：</p>
+<div id="wrap">
+<div id="box" style="z-index:1;">Pseudo.</div>

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 深刻理解JavaScrip基于原型的面向对象 - 原型链
+title: 【转】深刻理解JavaScrip基于原型的面向对象 - 原型链
 tag: JS
 ---
 

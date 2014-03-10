@@ -50,4 +50,12 @@ function getStyle(o,key) { //'currentStyle' only for ie5.0+
         o.currentStyle[key] : 
         document.defaultView.getComputedStyle(o,null)[key];
 }
+{% endhighlight%}    
+
+5. IMG Vertical Centering
+---------------
+{% highlight html %}
+<div style="display:table-cell;vertical-align:middle;">
+    <img style="">
+</div>
 {% endhighlight%}

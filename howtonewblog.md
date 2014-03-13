@@ -1,6 +1,8 @@
 ---
 layout: default
 title: How to new Blog();
+description: Thanks for comming and Please star and fork in Github if u like my blog.
+keywords: 有田十三,javascript,web,github,blog
 ---
 
 {{page.title}}

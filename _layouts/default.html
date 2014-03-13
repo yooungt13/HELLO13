@@ -1,14 +1,29 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 <head>
-   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-   <title>{{ page.title }}</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title> 
+    {% if page.title %}
+      {{ page.title }}
+    {% else %}
+      {{ site.title }}
+    {% endif %} 
+  </title>
+  <meta name="generator" content="Jekyll" />
+  <meta name="author" content="{{ site.author.name }}" />
+  <meta name="description" content="{{ page.description }}" />
+  <meta name="keywords" content="{{ page.keywords | join: ',' }}" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <!-- Mobile Specific Metas
+  ================================================== -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
 
-   <!-- syntax highlighting CSS -->
-   <link rel="stylesheet" href="/public/stylesheets/syntax.css" type="text/css" />
+  <!-- syntax highlighting CSS -->
+  <link rel="stylesheet" href="/public/stylesheets/syntax.css" type="text/css" />
 
-   <!-- Homepage CSS -->
-   <link rel="stylesheet" href="/public/stylesheets/screen.css" type="text/css" media="screen, projection" />
+  <!-- Homepage CSS -->
+  <link rel="stylesheet" href="/public/stylesheets/screen.css" type="text/css" media="screen, projection" />
 </head>
 <body>
 <div class="wrap"></div>
@@ -66,10 +81,5 @@
 <script src="/public/javascripts/makisu.js" type="text/javascript"></script>
 <script src="/public/javascripts/plugins.js" type="text/javascript"></script>
 <script src="http://js.tongji.linezing.com/3402426/tongji.js" type="text/javascript"></script>
-<script>
-// 百度统计
-var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F78bbe26f8e0ea4154a3ab176ed98aa8f' type='text/javascript'%3E%3C/script%3E"));
-</script>
 </body>
 </html>

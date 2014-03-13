@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Hello 13 | About me
+description: Thanks for comming and Please star and fork in Github if u like my blog.
+keywords: 有田十三,javascript,web,github,blog
 ---
 
 About me

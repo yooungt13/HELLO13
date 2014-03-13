@@ -132,13 +132,15 @@
 
                 // Shading animation
                 $over.css(utils.prefix({
-                    'animation': 'fold-over ' + (speed * 0.45) + 's ' + easing + ' ' + wait + 's 1 normal forwards'
+                    'animation': 'fold-over ' + (speed * 0.45) + 's ' + easing + ' ' + wait + 's 1 normal forwards',
+                    'z-index': 1
                 }));
             });
 
             // Add momentum to the container
             $root.css(utils.prefix({
-                'animation': 'swing-in ' + ( $kids.length * time * 1.0 ) + 's ease-in-out 0s 1 normal forwards'
+                'animation': 'swing-in ' + ( $kids.length * time * 1.0 ) + 's ease-in-out 0s 1 normal forwards',
+                'z-index': -1
             }));
 
             $this.removeClass( 'open' );

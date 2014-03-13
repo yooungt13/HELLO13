@@ -167,6 +167,7 @@ ul.posts {
     float: left;
     display: inline;
     margin-left: 1em;
+    margin-left: 0.5em\0;
   }
 
   .title .signal a {
@@ -183,6 +184,7 @@ ul.posts {
   }
     .menu dl {
       float: left;
+      line-height: 1.6;
     }
 
   /* List styles */
@@ -203,7 +205,8 @@ ul.posts {
   -ms-transform: translateZ(0.3px);
   -o-transform: translateZ(0.3px);
   transform: translateZ(0.3px);
-  margin-bottom: 0.8em; 
+  margin-bottom: 0.5em;
+  background-color: #000;
 }
 
 .list dd {
@@ -342,6 +345,37 @@ ul.posts {
 
   #related h2 {
     margin-bottom: 1em;
+  }
+
+/* Comments */
+.ds-thread {
+  margin-top: 3em;
+}
+  #ds-thread #ds-reset .ds-replybox .ds-post-toolbar{
+    box-shadow: none;
+  }
+
+.ds-meta, .ds-powered-by, .ds-comments-info {
+  display: none;
+}
+
+#ds-reset p{
+  color: #fff;
+}
+  #ds-reset .ds-highlight{
+    font-weight: bold;
+  }
+  #ds-reset .ds-avatar img {
+    width: 54px !important;
+    height: 54px !important;
+    -webkit-transition: -webkit-transform 0.2s ease-out;
+    -moz-transition: -moz-transform 0.2s ease-out;
+    transition: transform 0.2s ease-out;
+  }
+  #ds-reset .ds-avatar img:hover {
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    transform: scale(1.2);
   }
 
 

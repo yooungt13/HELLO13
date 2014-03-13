@@ -7,7 +7,7 @@ permalink:   /:title
 pygments:    true
 markdown:    rdiscount
 
-#站点基础配置
+#Basic Configuration
 title:       Hello13 | Worlds may be false
 subTitle:    While we could survive and hope will grow up.
 description: Thanks for comming and Please star and fork in Github if u like my blog.

@@ -2,6 +2,8 @@
 layout: post
 title: 深入理解Function类型
 tag: JS
+description: 深入理解Function类型
+keywords: function,类型,函数,有田十三
 ---
 __1.函数是对象，函数名是指针__    
 

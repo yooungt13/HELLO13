@@ -11,6 +11,7 @@ var addEvent = function(o, e, f) {
 var Input = function() {};
 Input.prototype = {
 	input: null,
+	wrap: null,
 	options: ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
 		'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii',
 		'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana',
@@ -28,18 +29,17 @@ Input.prototype = {
 	inputHeight: 30,
 
 	init: function(config) {
-		this.input = $$('search');
-
 		if (config) {
-			this.options = config.options || this.options;
+			this.input = $$(config.inputId);
+			this.wrap = $$(config.wrapId);
+			this.options = config.data || this.options;
 			this.inputWidth = config.width || this.inputWidth;
 			this.inputHeight = config.height || this.inputHeight;
 		}
 
 		this.clearScreen();
 		this.setStyle();
-
-		return this;
+		this.autoComplete();
 	},
 	setStyle: function() {
 		this.input.style.width = this.inputWidth + 'px';
@@ -52,8 +52,7 @@ Input.prototype = {
 		this.input.style.outline = 'none';
 	},
 	autoComplete: function() {
-		var wrap = $$('wrap'),
-			that = this;
+		var that = this;
 
 		addEvent(this.input, 'input', function() {
 			that.clearScreen();
@@ -82,6 +81,7 @@ Input.prototype = {
 					ul.style.textAlign = 'left';
 					ul.style.textIndent = '8px';
 					ul.style.backgroundColor = '#fff';
+					ul.style.cursor = 'default';
 
 					var _this = this;
 					for (var i = 0, len = str.length; i < len; i++) {
@@ -130,4 +130,7 @@ Input.prototype = {
 	}
 };
 
-window.onload = new Input().init().autoComplete();
+window.onload = new Input().init({
+	inputId: 'search',
+	wrapId: 'wrap'
+});

@@ -13,70 +13,62 @@ keywords: 自动补全,javascript,input,有田十三
 
 <br>
 <br>
-调用默认款式可以使用如下代码：<br>
+接口调用如下代码：<br>
 {% highlight html %}
 <script>
-    window.onload = new Input().init().autoComplete(); 
+    window.onload = new Input().init({
+        inputId: /* input id, 必填 */,
+        wrapId: /* 父div id, 必填 */
+    }); 
 </script>
 {% endhighlight %}
 <br>
 
-<h1>利用<strong>oninput</strong>事件实现自动补全功能</h1>
-
-　　在触发<strong>onmousedown</strong>时记录初始鼠标位置_X/_Y以及初始Box位置startX/startY，鼠标移动过程中触发<strong>onmousemove</strong>同时记录当前鼠标位置currX/currY,此时Box的位置即为startX+(_X-currX)。这里需要一个结构体记录相关位置信息，结构体如下：
-
-{% highlight javascript %}
-var params = {
-    startX: 0,
-    startY: 0,
-    _X: 0,
-    _Y: 0,
-    isDrag: false
-};
+参数使用方法如下：<br>
+{% highlight html %}
+<script>
+    window.onload = new Input().init({
+        inputId: /* input id, 必填 */,
+        wrapId: /* 父div id, 必填 */,
+        data: [/* 数据 */],
+        width: 400,
+        height: 30
+    }); 
+</script>
 {% endhighlight %}
+<br><br>
 
-在Box打开后SetDragListener即可。
+<h1>轮子设计注意事项</h1>
+<strong>1.oninput、onchange、onpropertychange事件的区别</strong><br>
+
+<strong>2.循环绑定事件</strong><br>
+简单方法，建立一个闭包保存变量。
 {% highlight javascript %}
-setDragListener: function() {
-    var bar = $$("bar"),
-        _this = this;
+for (var i = 0, len = str.length; i < len; i++) {
+    var li = document.createElement('div');
 
-    var params = {
-        startX: 0,
-        startY: 0,
-        _X: 0,
-        _Y: 0,
-        isDrag: false
-    };
-    addEvent(bar, 'mousedown', function(e) {
-        var e = e || window.event;
-        params.isDrag = true;
-        params._X = e.clientX;
-        params._Y = e.clientY;
-        params.startX = _this.box.style.left;
-        params.startY = _this.box.style.top;
-    });
+    li.innerHTML = str[i];
+    (function() {
+        var p = i;
+        addEvent(li, 'mousedown', function() {  
+            _this.value = str[p];
+            wrap.removeChild($$('list'));
+        });
+    })();
 
-    addEvent(document, 'mouseup', function(e) {
-        params.isDrag = false;
-    });
-
-    addEvent(document, 'mousemove', function(e) {
-        var e = e || window.event;
-
-        if (params.isDrag) {
-            var currX = e.clientX,
-                currY = e.clientY,
-                desX = currX - params._X + parseInt(params.startX),
-                desY = currY - params._Y + parseInt(params.startY);
-
-            _this.box.style.left = desX + 'px';
-            _this.box.style.top = desY + 'px';
-        }
-    });
+    ul.appendChild(li);
 }
 {% endhighlight %}
+
+<strong>3.悬浮框样式</strong><br>
+悬浮框position为absolute，通过获得input的offsetTop和offsetLeft来计算悬浮框的top和left，进行定位。最后添加到父div。
+{% highlight javascript %}
+ul.style.top = this.offsetTop + that.height + 'px';
+ul.style.left = this.offsetLeft + 'px';
+{% endhighlight %}
 <br>
+
+<strong>4.绑定键盘事件</strong><br>
 
 附AutoComp.js源码：<a href="https://github.com/yooungt13/yooungt13.github.com/blob/master/public/javascripts/autocomp.js">[传送门]</a>
 

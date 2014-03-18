@@ -12,6 +12,8 @@ var Input = function() {};
 Input.prototype = {
 	input: null,
 	wrap: null,
+	list: null,
+	active: null,
 	options: ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
 		'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii',
 		'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana',
@@ -35,6 +37,7 @@ Input.prototype = {
 			this.options = config.data || this.options;
 			this.inputWidth = config.width || this.inputWidth;
 			this.inputHeight = config.height || this.inputHeight;
+			this.visible = false;
 		}
 
 		this.clearScreen();
@@ -90,7 +93,7 @@ Input.prototype = {
 						li.innerHTML = str[i];
 						(function() {
 							var p = i;
-							addEvent(li, 'mousedown', function() {	
+							addEvent(li, 'mousedown', function() {
 								_this.value = str[p];
 								wrap.removeChild($$('list'));
 							});
@@ -105,8 +108,10 @@ Input.prototype = {
 						})();
 
 						ul.appendChild(li);
+						that.list = ul;
 					}
 					wrap.appendChild(ul);
+					that.visible = true;
 				}
 			}
 		});
@@ -119,14 +124,67 @@ Input.prototype = {
 			this.style.borderColor = '#ccc';
 		});
 
+		addEvent(this.input, 'keydown', function(e) {
+			if (that.visible) {
+				switch (e.keyCode) {
+					case 13: // Enter
+						if (that.active) {
+							this.value = that.active.firstChild.data;
+							that.clearScreen();
+						}
+						return;
+					case 38: // 向上
+						if (!that.active) {
+							that.active = that.list.lastChild;
+							this.value = that.active.lastChild.data;
+							that.active.style.backgroundColor = '#ccc';
+						} else {
+							that.active.style.backgroundColor = '#fff';
+							if ( !! that.active.previousSibling) {
+								that.active = that.active.previousSibling;
+								this.value = that.active.firstChild.data;
+								that.active.style.backgroundColor = '#ccc';
+							} else {
+								that.active = that.list.lastChild;
+								this.value = that.active.firstChild.data;
+								that.active.style.backgroundColor = '#ccc';
+							}
+						}
+						return;
+					case 40: // 向下
+						if (!that.active) {
+							that.active = that.list.firstChild;
+							this.value = that.active.firstChild.data;
+							that.active.style.backgroundColor = '#ccc';
+						} else {
+							that.active.style.backgroundColor = '#fff';
+							if ( !! that.active.nextSibling) {
+								that.active = that.active.nextSibling;
+								this.value = that.active.firstChild.data;
+								that.active.style.backgroundColor = '#ccc';
+							} else {
+								that.active = that.list.firstChild;
+								this.value = that.active.firstChild.data;
+								that.active.style.backgroundColor = '#ccc';
+							}
+						}
+						return;
+				}
+			}
+		});
+
 		addEvent(window, 'mousedown', function() {
 			that.clearScreen();
-		})
+		});
 	},
 	clearScreen: function() {
 		var list = $$('list');
 		// 清除之前的选项框
-		if ( !! list) wrap.removeChild(list);
+		if ( !! list) {
+			wrap.removeChild(list);
+			this.visible = false;
+			this.active = null;
+		}
 	}
 };
 

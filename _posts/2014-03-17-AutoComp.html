@@ -40,6 +40,25 @@ keywords: 自动补全,javascript,input,有田十三
 
 <h1>轮子设计注意事项</h1>
 <strong>1.oninput、onchange、onpropertychange事件的区别</strong><br>
+onchange触发事件必须满足两个条件：<br>
+a）当前对象属性改变，并且是由键盘或鼠标事件激发的（脚本触发无效）<br>
+b）当前对象失去焦点(onblur)；<br>
+onpropertychange只要当前对象属性发生改变，都会触发事件，但是它是IE专属的；<br>
+oninput是onpropertychange的非IE浏览器版本。<br><br>
+虽然我在测试IE9时不需要绑定onpropertychange也可以运行，但是还是贴一下解决方法：
+{% highlight javascript %}
+var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串
+var isIE = userAgent.indexOf("compatible") > -1 
+    && userAgent.indexOf("MSIE") > -1 
+    && !userAgent.indexOf("Opera") > -1;
+
+if(isIE){
+    input.onpropertychange = function(){};  
+}else{
+    addEvent(input,'input',function(){}); 
+}
+{% endhighlight %}
+最后需要注意的是：oninput 和 onpropertychange 这两个事件在 IE9 中都有个小BUG，那就是通过右键菜单菜单中的剪切和删除命令删除内容的时候不会触发，而 IE 其他版本都是正常的，目前还没有很好的解决方案。不过 oninput & onpropertychange 仍然是监听输入框值变化的最佳方案。<br><br>
 
 <strong>2.循环绑定事件</strong><br>
 简单方法，建立一个闭包保存变量。
@@ -63,12 +82,30 @@ for (var i = 0, len = str.length; i < len; i++) {
 <strong>3.悬浮框样式</strong><br>
 悬浮框position为absolute，通过获得input的offsetTop和offsetLeft来计算悬浮框的top和left，进行定位。最后添加到父div。
 {% highlight javascript %}
-ul.style.top = this.offsetTop + that.height + 'px';
+ul.style.top = this.offsetTop + this.height + 'px';
 ul.style.left = this.offsetLeft + 'px';
 {% endhighlight %}
-<br>
 
 <strong>4.绑定键盘事件</strong><br>
+通过判断onkeydown事件的keyCode来捕获键盘操作。
+{% highlight javascript %}
+addEvent(this.input, 'keydown', function(e) {
+    if (that.visible) {
+        switch (e.keyCode) {
+            case 13: // Enter
+                // todo
+                return;
+            case 38: // 向上
+                // todo
+                return;
+            case 40: // 向下
+                // todo
+                return;
+        }
+    }
+});
+{% endhighlight %}
+<br>
 
 附AutoComp.js源码：<a href="https://github.com/yooungt13/yooungt13.github.com/blob/master/public/javascripts/autocomp.js">[传送门]</a>
 

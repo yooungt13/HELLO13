@@ -320,6 +320,7 @@ var IsGrid = true;
 var Speed = 500;
 var btn_start;
 window.onload = InitGame;
+addEvent(window,'keydown',KeyDown);
 
 function InitGame() {
 	t.CreateMap();
@@ -332,6 +333,12 @@ function InitGame() {
 		this.disabled = "disabled";
 		document.getElementById('grid').disabled = "disabled";
 	}
+}
+
+function addEvent(o, e, f) {
+	o.addEventListener ? o.addEventListener(e, f, false) : o.attachEvent('on' + e, function() {
+		f.call(o)
+	});
 }
 
 function SetSpeed(spd) {

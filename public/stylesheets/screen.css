@@ -105,23 +105,13 @@ ul.posts {
 .wrap {
   background-color: black;
   opacity: .6;
-  width: 55em;
+  width: 50em;
   min-height: 150%;
   margin: -4em auto 0 auto;
   left:0px;
   right:0px;
   position: fixed;
   z-index: -1;
-}
-
-.wrap .wrap_bar {
-  background: url("../images/wrap.png");
-  opacity: .6;
-  width: 55em;
-  height: 2em;
-  margin-top: 3.4em;
-  position: fixed;
-  z-index: 1;
 }
 
 .poem {
@@ -191,7 +181,7 @@ nav {
 /* Content
 /*
 /*****************************************************************************/
-.content{
+article {
   min-height: 50%;
   padding-top: 3em;
 }
@@ -201,7 +191,7 @@ nav {
 /* Site
 /*
 /*****************************************************************************/
-.site {
+section {
   font-size: 110%;
   text-align: justify;
   width: 42em;

@@ -1,61 +1,44 @@
+var $$ = function(id) {
+  return document.getElementById(id);
+};
+
+var addEvent = function(o, e, f) {
+  o.addEventListener ? o.addEventListener(e, f, false) : o.attachEvent('on' + e, function() {
+    f.call(o)
+  });
+};
+
 /** back to the top**/
 (function() {
-  var $backToTopTxt = "Return to the top",
-    $backToTopEle = $('<div class="backToTop"></div>').appendTo($("body"))
-      .text($backToTopTxt).attr("title", $backToTopTxt).click(function() {
-        $("html, body").animate({
-          scrollTop: 0
-        }, 120);
-      }),
-    $backToTopFun = function() {
-      var st = $(document).scrollTop(),
-        winh = $(window).height();
-      (st > 0) ? $backToTopEle.show() : $backToTopEle.hide();
-      //In IE6
-      if (!window.XMLHttpRequest) {
-        $backToTopEle.css("top", st + winh - 166);
-      }
-    };
-  $(window).bind("scroll", $backToTopFun);
-  $(function() {
-    $backToTopFun();
-  });
-})();
+  var btEle = document.createElement('div');
+  btEle.className = 'backToTop';
+  btEle.innerHTML = 'Return to the top';
+  document.body.appendChild(btEle);
 
-/** list open/toggle **/
-(function() {
-  var $maki = $('.maki');
+  addEvent(btEle, 'click', function() {
+    // var step = 1, tmpTop;
+    // var scrollTimer = setTimeout(function(){
+    //   tmpTop = document.body.scrollTop - step;
+    //   if( tmpTop < 0 ){
+    //     document.body.scrollTop = 0;
+    //     clearTimeout(scrollTimer);
+    //     return;
+    //   } 
 
-  // Create Makisus
-  $maki.makisu({
-    selector: 'dd',
-    overlap: 0.6,
-    speed: 0.85
+    //   document.body.scrollTop = tmpTop;
+    //   step += 1;
+
+    //   setTimeout(arguments.callee,1);
+    // },1);
+    document.body.scrollTop = 0;
   });
-  var ispost = false,
-    isproj = false;
-  $('#posts > dt').hover(function() {
-    if (!ispost) {
-      $('#posts').makisu('open');
-      ispost = true;
-    }
-  });
-  $('#posts').hover(function() {}, function() {
-    if (ispost) {
-      $('#posts').makisu('toggle');
-      ispost = false;
-    }
-  });
-  $('#projects > dt').hover(function() {
-    if (!isproj) {
-      $('#projects').makisu('open');
-      isproj = true;
-    }
-  });
-  $('#projects').hover(function() {}, function() {
-    if (isproj) {
-      $('#projects').makisu('toggle');
-      isproj = false;
+
+  addEvent(window, 'scroll', function() {
+    var st = document.body.scrollTop;
+    if (st > 0) {
+      btEle.style.display = 'block';
+    } else {
+      btEle.style.display = 'none';
     }
   });
 })();
@@ -65,9 +48,4 @@
   // 百度统计
   var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
   document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F78bbe26f8e0ea4154a3ab176ed98aa8f' type='text/javascript'%3E%3C/script%3E"));
-})();
-
-/** Duoshuo comments **/
-(function() {
-
 })();

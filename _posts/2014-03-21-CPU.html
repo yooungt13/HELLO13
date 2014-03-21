@@ -1,0 +1,114 @@
+---
+layout: post
+title: 利用JS检测CPU使用率
+tag: JS
+---
+<p>
+之前在玉伯的Github Issues里看到了使用JS检测CPU使用率的方法，觉得很赞。<br>
+特别自己实现了一下，另外加了一个绘制直方图的功能可以直观看到CPU使用率的情况。<br>
+</p>
+<br> 
+<div>
+	<button id='btn' style="display:block;">Start</button>
+	<canvas id='canvas' width='300' height='200' style="background:#000;border:1px solid #fff;"></canvas>
+</div>
+<br><br>
+<strong>实现思想</strong> <br>   
+<br>  
+其实就是setInterval，利用当前时间减去上一次执行timer记录的时间，得到时间差来反映CPU的延迟，侧面反映了CPU的使用率。
+{% highlight javascript %}
+var data = [],t;
+var cpuTimer = setInterval(function(){
+    t && data.push(Data.now()-t);
+    t = Data.now();
+},500);
+{% endhighlight %}
+理论上得到data应为[500,500,500,500,500...],但实际上CPU肯定会略微延迟,data可能为[501,502,502,501,503...]。如果CPU使用率很高的话,延迟会很大,data就会变为[550,551,552,552,551...]。通过判断data的变化可以初步推断CPU的使用率。    
+<br> 
+<br> 
+<strong>使用直方图直观表示CPU使用率</strong><br> 
+<br> 
+我们通过绘制data的直方图，可以看到数据的波动情况。当直方图中某一时段数值陡升，证明那一时刻CPU使用率较高。
+{% highlight javascript %}
+function drawHisto(data){
+    var cvs = document.getElementById('canvas');
+        ctx = cvs.getContext('2d');
+    var width = cvs.width,
+        height = cvs.height,
+        histoWidth = width / size;
+    
+    // 重绘直方图
+    ctx.fillStyle = "#fff";
+    ctx.fillRect(0,0,width,height);    
+    ctx.beginPath();
+    ctx.lineWidth = histoWidth/2;
+    ctx.strokeStyle = '#000';
+    for( var i = 0, len = data.length; i < len; i++){
+        var x = i * histoWidth,
+            // +5、/20、-10只是为了显示效果,
+            // ~~为数值取整相当于Math.floor()
+            y = ~~( (data[i] - speed + 5) / 20 * (height-10) );
+        ctx.moveTo( x+histoWidth/2, height );
+        ctx.lineTo( x+histoWidth/2, height-y );
+        ctx.stroke();
+    }
+}
+{% endhighlight %}
+<br>
+
+<script>
+(function () {
+	var data = [0,0,0,0,0,0,0,0,0,0],
+		t,size = 10.
+		speed = 500;
+	function runnable(){	
+		if( t ){
+			data.shift();
+			data.push(Date.now()-t);
+			drawHisto(data);
+		}
+		t = Date.now();
+		//setTimeout(arguments.callee,speed)
+	};
+	function drawHisto(data){
+		//console.log(data);
+		var cvs = document.getElementById('canvas');
+			ctx = cvs.getContext('2d');
+		var width = cvs.width,
+			height = cvs.height,
+			histoWidth = width / size;
+		
+		// 重绘直方图
+		ctx.fillStyle = "#000";
+		ctx.fillRect(0,0,width,height);
+
+		ctx.beginPath();
+		ctx.lineWidth = histoWidth/2;
+		ctx.strokeStyle = '#fff';
+		for( var i = 0, len = data.length; i < len; i++){
+			var x = i*histoWidth,
+				// +5、/20、-10只是为了显示效果
+				y = ~~((data[i] - speed + 5)/20* (height-10));
+			ctx.moveTo(x+histoWidth/2,height);
+			ctx.lineTo(x+histoWidth/2,height-y);
+			ctx.stroke();
+		}
+	}
+
+	var btn = document.getElementById('btn'),
+		cpuTimer = null,
+		isStart = false;
+
+	btn.onclick = function(){
+		if( !isStart ){
+			cpuTimer = setInterval(runnable,speed);
+			this.innerHTML = 'Stop';
+			isStart = true;
+		}else{
+			window.clearInterval(cpuTimer);
+			this.innerHTML = 'Start';
+			isStart = false;
+		}
+	}
+})();
+</script>

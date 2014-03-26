@@ -3,7 +3,23 @@
 		window['TIAN'] = {};
 	}
 
-	/* 在构造函数的原型对象上添加方法 */
+	// nodetype索引
+	window['TIAN']['node'] = {
+		ELEMENT_NODE: 1,
+		ATTRIBUTE_NODE: 2,
+		TEXT_NODE: 3,
+		CDATA_SECTION_NODE: 4,
+		ENTITY_REFERENCE_NODE: 5,
+		ENTITY_NODE: 6,
+		PROCESSING_INSTRUCTION_NODE: 7,
+		COMMENT_NODE: 8,
+		DOCUMENT_NODE: 9,
+		DOCUMENT_TYPE_NODE: 10,
+		DOCUMENT_FRAGMENT_NODE: 11,
+		NOTATION_NODE: 12
+	};
+
+	/* 原型函数扩充 ************************************ */
 	Function.prototype.method = function(name, func) {
 		if (!this.prototype[name]) {
 			this.prototype[name] = func;
@@ -19,6 +35,19 @@
 		this.prototype = new Parent();
 		return this;
 	});
+
+	if (!String.repeat) {
+		String.prototype.repeat = function(len) {
+			return new Array(len + 1).join(this);
+		};
+	}
+
+	if (!String.trim) {
+		String.prototype.trim = function() {
+			return this.replace(/^\s+|\s+$/g, '');
+		}
+	}
+	/* ************************************************** */
 
 	function isCompatible(other) {
 		// 使用能力检测来检查必要条件
@@ -70,7 +99,6 @@
 			node.detachEvent('on' + type, function() {
 				handler.call(node);
 			});
-
 	}
 	window['TIAN']['removeEvent'] = removeEvent;
 
@@ -86,7 +114,7 @@
 
 		// 查找所有匹配的标签
 		var allTags = (tag == '*' && parent.all) ?
-			parent.all : parent.getElementByTagName(tag);
+			parent.all : parent.getElementsByTagName(tag);
 		var matchingElements = [];
 
 		// 创建一个正则表达式，来判断className是否正确
@@ -106,9 +134,9 @@
 	}
 	window['TIAN']['getElementByClassName'] = getElementByClassName;
 
-	// 切换display
-	function toggleDisplay(node, value) {
-		if (!(node = $(node))) return; // 如果node不为DOM，则返回
+	function toggleDisplay(node, value) { // 切换display
+		// 如果node不为DOM，则返回
+		if (!(node = $(node))) return;
 
 		if (node.style.display != 'none') {
 			node.style.display = 'none';
@@ -151,6 +179,18 @@
 	}
 	window['TIAN']['prependChild'] = prependChild;
 
+	function walkTheDOM(func, node, depth, returned) { // 递归遍历调用
+		var root = node || window.document,
+			returned = func.call(root, depth++, returned),
+			node = root.firstChild;
+
+		while (node) {
+			walkTheDOM(func, node, depth, returned);
+			node = node.nextSibling;
+		}
+	}
+	window['TIAN']['walkTheDOM'] = walkTheDOM;
+
 	function getBrowserWindowSize() {
 		var de = document.documentElement;
 		return {
@@ -162,6 +202,16 @@
 	}
 	window['TIAN']['getBrowserWindowSize'] = getBrowserWindowSize;
 
+	function camelize(str) {
+		// 修改内嵌样式，如font-size转化为fontSize
+		return str.replace(/-(\w)/g, function(match, word) {
+			// match为-s,word为(\w)匹配到的s,转化为S
+			return word.toUpperCase();
+		});
+	}
+	window['TIAN']['camelize'] = camelize;
+
+	/* 插件封装 ***************************************** */
 	function Logger(id) {
 		id = id || 'TianLogWindow';
 		var logWindow = null;
@@ -234,8 +284,8 @@
 	};
 	window['TIAN']['log'] = new Logger();
 
-	function Box() {}
-	Box.prototype = {
+	function MsgBox() {}
+	MsgBox.prototype = {
 		box: null,
 		mask: null,
 		BoxWidth: 300,
@@ -439,5 +489,5 @@
 			return (document.body.offsetHeight - height) / 2 + document.body.scrollTop;
 		}
 	}
-
+	/* ************************************************** */
 })();

@@ -1,23 +1,62 @@
 (function() {
-	if (!window.TIAN) {
-		window['TIAN'] = {};
-	}
+	// 工具库名，修改NAME即可成为任意库，并进行扩展
+	var NAME = 'TIAN';
 
-	// nodetype索引
-	window['TIAN']['node'] = {
-		ELEMENT_NODE: 1,
-		ATTRIBUTE_NODE: 2,
-		TEXT_NODE: 3,
-		CDATA_SECTION_NODE: 4,
-		ENTITY_REFERENCE_NODE: 5,
-		ENTITY_NODE: 6,
-		PROCESSING_INSTRUCTION_NODE: 7,
-		COMMENT_NODE: 8,
-		DOCUMENT_NODE: 9,
-		DOCUMENT_TYPE_NODE: 10,
-		DOCUMENT_FRAGMENT_NODE: 11,
-		NOTATION_NODE: 12
-	};
+	if (!window.NAME) {
+		// 函数索引
+		window[NAME] = {
+			isCompatible: isCompatible,
+
+			// DOM操作
+			$: $,
+			getElementByClassName: getElementByClassName,
+			walkTheDOM: walkTheDOM,
+			insertAfter: insertAfter,
+			removeChildren: removeChildren,
+			prependChild: prependChild,
+
+			// 事件控制
+			addEvent: addEvent,
+			removeEvent: removeEvent,
+			bindFunction: bindFunction,
+			addLoadEvent: addLoadEvent,
+			getEventObject: getEventObject,
+			getTarget: getTarget,
+			getMouseButton: getMouseButton,
+			getPointerPosition: getPointerPosition,
+			stopPropagation: stopPropagation,
+			preventDefault: preventDefault,
+
+			// css样式控制
+			camelize: camelize,
+			setStyleById: setStyleById,
+			setStyleByClassName: setStyleByClassName,
+			setStyleByTagName: setStyleByTagName,
+			getClassNames: getClassNames,
+			hasClassName: hasClassName，
+			addClassName: addClassName,
+			removeClassName: removeClassName,
+			toggleDisplay: toggleDisplay,
+			getBrowserWindowSize: getBrowserWindowSize,
+
+			//log: log,
+			message: message,
+			node: { // nodetype索引
+				ELEMENT_NODE: 1,
+				ATTRIBUTE_NODE: 2,
+				TEXT_NODE: 3,
+				CDATA_SECTION_NODE: 4,
+				ENTITY_REFERENCE_NODE: 5,
+				ENTITY_NODE: 6,
+				PROCESSING_INSTRUCTION_NODE: 7,
+				COMMENT_NODE: 8,
+				DOCUMENT_NODE: 9,
+				DOCUMENT_TYPE_NODE: 10,
+				DOCUMENT_FRAGMENT_NODE: 11,
+				NOTATION_NODE: 12
+			}
+		}
+	}
 
 	/* 原型函数扩充 ************************************ */
 	Function.prototype.method = function(name, func) {
@@ -49,13 +88,13 @@
 	}
 	/* ************************************************** */
 
-	function isCompatible(other) {
+	/* 工具函数实现 ************************************ */
+	function isCompatible(other) { // 浏览器可用性检测
 		// 使用能力检测来检查必要条件
 		if (other === false || !Array.prototype.push || !Object.hasOwnProperty || !document.createElement || !document.getElementsByTagName) return false;
 
 		return true;
 	}
-	window['TIAN']['isCompatible'] = isCompatible;
 
 	function $() {
 		var elements = [];
@@ -76,7 +115,6 @@
 
 		return elements;
 	}
-	window['TIAN']['$'] = $;
 
 	function addEvent(node, type, handler) {
 		// 检查兼容性以保证平稳退化
@@ -88,7 +126,6 @@
 				handler.call(node);
 			});
 	}
-	window['TIAN']['addEvent'] = addEvent;
 
 	function removeEvent(node, type, handler) {
 		// 检查兼容性以保证平稳退化
@@ -100,14 +137,175 @@
 				handler.call(node);
 			});
 	}
-	window['TIAN']['removeEvent'] = removeEvent;
 
 	function bindFunction(obj, func) {
 		return function() {
 			func.apply(obj, arguments);
 		}
-	};
-	window['TIAN']['bindFunction'] = bindFunction;
+	}
+
+	function addLoadEvent(loadEvent, waitForImages) { // 使用DOMContentLoaded事件先加载js
+		if (!isCompatible) return false;
+
+		// 如果等待标记为真，则使用常规方法注册事件
+		if (waitForImages) {
+			return addEvent(window, 'load', loadEvent);
+		}
+
+		/** 否则使用其他方式包装loadEvent()
+		 *	以便为this制定正确内容
+		 *	同时确保事件不会被执行两次
+		 */
+		var init = function() {
+			// 如果这个函数已经被调用过了则返回
+			if (arguments.callee.done) return;
+
+			// 标记这个函数以便检验它是否运行过
+			arguments.callee.done = true;
+
+			// 在document环境中注册事件
+			loadEvent.apply(document, arguments);
+		};
+
+		// 为DOMContentLoaded事件注册事件监听器
+		document.addEventListener && document.addEventListener("DOMContentLoaded", init, false);
+
+		// 对于safari，使用setInterval()函数检测document是否载入完成
+		if (/Webkit/i.test(navigator.userAgent)) {
+			var _timer = setInterval(function() {
+				if (/loaded|complete/.test(document.readyState)) {
+					clearInterval(_timer);
+					init();
+				}
+			}, 10);
+		}
+
+		// 对于IE，使用条件注释
+		// 附加一个在载入过程最后执行的脚本，并检测该脚本是否载入完成
+		/*@cc_on @*/
+		/*@if (@_win32)
+		document.write("<script id=__ie_onload defer src=javascript:void(0)></script>");
+		var script = document.getElementById("__ie_onload");
+		script.onreadystatechange = function(){
+			if(this.readyState=="complete") init();
+		}
+		/*@end @*/
+
+		return true;
+	}
+
+	function getEventObject(eventObject) {
+		// 返回事件对象
+		return eventObject || window.event;
+	}
+
+	function getTarget(eventObject) {
+		eventObject = getEventObject(eventObject);
+
+		var target = eventObject.target || eventObject.srcElement;
+
+		// 如果是safari会指向文本节点，重新将目标指定为其父元素
+		if (target.nodeType == TIAN.node.TEXT_NODE) {
+			target = target.parentNode;
+		}
+
+		return target;
+	}
+
+	function getMouseButton(eventObject) {
+		eventObject = getEventObject(eventObject);
+
+		// 使用适当的属性初始化一个对象变量
+		var buttons = {
+			'left': false,
+			'middle': false,
+			'right': false
+		};
+
+		// 检查是否存在toString()并返回MouseEvent
+		if (eventObject.toString && eventObject.toString().indexOf('MouseEvent') != -1) {
+			switch (eventObject.button) {
+				case 0:
+					buttons.left = true;
+					break;
+				case 1:
+					buttons.middle = true;
+					break;
+				case 2:
+					buttons.right = true;
+					break;
+				default:
+					break;
+			}
+		} else if (eventObject.button) {
+			// IE的button事件检测方法
+			switch (eventObject.button) {
+				case 1:
+					buttons.left = true;
+					break;
+				case 2:
+					buttons.right = true;
+					break;
+				case 3:
+					buttons.left = true;
+					buttons.right = true;
+					break;
+				case 4:
+					buttons.middle = true;
+					break;
+				case 5:
+					buttons.left = true;
+					buttons.middle = true;
+					break;
+				case 6:
+					buttons.middle = true;
+					buttons.right = true;
+					break;
+				case 7:
+					buttons.left = true;
+					buttons.middle = true;
+					buttons.right = true;
+					break;
+				default:
+					break;
+			}
+
+		} else {
+			return false;
+		}
+
+		return buttons;
+	}
+
+	function getPointerPosition(eventObject) {
+		eventObject = getEventObject(eventObject);
+
+		var x = eventObject.pageX || (eventObject.clientX + (document.documentElement.scrollLeft || document.body.scrollLeft)),
+			y = eventObject.pageY || (eventObject.clientY + (document.documentElement.scrollTop || document.body.scrollTop));
+
+		return {
+			'x': x,
+			'y': y
+		};
+	}
+
+	function stopPropagation(eventObject) { // 阻止事件冒泡
+		eventObject = eventObject || getEventObject(eventObject);
+		if (eventObject.stopPropagation) {
+			eventObject.stopPropagation();
+		} else {
+			eventObject.cancelBubble = true;
+		}
+	}
+
+	function preventDefault(eventObject) { // 取消默认动作
+		eventObject = eventObject || getEventObject(eventObject);
+		if (eventObject.preventDefault) {
+			eventObject.preventDefault();
+		} else {
+			eventObject.returnValue = false;
+		}
+	}
 
 	function getElementByClassName(className, tag, parent) {
 		parent = parent || document;
@@ -132,7 +330,6 @@
 
 		return matchingElements;
 	}
-	window['TIAN']['getElementByClassName'] = getElementByClassName;
 
 	function toggleDisplay(node, value) { // 切换display
 		// 如果node不为DOM，则返回
@@ -144,7 +341,6 @@
 			node.style.display = value || '';
 		}
 	}
-	window['TIAN']['toggleDisplay'] = toggleDisplay;
 
 	function insertAfter(node, referenceNode) {
 		if (!(node = $(node))) return;
@@ -154,7 +350,6 @@
 			node, referenceNode.nextSibling
 		);
 	}
-	window['TIAN']['insertAfter'] = insertAfter;
 
 	function removeChildren(parent) {
 		if (!(parent = $(parent))) return;
@@ -167,7 +362,6 @@
 		// 再返回父节点，以便实现链式方法
 		return parent;
 	}
-	window['TIAN']['removeChildren'] = removeChildren;
 
 	function prependChild(parent, newChild) {
 		if (!(parent = $(parent))) return;
@@ -177,9 +371,8 @@
 
 		return parent;
 	}
-	window['TIAN']['prependChild'] = prependChild;
 
-	function walkTheDOM(func, node, depth, returned) { // 递归遍历调用
+	function walkTheDOM(func, node, depth, returned) { // 递归遍历DOM
 		var root = node || window.document,
 			returned = func.call(root, depth++, returned),
 			node = root.firstChild;
@@ -189,7 +382,6 @@
 			node = node.nextSibling;
 		}
 	}
-	window['TIAN']['walkTheDOM'] = walkTheDOM;
 
 	function getBrowserWindowSize() {
 		var de = document.documentElement;
@@ -200,16 +392,107 @@
 				window.innerHeight || (de && de.clientHeight) || document.body.clientHeight)
 		}
 	}
-	window['TIAN']['getBrowserWindowSize'] = getBrowserWindowSize;
 
-	function camelize(str) {
-		// 修改内嵌样式，如font-size转化为fontSize
+	function camelize(str) { // 修改内嵌样式，如font-size转化为fontSize		
 		return str.replace(/-(\w)/g, function(match, word) {
 			// match为-s,word为(\w)匹配到的s,转化为S
 			return word.toUpperCase();
 		});
 	}
-	window['TIAN']['camelize'] = camelize;
+
+	function setStyleById(element, styles) { // 通过ID修改样式
+		// 取得对象的引用
+		if (!(element = $(element))) return false;
+
+		// 循环遍历styles对象并应用每个属性
+		for (property in styles) {
+			// 如果传入样式不存在则跳过
+			if (!styles.hasOwnProperty(property)) continue;
+
+			if (element.style.setProperty) {
+				element.style.setProperty(property, styles[property]);
+			} else {
+				element.style[camelize(property)] = styles[property];
+			}
+		}
+		return true;
+	}
+
+	function setStyleByClassName(parent, tag, className, styles) { // 通过Class修改样式
+		// 取得对象的引用
+		if (!(parent = $(parent))) return false;
+
+		var elements = getElementByClassName(className, tag, parent);
+
+		for (var i = 0, len = elements.length; i < len; i++) {
+			setStyleById(elements[i], styles);
+		}
+		return true;
+	}
+
+	function setStyleByTagName(tag, styles, parent) { // 通过Tag修改样式
+		parent = parent || document;
+
+		var elements = parent.getElementsByTagName(tag);
+		for (var i = 0, len = elements.length; i < len; i++) {
+			setStyleById(elements[i], styles);
+		}
+		return true;
+	}
+
+	function getClassNames(element) {
+		if (!(element = $(element))) return false;
+		// 用一个空格替换多个空格，然后基于空格分割类名
+		return element.className.replace(/\s+/, ' ').split(' ');
+	}
+
+	function hasClassName(element) {
+		if (!(element = $(element))) return false;
+
+		var classes = getClassNames(element);
+		for (var i = 0; i < classes.length; i++) {
+			// 检测className是否匹配，如果是返回
+			if (classes[i] === className) return true;
+		}
+
+	}
+
+	function addClassName(element) {
+		if (!(element = $(element))) return false;
+		// 将类名添加到当前className的末尾
+		// 如果没有className,则不包含空格
+		element.className += (element.className ? ' ' : '') + className;
+		return true;
+	}
+
+	function removeClassName(element, className) {
+		if (!(element = $(element))) return false;
+		var classes = getElementByClassName(element),
+			length = classes.length;
+
+		// 循环遍历数组删除匹配的项
+		// 因为从数组中删除会使数组变短，所以反向循环
+		for (var i = length - 1; i >= 0; i--) {
+			if (classes[i] === = className) {
+				delete(classes[i]);
+			}
+		}
+
+		element.className = classes.join(' ');
+		return (length == classes.length ? false : true);
+	}
+
+	function message(config) {
+		var box = new MsgBox();
+		if (typeof config == 'string') {
+			box.open({
+				content: config
+			});
+		} else {
+			box.open(config)
+		}
+	}
+	/* ************************************************** */
 
 	/* 插件封装 ***************************************** */
 	function Logger(id) {
@@ -282,7 +565,7 @@
 		},
 		link: function(link) {}
 	};
-	window['TIAN']['log'] = new Logger();
+	window[NAME]['log'] = new Logger();
 
 	function MsgBox() {}
 	MsgBox.prototype = {
@@ -290,7 +573,7 @@
 		mask: null,
 		BoxWidth: 300,
 		BoxHeight: 200,
-		Title: "Title",
+		Title: "Tian's MessageBox",
 		Content: "Content here",
 		IsBar: 1,
 		IsShut: 1,
@@ -352,8 +635,10 @@
 			this.box.style.top = this.getTop(this.BoxHeight) + 'px';
 			this.box.style.display = "none";
 			this.box.style.textAlign = "left";
+			this.box.style.color = 'white';
 			this.box.style.boxShadow = "#000 3px 3px 4px";
 			this.box.style.zIndex = 1001;
+			this.box.style.overflow = 'hidden';
 
 			var innerString = '';
 			if (this.IsBar) {
@@ -401,7 +686,7 @@
 				tmpHeight = this.BoxHeight * coe / 10;
 				if (coe === 10) {
 					clearInterval(zoomInTimer);
-					//this.fillContent(this.Content);
+					this.fillContent(this.Content);
 					return;
 				} else {
 					this.box.style.display = "block";
@@ -486,7 +771,7 @@
 			return (document.body.offsetWidth - width) / 2;
 		},
 		getTop: function(height) {
-			return (document.body.offsetHeight - height) / 2 + document.body.scrollTop;
+			return (document.body.offsetHeight - height) / 2 + document.documentElement.scrollTop;
 		}
 	}
 	/* ************************************************** */

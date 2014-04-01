@@ -55,7 +55,7 @@ FlappyBird.prototype = {
 		this.bg = new Image();
 		this.bg.src = "img/bg.png";
 		var startBg = new Image();
-		startBg.src = "img/start.png";
+		startBg.src = "img/start.jpg";
 		// 由于Image异步加载, 在加载完成时在绘制图像
 		startBg.onload = function(){
 			c.drawImage(startBg, 0, 0);
@@ -66,7 +66,7 @@ FlappyBird.prototype = {
 		image.src = "img/bird.png";		
 		image.onload = function(){
 			this.bird = new Bird(this.startX, this.startY, image);
-			this.bird.draw(c, "down");
+			//this.bird.draw(c, "down");
 		}.bind(this);
 
 		//障碍物  

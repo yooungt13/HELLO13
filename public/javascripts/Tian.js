@@ -32,10 +32,17 @@
 			setStyleById: setStyleById,
 			setStyleByClassName: setStyleByClassName,
 			setStyleByTagName: setStyleByTagName,
+			getStyle: getStyle,
+			getStyleId: getStyle,
 			getClassNames: getClassNames,
-			hasClassName: hasClassName，
+			hasClassName: hasClassName,
 			addClassName: addClassName,
 			removeClassName: removeClassName,
+			addCSSRule: addCSSRule,
+			editCSSRule: editCSSRule,
+			getStyleSheets: getStyleSheets,
+			addStyleSheet: addStyleSheet,
+			removeStyleSheet: removeStyleSheet,
 			toggleDisplay: toggleDisplay,
 			getBrowserWindowSize: getBrowserWindowSize,
 
@@ -440,6 +447,25 @@
 		return true;
 	}
 
+	function getStyle(element, property) {
+		if (!(element = $(element)) || !property) return false;
+
+		// 检测元素style属性中的值
+		var value = element.style[camelize(property)];
+		if (!value) {
+			if (document.defaultView && document.defaultView.getComputedStyle) {
+				// DOM方法
+				var css = document.defaultView.getComputedStyle(element, null);
+				value = css ? css.getPropertyValue(property) : null;
+			} else if (element.currentStyle) {
+				// IE方法
+				value = element.currentStyle[camelize(property)];
+			}
+		}
+
+		return value == 'auto' ? '' : value;
+	}
+
 	function getClassNames(element) {
 		if (!(element = $(element))) return false;
 		// 用一个空格替换多个空格，然后基于空格分割类名
@@ -454,7 +480,6 @@
 			// 检测className是否匹配，如果是返回
 			if (classes[i] === className) return true;
 		}
-
 	}
 
 	function addClassName(element) {
@@ -473,13 +498,114 @@
 		// 循环遍历数组删除匹配的项
 		// 因为从数组中删除会使数组变短，所以反向循环
 		for (var i = length - 1; i >= 0; i--) {
-			if (classes[i] === = className) {
+			if (classes[i] === className) {
 				delete(classes[i]);
 			}
 		}
 
 		element.className = classes.join(' ');
 		return (length == classes.length ? false : true);
+	}
+
+	function getStyleSheets(url, media) {
+		var sheets = [];
+		for (var i = 0, len = document.styleSheets.length; i < len; i++) {
+			if (url && document.styleSheets[i].href.indexOf(url) == -1) {
+				continue;
+			}
+
+			if (media) {
+				// 规范化media字符串
+				media = media.replace(/,\s+/, ',');
+				var sheetMedia;
+
+				if (document.styleSheets[i].media.mediaText) {
+					// dom方法
+					sheetMedia = document.styleSheets[i].media.mediaText.replace(/,\s*/, ',');
+					// Safari会添加额外的逗号和空格
+					sheetMedia = sheetMedia.replace(/,\s*$/, '');
+				} else {
+					// IE方法
+					sheetMedia = document.styleSheets[i].media.replace(/,\s+/, ',');
+				}
+			}
+			// 如果media不匹配则跳过
+			if (media != sheetMedia) continue;
+			sheets.push(document.styleSheets[i]);
+		}
+
+		return sheets;
+	}
+
+	function editCSSRule(selector, styles, url, media) {
+		var styleSheets = ((typeof url == 'Array') ? url : getStyleSheets(url, media));
+
+		for (var i = 0, len = styleSheets.length; i < len; i++) {
+			var rules = styleSheets[i].cssRules || styleSheets[i].rules;
+			if (!rules) continue;
+
+			// IE默认使用大写
+			selector = selector.toUpperCase();
+
+			for (var j = 0; j < rules.length; j++) {
+				// 检查是否匹配
+				if (rules[j].selectorText.toUpperCase == selector) {
+					for (property in styles) {
+						// 设置新的样式
+						rules[j].style[camelize(property)] = styles[property];
+					}
+				}
+			}
+		}
+	}
+
+	function addCSSRule(selector, styles, index, url, media) {
+		var declaration = '';
+
+		// 构建声望字符串
+		for (property in styles) {
+			declaration += property + ':' + styles[property] + '; ';
+		}
+
+		var styleSheets = ((typeof url == 'Array') ? url : getStyleSheets(url, media));
+		var newIndex;
+		for (var i = 0, len = styleSheets.length; i < len; i++) {
+			// 添加规则
+			// index为CSS文档中的位置
+			if (styleSheets[i].insertRule) {
+				newIndex = index > 0 ? index : styleSheets[i].cssRules.length;
+				styleSheets[i].insertRule(
+					selector + '{' + declaration + '}',
+					newIndex
+				);
+			} else if (styleSheets[i].addRule) {
+				// MSIE index = -1 是列表末尾
+				newIndex = (index >= 0) ? index : -1;
+				styleSheets[i].addRule(selector, declaration, newIndex);
+			}
+		}
+	}
+
+	function addStyleSheet(url, media) {
+		media = media || 'screen';
+		var link = document.createElement('LINK');
+		link.setAttribute('rel', 'stylesheet');
+		link.setAttribute('type', 'text/css');
+		link.setAttribute('href', url);
+		link.setAttribute('media', media);
+
+		document.getElementsByTagName('head')[0].appendChild(link);
+	}
+
+	function removeStyleSheet(url, media) {
+		var styles = getStyleSheets(url, media);
+		for (var i = 0, len = styles.length; i < len; i++) {
+			var node = styles[i].ownerNode || styles[i].ownerElement;
+			// 禁用样式表
+			styles[i].disabled = true;
+			// 移除节点
+			node.parentNode.removeChild(node);
+		}
 	}
 
 	function message(config) {

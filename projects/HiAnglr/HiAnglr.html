@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>Learing AngularJS</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js" type="text/javascript"></script>
+	<script src="app.js" type="text/javascript"></script>
+	<script src="maincontroller.js" type="text/javascript"></script>
+</head>
+<body>
+	<div id='content' ng-app="MyTutorialApp" ng-controller="MainController">
+		{{understand}}
+
+		<hr>
+		<h3>UNDERSTANDING BINDING</h3>
+		<input type="text" ng-model="inputValue" placeholder="Please input here."><br>
+		
+		<select ng-model="selectedPerson" ng-options="obj.name for obj in people"></select>
+		<select ng-model="selectedGenre">
+			<option ng-repeat='label in people[selectedPerson.id].music'>{{label}}</option>
+		</select>
+
+		<hr>
+		<h3>FILTERING DATA WITH ANGULARJS</h3>
+		<input type="text" ng-model="searchText">
+		<ul>
+			<li ng-repeat="person in people | filter:searchText">#{{person.id}} {{person.name}}</li>
+		</ul>
+
+		<hr>
+		<h3>HIDING AND SHOWING ELEMENTS WITH ANGULARJS</h3>
+		<input type="text" ng-model="searchText2">
+		<ul>
+			<li ng-repeat="person in people | filter:searchText2" ng-show="person.live == true">#{{person.id}} {{person.name}}</li>
+		</ul>
+		<ul>
+			<li ng-repeat="person in people | filter:searchText2" ng-hide="person.live == false">#{{person.id}} {{person.name}}</li>
+		</ul>
+
+		<hr>
+		<h3>EVENTS WITH ANGULARJS</h3>
+		<input type="text" ng-model="searchText3">
+		<ul>
+			<li ng-repeat="person in people | filter:searchText3" ng-show="person.live == true">#{{person.id}} {{person.name}}</li>
+		</ul>
+		<input type="text" ng-model="newPerson">
+		<button ng-click="addNew()">Add</button>
+
+		<hr>
+		<p>Copyright@有田十三 2014-2015</p>
+		<br><br><br>	
+	</div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en" ng-app='angularTodo'>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Angular TODO app</title>
+
+	<link rel="stylesheet" href="http://netdna.boostrapcdn.com/boostrap/3.0.3/css/boostrap.min.css">
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angularjs.min.js"></script>
+	<script src="main.js"></script>
+</head>
+<body ng-controller="mainController">
+	<!-- Header -->
+	<div class="jumbotron test-center">
+		<h1>Angular TODO List <span class="label label-info">{{ todos.length }}</span></h1>
+	</div>
+
+	<!-- List All-->
+	<div id="todo-list" class="row">
+		<div class="col-sm-4 col-sm-offset-4">
+			<div class="checkbox" ng-repeat="todo in todos">
+				<label>
+					<input type="checkbox" ng-click="deleteTodo(todo._id">
+					{{todo.text}}
+				</label>
+			</div>
+		</div> 
+	</div>
+
+	<!-- All new Form to insert -->
+	<div id="toto-form" class="row">
+		<div class="col-sm-8 col-sm-offset-2 text-center">
+			<form>
+				<div class="form-group">
+					<input type="text" class="form-control input-lg text-center" ng-model="formData.text">
+				</div>
+				<button class="btn btn-primary btn-lg" ng-click="createTodo();">Add</button>
+			</form>
+		</div>
+	</div>
+
+	
+</body>
+</html>

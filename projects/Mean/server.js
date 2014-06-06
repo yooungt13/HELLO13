@@ -73,7 +73,7 @@ app.delete('/api/todos/:todo', function(req, res) {
 
 // Loads a simple HTML view where will our Single Page App
 // Angular'll drive the F2E
-app.get('*',function(req,res){
+app.get('*', function(req, res) {
 	res.sendfile('./public/index.html');
 });
 

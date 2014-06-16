@@ -4,7 +4,7 @@ source:      .
 destination: ./_site
 encoding:    utf-8
 permalink:   /:title
-pygments:    true
+highlighter: pygments
 markdown:    rdiscount
 
 #Basic Configuration

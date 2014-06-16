@@ -1,51 +1,91 @@
 ---
 layout: post
-title: HTML Model
-tag: CSS
-description: HTML Model
-keywords: html,model,模版,有田十三
+title: Python批处理图片
+tag: JS
+description: Python IP Bat
+keywords: python,bat,批处理,image process
 ---
 
-收录一个HTML页面模版。
+1.批处理图片大小，需要PIL。    
+输入宽度，高度自适应。
 
-{% highlight html %}
-<!DOCTYPE HTML>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>页面名称</title>
-    <meta name="keywords" content=""/>
-    <meta name="description" content=""/>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <!-- Mobile Specific Metas
-    ================================================== -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <!-- CSS
-    ================================================== -->
-    <link rel="shortcut icon" href="./favicon.ico">
-    <link rel="stylesheet" href="css/index.css"/>
-    <style>/* css */</style>
-</head>
+{% highlight python %}
+# -*- coding:utf-8 -*- 
 
-<body>
-    <!--[if lt IE 8]>
-    <div>
-        <p>
-            已经有超过90%的用户使用更高版本
-            <a target="_blank" title="下载Chrome" href="http://www.google.com/chrome/">Google Chrome</a>
-            或
-            <a target="_blank" href="http://www.microsoft.com/zh-cn/download/ie.aspx?q=internet+explorer">Internet Explorer</a>
-            体验到了更流畅更精彩的页面，你还不试试？
-        </p>
-    </div>
-    <![endif]-->
+'''
+Arion ,2012-09-06
+必须安装PIL库
 
-    <h1>300,000,00</h1>
+批量修改文件中的图片为格式及大小
+'''
 
-    <script src="js/index.js"></script>
-    <script>// js
-　　</script>
-</body>
-</html>
+import os, glob
+import Image
+
+path = raw_input("path:")
+width =int(raw_input("the width U want:"))
+imgslist = glob.glob(path+'/*.*')
+format = raw_input("format:")
+def small_img():
+    for imgs in imgslist:
+        imgspath, ext = os.path.splitext(imgs)
+        img = Image.open(imgs)
+        (x,y) = img.size
+        height =int( y * width /x)
+        small_img =img.resize((width,height),Image.ANTIALIAS)
+        small_img.save(imgspath +".thumbnail."+format)
+    print "done"
+
+if __name__ == '__main__':
+    small_img()
 {% endhighlight %}
+
+2.批处理重命名图片。    
+
+{% highlight python %}
+#!\usr\bin\env python
+# -*- coding: utf-8 -*-
+# Author: PZX
+# FileName: batchrename.py
+# Function: 批量命名某一文件夹下的文件名
+
+import sys
+import os
+
+def UsePrompt():
+    #如果省略path，则path为当前路径
+    print 'Useage: batchrename.py [path] newfilenames'
+    sys.exit()
+
+def BatchRename(path, pattern):
+    #设置路径
+    os.chdir(path)
+    fileList = os.listdir("./")
+    
+    dotIndex = pattern.rfind('.')
+    fileName = pattern[ : dotIndex]
+    fileExt = pattern[dotIndex : ]
+    genNum = 0
+    for fileItem in fileList:
+        fileFullName = fileName + ' (' + str(genNum) + ')' + fileExt
+        os.rename(fileItem, fileFullName)
+        print (fileItem + ' => ' + fileFullName) 
+        genNum += 1
+
+def main():
+    if len(sys.argv) == 3:
+        path = sys.argv[1]
+        pattern = sys.argv[2]
+    elif len(sys.argv) == 2:
+        path = os.getcwd()
+        pattern = sys.argv[1]
+    else:
+        UsePrompt()
+    confirm = raw_input('Confirm(y|n): ')
+    if confirm == 'n':
+        sys.exit()
+    BatchRename(path, pattern)
+    
+if __name__ == '__main__':
+    main(){% endhighlight %}
+

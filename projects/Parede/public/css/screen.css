@@ -15,18 +15,14 @@ html, body {
 	height: 100%; 
 }
 
-body {
-	font: 13.34px helvetica, arial, clean, sans-serif;
-	text-align: center;
-}
-
 h1, h2, h3, h4, h5, h6 {
 	font-size: 100%;
 }
 
 body, button, input, select, textarea { 
-	font:12px/1.5 arial,\5b8b\4f53;
+	font:12px/1.5 Helvetica, arial, freesans, clean, sans-serif;
 	color:#333;
+	text-align: center;
 }
 
 p {
@@ -58,6 +54,12 @@ html, img {
 
 .fg9 {
 	color: #999;
+}
+
+.fb14 {
+	color: #000;
+	font-size: 14px;
+	font-weight: bold;
 }
 
 /* Header */
@@ -252,7 +254,7 @@ ul.class_list .arrow {
 
 /* Main */
 
-.mainfield {
+.main {
 	width: 1075px;
 	min-height: 400px;
 	margin: 0 auto;
@@ -370,19 +372,29 @@ ul.class_list .arrow {
 	z-index: 10;
 }
 
-.col .wrap img:hover {
-	position: relative;
-	top: -20px;
-	transition: top 0.5s ease;
-	-webkit-transition: top 0.5s ease;
+.col .wrap .pic_info {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	z-index: 11;
+	background: #fff;
+	opacity: 0;
+	width: 185px;
+	height: 100%;
+	padding: 15px 15px 0 15px;
+	text-align: left;
 }
 
-.col .wrap span {
+.col .wrap .pic_info:hover {
+	opacity: 0.9;
+	-webkit-transition: opacity 0.5s ease;
+}
+
+.col .wrap .pic_info .bottom_info {
 	position: absolute;
-	color: #999;
-	left: 7px;
-	bottom: 4px;
-	z-index: 9;
+	font-weight: bold;
+	font-size: 10px;
+	bottom: 30px;
 }
 
 .col .wrap:hover {

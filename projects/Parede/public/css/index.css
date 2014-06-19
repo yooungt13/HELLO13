@@ -7,6 +7,7 @@
 
 html, body {
 	height: 100%; 
+	-webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -52,15 +53,26 @@ section {
 	min-height: 500px;
 	overflow: hidden;
 	padding: 10px; 
+
+}
+
+.left{
+
 }
 
 .right {
+	margin-top: -422px;
 	float: right;
 	width: 220px;
 	border: 2px solid #999;
 	background: #fff;
 	padding: 20px;
-	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	-webkit-transition: all 0.8s ease;
+}
+
+.right:hover {
+	margin-top: 0px;
+	-webkit-transition: all 0.8s ease;
 }
 
 .title {
@@ -139,6 +151,19 @@ section {
 
 .signup a:hover {
 	box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+.tag {
+	width: 50px;
+	height: 30px;
+	margin: 0 auto;
+	color: #fff;
+	background: #c00;
+	position: relative;
+	bottom: -50px;
+	line-height: 30px;
+	border-bottom-right-radius: 100%;
+	border-bottom-left-radius: 100%;
 }
 
 footer {

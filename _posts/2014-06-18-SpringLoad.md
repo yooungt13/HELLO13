@@ -6,86 +6,44 @@ description: jQuery实现瀑布流加载图片
 keywords: jQuery,spring,瀑布流,加载图片
 ---
 
-1.批处理图片大小，需要PIL。    
-输入宽度，高度自适应。
+获取当前documents的scrollTop为docTop，浏览器窗口高度为winHeight以及container高度为contentHeight。通过scroll事件触发判断机制，若docTop + winHeight >= contentHeight，则对每一列加载图片。    
 
-{% highlight python %}
-# -*- coding:utf-8 -*- 
 
-'''
-Arion ,2012-09-06
-必须安装PIL库
-
-批量修改文件中的图片为格式及大小
-'''
-
-import os, glob
-import Image
-
-path = raw_input("path:")
-width =int(raw_input("the width U want:"))
-imgslist = glob.glob(path+'/*.*')
-format = raw_input("format:")
-def small_img():
-    for imgs in imgslist:
-        imgspath, ext = os.path.splitext(imgs)
-        img = Image.open(imgs)
-        (x,y) = img.size
-        height =int( y * width /x)
-        small_img =img.resize((width,height),Image.ANTIALIAS)
-        small_img.save(imgspath +".thumbnail."+format)
-    print "done"
-
-if __name__ == '__main__':
-    small_img()
+{% highlight html %}
+<div class="albums" id="albums">
+    <div class="col" id="col1"></div>
+    <div class="col" id="col2"></div>
+    <div class="col" id="col3"></div>
+    <div class="col" id="col4"></div>
+    <div class="col" id="col5"></div>
+</div>
 {% endhighlight %}
 
-2.批处理重命名图片。    
+{% highlight javascript %}
+$(function(){
+    var winHeight = $(window).height(),
+        picno = 0;
 
-{% highlight python %}
-#!\usr\bin\env python
-# -*- coding: utf-8 -*-
-# Author: PZX
-# FileName: batchrename.py
-# Function: 批量命名某一文件夹下的文件名
+    $(function() {
+        loadImg();
 
-import sys
-import os
+        $(window).scroll(function() {
+            var docTop = $(document).scrollTop(),
+                contentHeight = $('#albums').height();
+            if (docTop + winHeight >= contentHeight) {
+                loadImg();
+            }
+        });
+    });
 
-def UsePrompt():
-    #如果省略path，则path为当前路径
-    print 'Useage: batchrename.py [path] newfilenames'
-    sys.exit()
-
-def BatchRename(path, pattern):
-    #设置路径
-    os.chdir(path)
-    fileList = os.listdir("./")
-    
-    dotIndex = pattern.rfind('.')
-    fileName = pattern[ : dotIndex]
-    fileExt = pattern[dotIndex : ]
-    genNum = 0
-    for fileItem in fileList:
-        fileFullName = fileName + ' (' + str(genNum) + ')' + fileExt
-        os.rename(fileItem, fileFullName)
-        print (fileItem + ' => ' + fileFullName) 
-        genNum += 1
-
-def main():
-    if len(sys.argv) == 3:
-        path = sys.argv[1]
-        pattern = sys.argv[2]
-    elif len(sys.argv) == 2:
-        path = os.getcwd()
-        pattern = sys.argv[1]
-    else:
-        UsePrompt()
-    confirm = raw_input('Confirm(y|n): ')
-    if confirm == 'n':
-        sys.exit()
-    BatchRename(path, pattern)
-    
-if __name__ == '__main__':
-    main(){% endhighlight %}
+    function loadImg() {
+        for (var i = 1; i <= 5; i++) {
+            if (picno < 40) {
+                $('#col' + i).append('<div><img src="./data/thumb/' + picno + '.jpg"alt=""></div>');
+                picno++;
+            }
+        }
+    }
+});
+{% endhighlight %}
 

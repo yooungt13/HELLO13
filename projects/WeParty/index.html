@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="./css/screen.css">
+    <script charset="utf-8" src="http://map.qq.com/api/js?v=2.exp"></script>
+    <script src="lib/jquery/jquery.js"></script>
+    <script src="lib/jquery-validate/jqueryValidate.js"></script>
+    <script src="js/indexControl.js"></script>
+</head>
+<body>
+	<header>
+		<div class="nav">
+			<div class="nav_center">
+				<ul>
+					<li style="border:0;">有田十三</li>
+					<li>我的活动</li>
+					<li>退出</li>
+				</ul>
+			</div>
+		</div>
+		<div class="master">
+			<a href="" class="logo">微派</a>
+			<div class="operators">
+				<a href="">点击放置图标</a>
+				<a href="">刷新现有事件</a>
+				<a href="">定位现在位置</a>
+			</div>
+		</div>
+	</header>
+	<section>
+		<div class="center">
+			<div class="intro"></div>
+			<div class="map_wrap">
+				<div class="left">
+					<form action="">
+						<input type="text" class="search" placeholder="请输入完整地址或公交/地铁站名" value="" autocomplete="off">
+						<input type="submit" class="submit" value="" hidefocus="true">		
+					</form>
+				</div>
+				<div class="right">
+					<div id="mapTest" style="width:700px;height:500px;float:left">
+                </div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<footer></footer>
+</body>
+</html>

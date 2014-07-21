@@ -1,0 +1,43 @@
+{
+     "data": {
+          "id": "250",
+          "username": "tianyang",
+          "contactinfo": "wode weixin shi 1231",
+          "employ_activity": [{
+               "activityid": "17",
+               "latLng": {
+                    "lat": "22.56963396961332",
+                    "lng": "113.9168930053711",
+                    "addrname": "腾讯大厦"
+               },
+              "content" :{
+                    "title": "yuepao",
+                    "content": "woxiangyuepao",
+                    "start_time": "20140717221009",
+                    "end_time": "20140717235054",
+                    "tags": ["love","yuepao"],
+                    "num_people": "10",
+                    "status": "empolying",
+                    "participants": ["songbo", "tangdi", "wenhe"]
+              }              
+          },{
+               "activityid" : "63",
+                "latLng": {
+                    "lat": "22.59",
+                    "lng": "113.93",
+                    "addrname": "腾讯大厦"
+               },          
+               "content" :{
+                    "title": "yuepao",
+                    "content": "woxiangyuepao",
+                    "start_time": "20140717221009",
+                    "end_time": "20140717235054",
+                    "tags": ["love","yuepao"],
+                    "num_people": "10",
+                    "status": "empolying",
+                    "participants": ["songbo", "tangdi", "wenhe"]
+              }    
+          }]
+
+     }
+}

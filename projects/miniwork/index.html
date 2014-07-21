@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <script charset="utf-8" src="http://map.qq.com/api/js?v=2.exp"></script>
+    <script src="lib/jquery/jquery.js"></script>
+    <script src="lib/jquery-validate/jqueryValidate.js"></script>
+    <script src="js/indexControl.js"></script>
+    <style type="text/css">
+    input {
+        margin-top: 10px;
+    }
+    img {
+        max-width: none;
+    }
+    .blue {
+        background-color: #0099cb;
+    }
+    .red {
+        background-color: red;
+        font-weight: bold;
+    }
+    .green {
+        background-color: green;
+    }
+    .sidebar {
+        background-color: #666;
+    }
+    .inline {
+        display: inline-block;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="maincontent">
+        <div class="row-fluid">
+            <div style="float:left">
+                <button id="btnAddAct" class="btn btn-primary">点击放置图标</button>
+                <button id="btnReflash" class="btn btn-success">刷新现有事件</button>
+                <button id="btnLocate" class="btn btn-info">定位现在的地址</button>
+                <input id="inputSearchLocate" class="input" type="text">
+                <button id="btnSearchLocate" class="btn btn-danger">搜索地点</button>
+            </div>
+            <div style="clear:both">
+                <div id="mapTest" style="width:700px;height:500px;float:left">
+                </div>
+
+            </div>
+
+
+            <div id="activeList"></div>
+            <div id="divAddForm">
+                <form class="form-horizontal col-sm-4" id="formAddAct" action="">
+                    <input type="text" name="title" class="form-control" placeholder="标题">
+                    <input type="text" name="content" class="form-control" placeholder="内容">
+                    <input type="text" name="num_people" class="form-control" placeholder="人数">
+                    <input type="text" name="tags" class="form-control" placeholder="标签">
+                </form>
+                <button id="btnConfirmForm" class="btn btn-success">确认</button>
+                <button id="btnCancleForm" class="btn btn-danger">取消</button>
+            </div>
+
+            <!-- <form class="form-horizontal col-sm-6" role="form">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                    <div class="col-sm-4">
+                        <input type="email" name="title" class=" form-control" placeholder="Email">
+                    </div>
+                </div>
+            </form> -->
+            <div id="divCurrentScreenAct">屏幕内的活动
+                <div style="background-color:#5bc0de">
+                    <p>
+                        <span>title:</span>
+                        <span>time:</span>
+                    </p>
+                    <p>
+                        <span>address:</span>
+                    </p>
+                    <hr>
+                </div>
+                <div style="background-color:#5bc0de">
+                    <p>
+                        <span>title:</span>
+                        <span>time:</span>
+                    </p>
+                    <p>
+                        <span>address:</span>
+                    </p>
+                    <hr>
+                </div>
+                <div style="background-color:#5bc0de">
+                    <p>
+                        <span>title:</span>
+                        <span>time:</span>
+                    </p>
+                    <p>
+                        <span>address:</span>
+                    </p>
+                    <hr>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,6 +1,5 @@
 var map,geocoder,mapMarkers = [];
 var emActList = [];
-var addActFormFlag = false;
 var markersFlag = 0;
 var markerCurrentPos ={};
 var listenerMapChange;
@@ -16,13 +15,12 @@ $(document).ready(function init() {
     map = new qq.maps.Map(mapTest, myOptions);
 
     var anchor = new qq.maps.Point(6, 6),
-        size = new qq.maps.Size(50, 65),
+        size = new qq.maps.Size(24, 24),
         origin = new qq.maps.Point(0, 0),
-        icon = new qq.maps.MarkerImage('img/chooselocation.png', size, origin, anchor);
+        icon = new qq.maps.MarkerImage('img/center.gif', size, origin, anchor);
     markerCurrentPos = new qq.maps.Marker({
         icon :icon,
-        map: map,
-        animation: qq.maps.MarkerAnimation.BOUNCE
+        map: map
     });
     geocoder = new qq.maps.Geocoder({
         complete : function(result){
@@ -41,34 +39,44 @@ $(document).ready(function init() {
     var btnCancleForm =$('#btnCancleForm');
     btnCancleForm.click(function(){
         divAddForm.hide();
+        $('#formAddAct')[0].reset();
     });
     divAddForm.hide();
+    var btnPostForm = $('#btnPostForm');
+    btnPostForm.click(function(){
+        if(validateForm()){
+            postNewAct();
+            divAddForm.hide();
+        }
+    });
 
     var btnLocate = $('#btnLocate');
     btnLocate.click(function(){
         navigator.geolocation.getCurrentPosition(updateLocation);
-    })
+    });
 
     var inputSearchLocate = $('#inputSearchLocate');
     var btnSearchLocate = $("#btnSearchLocate");
     btnSearchLocate.click(function(){
         codeAddress();
-    })
+    });
 
 
-
-
-    var flag = 1;
     btnAddAct.onclick = function() {
-        addMapClick();
-        divAddForm.show();
+        $('#myModal').modal('show');
+//        divAddForm.show();
     };
+    $('#btnChooseLocate').click(function(){
+        $('#myModal').modal('hide');
+        addMapClick();
+    });
 
     $('#btnReflash').click(function(){
         alert(mapMarkers.length);
         deleteOverlays(mapMarkers);
         emActList.length = 0 ;
         getCurrentActList2();
+        mapChange();
     })
 //    getActList();
 //    getActList2();
@@ -82,21 +90,53 @@ $(document).ready(function init() {
     // navigator.geolocation.getCurrentPosition(updateLocation);
 
     //实现缩放返回地图大小
-
+//    setTimeout(mapChange(),3000);
+//    mapChange();
    listenerMapChange = qq.maps.event.addListener(map, 'bounds_changed',mapChange );
-})
+   $('.map_wrap').hide();
+   $('.operators').hide();
+   $('#btnLogin').click(function(event){
+       event.preventDefault();
+       if(validateLoginForm()){
+           postLogin();
+       }
+   })
+});
 
 //添加标记事件
 function addMarker(location,content,actid) {
     var info = new qq.maps.InfoWindow({
         map: map
     });
-    var marker = new qq.maps.Marker({
-        position: location,
-        map: map,
-        animation:qq.maps.MarkerAnimation.DROP,
-        actId : actid
-    });
+    var icon ;
+    var iconEat = new qq.maps.MarkerImage('img/eat.png');
+    var iconSport = new qq.maps.MarkerImage('img/sport.png');
+    var iconELse = new qq.maps.MarkerImage('img/play.png');
+    var marker;
+    if(content){
+        if(content.tags =="MOIVE"){
+            icon = iconSport;
+        }else if (content.tags == "EAT"){
+            icon = iconEat;
+        }else{
+            icon = iconELse;
+        }
+        marker = new qq.maps.Marker({
+            position: location,
+            icon :icon,
+            map: map,
+            animation:qq.maps.MarkerAnimation.DROP,
+            actId : actid
+        });
+    }else{
+        marker = new qq.maps.Marker({
+            position: location,
+            map: map,
+            animation:qq.maps.MarkerAnimation.DROP,
+            actId : actid
+        });
+    }
+
 
     qq.maps.event.addListener(marker, 'click', function(event) {
         info.open();
@@ -113,22 +153,22 @@ function addMarker(location,content,actid) {
         info.setPosition(event.latLng)
     });
     mapMarkers.push(marker);
-    // showActives(mapMarkers);
-    console.log("地图上所有的标记点数组\n"+mapMarkers);
     markersFlag++;
 }
 //添加地图标记事件（只能点击一次）
 function addMapClick() {
+
     var listener;
     listener = qq.maps.event.addListener(
         map,
         'click',
         function(event) {
             addMarker(event.latLng);
-            console.log("点击的方位" + (typeof event.latLng));
-            console.log(event);
+            $("input[name='longitude']").val(event.latLng.lng);
+            $("input[name='latitude']").val(event.latLng.lat);
             if (event) {
                 qq.maps.event.removeListener(listener);
+                $('#myModal').modal('show');
             }
         }
     );
@@ -149,11 +189,8 @@ function getActList() {
             activityid : 2
         },
         success: function(data) {
-            console.log("未处理的数据类型 " + (typeof data));
             data = JSON.parse(data);
-            console.log("处理后的数据类型 " + (typeof data));
             emActList.push(data.data);
-            console.log("现在所有的事件数组" + emActList);
             //实现根据数据库返回数据向地图添加标注
             addMarkersByAct(emActList);
         },
@@ -172,11 +209,8 @@ function getActList2() {
             activityid : 1
         },
         success: function(data) {
-            console.log("未处理的数据类型 " + (typeof data));
             data = JSON.parse(data);
-            console.log("处理后的数据类型 " + (typeof data));
             emActList.push(data.data);
-            console.log("现在所有的事件数组" + emActList);
             //实现根据数据库返回数据向地图添加标注
             addMarkersByAct(emActList);
         },
@@ -237,6 +271,7 @@ function getCurrentActList1(){
 function getCurrentActList2(){
     $.ajax({
         type : 'get',
+//        url : 'test.json',
         url : 'http://203.195.164.190/v1/activity/search.php',
         data : {
             minLat : "0",
@@ -246,13 +281,10 @@ function getCurrentActList2(){
             detail : "1"
         },
         success : function(data){
-            console.log(data);
             data = JSON.parse(data);
-            console.log('当前的活动详情是');
-            console.log(data);
             $(data.data).each(function(){
                 emActList.push(this);
-            })
+            });
             addMarkersByAct(emActList);
         },
         error :function(XMLHttpRequest, textStatus, errorThrown){
@@ -283,7 +315,43 @@ function getCurrentActList(){
         }
     })
 }
+//用ajax方法发送活动数据
+function postNewAct(){
+    $.ajax({
+        type : 'post',
+        url  : 'http://203.195.164.190/v1/startactivity.php',
+        data : $('#formAddAct').serialize(),
+        success : function(){
+            alert('添加新事件成功');
+            $('#formAddAct')[0].reset();
+            deleteOverlays(mapMarkers);
+            emActList.length = 0 ;
+            getCurrentActList2();
 
+        },
+        error :function(XMLHttpRequest, textStatus, errorThrown){
+            alert(errorThrown);
+        }
+    })
+};
+function postLogin(){
+    $.ajax({
+        type : 'post',
+        url : 'http://203.195.164.190/v1/register.php',
+        data : $('#formLogin').serialize(),
+        success : function(data){
+            data = JSON.parse(data);
+            if(data.data == '-1'){
+                alert('用户重复');
+            }else{
+                alert('登录成功');
+                $('#divLogin').hide();
+                $('.map_wrap').show();
+                $('.operators').show();
+            }
+        }
+    })
+}
 //根据数组向地图添加标注
 function addMarkersByAct(Array){
     $(Array).each(function(){
@@ -303,37 +371,59 @@ function updateLocation(position){
 
 }
 
-function validateForm(formName) {
+function validateForm() {
     //validate方法参数可选
     return $("#formAddAct").validate({
         rules: {
             title : "required",
             content : "required",
-            "num_people" : "required",
-            tags : "required"
+            "num_people" : {
+                required : true,
+                number : true,
+                max : 15
+            },
+            tags : "required",
+            addrname : "required",
+            "start_time" : "required",
+            "end_time" : "required",
+            latitude : "required",
+            longitude : "required"
         },
         messages:{
+        },
+        errorPlacement: function(error, element) {
+            // if the input has a prepend or append element, put the validation msg after the parent div
+            if(element.parent().hasClass('input-prepend') || element.parent().hasClass('input-append')) {
+                error.insertAfter(element.parent());
+                // else just place the validation message immediatly after the input
+            } else {
+                error.insertAfter(element);
+            }
+        },
+        errorElement: "small", // contain the error msg in a small tag
+        wrapper: "div", // wrap the error message and small tag in a div
+        highlight: function(element) {
+            $(element).closest('.control-group').addClass('error'); // add the Bootstrap error class to the control group
+        },
+        success: function(element) {
+            $(element).closest('.control-group').removeClass('error'); // remove the Boostrap error class from the control group
         }
     }).form();
 }
+function validateLoginForm() {
+    return $('#formLogin').validate({
+        rules : {
+            username : "required",
+            contactinfo : "required"
+        },
+        messages : {
 
-function doSubmit(){
-    //do other things
-    //验证通过后提交
-    if(validateForm()){
-        document.form1.submit()
-    }
+        }
+    })
 }
 
 
 function currentMapSize(){
-    console.log ({
-        center : map.center,
-        maxLat : map.getBounds().lat.maxY,
-        minLat : map.getBounds().lat.minY,
-        maxLng : map.getBounds().lng.maxX,
-        minLng : map.getBounds().lng.minX
-    })
     return  {
         maxLat : map.getBounds().lat.maxY,
         minLat : map.getBounds().lat.minY,
@@ -397,38 +487,38 @@ function currentScreenActHtml(currentScreenActList){
     var newElem,detailElem ;
     var divCurrentScreenAct = $('#divCurrentScreenAct');
     divCurrentScreenAct.empty();
-    divCurrentScreenAct.append('<h1>当前屏幕范围内的活动共有<strong>'+ currentScreenActList.length +'</strong>个</h1>');
+    divCurrentScreenAct.append('<h1>当前屏幕范围内共有<b style="color :red">'+ currentScreenActList.length +'</b>个活动</h1>');
+    divCurrentScreenAct.append('<table></table>');
     for( elem in currentScreenActList){
         if(elem !== 'length'){
-            newElem =$('<div style="background-color:#5bc0de">'+
-                '<p><span>title:'+ currentScreenActList[elem].detail["title"] +'</span>'+
-                '<span>time:'+ currentScreenActList[elem].detail["start_time"]+'</span></p>'+
-                '<p><span>address:'+ currentScreenActList[elem].addr.addrname +'</span></p>'+
-                '<hr></div>');
+            newElem =$('<tr class="activityItem">'+
+                '<th><div class="icon" title="在图上显示该点"></div></th>'+
+                '<td><div class="title"><a href="javascript:void(0)" onclick="return false;">'+ currentScreenActList[elem].detail["title"]+'</a></div>'+
+                '联系方式：<span class="address">'+ currentScreenActList[elem].detail["start_time"] +'</span><br>'+
+                '地址：<span class="tel">'+ currentScreenActList[elem].addr.addrname +'</span><br></td>'+
+                '<td class="imageHolder"><img src="./img/feng.png" alt="Img">'+
+                '</td></tr>');
             newElem.attr("id",currentScreenActList[elem]["activityid"]);
-            newElem.click(function(){
+            newElem.click(function(event){
+                event.preventDefault();
                 qq.maps.event.removeListener(listenerMapChange);
                 divCurrentScreenAct.empty();
-                console.log("findMapMarker");
-                console.log(findMapMarker(this.id));
                 mapCurrentZoom = map.zoom;
                 map.panTo(findMapMarker(this.id));
-
                 map.zoomTo(16);
+                detailElem = '<div><h1>活动详情</h1><table class="detail">'+
+                    '<tr><td class="title">活动主题：</td><td class="content">'+ currentScreenActList[this.getAttribute("id")].detail.title +'</td></tr>'+
+                    '<tr><td class="title">开始时间：</td><td class="content">'+ currentScreenActList[this.getAttribute("id")].detail["start_time"]+'</td></tr>'+
+                    '<tr><td class="title">结束时间：</td><td class="content">'+ currentScreenActList[this.getAttribute("id")].detail["end_time"]+'</td></tr>'+
+                    '<tr><td class="title">联系方式：</td><td class="content">18620667350</td></tr>'+
+                    '<tr><td class="title">活动描述：</td><td class="content">'+ currentScreenActList[this.getAttribute("id")].detail["content"] +'</td></tr>'+
+                    '<tr><td class="title">需要人数：</td><td class="content">'+ currentScreenActList[this.getAttribute("id")].detail["num_people"] +'</td></tr>'+
+                    '<tr><td class="title">活动地点：</td><td class="content">'+ currentScreenActList[this.getAttribute("id")].addr.addrname +'</td></tr></table>'+
+                    '<button class="btn btn-danger btn-return" onclick="mapChange1()">返回列表详情</button></div></div>'
 
-                detailElem = '<div >'+
-                    '<h1>事件详情</h1>'+
-                    '<p>title:'+ currentScreenActList[this.getAttribute("id")].detail.title +'</p>'+
-                    '<p>start_time:'+ currentScreenActList[this.getAttribute("id")].detail["start_time"]+'</p>'+
-                    '<p>end_time:'+ currentScreenActList[this.getAttribute("id")].detail["end_time"]+'</p>'+
-                    '<p>content:'+ currentScreenActList[this.getAttribute("id")].detail["content"] +'</p>'+
-                    '<p>number of people :'+ currentScreenActList[this.getAttribute("id")].detail["num_people"] +'</p>'+
-                    '<p>address:'+ currentScreenActList[this.getAttribute("id")].addr.addrname +'</p>'+
-                    '<button class="btn btn-danger" onclick="mapChange1()">返回列表详情</button>'
-                    '<hr></div>'
                 divCurrentScreenAct.append(detailElem)
             });
-            divCurrentScreenAct.append(newElem);
+            $('#divCurrentScreenAct > table').append(newElem);
         }
     }
 
@@ -436,7 +526,6 @@ function currentScreenActHtml(currentScreenActList){
 
 function mapChange(){
     var currentScreenActList=currentScreenAct(currentMapSize(),emActList)
-    console.log(currentScreenActList);
     currentScreenActHtml(currentScreenActList);
 }
 
@@ -444,7 +533,6 @@ function mapChange1(){
     listenerMapChange = qq.maps.event.addListener(map, 'bounds_changed',mapChange );
     map.zoomTo(mapCurrentZoom);
     var currentScreenActList=currentScreenAct(currentMapSize(),emActList)
-    console.log(currentScreenActList);
     currentScreenActHtml(currentScreenActList);
 
 }
@@ -454,11 +542,6 @@ function findMapMarker(actId){
     $(mapMarkers).each(function(){
         if(this.actId == actId){
             latLng = new qq.maps.LatLng(this.position.lat,this.position.lng);
-
-//            console.log("marker type" + (typeof latLng));
-//            console.log(this.position);
-//            console.log(latLng);
-//            map.panTo(this.position);
             return pos = this.position;
         }
     })

@@ -88,28 +88,37 @@ span {
 	position: relative;
 	margin: 0 auto;
 	height: 80px;
+    padding-top: 20px;
 	width: 980px;
 	z-index: 80;
 	border-bottom: 2px solid #4bc1d2;
 }
-
-.master .logo {
-	float: left;
-	display: block;
-	width: 100px;
-	height: 58px;
-	line-height: 58px;
-	margin-top: 20px;
-	overflow: hidden;
-	font-size: 48px;
-	color: #4bc1d2;
-	font-weight: bold;
-	text-align: left;
+.master:after{
+    content:'';
+    display: block;
+    width: 0;
+    height: 0;
+    clear: both;
+    overflow: hidden;
 }
+.master .logo {
+     float: left;
+     display: block;
+     width: 200px;
+     height: 58px;
+     line-height: 58px;
+     overflow: hidden;
+     font-size: 48px;
+     color: #4bc1d2;
+     font-weight: bold;
+     text-align: left;
+    background-image: url('../img/logo.png');
+ }
+
 
 .master .operators {
 	float: right;
-	margin-top: 35px;
+	margin-top: 15px;
 }
 
 .master .operators li {
@@ -144,6 +153,65 @@ section {
 .map_wrap {
 	position: relative;
 	padding: 30px 15px 45px 15px;
+}
+
+/* Login */ 
+#divLogin {
+	position: relative;
+	width: 600px;
+	height: 575px;
+	margin: 0 auto;
+	padding-top: 115px;
+	overflow: hidden;
+}
+
+#divLogin .icon {
+	overflow: hidden;
+	float: left;
+	height: 575px;
+}
+
+#divLogin .icon img {
+	height: 130px;
+	width: 245px;
+	border-right: 1px solid #4bc1d2;
+	padding-right: 115px;
+}
+
+#formLogin {
+	float: right;
+	width: 250px;
+	margin: 0 auto;
+	overflow: hidden;
+	border: 1px solid #ccc;
+	padding: 20px 0 50px 25px;
+}
+
+.form-item {
+	margin-left: 0px;
+}
+
+.form-control {
+	text-align: left;
+	font-size: 12px;
+	width: 200px;
+}
+
+#btnLogin {
+	width: 200px;
+	height: 30px;
+	background: #4bc1d2;
+	border: 0;
+	border-radius: 5px;
+	color: #fff;
+	text-align: center;
+	margin-left: 0;
+}
+
+
+
+#btnLogin:hover{
+	box-shadow: 0 0 5px rgba(0,0,0,0.6);
 }
 
 /* Right side */
@@ -198,7 +266,7 @@ section {
 }
 
 #divCurrentScreenAct {
-	height: 500px;
+	height: 465px;
 	overflow-y: scroll;
     overflow-x: hidden;
 	margin-left: 10px;
@@ -206,17 +274,20 @@ section {
 
 #divCurrentScreenAct h1 {
 	font-size: 16px;
-	text-align: left;
 	padding: 10px 0 5px 0;
-	border-bottom: 1px solid #000;
 	margin-bottom: 10px;
+    font-weight: bold;
+    position: absolute;
+    top: 18px;
+    left: 32px
 }
 
-table {
+#divCurrentScreenAct table {
 	border-spacing: 2px;
 	border-color: gray;
 	border-collapse: collapse;
 	width: 100%;
+    margin-top:35px;
 }
 
 tbody {
@@ -281,49 +352,51 @@ td img {
 	height: 50px;
 }
 
-.detail {
-	display: block;
-	padding: 10px 5px 5px 5px;
-}
-
-.detail tr {
-	width: 100%;
-}
-
-.detail td {
-	border: 0;
-	padding: 0;
-	margin: 0 0 5px;
-}
-
-.detail .title {
-	font-size: 12px;
-	font-weight: 700;
-	width: 60px;
-}
-
-.detail .content {
-	color: #666;
-	width: 248px;
-}
-
-.btn-return {
-	margin-top: 20px;
-	float: right;
-}
-
 .error{
     color: #B94A48;
 }
 
+.detail {
+    display: block;
+    padding: 10px 5px 5px 5px;
+}
+
+.detail tr {
+    width: 100%;
+}
+
+.detail td {
+    border: 0;
+    padding: 0;
+    margin: 0 0 5px;
+}
+
+.detail .title {
+    font-size: 12px;
+    font-weight: 700;
+    width: 80px;
+}
+
+.detail .content {
+    color: #666;
+    width: 248px;
+}
+
+.btn-return {
+    margin-top: 20px;
+    float: right;
+}
+
+
+
 /* Footer */
 footer {
-	padding: 20px 0 50px 0;
-	width: 980px;
-	margin: 0 auto;
-	color: #ccc;
+    padding: 20px 0 50px 0;
+    width: 980px;
+    margin: 0 auto;
+    color: #ccc;
 }
 
 footer .ref {
-	color: #4bc1d2;
+    color: #4bc1d2;
 }

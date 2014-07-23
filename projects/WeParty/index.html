@@ -3,11 +3,13 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
+    <link rel="stylesheet" href="./css/bootstrap.css"/>
 	<link rel="stylesheet" href="./css/screen.css">
     <script charset="utf-8" src="http://map.qq.com/api/js?v=2.exp"></script>
     <script src="lib/jquery/jquery.js"></script>
+    <script src="lib/bootstrap.min.js"></script>
     <script src="lib/jquery-validate/jqueryValidate.js"></script>
-    <script src="js/indexControl.js"></script>
+    <!--<script src="js/indexControl.js"></script>-->
 </head>
 <body>
 	<header>
@@ -23,9 +25,9 @@
 		<div class="master">
 			<a href="" class="logo">微派</a>
 			<div class="operators">
-				<a href="">点击放置图标</a>
-				<a href="">刷新现有事件</a>
-				<a href="">定位现在位置</a>
+				<button id="btnAddAct" class="btn btn-primary">点击放置图标</button>
+				<button id="btnReflash" class="btn btn-success">刷新现有事件</button>
+				<button id="btnLocate" class="btn btn-info">定位现在位置</button>
 			</div>
 		</div>
 	</header>
@@ -33,19 +35,94 @@
 		<div class="center">
 			<div class="intro"></div>
 			<div class="map_wrap">
-				<div class="left">
-					<form action="">
-						<input type="text" class="search" placeholder="请输入完整地址或公交/地铁站名" value="" autocomplete="off">
-						<input type="submit" class="submit" value="" hidefocus="true">		
-					</form>
-				</div>
 				<div class="right">
-					<div id="mapTest" style="width:700px;height:500px;float:left">
+					<div style="overflow:hidden;">
+                        <button class="submit" id="btnSearchLocate"></button>      
+						<input type="text" class="search" placeholder="请输入完整地址或公交/地铁站名" id="inputSearchLocate" autocomplete="off">		
+					</div>
+					<div id="divCurrentScreenAct">
+						<!--<h1>附近的活动</h1>
+						<table>
+							<tbody>
+
+							</tbody>
+						</table>-->
+						<div><h1>活动详情</h1>
+							<table class="detail">
+								<tr>
+									<td class="title">活动主题：</td>
+									<td class="content">WeParty</td>
+								</tr>
+								<tr>
+									<td class="title">开始时间：</td>
+									<td class="content">20140506123030</td>
+								</tr>
+								<tr>
+									<td class="title">结束时间：</td>
+									<td class="content">20140506123030</td>
+								</tr>
+								<tr>
+									<td class="title">联系方式：</td>
+									<td class="content">18620667350</td>
+								</tr>
+
+								<tr>
+									<td class="title">活动描述：</td>
+									<td class="content">Let's go party</td>
+								</tr>
+								<tr>
+									<td class="title">需要人数：</td>
+									<td class="content">10</td>
+								</tr>
+								<tr>
+									<td class="title">活动地点：</td>
+									<td class="content">广东省深圳市南山区深南大道科技中一路6号</td>
+								</tr>
+							</table>
+							<button class="btn btn-danger btn-return" onclick="mapChange1()">返回列表详情</button></div>
+					</div>
+				</div>
+				<div class="left">
+					<div id="mapTest">
                 </div>
 				</div>
 			</div>
 		</div>
+
+
 	</section>
-	<footer></footer>
+    <!-- Modal -->
+    <div class="modal fade " id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h1 class="modal-title" id="myModalLabel">添加事件</h1>
+                </div>
+                <div class="modal-body">
+                    <p><button style="width: 100%" id="btnChooseLocate" class="btn btn-primary">点击选取地点</button></p>
+                    <form  id="formAddAct" class="form-horizontal">
+                        <p><input class="form-control" type="text" name="title" placeholder="标题"></p>
+                        <p><input class="form-control" type="text" name="content" placeholder="内容"></p>
+                        <p><input class="form-control" type="text" name="addrname" placeholder="地点详情"></p>
+                        <p><input class="form-control" type="text" name="num_people" placeholder="人数"></p>
+                        <p><input class="form-control" type="text" name="tags" placeholder="标签"></p>
+                        <p><input class="form-control" type="text" name="start_time" placeholder="开始时间"></p>
+                        <p><input  class="form-control" type="text" name="end_time" placeholder="结束时间"></p>
+                        <p><input  class="form-control" type="text" name="longitude" placeholder="经度" readonly></p>
+                        <p><input  class="form-control" type="text" name="latitude" placeholder="纬度" readonly></p>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnCancleForm" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" id="btnPostForm" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+	<footer>
+		<p>Copyright © 2014 <a class="ref" href="https://github.com/yooungt13">WeParty</a></p>
+	</footer>
 </body>
 </html>

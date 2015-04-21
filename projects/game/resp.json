@@ -4,5 +4,11 @@
 	"list" : [{
 		"package_name" : "com.example.helloandroid",
 		"file_name" : "helloandroid.apk"
+	},{
+		"package_name" : "com.example.appa",
+		"file_name" : "appa.apk"
+	},{
+		"package_name" : "com.example.appb",
+		"file_name" : "appb.apk"
 	}]
 }

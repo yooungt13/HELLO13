@@ -3,6 +3,6 @@
 	"time" : "20150421",
 	"list" : [{
 		"package_name" : "com.example.helloandroid",
-		"file_path" : "/sdcard/GH-Game/download"
+		"file_name" : "helloandroid.apk"
 	}]
 }

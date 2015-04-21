@@ -1,4 +1,8 @@
 {
-	"package_name" : "com.example.helloandroid",
-	"file_path" : "/sdcard/GH-Game/download"
+	"type" : 1,
+	"time" : "20150421",
+	"list" : [{
+		"package_name" : "com.example.helloandroid",
+		"file_path" : "/sdcard/GH-Game/download"
+	}]
 }

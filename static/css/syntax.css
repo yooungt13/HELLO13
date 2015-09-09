@@ -1,12 +1,11 @@
-.highlight  { 
-	background: #000; 
-	padding: 1em; 
+.highlight  {
+	/*padding: 1em; */
 	font-size: 95% helvetica, arial, clean, sans-serif;
-	border-radius: 5px;
+/*	border-radius: 5px;
 	margin-top: 0.5em;
-	margin-bottom: 1.5em;
+	margin-bottom: 1.5em;*/
 }
-.highlight pre{ word-wrap:break-word; }
+.highlight pre{ word-wrap:break-word; background: #000 !important;}
 .highlight .hll { background-color: #49483e }
 .highlight .c { color: #75715e } /* Comment */
 .highlight .err { color: #960050; background-color: #1e0010 } /* Error */

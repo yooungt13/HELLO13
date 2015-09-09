@@ -1,73 +1,72 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
-<head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-  <title> 
-    {% if page.title %}
-      {{ page.title }}
-    {% else %}
-      {{ site.title }}
-    {% endif %} 
-  </title>
-  <meta name="generator" content="Jekyll" />
-  <meta name="author" content="{{ site.author.name }}" />
-  <meta name="description" content="{{ page.description }}" />
-  <meta name="keywords" content="{{ page.keywords | join: ',' }}" />
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-  <!-- Mobile Specific Metas
-  ================================================== -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no">
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-
-  <!-- syntax highlighting CSS -->
-  <link rel="stylesheet" href="/public/stylesheets/syntax.css" type="text/css" />
-
-  <!-- Homepage CSS -->
-  <link rel="stylesheet" href="/public/stylesheets/screen.css" type="text/css" media="screen, projection" />
-</head>
-<body>
-<header>
-  <nav>
-    <div class="signal"><a href="/">Words may be false. </a></div>
-    <div class="menu">
-      <dl><a class="extra" href="/home.html">Home</a></dl>
-      <dl><a class="extra" href="/posts.html">Posts</a></dl>
-      <dl><a class="extra" href="/projects.html">Projects</a></dl>
-      <dl><a class="extra" href="/me.html">About Me</a></dl>
-    </div>
-  </nav>
-</header>
-<section>
-  <div class="wrap"></div>
-  <article>
-  {{ content }}
-  </article>
-  
-  <footer>
-    <div class="contact">
-      <p>
-        Copyright  @有田十三<br />
-        NewComer  of  <a href="http://github.com/">GitHub</a><br />
-        yooungt13@gmail.com
-      </p>
-    </div>
-    <div class="contact">
-      <p>
-        <a href="http://weibo.com/yooungt/">weibo.com/yooungt</a><br />
-        <a href="http://github.com/yooungt13/">github.com/yooungt13</a><br />
-        <a href="http://blog.csdn.net/yooungt13/">blog.csdn.net/yooungt13</a>
-      </p>
-    </div>
-  </footer>
-</section>
-
-<a href="http://github.com/yooungt13"><img style="position: fixed; top: 0; right: 0; border: 0; z-index:100;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" /></a>
-
-<!--*********************************************************-->
-<!--******************Copyright @有田十三********************-->
-<!--*********************************************************-->
-<script src="/public/javascripts/Tian.js" type="text/javascript"></script>
-<script src="/public/javascripts/plugins.js" type="text/javascript"></script>
-<script src="http://js.tongji.linezing.com/3402426/tongji.js" type="text/javascript"></script>
-</body>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <title>
+        {% if page.title %}
+            {{ page.title }}
+        {% else %}
+            {{ site.title }}
+        {% endif %}
+        </title>
+        <meta name="generator" content="Jekyll" />
+        <meta name="author" content="{{ site.author.name }}" />
+        <meta name="description" content="{{ page.description }}" />
+        <meta name="keywords" content="{{ page.keywords | join: ',' }}" />
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <!-- Mobile Specific Metas
+        ================================================== -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/static/css/syntax.css" type="text/css" />
+        <!-- Homepage CSS -->
+        <link rel="stylesheet" href="/static/css/screen.css" type="text/css" media="screen, projection" />
+        <link rel="stylesheet" href="/static/css/md.css" type="text/css" media="screen, projection" />
+    </head>
+    <body>
+        <header>
+            <nav>
+                <div class="slogan"><a href="/">{{ site.title }}</a></div>
+                <div class="menu">
+                    <span class="menu-icon icon" id='menu'></span>
+                    <div class="menu-list">
+                        <dl><a href="/home">Home</a></dl>
+                        <dl><a href="/posts">Posts</a></dl>
+                        <dl><a href="/projects">Projects</a></dl>
+                        <dl><a href="/me">About Me</a></dl>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <section>
+            <!-- <div class="wrap"></div> -->
+            <article>
+                {{ content }}
+            </article>
+            <footer>
+                <div class="contact">
+                    <p>
+                        Copyright  @有田十三<br />
+                        NewComer  of  <a href="http://github.com/">GitHub</a><br />
+                        yooungt13@gmail.com
+                    </p>
+                </div><!--
+             --><div class="contact">
+                    <p>
+                        <a href="http://weibo.com/yooungt/">weibo.com/yooungt</a><br />
+                        <a href="http://github.com/yooungt13/">github.com/yooungt13</a><br />
+                        <a href="http://blog.csdn.net/yooungt13/">blog.csdn.net/yooungt13</a>
+                    </p>
+                </div>
+            </footer>
+        </section>
+        <a class="github-fork" href="http://github.com/yooungt13"><img style="position: fixed; top: 0; right: 0; border: 0; z-index:100;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" /></a>
+        <!--*********************************************************-->
+        <!--******************Copyright @有田十三**********************-->
+        <!--*********************************************************-->
+        <script src="/static/js/lib/zepto.min.js"></script>
+        <script src="/static/js/page.js"></script>
+        <script src="http://js.tongji.linezing.com/3402426/tongji.js" type="text/javascript"></script>
+    </body>
 </html>

@@ -1,6 +1,6 @@
 (function() {
     /** back to the top**/
-    var $trigger = $('<div class="backToTop">⬆️</div>');
+    var $trigger = $('<div class="backToTop icon"></div>');
     $('body').append($trigger);
 
     $trigger.on('click', function() {

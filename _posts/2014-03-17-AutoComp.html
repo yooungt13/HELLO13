@@ -19,7 +19,7 @@ keywords: 自动补全,javascript,input,有田十三
     window.onload = new Input().init({
         inputId: /* input id, 必填 */,
         wrapId: /* 父div id, 必填 */
-    }); 
+    });
 </script>
 {% endhighlight %}
 <br>
@@ -33,7 +33,7 @@ keywords: 自动补全,javascript,input,有田十三
         data: [/* 数据 */],
         width: 400,
         height: 30
-    }); 
+    });
 </script>
 {% endhighlight %}
 <br><br>
@@ -48,14 +48,14 @@ oninput是onpropertychange的非IE浏览器版本。<br><br>
 虽然我在测试IE9时不需要绑定onpropertychange也可以运行，但是还是贴一下解决方法：
 {% highlight javascript %}
 var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串
-var isIE = userAgent.indexOf("compatible") > -1 
-    && userAgent.indexOf("MSIE") > -1 
+var isIE = userAgent.indexOf("compatible") > -1
+    && userAgent.indexOf("MSIE") > -1
     && !userAgent.indexOf("Opera") > -1;
 
 if(isIE){
-    input.onpropertychange = function(){};  
+    input.onpropertychange = function(){};
 }else{
-    addEvent(input,'input',function(){}); 
+    addEvent(input,'input',function(){});
 }
 {% endhighlight %}
 最后需要注意的是：oninput 和 onpropertychange 这两个事件在 IE9 中都有个小BUG，那就是通过右键菜单菜单中的剪切和删除命令删除内容的时候不会触发，而 IE 其他版本都是正常的，目前还没有很好的解决方案。不过 oninput & onpropertychange 仍然是监听输入框值变化的最佳方案。<br><br>
@@ -69,7 +69,7 @@ for (var i = 0, len = str.length; i < len; i++) {
     li.innerHTML = str[i];
     (function() {
         var p = i;
-        addEvent(li, 'mousedown', function() {  
+        addEvent(li, 'mousedown', function() {
             _this.value = str[p];
             wrap.removeChild($$('list'));
         });
@@ -109,4 +109,4 @@ addEvent(this.input, 'keydown', function(e) {
 
 附AutoComp.js源码：<a href="https://github.com/yooungt13/yooungt13.github.com/blob/master/public/javascripts/autocomp.js">[传送门]</a>
 
-<script src="../public/javascripts/autocomp.js"></script>
+<script src="../static/js/autocomp.js"></script>

@@ -21,9 +21,8 @@ body {
 
 h1 {
   font-size: 100%;
-  padding-top: 3em;
-  margin-top: -1em;
-  margin-bottom: 1em; }
+  margin-top: .3rem;
+  margin-bottom: .12rem; }
 
 h1, h2, h3, h4, h5, h6 {
   font-size: 100%; }
@@ -66,7 +65,8 @@ header {
 
 nav {
   margin: 0 auto;
-  width: 40%;
+  width: 60%;
+  min-width: 3.75rem;
   padding: 0 0.24rem;
   display: inline-block;
   height: .44rem;
@@ -81,9 +81,17 @@ nav {
       line-height: .44rem; }
   nav .menu {
     float: right;
-    display: inline; }
+    display: inline;
+    line-height: .44rem; }
     nav .menu dl {
-      float: left; }
+      float: left;
+      font-size: .16rem;
+      height: .24rem;
+      line-height: .44rem; }
+      nav .menu dl a {
+        color: #777; }
+        nav .menu dl a:link, nav .menu dl a:visited, nav .menu dl a:hover, nav .menu dl a:active {
+          color: #777; }
 
 article {
   min-height: 50%;
@@ -92,7 +100,8 @@ article {
 section {
   font-size: 110%;
   text-align: left;
-  width: 40%;
+  width: 60%;
+  min-width: 3.75rem;
   margin: 0 auto;
   padding: 0.44rem 0.24rem 0;
   line-height: 1.5em; }
@@ -100,7 +109,7 @@ section {
 footer {
   font-size: .14rem;
   color: #666;
-  border-top: 4px solid #333;
+  border-top: 1px solid #ddd;
   margin-top: 2em;
   overflow: hidden;
   text-align: justify; }
@@ -114,6 +123,13 @@ footer {
 
 .icon {
   font-family: "fontawesome"; }
+
+.github-fork img {
+  position: fixed;
+  top: 0;
+  right: 0;
+  border: 0;
+  z-index: 100; }
 
 /*****************************************************************************/
 #related {
@@ -139,23 +155,30 @@ footer {
 
 .backToTop {
   display: none;
-  width: 2em;
-  height: 2em;
-  line-height: 2em;
+  width: .3rem;
+  height: .3rem;
+  line-height: .26rem;
   background-color: #000;
   border-radius: 50%;
   color: #fff;
-  font-size: 1.6em;
   text-align: center;
   position: fixed;
-  right: 1em;
-  bottom: 40px;
-  cursor: pointer; }
+  right: .22rem;
+  bottom: .4rem;
+  cursor: pointer;
+  border: 2px solid white; }
+  .backToTop:before {
+    content: "";
+    font-size: .16rem; }
 
 .posts {
-  list-style-type: none; }
+  list-style-type: none;
+  width: 100%; }
   .posts li {
-    line-height: 1.7; }
+    line-height: 1.7;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; }
   .posts span {
     color: #aaa;
     font-family: Monaco, Courier New, monospace;
@@ -168,6 +191,81 @@ footer {
   #post pre.terminal code {
     background-color: #333; }
 
+/*****************************************************************************/
+.preload {
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  background: white; }
+  .preload .pie {
+    position: absolute;
+    width: 240px;
+    height: 240px;
+    border-radius: 150px;
+    clip: rect(0px, 120px, 240px, 0px);
+    background: #afe4dd;
+    left: 50%;
+    top: 30%;
+    margin: -120px; }
+  .preload .persent {
+    margin-top: 180px;
+    text-indent: 6px;
+    position: absolute;
+    top: 30%;
+    width: 100%;
+    left: 0;
+    color: #b4b4b4;
+    font-size: .16rem;
+    text-align: center; }
+  .preload .covert {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    left: 50%;
+    top: 30%;
+    margin: -50px;
+    overflow: hidden; }
+    .preload .covert .cover {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%; }
+
+@-webkit-keyframes waitthum {
+  0% {
+    -webkit-transform: scale3d(0.5, 0.5, 0.5);
+    transform: scale3d(0.5, 0.5, 0.5); }
+  50% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1); }
+  100% {
+    -webkit-transform: scale3d(0.5, 0.5, 0.5);
+    transform: scale3d(0.5, 0.5, 0.5); } }
+
+@keyframes waitthum {
+  0% {
+    -webkit-transform: scale3d(0.5, 0.5, 0.5);
+    transform: scale3d(0.5, 0.5, 0.5); }
+  50% {
+    -webkit-transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05); }
+  100% {
+    -webkit-transform: scale3d(0.5, 0.5, 0.5);
+    transform: scale3d(0.5, 0.5, 0.5); } }
+  .preload .waitthum {
+    -webkit-animation-name: waitthum;
+    animation-name: waitthum;
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite; }
+
+/*****************************************************************************/
 @font-face {
   font-family: "fontawesome";
   src: url("../font/fontawesome-webfont.woff?v1") format("woff"); }
@@ -211,12 +309,7 @@ footer {
       display: block;
       overflow: hidden; }
       header .menu-expand .menu-list dl {
-        font-size: .16rem;
         float: none;
-        height: .24rem; }
-        header .menu-expand .menu-list dl a {
-          color: #777; }
-          header .menu-expand .menu-list dl a:link, header .menu-expand .menu-list dl a:visited, header .menu-expand .menu-list dl a:hover, header .menu-expand .menu-list dl a:active {
-            color: #777; }
+        line-height: .24rem; }
   .github-fork {
     display: none; } }

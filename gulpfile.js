@@ -49,5 +49,14 @@ gulp.task('useref', function(){
 });
 
 gulp.task('deploy', function(){
+    var cmd = 'git add .;git commit -m "deploy test";git push origin';
+    exec(cmd, function(err, stdout, stderr) {
+        if(err) {
+            console.log('Git push:' + err);
+        } else {
+            console.log(stdout);
+        }
+
+    });
     // Other watchers
 });

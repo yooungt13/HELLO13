@@ -34,5 +34,22 @@
         }
     });
 
+    $(window).on('resize', function(event) {
+        if( $(window).width() < $('section').width() ) {
+            alert('再小就要压扁了。');
+        }
+    });
+
+    $(document).ready(function() {
+        if(!isMobile()) {
+            var $fork = $('<a class="github-fork" href="http://github.com/yooungt13"><img src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" /></a>');
+            $('body').append($fork);
+        }
+    });
+
+    function isMobile() {
+        var u = navigator.userAgent;
+        return !!u.match(/.*Mobile.*/);
+    }
 
 })();

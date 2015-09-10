@@ -88,7 +88,9 @@ header {
 
 nav {
     margin: 0 auto;
-    width: 40%;
+    width: 60%;
+    min-width: 3.75rem;
+
     padding: 0 .24rem;
     display: inline-block;
 
@@ -109,8 +111,22 @@ nav {
     .menu {
         float: right;
         display: inline;
+        line-height: .44rem;
+
+
         dl {
             float: left;
+            font-size: .16rem;
+            height: .24rem;
+            line-height: .44rem;
+
+            a {
+                color: #777;
+
+                &:link, &:visited, &:hover, &:active {
+                    color: #777;
+                }
+            }
         }
     }
 }
@@ -123,7 +139,8 @@ article {
 section {
     font-size: 110%;
     text-align: left;
-    width: 40%;
+    width: 60%;
+    min-width: 3.75rem;
     margin: 0 auto;
     padding: .44rem .24rem 0;
     line-height: 1.5em;
@@ -132,7 +149,7 @@ section {
 footer {
     font-size: .14rem;
     color: $color_storm_dust_approx;
-    border-top: 4px solid $color_mine_shaft_approx;
+    border-top: 1px solid #ddd;
     margin-top: 2em;
     overflow: hidden;
     text-align: justify;
@@ -153,6 +170,16 @@ footer {
 
 .icon {
     font-family: $fa-font-name;
+}
+
+.github-fork {
+    img {
+        position: fixed;
+        top: 0;
+        right: 0;
+        border: 0;
+        z-index:100;
+    }
 }
 
 /*****************************************************************************/
@@ -402,17 +429,9 @@ footer {
                 overflow: hidden;
 
                 dl {
-                    font-size: .16rem;
                     float: none;
-                    height: .24rem;
+                    line-height: .24rem;
 
-                    a {
-                        color: #777;
-
-                        &:link, &:visited, &:hover, &:active {
-                            color: #777;
-                        }
-                    }
                 }
             }
 

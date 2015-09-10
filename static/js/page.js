@@ -44,6 +44,9 @@
         if(!isMobile()) {
             var $fork = $('<a class="github-fork" href="http://github.com/yooungt13"><img src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" /></a>');
             $('body').append($fork);
+        } else {
+            // 消除点击300ms延迟
+            FastClick.attach(document.body);
         }
     });
 

@@ -11,13 +11,19 @@
 
 html {
   font-size: 100px;
-  height: 100%; }
+  height: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%; }
 
 body {
   height: 100%;
-  font: 0.16rem helvetica, arial, clean, sans-serif;
+  font: .16rem "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
   *font-size: small;
-  text-align: center; }
+  text-align: center;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  -webkit-font-smoothing: antialiased; }
 
 h1 {
   font-size: 100%;
@@ -32,7 +38,9 @@ p {
 
 a {
   color: #000;
-  text-decoration: none; }
+  background: transparent;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent; }
   a:visited {
     color: #000; }
   a:hover {
@@ -78,7 +86,23 @@ nav {
     nav .slogan a {
       color: #333;
       font-size: .24rem;
-      line-height: .44rem; }
+      line-height: .44rem;
+      font-weight: 700; }
+    nav .slogan:hover {
+      animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+      transform: translate3d(0, 0, 0);
+      backface-visibility: hidden;
+      perspective: 1000px; }
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0); }
+  20%, 80% {
+    transform: translate3d(2px, 0, 0); }
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0); }
+  40%, 60% {
+    transform: translate3d(4px, 0, 0); } }
   nav .menu {
     float: right;
     display: inline;
@@ -86,12 +110,19 @@ nav {
     nav .menu dl {
       float: left;
       font-size: .16rem;
-      height: .24rem;
-      line-height: .44rem; }
+      height: .44rem;
+      line-height: .44rem;
+      padding: 0 0.06rem; }
       nav .menu dl a {
         color: #777; }
         nav .menu dl a:link, nav .menu dl a:visited, nav .menu dl a:hover, nav .menu dl a:active {
           color: #777; }
+      nav .menu dl:hover {
+        background: #000;
+        transition: 1s ease-out; }
+        nav .menu dl:hover a {
+          color: #fff;
+          text-decoration: underline; }
 
 article {
   min-height: 50%;
@@ -139,19 +170,18 @@ footer {
 
 .wrap_proj {
   background: #000;
-  border-radius: 5px;
-  margin-bottom: 20px;
-  padding: 1em; }
+  border-radius: .05rem;
+  margin-bottom: .2rem;
+  padding: .16rem; }
   .wrap_proj:hover {
     transform: perspective(600px) translateZ(30px); }
   .wrap_proj a {
-    text-decoration: none;
-    font-weight: bold; }
-
-#preview {
-  padding-top: 15px; }
-  #preview img {
-    max-width: 584px; }
+    color: white;
+    text-decoration: none; }
+  .wrap_proj .preview {
+    padding-top: .15rem; }
+    .wrap_proj .preview img {
+      width: 100%; }
 
 .backToTop {
   display: none;
@@ -199,7 +229,8 @@ footer {
   position: absolute;
   left: 0px;
   top: 0px;
-  background: white; }
+  background: white;
+  background-size: 100%; }
   .preload .pie {
     position: absolute;
     width: 240px;
@@ -268,7 +299,7 @@ footer {
 /*****************************************************************************/
 @font-face {
   font-family: "fontawesome";
-  src: url("../font/fontawesome-webfont.woff?v1") format("woff"); }
+  src: url("../font/fontawesome-webfont.woff2?v=4.4.0") format("woff"); }
 
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation: portrait) {
   * {
@@ -302,14 +333,16 @@ footer {
     background-color: white;
     padding: 0 0.1rem 0.1rem;
     margin-right: -.11rem;
-    margin-top: .03rem; }
+    margin-top: .02rem; }
     header .menu-expand .menu-icon {
-      margin-top: -.04rem; }
+      margin-top: -.03rem; }
     header .menu-expand .menu-list {
       display: block;
       overflow: hidden; }
       header .menu-expand .menu-list dl {
         float: none;
-        line-height: .24rem; }
+        line-height: .24rem;
+        height: .24rem;
+        padding: 0; }
   .github-fork {
     display: none; } }

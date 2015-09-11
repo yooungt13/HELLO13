@@ -5,23 +5,26 @@ var exec = require('child_process').exec;
 var uglify = require('gulp-uglify');
 var minifyCSS = require('gulp-minify-css');
 var useref = require('gulp-useref');
+var copy = require('gulp-copy');
 var gulpif = require('gulp-if');
 
-gulp.task('default', function() {
-    // place code for your default task here
-});
+var runSequence = require('run-sequence');
 
-gulp.task('server', function(cb) {
+/**
+ * 开发环境
+ */
+
+ gulp.task('server', function(cb) {
     // build Jekyll
     exec('jekyll serve').stdout.on('data', function(chunk) {
         console.log(chunk);
     });
 
-    gulp.watch('static/scss/*.scss', ['sass']);
+    gulp.watch('static/scss/**/*.scss', ['sass']);
 
 });
 
-gulp.task('sass', function() {
+ gulp.task('sass', function() {
     // Gets all files ending with .scss in static/scss and children dirs
     return gulp.src('static/scss/*.scss')
     .pipe(sass())
@@ -30,26 +33,38 @@ gulp.task('sass', function() {
 
 // Gulp watch syntax
 gulp.task('watch', function(){
+    // watchers
     gulp.watch('static/scss/*.scss', ['sass']);
-    // Other watchers
 });
 
+/**
+ * 线上发布
+ */
+
+// 压缩、合并资源文件
 gulp.task('useref', function(){
-  var assets = useref.assets();
+    var assets = useref.assets();
 
-  return gulp.src('_layouts/default.html', {base:'./'})
-    .pipe(assets)
-    // Minifies only if it's a CSS file
-    .pipe(gulpif('*.css', minifyCSS()))
-    // Uglifies only if it's a Javascript file
-    .pipe(gulpif('*.js', uglify()))
-    .pipe(assets.restore())
-    .pipe(useref())
-    .pipe(gulp.dest('./'));
+    return gulp.src('_layouts/default.html', {base:'./'})
+        .pipe(assets)
+        // Minifies only if it's a CSS file
+        .pipe(gulpif('*.css', minifyCSS()))
+        // Uglifies only if it's a Javascript file
+        .pipe(gulpif('*.js', uglify()))
+        .pipe(assets.restore())
+        .pipe(useref())
+        .pipe(gulp.dest('./'));
 });
 
-gulp.task('deploy', function(){
-    var cmd = 'git add .;git commit -m "deploy test";git push origin';
+gulp.task('backup', function(){
+    // prefix前缀个数，保存目录避免在_layout下创建_layout
+    return gulp.src('_layouts/default.html')
+        .pipe(copy('backup', {prefix:1}));
+});
+
+// push到github
+gulp.task('push2git', function(){
+    var cmd = 'git add .;git commit -m "Gulp Deploy.";git push origin';
     exec(cmd, function(err, stdout, stderr) {
         if(err) {
             console.log('Git push:' + err);
@@ -58,5 +73,15 @@ gulp.task('deploy', function(){
         }
 
     });
-    // Other watchers
 });
+
+gulp.task('deploy', function(){
+    runSequence('useref', 'push2git', function(err){
+        if(err) {
+            console.log('Deploy error: ' + err);
+            return;
+        }
+
+        console.log('Deploy complete.');
+    });
+    });

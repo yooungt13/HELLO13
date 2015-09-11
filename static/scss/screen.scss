@@ -18,13 +18,21 @@
 html {
     font-size: 100px;
     height: 100%;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
 }
 
 body {
     height: 100%;
-    font: .16rem $font_0, $font_1, $font_2, $font_3;
+    font: .16rem "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 300;
+
+    // font: .16rem $font_0, $font_1, $font_2, $font_3;
     *font-size: small;
     text-align: center;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    -webkit-font-smoothing: antialiased;
 }
 
 h1 {
@@ -43,7 +51,10 @@ p {
 
 a {
     color: $black;
+    background: transparent;
     text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+
     &:visited {
         color: $black;
     }
@@ -102,12 +113,40 @@ nav {
         float: left;
         display: inline;
         text-align: left;
+
         a {
             color: #333;
             font-size: .24rem;
             line-height: .44rem;
+            font-weight: 700;
+        }
+
+        &:hover {
+            animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+            transform: translate3d(0, 0, 0);
+            backface-visibility: hidden;
+            perspective: 1000px;
+        }
+
+        @keyframes shake {
+            10%, 90% {
+                transform: translate3d(-1px, 0, 0);
+            }
+
+            20%, 80% {
+                transform: translate3d(2px, 0, 0);
+            }
+
+            30%, 50%, 70% {
+                transform: translate3d(-4px, 0, 0);
+            }
+
+            40%, 60% {
+                transform: translate3d(4px, 0, 0);
+            }
         }
     }
+
     .menu {
         float: right;
         display: inline;
@@ -117,14 +156,27 @@ nav {
         dl {
             float: left;
             font-size: .16rem;
-            height: .24rem;
+            height: .44rem;
             line-height: .44rem;
+            padding: 0 .06rem;
 
             a {
                 color: #777;
 
                 &:link, &:visited, &:hover, &:active {
                     color: #777;
+                }
+            }
+
+            &:hover {
+                background: #000;
+                transition: 1s ease-out;
+                // transition: 1s cubic-bezier(.25,.1,.2,3);
+
+                a {
+                    color: #fff;
+                    text-decoration: underline;
+
                 }
             }
         }
@@ -195,22 +247,26 @@ footer {
 .wrap_proj {
     background: $black;
     //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
-    border-radius: 5px;
-    margin-bottom: 20px;
-    padding: 1em;
+    border-radius: .05rem;
+    margin-bottom: .2rem;
+    padding: .16rem;
+
     &:hover {
         //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
         transform: perspective(600px) translateZ(30px);
     }
+
     a {
+        color: white;
         text-decoration: none;
-        font-weight: bold;
     }
-}
-#preview {
-    padding-top: 15px;
-    img {
-        max-width: 584px;
+
+    .preview {
+        padding-top: .15rem;
+
+        img {
+            width: 100%;
+        }
     }
 }
 
@@ -273,6 +329,8 @@ footer {
     left: 0px;
     top: 0px;
     background: white;
+    // background-image: url('../img/bg.jpg');
+    background-size: 100%;
 
     .pie {
         position: absolute;
@@ -417,11 +475,11 @@ footer {
             background-color: white;
             padding: 0 .1rem .1rem;
             margin-right: -.11rem;
-            margin-top: .03rem;
+            margin-top: .02rem;
             // box-shadow: 0 .02rem .05rem 0.05rem white;
 
             .menu-icon {
-                margin-top: -.04rem;
+                margin-top: -.03rem;
             }
 
             .menu-list {
@@ -431,7 +489,8 @@ footer {
                 dl {
                     float: none;
                     line-height: .24rem;
-
+                    height: .24rem;
+                    padding: 0;
                 }
             }
 

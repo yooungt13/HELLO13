@@ -352,6 +352,10 @@
   margin-bottom: 16px;
 }
 
+.markdown-body p {
+  text-align: justify;
+}
+
 .markdown-body hr {
   height: 4px;
   padding: 0;

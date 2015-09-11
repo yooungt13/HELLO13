@@ -12,12 +12,12 @@ tag: CSS
 		top: 30px;
 		margin: 0 auto;
 		margin-bottom: 50px;
-		animation:shake 1s infinite;
-		-moz-animation:shake 1s infinite; /* Firefox */
-		-webkit-animation:shake 1s infinite; /* Safari and Chrome */
-		-o-animation:shake 1s infinite; /* Opera */
+		animation:attack 1s infinite;
+		-moz-animation:attack 1s infinite; /* Firefox */
+		-webkit-animation:attack 1s infinite; /* Safari and Chrome */
+		-o-animation:attack 1s infinite; /* Opera */
 	}
-	@keyframs mymove {
+	@keyframs attack {
 		0%   {top:10px; left:0px;}
 		7.5%  {top:10px; -webkit-transform:rotate(-10deg); }
 		15%  {top:10px; }
@@ -25,7 +25,7 @@ tag: CSS
 		30%  {top:10px; -webkit-transform:rotate(-3deg);}
 		50% {top:30px; }
 	}
-	@-moz-keyframes mymove /* Firefox */
+	@-moz-keyframes attack /* Firefox */
 	{
 		0%   {top:10px; left:0px;}
 		7.5%  {top:10px; -webkit-transform:rotate(-10deg); }
@@ -34,7 +34,7 @@ tag: CSS
 		30%  {top:10px; -webkit-transform:rotate(-3deg);}
 		50% {top:30px; }
 	}
-	@-webkit-keyframes shake /* Safari and Chrome */
+	@-webkit-keyframes attack /* Safari and Chrome */
 	{
 		0%   {top:10px; left:0px;}
 		7.5%  {top:10px; -webkit-transform:rotate(-10deg); }
@@ -43,7 +43,7 @@ tag: CSS
 		30%  {top:10px; -webkit-transform:rotate(-3deg);}
 		50% {top:30px; }
 	}
-	@-o-keyframes mymove /* Opera */
+	@-o-keyframes attack /* Opera */
 	{
 		0%   {top:10px; left:0px;}
 		7.5%  {top:10px; -webkit-transform:rotate(-10deg); }
@@ -55,8 +55,9 @@ tag: CSS
 </style>
 
 <div class="attack"></div>
-<br>
-其实就是Css animation，调整关键帧达到抖动效果。
+
+<p>其实就是Css animation，调整关键帧达到抖动效果。</p>
+
 
 {% highlight css %}
 .attack {
@@ -79,7 +80,6 @@ tag: CSS
 }
 {% endhighlight %}
 
-CSS3
 
 
 

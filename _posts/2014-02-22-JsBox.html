@@ -43,7 +43,7 @@ Box.prototype = {
         this.box = this.box || document.createElement("div");
         this.mask = this.mask || document.createElement("div");
         this.setStyle();
-		
+
         // 将box及mask加入dom
         document.body.appendChild(this.box);
         document.body.appendChild(this.mask);
@@ -57,7 +57,7 @@ Box.prototype = {
 　　在注册事件的时候推荐委托方式。如果只是简单的将事件绑定在某个标签下，当其外部标签innerHTML改变的时候可能会抹去绑定的事件。在复杂的逻辑中，频繁地改变innerHTML会造成意向之外的效果，除非能保证在每次重写innerHTML时都重新绑定一次事件。但是还可能造成其他的Bug，内存泄漏等。所以通过事件委托机制来注册事件。<br>　　简而言之,就是要利用addEventListener，在标签append之后将事件委托至EventListener。
 {% highlight javascript %}
 var addEvent = function(obj,event,fn) {
-    return obj.addEventListener ? 
+    return obj.addEventListener ?
         obj.addEventListener(event,fn,false) :
         obj.attachEvent('on'+event, function(){ fn.call(obj); });
     }
@@ -89,8 +89,8 @@ zoomIn: function() {
     }.bind(this), 10);
 }
 {% endhighlight %}
-<br><br>
+<br>
 
 附Box.js源码：<a href="https://github.com/yooungt13/yooungt13.github.com/blob/master/public/javascripts/box.js">[传送门]</a>
 
-<script src="../public/javascripts/box.js"></script>
+<script src="../static/js/util/box.js"></script>

@@ -2,6 +2,8 @@
 layout: post
 title: Turn Over a Card
 tag: CSS
+addr: Sysu, Guangzhou
+
 ---
 <style>
 strong {
@@ -40,7 +42,7 @@ strong {
   font-weight: bold;
   font-family: "微软雅黑","Arial","Helvetica","sans-serif";
   color: white;
-  line-height: 260px;	
+  line-height: 260px;
   text-align: center;
   position: absolute;
   width: 100%;
@@ -152,17 +154,17 @@ strong {
 <br>
 </div>
 	<script src="/public/javascripts/jquery.js"></script>
-	<script>	
+	<script>
 		var isfront = true;
-		$(document).ready(function(){ 
+		$(document).ready(function(){
 			$("#card").click(function(){
 				if( isfront ){
-					$(this).addClass("flipped"); 
+					$(this).addClass("flipped");
 					isfront = false;
 				}else{
-					$(this).removeClass("flipped"); 
+					$(this).removeClass("flipped");
 					isfront = true;
-				}    	       
+				}
 			});
 		});
 	</script>

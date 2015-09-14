@@ -2,15 +2,16 @@
 layout: post
 title: Python批处理图片
 tag: JS
+addr: Sysu, Guangzhou
 description: Python IP Bat
 keywords: python,bat,批处理,image process
 ---
 
-1.批处理图片大小，需要PIL。    
+1.批处理图片大小，需要PIL。
 输入宽度，高度自适应。
 
 {% highlight python %}
-# -*- coding:utf-8 -*- 
+# -*- coding:utf-8 -*-
 
 '''
 Arion ,2012-09-06
@@ -40,7 +41,7 @@ if __name__ == '__main__':
     small_img()
 {% endhighlight %}
 
-2.批处理重命名图片。    
+2.批处理重命名图片。
 
 {% highlight python %}
 #!\usr\bin\env python
@@ -61,7 +62,7 @@ def BatchRename(path, pattern):
     #设置路径
     os.chdir(path)
     fileList = os.listdir("./")
-    
+
     dotIndex = pattern.rfind('.')
     fileName = pattern[ : dotIndex]
     fileExt = pattern[dotIndex : ]
@@ -69,7 +70,7 @@ def BatchRename(path, pattern):
     for fileItem in fileList:
         fileFullName = fileName + ' (' + str(genNum) + ')' + fileExt
         os.rename(fileItem, fileFullName)
-        print (fileItem + ' => ' + fileFullName) 
+        print (fileItem + ' => ' + fileFullName)
         genNum += 1
 
 def main():
@@ -85,7 +86,7 @@ def main():
     if confirm == 'n':
         sys.exit()
     BatchRename(path, pattern)
-    
+
 if __name__ == '__main__':
     main(){% endhighlight %}
 

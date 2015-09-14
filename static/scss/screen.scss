@@ -176,7 +176,6 @@ nav {
                 a {
                     color: #fff;
                     text-decoration: underline;
-
                 }
             }
         }
@@ -234,13 +233,37 @@ footer {
     }
 }
 
+
+
 /*****************************************************************************/
 
-#related {
+.content {
+    min-height: 3rem;
+}
+
+.related {
     margin-top: .3rem;
 
     h2 {
         margin-bottom: .1rem;
+    }
+}
+
+.posts {
+    list-style-type: none;
+    width: 100%;
+
+    li {
+        line-height: 1.7;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    span {
+        color: $color_silver_chalice_approx;
+        font-family: $font_6, $font_7, $font_5;
+        font-size: 80%;
     }
 }
 
@@ -276,7 +299,6 @@ footer {
     height: .3rem;
     line-height: .26rem;
     background-color: $black;
-    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
     border-radius: 50%;
     color: $white;
     text-align: center;
@@ -292,32 +314,6 @@ footer {
     }
 }
 
-.posts {
-    list-style-type: none;
-    width: 100%;
-
-    li {
-        line-height: 1.7;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    span {
-        color: $color_silver_chalice_approx;
-        font-family: $font_6, $font_7, $font_5;
-        font-size: 80%;
-    }
-}
-
-#post pre.terminal {
-    border: 1px solid $black;
-    background-color: $color_mine_shaft_approx;
-    color: $white;
-    code {
-        background-color: $color_mine_shaft_approx;
-    }
-}
 
 /*****************************************************************************/
 
@@ -491,6 +487,11 @@ footer {
                     line-height: .24rem;
                     height: .24rem;
                     padding: 0;
+
+                    &:hover {
+                        color: #000;
+                        text-decoration: none;
+                    }
                 }
             }
 

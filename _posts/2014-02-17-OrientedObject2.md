@@ -2,6 +2,8 @@
 layout: post
 title: 深刻理解JavaScrip基于原型的面向对象 - 面向对象设计
 tag: JS
+addr: Sysu, Guangzhou
+
 ---
 
 一、饱受争议的Javascript

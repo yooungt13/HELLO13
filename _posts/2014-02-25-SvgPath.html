@@ -2,6 +2,8 @@
 layout: post
 title: Draw a Moving Line
 tag: CSS
+addr: Sysu, Guangzhou
+
 ---
 
 <strong>原文链接：</strong> <a href="http://www.webhek.com/animated-line-drawing-in-svg/">[传送门]</a><br>
@@ -51,7 +53,7 @@ SVG里用来定义路径的格式堪比正则表达式的怪异：<br><br>
 　　属性stroke-dasharray是让你指定画出的线段每段的长度，第二个值是各段之间空隙的长度。属性stroke-dashoffset是让你指定每个小段的起始偏移量。将线段长度与线段间隔设置为路径长度，通过改变线段起始偏移量可以则可以使线段动起来。<br>
 <br>
 {% highlight javascript %}
-function RunLine () {		
+function RunLine () {
     var path = document.querySelector('.containner path');
     var length = path.getTotalLength();
 
@@ -72,9 +74,9 @@ function RunLine () {
 }
 {% endhighlight %}
 
-	
+
 <script>
-	function RunLine () {		
+	function RunLine () {
 		var path = document.querySelector('.containner path');
 		var length = path.getTotalLength();
 

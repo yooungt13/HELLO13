@@ -2,6 +2,8 @@
 layout: post
 title: JavaScript模拟简单运动学
 tag: JS
+addr: Sysu, Guangzhou
+
 ---
 <style>
 	#container {
@@ -38,11 +40,11 @@ tag: JS
 		moveEl.style.left = 0 + 'px';
 
 		var moveTimer = setInterval(function(){
-			
+
 			nowTop = parseInt(moveEl.style.top);
 			nowLeft = parseInt(moveEl.style.left);
 
-			nowLeft += 1;			
+			nowLeft += 1;
 			switch(direction) {
 				case "up": moveUp(); break;
 				case "down": moveDown(); break;

@@ -2,6 +2,7 @@
 layout: post
 title: Css Snippets
 tag: CSS
+addr: Sysu, Guangzhou
 ---
 
 1. DIV Centering

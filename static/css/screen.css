@@ -163,10 +163,26 @@ footer {
   z-index: 100; }
 
 /*****************************************************************************/
-#related {
+.content {
+  min-height: 3rem; }
+
+.related {
   margin-top: .3rem; }
-  #related h2 {
+  .related h2 {
     margin-bottom: .1rem; }
+
+.posts {
+  list-style-type: none;
+  width: 100%; }
+  .posts li {
+    line-height: 1.7;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; }
+  .posts span {
+    color: #aaa;
+    font-family: Monaco, Courier New, monospace;
+    font-size: 80%; }
 
 .wrap_proj {
   background: #000;
@@ -200,26 +216,6 @@ footer {
   .backToTop:before {
     content: "";
     font-size: .16rem; }
-
-.posts {
-  list-style-type: none;
-  width: 100%; }
-  .posts li {
-    line-height: 1.7;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis; }
-  .posts span {
-    color: #aaa;
-    font-family: Monaco, Courier New, monospace;
-    font-size: 80%; }
-
-#post pre.terminal {
-  border: 1px solid #000;
-  background-color: #333;
-  color: #fff; }
-  #post pre.terminal code {
-    background-color: #333; }
 
 /*****************************************************************************/
 .preload {
@@ -299,7 +295,7 @@ footer {
 /*****************************************************************************/
 @font-face {
   font-family: "fontawesome";
-  src: url("../font/fontawesome-webfont.woff2?v=4.4.0") format("woff"); }
+  src: url("../font/fontawesome-webfont.woff?v=4.4.0") format("woff"); }
 
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation: portrait) {
   * {
@@ -344,5 +340,8 @@ footer {
         line-height: .24rem;
         height: .24rem;
         padding: 0; }
+        header .menu-expand .menu-list dl:hover {
+          color: #000;
+          text-decoration: none; }
   .github-fork {
     display: none; } }

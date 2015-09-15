@@ -7,15 +7,21 @@
         document.body.scrollTop = 0;
     });
 
-    $(window).on('scroll', function() {
+    $(window).on('scroll', debounce(function() {
         if( $('body').scrollTop() > 0 ) {
             $trigger.css('display', 'block');
         } else {
             $trigger.css('display', 'none');
         }
-    });
+    }, 250));
 
-    $('.menu-icon').on('click', function() {
+    $(window).on('resize', debounce(function() {
+        if( $(window).width() < $('section').width() ) {
+            alert('再小就要压扁了。');
+        }
+    }, 250));
+
+    $(document).on('click', '.menu-icon', function() {
         var $menu = $('.menu');
         if( $menu.hasClass('menu-expand') ) {
             $('.menu').removeClass('menu-expand');
@@ -34,12 +40,6 @@
         }
     });
 
-    $(window).on('resize', function(event) {
-        if( $(window).width() < $('section').width() ) {
-            alert('再小就要压扁了。');
-        }
-    });
-
     $(document).ready(function() {
         if(!isMobile()) {
             var $fork = $('<a class="github-fork" href="http://github.com/yooungt13"><img src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" /></a>');
@@ -53,6 +53,18 @@
     function isMobile() {
         var u = navigator.userAgent;
         return !!u.match(/.*Mobile.*/);
+    }
+
+    function debounce(action, delay) {
+        var last;
+        return function() {
+            var ctx = this, args = arguments;
+            clearTimeout(last);
+
+            last = setTimeout(function() {
+                action.apply(ctx, args);
+            }, delay);
+        };
     }
 
 })();

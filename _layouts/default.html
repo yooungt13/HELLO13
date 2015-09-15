@@ -17,14 +17,12 @@
         <meta name="keywords" content="{{ page.keywords | join: ',' }}" />
         <!-- Mobile Specific Metas
         ================================================== -->
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+        <meta content="telephone=no" name="format-detection" />
 
-        <!--build:css /static/css/screen.min.css-->
-        <link rel="stylesheet" href="/static/css/screen.css" media="screen, projection" />
-        <link rel="stylesheet" href="/static/css/syntax.css" />
-        <link rel="stylesheet" href="/static/css/md.css" media="screen, projection" />
-        <!--endbuild-->
+        <link rel="stylesheet" href="/static/css/screen.min.css">
     </head>
     <body>
         <header>
@@ -63,11 +61,7 @@
             </footer>
         </section>
 
-        <!--build:js /static/js/page.min.js -->
-        <script src="/static/js/lib/zepto.min.js"></script>
-        <script src="/static/js/util/fastclick.js"></script>
-        <script src="/static/js/page.js"></script>
-        <!-- endbuild -->
+        <script src="/static/js/page.min.js"></script>
 
         <!--*********************************************************-->
         <!--******************Copyright @有田十三**********************-->

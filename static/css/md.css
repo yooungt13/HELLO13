@@ -353,7 +353,7 @@
 }
 
 .markdown-body p {
-  text-align: justify;
+  /*text-align: justify;*/
 }
 
 .markdown-body hr {

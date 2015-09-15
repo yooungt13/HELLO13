@@ -17,7 +17,7 @@ html {
 
 body {
   height: 100%;
-  font: .16rem "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font: 0.16rem "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: 300;
   *font-size: small;
   text-align: center;
@@ -73,8 +73,9 @@ header {
 
 nav {
   margin: 0 auto;
-  width: 60%;
-  min-width: 3.75rem;
+  width: 100%;
+  max-width: 8rem;
+  box-sizing: border-box;
   padding: 0 0.24rem;
   display: inline-block;
   height: .44rem;
@@ -131,8 +132,9 @@ article {
 section {
   font-size: 110%;
   text-align: left;
-  width: 60%;
-  min-width: 3.75rem;
+  width: 100%;
+  max-width: 8rem;
+  box-sizing: border-box;
   margin: 0 auto;
   padding: 0.44rem 0.24rem 0;
   line-height: 1.5em; }
@@ -181,8 +183,11 @@ footer {
     text-overflow: ellipsis; }
   .posts span {
     color: #aaa;
-    font-family: Monaco, Courier New, monospace;
+    font-family: sans-serif, Courier New, "Lucida Grande";
     font-size: 80%; }
+
+.highlight {
+  -webkit-font-smoothing: subpixel-antialiased; }
 
 .wrap_proj {
   background: #000;

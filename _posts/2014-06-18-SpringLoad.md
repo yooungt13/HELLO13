@@ -10,7 +10,7 @@ keywords: jQuery,spring,瀑布流,加载图片
 获取当前documents的scrollTop为docTop，浏览器窗口高度为winHeight以及container高度为contentHeight。通过scroll事件触发判断机制，若docTop + winHeight >= contentHeight，则对每一列加载图片。
 
 
-{% highlight html %}
+{% highlight html linenos %}
 <div class="albums" id="albums">
     <div class="col" id="col1"></div>
     <div class="col" id="col2"></div>
@@ -20,7 +20,7 @@ keywords: jQuery,spring,瀑布流,加载图片
 </div>
 {% endhighlight %}
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 $(function(){
     var winHeight = $(window).height(),
         picno = 0;

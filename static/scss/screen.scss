@@ -24,10 +24,8 @@ html {
 
 body {
     height: 100%;
-    font: .16rem "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font: .16rem $font_0, $font_1, $font_2, $font_3, $font_4, $font_5, $font_6;
     font-weight: 300;
-
-    // font: .16rem $font_0, $font_1, $font_2, $font_3;
     *font-size: small;
     text-align: center;
     overflow-x: hidden;
@@ -99,8 +97,9 @@ header {
 
 nav {
     margin: 0 auto;
-    width: 60%;
-    min-width: 3.75rem;
+    width: 100%;
+    max-width: 8rem;
+    box-sizing: border-box;
 
     padding: 0 .24rem;
     display: inline-block;
@@ -190,8 +189,9 @@ article {
 section {
     font-size: 110%;
     text-align: left;
-    width: 60%;
-    min-width: 3.75rem;
+    width: 100%;
+    max-width: 8rem;
+    box-sizing: border-box;
     margin: 0 auto;
     padding: .44rem .24rem 0;
     line-height: 1.5em;
@@ -265,6 +265,10 @@ footer {
         font-family: $font_6, $font_7, $font_5;
         font-size: 80%;
     }
+}
+
+.highlight {
+    -webkit-font-smoothing: subpixel-antialiased;
 }
 
 .wrap_proj {

@@ -1,9 +1,7 @@
 .highlight  {
-	/*padding: 1em; */
-	font-size: 95% helvetica, arial, clean, sans-serif;
-/*	border-radius: 5px;
-	margin-top: 0.5em;
-	margin-bottom: 1.5em;*/
+	font-size: 100% helvetica, arial, clean, sans-serif;
+	border-radius: 5px;
+	margin-top: .16rem;
 }
 .highlight pre{ word-wrap:break-word; background: #000 !important;}
 .highlight .hll { background-color: #49483e }
@@ -65,3 +63,5 @@
 .highlight .vg { color: #f8f8f2 } /* Name.Variable.Global */
 .highlight .vi { color: #f8f8f2 } /* Name.Variable.Instance */
 .highlight .il { color: #ae81ff } /* Literal.Number.Integer.Long */
+
+.lineno { color: #75715e;}

@@ -16,7 +16,7 @@
     }, 250));
 
     $(window).on('resize', debounce(function() {
-        if( $(window).width() < $('section').width() ) {
+        if( $(window).width() < 375 ) {
             alert('再小就要压扁了。');
         }
     }, 250));

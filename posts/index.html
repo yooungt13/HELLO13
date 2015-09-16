@@ -24,6 +24,12 @@ keywords: 有田十三,javascript,web,github,blog
 	<ul class="posts">
 		{% for post in site.tags.Sicily %}
 			<li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+<!-- 		{% if post.content contains '<!\-\-more\-\->' %}
+                {{ post.content | split:'more' | first }}
+            {% else %}
+                {{ post.excerpt }}
+            {% endif %}
+            <a href="{{ post.url }}">more</a>-->
 		{% endfor %}
 	</ul>
 	<h1 id="ds">Data Structrue by JS</h1>

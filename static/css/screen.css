@@ -302,7 +302,7 @@ footer {
   font-family: "fontawesome";
   src: url("../font/fontawesome-webfont.woff?v=4.4.0") format("woff"); }
 
-@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation: portrait) {
+@media only screen and (max-device-width: 667px) and (orientation: portrait) {
   * {
     box-sizing: border-box; }
   header, nav, section {

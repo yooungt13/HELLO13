@@ -14,7 +14,7 @@ var runSequence = require('run-sequence');
  * 开发环境
  */
 
- gulp.task('server', function(cb) {
+gulp.task('server', function(cb) {
     // build Jekyll
     exec('jekyll serve').stdout.on('data', function(chunk) {
         console.log(chunk);
@@ -24,7 +24,7 @@ var runSequence = require('run-sequence');
 
 });
 
- gulp.task('sass', function() {
+gulp.task('sass', function() {
     // Gets all files ending with .scss in static/scss and children dirs
     return gulp.src('static/scss/*.scss')
     .pipe(sass())
@@ -65,7 +65,7 @@ gulp.task('backup', function(){
 // push到github
 gulp.task('push2git', function(){
     var cmd = 'git add .;git commit -m "Gulp Deploy.";git push origin';
-    exec(cmd, function(err, stdout, stderr) {
+    exec(cmd, function(err, stdout) {
         if(err) {
             console.log('Git push:' + err);
         } else {
@@ -84,4 +84,4 @@ gulp.task('deploy', function(){
 
         console.log('Deploy complete.');
     });
-    });
+});

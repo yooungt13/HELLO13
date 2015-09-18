@@ -7,7 +7,7 @@ addr: Sysu, Guangzhou
 ---
 
 游戏截图
-![img](/public/images/fb.png)
+![img](/static/img/fb.png)
 
 
 有关实现说明已发CSDN：[传送门](http://blog.csdn.net/yooungt13/article/details/19555471)

@@ -20,7 +20,7 @@ webkit浏览器CSS设置滚动条
 7. ::-webkit-resizer                定义右下角拖动块的样式
 
 具体所指如图例
-![img](/public/images/scrollbarparts.png)
+![img](/static/img/scrollbarparts.png)
 
 
 实例(本站scrollbar)：

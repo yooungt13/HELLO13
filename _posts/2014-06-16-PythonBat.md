@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Python批处理图片
+title: Image Bat in Python
 tag: JS
 addr: Sysu, Guangzhou
 description: Python IP Bat

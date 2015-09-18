@@ -493,8 +493,12 @@ footer {
                     padding: 0;
 
                     &:hover {
-                        color: #000;
-                        text-decoration: none;
+                        background: transparent;
+
+                        a {
+                            color: #fff;
+                            text-decoration: underline;
+                        }
                     }
                 }
             }

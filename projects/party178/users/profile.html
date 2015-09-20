@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>我有饭</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+<meta name="format-detection" content="telephone=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<!-- common css -->
+<link rel="stylesheet" type="text/css" href="../static/css/common.css">
+<link rel="stylesheet" type="text/css" href="../static/css/screen.css">
+<!-- common css -->
+</head>
+<body ontouchstart="">
+
+<header class="navbar ui-border-b">
+    <div class="pos pos-left">
+        <a href="javascripts:history.back();"><i class="icon-arrowleft"></i></a>
+    </div>
+    <h2 class="hdtitle ui-nowrap">个人资料</h2>
+    <!-- 这个div是用户
+    <div class="pos pos-right c-lgray l-lgray">
+        <div class="nav-user ui-nowrap"><a href="user.html">kakaxiren</a></div>
+    </div>
+    -->
+</header><!-- header end -->
+
+<div class="user-info">
+    <ul class="link-list ui-list ui-list-link">
+        <li class="ui-border-b" data-href="avatar.html">
+            <div class="ui-avatar">
+                <span style="background-image:url(../static/img/icon-photo.jpg)"></span>
+            </div>
+            <div class="ui-list-info">
+                <div class="badge-r"><span class="c-lgray4">修改头像</span></div>
+            </div>
+        </li>
+        <li class="ui-border-b" data-href="username.html">
+            <p>昵称</p>
+            <div class="badge-r"><span class="c-lgray4">有田十三</span></div>
+        </li>
+        <li class="ui-border-b" data-href="job.html">
+            <p>性别</p>
+            <div class="badge-r"><span class="c-lgray4"></span></div>
+        </li>
+        <li class="ui-border-b" data-href="job.html">
+            <p>生日</p>
+            <div class="badge-r"><span class="c-lgray4"></span></div>
+        </li>
+        <li class="ui-border-b" data-href="constellation.html">
+            <p>星座</p>
+            <div class="badge-r"><span class="c-lgray4"></span></div>
+        </li>
+        <li class="ui-border-b" data-href="phone.html">
+            <p>手机号</p>
+            <div class="badge-r"><span class="c-lgray4">186206673500</span></div>
+        </li>
+        <li class="ui-border-b" data-href="description.html">
+            <p>邮箱</p>
+            <div class="description c-lgray4"></div>
+        </li>
+        <li class="ui-border-b" data-href="requirement.html">
+            <p>公司名称</p>
+            <div class="description c-lgray4"></div>
+        </li>
+        <li class="ui-border-b" data-href="password.html">
+            <p>密码</p>
+            <div class="badge-r"><span class="c-lgray4 f-10">● ● ● ● ●</span></div>
+        </li>
+    </ul>
+    <a class="ui-btn-lg ui-btn-primary mt-30" href="logout">退出登录</.htmla>
+</div><!-- user info end -->
+
+<!-- common js -->
+<script src="../static/js/zepto.min.js"></script>
+<!-- common js end -->
+
+<script>
+    //添加列表链接
+    $('.link-list li').click(function(){
+        location.href= $(this).data('href');
+    });
+</script>
+</body>
+</html>

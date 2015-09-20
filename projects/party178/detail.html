@@ -95,8 +95,8 @@
 			<div class="container tab-wrap">
 				<div id="Tab1" class="tab-intro ui-tab">
 					<div class="pin-wrapper" style="height: 70px;">
-						<ul class="pinned ui-tab-nav ui-border-b2 l-gray" style="width: 345px;">
-							<li>
+						<ul class="pinned ui-tab-nav ui-border-b2 l-gray" style="width: 100%;">
+							<li style="padding: 5px;">
 								<a class="selected" href="#Tab1-1">
 									<div class="tab-ico">
 										<i class="icon-lg icon-lg-user"></i>
@@ -104,7 +104,7 @@
 									<div class="tab-txt">发起者介绍</div>
 								</a>
 							</li>
-							<li>
+							<li style="padding: 5px;">
 								<a href="#Tab1-2">
 									<div class="tab-ico">
 										<i class="icon-lg icon-lg-food"></i>
@@ -112,7 +112,7 @@
 									<div class="tab-txt">活动介绍</div>
 								</a>
 							</li>
-							<li>
+							<li style="padding: 5px;">
 								<a href="#Tab1-3">
 									<div class="tab-ico">
 										<i class="icon-lg icon-lg-bell"></i>
@@ -220,29 +220,16 @@
 	<!-- // 选择城市 end -->
 	<!-- common js -->
 	<script src="static/js/jquery.min.js"></script>
-	<script src="static/js/jquery.lazyload.min.js"></script>
 	<script src="static/js/jquery.idtabs.min.js"></script>
 	<script src="static/js/jquery.pin.min.js"></script>
 	<!-- common js end -->
 	<script>
 	$(function() {
-		$("img").lazyload({
-			effect: "fadeIn",
-			threshold: 400,
-		});
 
-		//选择城市
-		$("#selectCityBtn, #selectCity").click(function(){
-			$("#selectCity").toggleClass("open");
-		});
-
-		//添加列表链接
-		$('.link, .link-list li').click(function(){
-			location.href= $(this).data('href');
-		});
 		//选项卡
 		$("#Tab1 ul").idTabs();
 		$("#Tab2 ul").idTabs();
+
 		//固定选项卡
 		$(".pinned").pin({
 			containerSelector: ".container",

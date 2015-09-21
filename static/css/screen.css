@@ -33,9 +33,6 @@ h1 {
 h1, h2, h3, h4, h5, h6 {
   font-size: 100%; }
 
-p {
-  margin: 1em 0; }
-
 a {
   color: #000;
   background: transparent;
@@ -126,8 +123,7 @@ nav {
           text-decoration: underline; }
 
 article {
-  min-height: 50%;
-  padding-top: .24rem; }
+  min-height: 50%; }
 
 section {
   font-size: 110%;
@@ -153,9 +149,6 @@ footer {
     footer .contact:nth-of-type(2) {
       text-align: right; }
 
-.icon {
-  font-family: "fontawesome"; }
-
 .pagination {
   text-align: center; }
   .pagination ul {
@@ -174,7 +167,8 @@ footer {
         color: #428bca;
         background-color: #fff;
         border: 1px solid #ddd;
-        margin-left: -1px; }
+        margin-left: -1px;
+        cursor: pointer; }
         .pagination ul li a:hover, .pagination ul li span:hover {
           color: #2a6496;
           background-color: #eee;
@@ -201,20 +195,67 @@ footer {
 /*****************************************************************************/
 .content {
   min-height: 3rem; }
+  .content img {
+    margin: .1rem 0; }
 
 .related {
-  margin-top: .3rem; }
+  margin-top: .3rem;
+  margin-bottom: .1rem; }
   .related h2 {
     margin-bottom: .1rem; }
+  .related ul li {
+    background: white; }
 
 .posts {
   list-style-type: none;
   width: 100%; }
-  .posts li {
-    line-height: 1.7;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis; }
+  .posts .post {
+    background: #ddd;
+    border-radius: .05rem;
+    padding: 0.12rem 0.12rem;
+    margin-bottom: .12rem;
+    width: 100%; }
+    .posts .post .title {
+      margin: 0;
+      line-height: 1.7;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis; }
+    .posts .post .date {
+      margin-top: -.05rem; }
+    .posts .post .date + p {
+      font-size: 90%;
+      line-height: 1.4;
+      margin: .05rem 0; }
+      .posts .post .date + p:before {
+        font-family: "fontawesome";
+        content: "";
+        margin-right: .12rem; }
+      .posts .post .date + p:after {
+        font-family: "fontawesome";
+        content: "";
+        margin-left: .12rem; }
+    .posts .post .tags {
+      display: inline-block;
+      width: 80%; }
+      .posts .post .tags .tag {
+        color: #428bca;
+        text-decoration: none;
+        font-style: italic; }
+        .posts .post .tags .tag:after {
+          content: ','; }
+        .posts .post .tags .tag:last-child:after {
+          content: ''; }
+    .posts .post .more {
+      display: inline-block;
+      width: 20%;
+      text-align: right; }
+      .posts .post .more:after {
+        content: ""; }
+    .posts .post:first-child {
+      margin-top: .24rem; }
+    .posts .post:last-child {
+      margin-bottom: 0; }
   .posts span {
     color: #aaa;
     font-family: sans-serif, Courier New, "Lucida Grande";
@@ -330,6 +371,25 @@ footer {
     animation-fill-mode: both;
     -webkit-animation-iteration-count: infinite;
     animation-iteration-count: infinite; }
+
+/*****************************************************************************/
+.icon {
+  font-family: "fontawesome"; }
+
+.icon-tag:before {
+  content: ""; }
+
+.icon-tags:before {
+  content: ""; }
+
+.icon-quote-left:before {
+  content: ""; }
+
+.icon-quote-right:before {
+  content: ""; }
+
+.icon-angle-right:before {
+  content: ""; }
 
 /*****************************************************************************/
 @font-face {

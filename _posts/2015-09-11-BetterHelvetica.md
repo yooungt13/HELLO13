@@ -7,6 +7,9 @@ description: Better Helvetica
 keywords: css,html,font,有田十三
 ---
 
+Might as well use the nicest Helvetica you can.
+<!--more-->
+
 {% highlight css linenos %}
 body {
    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
@@ -14,4 +17,3 @@ body {
 }
 {% endhighlight%}
 
-Might as well use the nicest Helvetica you can...

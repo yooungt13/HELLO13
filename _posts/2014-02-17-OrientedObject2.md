@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 深刻理解JavaScrip基于原型的面向对象 - 面向对象设计
-tag: JS
+tag: [JS, prototype, oo]
 addr: Sysu, Guangzhou
 
 ---

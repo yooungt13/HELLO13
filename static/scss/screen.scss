@@ -43,10 +43,6 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 100%;
 }
 
-p {
-    margin: 1em 0;
-}
-
 a {
     color: $black;
     background: transparent;
@@ -183,7 +179,6 @@ nav {
 
 article {
     min-height: 50%;
-    padding-top: .24rem;
 }
 
 section {
@@ -218,10 +213,6 @@ footer {
     }
 }
 
-.icon {
-    font-family: $fa-font-name;
-}
-
 .pagination {
     text-align: center;
 
@@ -244,6 +235,7 @@ footer {
                 background-color: #fff;
                 border: 1px solid #ddd;
                 margin-left: -1px;
+                cursor: pointer;
 
                 &:hover {
                     color: #2a6496;
@@ -288,13 +280,24 @@ footer {
 
 .content {
     min-height: 3rem;
+
+    img {
+        margin: .1rem 0;
+    }
 }
 
 .related {
     margin-top: .3rem;
+    margin-bottom: .1rem;
 
     h2 {
         margin-bottom: .1rem;
+    }
+
+    ul {
+        li {
+            background: white;
+        }
     }
 }
 
@@ -302,11 +305,82 @@ footer {
     list-style-type: none;
     width: 100%;
 
-    li {
-        line-height: 1.7;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+    .post {
+        background: #ddd;
+        border-radius: .05rem;
+        padding: .12rem .12rem;
+        margin-bottom: .12rem;
+        width: 100%;
+
+        .title {
+            margin: 0;
+            line-height: 1.7;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .date {
+            margin-top: -.05rem;
+        }
+
+        .date + p {
+            font-size: 90%;
+            line-height: 1.4;
+            margin: .05rem 0;
+
+            &:before {
+                font-family: $fa-font-name;
+                content: $fa-var-quote-left;
+                margin-right: .12rem;
+            }
+
+            &:after {
+                font-family: $fa-font-name;
+                content: $fa-var-quote-right;
+                margin-left: .12rem;
+            }
+        }
+
+        .tags {
+            display: inline-block;
+            width: 80%;
+
+            .tag {
+                color: #428bca;
+                text-decoration: none;
+                font-style: italic;
+
+                &:after {
+                    content: ',';
+                }
+
+                &:last-child {
+                    &:after {
+                        content: '';
+                    }
+                }
+            }
+        }
+
+        .more {
+            display: inline-block;
+            width: 20%;
+            text-align: right;
+
+            &:after {
+                content: $fa-var-angle-right;
+            }
+        }
+
+        &:first-child {
+            margin-top: .24rem;
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
     }
 
     span {
@@ -322,13 +396,11 @@ footer {
 
 .wrap_proj {
     background: $black;
-    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
     border-radius: .05rem;
     margin-bottom: .2rem;
     padding: .16rem;
 
     &:hover {
-        //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
         transform: perspective(600px) translateZ(30px);
     }
 
@@ -470,6 +542,32 @@ footer {
 
 /*****************************************************************************/
 
+.icon {
+    font-family: $fa-font-name;
+}
+
+.icon-tag:before {
+    content: $fa-var-tag;
+}
+
+.icon-tags:before {
+    content: $fa-var-tags;
+}
+
+.icon-quote-left:before {
+    content: $fa-var-quote-left;
+}
+
+.icon-quote-right:before {
+    content: $fa-var-quote-right;
+}
+
+.icon-angle-right:before {
+    content: $fa-var-angle-right;
+}
+
+/*****************************************************************************/
+
 @font-face {
     font-family: $fa-font-name;
     src: url($fa-font-path) format("woff");
@@ -518,14 +616,12 @@ footer {
         }
 
         .menu-expand {
-            // float: none;
             border-radius: .05rem;
             border: 1px solid #e8e8e8;
             background-color: white;
             padding: 0 .1rem .1rem;
             margin-right: -.11rem;
             margin-top: .02rem;
-            // box-shadow: 0 .02rem .05rem 0.05rem white;
 
             .menu-icon {
                 margin-top: -.03rem;

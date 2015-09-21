@@ -7,6 +7,11 @@ permalink:   /:title
 highlighter: pygments
 markdown:    rdiscount
 
+paginate: 10
+paginate_path: '/posts/:num'
+
+excerpt_separator: "\n\n\n"
+
 #Basic Configuration
 title:       Hello13
 subTitle:    While we could survive and hope will grow up.

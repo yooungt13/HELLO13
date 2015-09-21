@@ -4,6 +4,7 @@ var exec = require('child_process').exec;
 
 var uglify = require('gulp-uglify');
 var minifyCSS = require('gulp-minify-css');
+var sprite = require('gulp.spritesmith');
 var useref = require('gulp-useref');
 var copy = require('gulp-copy');
 var gulpif = require('gulp-if');
@@ -35,6 +36,19 @@ gulp.task('sass', function() {
 gulp.task('watch', function(){
     // watchers
     gulp.watch('static/scss/*.scss', ['sass']);
+});
+
+gulp.task('sprite', function() {
+    var spriteOutput =
+        gulp.src("static/img/icon/*.png")
+            .pipe(sprite({
+                imgName: "sprite.png",
+                cssName: "sprite.css",
+                imgPath: "/static/img/sprite.png"
+            }));
+
+    spriteOutput.css.pipe(gulp.dest("static/css"));
+    spriteOutput.img.pipe(gulp.dest("static/img"));
 });
 
 /**

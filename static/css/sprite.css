@@ -1,0 +1,131 @@
+/*
+Icon classes can be used entirely standalone. They are named after their original file names.
+
+```html
+<!-- `display: block` sprite -->
+<div class="icon-home"></div>
+
+<!-- `display: inline-block` sprite -->
+<img class="icon-home" />
+```
+*/
+.icon-article {
+  background-image: url(/static/img/sprite.png);
+  background-position: -92px 0px;
+  width: 92px;
+  height: 92px;
+}
+.icon-briefcase {
+  background-image: url(/static/img/sprite.png);
+  background-position: -276px -92px;
+  width: 92px;
+  height: 92px;
+}
+.icon-calculator {
+  background-image: url(/static/img/sprite.png);
+  background-position: 0px -92px;
+  width: 92px;
+  height: 92px;
+}
+.icon-calendar {
+  background-image: url(/static/img/sprite.png);
+  background-position: -92px -92px;
+  width: 92px;
+  height: 92px;
+}
+.icon-camera {
+  background-image: url(/static/img/sprite.png);
+  background-position: -184px 0px;
+  width: 92px;
+  height: 92px;
+}
+.icon-clipboard {
+  background-image: url(/static/img/sprite.png);
+  background-position: -184px -92px;
+  width: 92px;
+  height: 92px;
+}
+.icon-clock {
+  background-image: url(/static/img/sprite.png);
+  background-position: 0px -184px;
+  width: 92px;
+  height: 92px;
+}
+.icon-cloud {
+  background-image: url(/static/img/sprite.png);
+  background-position: -92px -184px;
+  width: 92px;
+  height: 92px;
+}
+.icon-compass {
+  background-image: url(/static/img/sprite.png);
+  background-position: -184px -184px;
+  width: 92px;
+  height: 92px;
+}
+.icon-credit {
+  background-image: url(/static/img/sprite.png);
+  background-position: -276px 0px;
+  width: 92px;
+  height: 92px;
+}
+.icon-document {
+  background-image: url(/static/img/sprite.png);
+  background-position: 0px 0px;
+  width: 92px;
+  height: 92px;
+}
+.icon-location {
+  background-image: url(/static/img/sprite.png);
+  background-position: -276px -184px;
+  width: 92px;
+  height: 92px;
+}
+.icon-mail {
+  background-image: url(/static/img/sprite.png);
+  background-position: 0px -276px;
+  width: 92px;
+  height: 92px;
+}
+.icon-movies {
+  background-image: url(/static/img/sprite.png);
+  background-position: -92px -276px;
+  width: 92px;
+  height: 92px;
+}
+.icon-music {
+  background-image: url(/static/img/sprite.png);
+  background-position: -184px -276px;
+  width: 92px;
+  height: 92px;
+}
+.icon-notes {
+  background-image: url(/static/img/sprite.png);
+  background-position: -276px -276px;
+  width: 92px;
+  height: 92px;
+}
+.icon-photos {
+  background-image: url(/static/img/sprite.png);
+  background-position: -368px 0px;
+  width: 92px;
+  height: 92px;
+}
+.icon-search {
+  background-image: url(/static/img/sprite.png);
+  background-position: -368px -92px;
+  width: 92px;
+  height: 92px;
+}
+.icon-settings {
+  background-image: url(/static/img/sprite.png);
+  background-position: -368px -184px;
+  width: 92px;
+  height: 92px;
+}
+.icon-videos {
+  background-image: url(/static/img/sprite.png);
+  background-position: -368px -276px;
+  width: 92px;
+  height: 92px;
+}

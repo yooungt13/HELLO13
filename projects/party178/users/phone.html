@@ -1,65 +1,93 @@
 <!DOCTYPE HTML>
 <html>
-<head>
-<meta charset="utf-8">
-<title>我有饭</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
-<meta name="format-detection" content="telephone=no" />
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black" />
-<!-- common css -->
-<link rel="stylesheet" type="text/css" href="../static/css/common.css">
-<link rel="stylesheet" type="text/css" href="../static/css/screen.css">
-<!-- common css -->
-</head>
-<body ontouchstart="">
+    <head>
+        <meta charset="utf-8">
+        <title>        
+        178       
+        
+           | 完善手机号
+        
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+        <meta name="format-detection" content="telephone=no, email=no" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
-<header class="navbar ui-border-b">
-    <div class="pos pos-left">
-        <a href="/mobile/users/profile"><i class="icon-arrowleft"></i></a>
+        <!-- common css -->
+        <link rel="stylesheet" type="text/css" href="/static/css/common.css">
+        <link rel="stylesheet" type="text/css" href="/static/css/screen.css">
+        <link rel="stylesheet" type="text/css" href="/static/css/party.css">
+        <!-- common css end -->
+
+        <script src="/static/js/lib/require.js"></script>
+        <script>
+            require.config({
+                paths: {
+                    zepto: '/static/js/lib/zepto.min'
+                },
+                shim: {
+                    zepto: {
+                        exports: '$'
+                    }
+                }
+            });
+        </script>
+    </head>
+    <body ontouchstart="">
+        <header class="navbar ui-border-b">
+    <div class="pos pos-left party-back">
+        <a href=""><i class="icon-arrowleft"></i></a>
     </div>
     <h2 class="hdtitle ui-nowrap">完善手机号</h2>
+    
     <div class="pos pos-right c-lgray l-gold">
-        <a href="javascript::void();" onclick="form_submit();">保存</a>
+        <a>保存</a>
     </div>
+    
 </header><!-- header end -->
-
-<div class="user user-form2 mt-30 user-mobile">
-	
-	<form  id="form"  action="/mobile/users/check_phone" method="post" accept-charset="utf-8" enctype="multipart/form-data">
-		<input type="hidden" name="_token" value="VKJm8Yu2hQJSklsLjKWOSPJrAKSlIOeMTK0VTfcQ">
+        <div class="user user-form2 mt-30 user-mobile">
     <div class="ui-form-item">
-        <input type="text" name="phone" placeholder="请输入手机号" />
+        <input type="text" name="phone" placeholder="请输入手机号" maxlength="11" autocomplete="off"/>
         <a class="ui-btn btn-code" id="send_code">发送验证码</a>
     </div>
     <div class="ui-form-item">
-        <input type="text" name="validation_code" placeholder="请输入验证码" />
+        <input type="text" name="validation_code" placeholder="请输入验证码" maxlength="4" autocomplete="off"/>
     </div>
-</form>
 </div><!-- user mobile end -->
 
-<script src="../static/js/zepto.min.js"></script>
-<!-- common js end -->
 <script>
-$("#send_code").on("click",function(){
-	if($("input[name='phone']").val()=="" || $("input[name='phone']").val().length != 11){
-		alert("请输入正确的手机号");	
-		return;
-	}
-	$.get( "/mobile/users/validation_phone?phone="+$("input[name='phone']").val(), function( data ) {
+    require(['zepto'], function($) {
+		$("#send_code").on("click",function(){
+			if($("input[name='phone']").val()=="" || $("input[name='phone']").val().length != 11){
+				alert("请输入正确的手机号");	
+				return;
+			}
+			$.get( "/mobile/users/validation_phone?phone="+$("input[name='phone']").val(), function( data ) {
 
-	 	alert(data.message);
-		//alert("验证码已经发送到手机");
-		$("#send_code").hide();
+			 	alert(data.message);
+				//alert("验证码已经发送到手机");
+				$("#send_code").hide();
+			});
+		});
 	});
-	
-	
-});
-
-	function form_submit() {
-		$("#form").submit();
-	}
 </script>
 
 </body>
 </html>
+
+
+        <script>
+            require(['zepto'], function($) {
+                //添加列表链接
+                $('.link-list li').on('click', function(){
+                    location.href= $(this).data('href');
+                });
+
+                $('.party-back').on('click', function(){
+                    history.back();
+                });
+            });
+        </script>
+    </body>
+</html>
+                    

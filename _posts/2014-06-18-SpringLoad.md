@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Spring Image Lodaer in jQuery
+title: Spring Image Loader in jQuery
 tag: JS
 addr: Sysu, Guangzhou
 description: jQuery实现瀑布流加载图片

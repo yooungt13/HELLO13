@@ -2072,7 +2072,6 @@ window.$ === undefined && (window.$ = Zepto)
                         touch = {}
                     }
                 deltaX = deltaY = 0
-
             })
             // when the browser window loses focus,
             // for example when a modal dialog is shown,

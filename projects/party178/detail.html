@@ -1,8 +1,63 @@
----
-layout: default
----
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> 
+        178       
+        
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+        <meta name="format-detection" content="telephone=no, email=no" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
-<div class="c">
+        <!-- common css -->
+        <link rel="stylesheet" type="text/css" href="http://hello13.net/projects/party178/static/css/common.css">
+        <link rel="stylesheet" type="text/css" href="http://hello13.net/projects/party178/static/css/screen.css">
+        <link rel="stylesheet" type="text/css" href="http://hello13.net/projects/party178/static/css/party.css">
+        <!-- common css end -->
+
+        <script src="http://hello13.net/projects/party178/static/js/lib/require.js"></script>
+        <script>
+            require.config({
+                baseUrl: 'http://hello13.net/projects/party178/static/js',
+                paths: {
+                    zepto: 'lib/zepto',
+                    fastclick: 'util/fastclick'
+                },
+                shim: {
+                    zepto: { exports: '$' },
+                    fastclick: { exports: 'fastclick' }
+                }
+            });
+        </script>
+    </head>
+    <body ontouchstart="">
+        
+            <header class="navbar ui-border-b">
+    <div id="selectCityBtn" class="pos pos-left l-gray">
+        <a class="l-city">北京<i class="icon-arrowdown"></i></a>
+    </div>
+    <h2 class="hdtitle ui-nowrap">
+        <a href="acts/create.html">
+            <img class="logo" src="http://hello13.net/projects/party178/static/img/logo.png" alt="178" />发起邀约
+        </a>
+    </h2>
+    <!-- 若未登录，则不显示此div -->
+    <div class="navbar-user pos pos-right c-lgray l-lgray">
+        <div class="nav-user">
+            <a href="users/home.html">
+                <div class="avatar-hd">
+                    <!-- 若登录为提交头像则显示照相机，否则显示头像 -->
+                    <!-- <img src="static/img/icon-photo.jpg" /> -->
+                    <img src="http://hello13.net/projects/party178/static/img/avatar.png" />
+                </div>
+            </a>
+        </div>
+    </div>
+</header><!-- header end -->
+        
+        <div class="c">
 	<div class="details">
 		<div class="thumbnail">
 			<a href=""><img src="http://hello13.net/projects/party178/static/img/activity.png" alt=""></a>
@@ -190,3 +245,28 @@ layout: default
 		tab('#tab');
 	});
 </script>
+
+        <script>
+            require(['zepto','fastclick'], function($, fc) {
+
+                //选择城市
+                $(document).on('click', '#selectCityBtn, #selectCity', function(){
+                    $("#selectCity").toggleClass("open");
+                });
+
+                //添加列表链接
+                $(document).on('click', '.link-list li', function(){
+                    location.href = $(this).data('href');
+                });
+
+                $(document).on('click', '.party-back', function(e){
+
+                    window.history.back();
+                });
+
+                fc.attach(document.body);
+            });
+        </script>
+    </body>
+</html>
+                    

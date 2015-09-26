@@ -61,7 +61,7 @@
     <div class="index">
         <div class="thumbnail ui-border-b">
             <div class="pic">
-                <a href="detail.html"><img class="lazy" data-original="static/img/activity.png" /></a>
+                <a href="detail.html"><img class="party-lazy" data-original="http://hello13.net/projects/static/img/activity.png" /></a>
             </div>
             <div class="caption">
                 <div class="link" data-href="">
@@ -123,7 +123,7 @@
 
 <script>
     require(['zepto','util/lazyload'], function($) {
-        $('.lazy').lazyload({
+        $('.party-lazy').lazyload({
             effect : "fadeIn"
         });
     });
@@ -143,7 +143,6 @@
                 });
 
                 $(document).on('click', '.party-back', function(e){
-
                     window.history.back();
                 });
 

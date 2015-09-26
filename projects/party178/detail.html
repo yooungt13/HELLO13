@@ -109,7 +109,7 @@
 				</li>
 			</ul>
 			<div class="btn-wrap2">
-				<a class="ui-btn-lg ui-btn-primary" href="acts/join.html">参加活动</a>
+				<a class="ui-btn-lg ui-btn-primary" id="submit">参加活动</a>
 				<div class="date-wrap2 ac">
 					<span class="f-14 c-lgray4">报名截止时间：2015-09-22 19:00 星期二</span>
 				</div>
@@ -241,9 +241,14 @@
 </div>
 
 <script>
-	require(['util/tab'], function(tab) {
+	require(['util/tab', 'util/msg'], function(tab, msg) {
 		tab('#tab');
-	});
+
+        $(document).on('click', '#submit', function() {
+            // 如果符合条件，则提交
+            msg.alert('局主正在确定谁来参加，请等待客服通知');
+        });
+    });
 </script>
 
         <script>

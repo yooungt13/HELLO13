@@ -74,15 +74,6 @@
     <a class="ui-btn-lg ui-btn-primary mt-30" id="submit">发起邀约</a>
 </div><!-- user info end -->
 
-<script>
-    require(['zepto', 'util/msg'], function($, msg) {
-        $(document).on('click', '#submit', function() {
-            // 如果符合条件，则提交
-            msg.alert('局主正在确定谁来参加，请等待客服通知');
-
-        });
-    });
-</script>
 
         <script>
             require(['zepto','fastclick'], function($, fc) {

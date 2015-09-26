@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> 
+        178       
+        
+           | 个人中心
+        
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+        <meta name="format-detection" content="telephone=no, email=no" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+        <!-- common css -->
+        <link rel="stylesheet" type="text/css" href="http://hello13.net/projects/party178/static/css/common.css">
+        <link rel="stylesheet" type="text/css" href="http://hello13.net/projects/party178/static/css/screen.css">
+        <link rel="stylesheet" type="text/css" href="http://hello13.net/projects/party178/static/css/party.css">
+        <!-- common css end -->
+
+        <script src="http://hello13.net/projects/party178/static/js/lib/require.js"></script>
+        <script>
+            require.config({
+                baseUrl: 'http://hello13.net/projects/party178/static/js',
+                paths: {
+                    zepto: 'lib/zepto',
+                    fastclick: 'util/fastclick'
+                },
+                shim: {
+                    zepto: { exports: '$' },
+                    fastclick: { exports: 'fastclick' }
+                }
+            });
+        </script>
+    </head>
+    <body ontouchstart="">
+        
+            <header class="navbar ui-border-b">
+    <div class="pos pos-left party-back">
+        <i class="icon-arrowleft"></i>
+    </div>
+    <h2 class="hdtitle ui-nowrap">个人中心</h2>
+    
+</header><!-- header end -->
+        
+        <ul class="link-list user-index ui-list ui-list-link">
+    <li class="ui-border-b" data-href="/users/profile.html">
+        <div class="ui-avatar">
+            <span style="background-image:url(/static/img/icon-photo.jpg)"></span>
+        </div>
+        <div class="ui-list-info">
+            <h4 class="ui-nowrap">有田十三</h4>
+            <p class="mt-5">
+                <span class="c-lgray4">个人信息完善度</span>
+                <span class="c-gold">40%</span>
+            </p>
+        </div>
+    </li>
+    <li class="ui-border-b" data-href="/acts/joined.html">
+        <p>我参与的局</p>
+        <div class="badge-r"><span class="c-gold">10</span></div>
+    </li>
+        <li class="ui-border-b" data-href="/acts/created.html">
+        <p>我发起的局</p>
+        <div class="badge-r"><span class="c-gold">0</span></div>
+    </li>
+    <div class="ui-border-b" id="grouper" style="padding: 25px 15px;">
+        <p>3v3 Grouper的玩法</p>
+    </div>
+</ul><!-- user end -->
+
+
+<script>
+require(['zepto','util/msg'], function($, msg) {
+    $(document).on('click', '#grouper', function() {
+        msg.alert('3对3:发起人和参加人各带两个朋友参加哦<br/>同理2对2,就是各带一个');
+    });
+});
+</script>
+
+        <script>
+            require(['zepto','fastclick'], function($, fc) {
+
+                //选择城市
+                $(document).on('click', '#selectCityBtn, #selectCity', function(){
+                    $("#selectCity").toggleClass("open");
+                });
+
+                //添加列表链接
+                $(document).on('click', '.link-list li', function(){
+                    location.href = $(this).data('href');
+                });
+
+                $(document).on('click', '.party-back', function(e){
+
+                    window.history.back();
+                });
+
+                fc.attach(document.body);
+            });
+        </script>
+    </body>
+</html>
+                    

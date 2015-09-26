@@ -1,0 +1,46 @@
+---
+layout: default
+nav: profile
+title: 发起邀约
+---
+
+
+<div class="user-info">
+    <ul class="link-list ui-list ui-list-link">
+        <li class="ui-border-b" data-href="type.html">
+            <p>活动类型</p>
+            <div class="badge-r"><span class="c-lgray4">酒会</span></div>
+        </li>
+        <li class="ui-border-b" data-href="address.html">
+            <p>地址</p>
+            <div class="badge-r"><span class="c-lgray4">北京</span></div>
+        </li>
+        <li class="ui-border-b" data-href="date.html">
+            <p>活动时间</p>
+            <div class="badge-r"><span class="c-lgray4">2015-09-20</span></div>
+        </li>
+        <li class="ui-border-b" data-href="number.html">
+            <p>人数</p><span class="party-text-weak">（注：需带一位朋友）</span>
+            <div class="badge-r"><span class="c-lgray4">2v2</span></div>
+        </li>
+        <li class="ui-border-b" data-href="poi.html">
+            <p>商圈</p>
+            <div class="badge-r"><span class="c-lgray4">三里屯</span></div>
+        </li>
+        <li class="ui-border-b" data-href="money.html">
+            <p>费用</p>
+            <div class="description c-lgray4">AA制</div>
+        </li>
+    </ul>
+    <a class="ui-btn-lg ui-btn-primary mt-30" id="submit">发起邀约</a>
+</div><!-- user info end -->
+
+<script>
+    require(['zepto', 'util/msg'], function($, msg) {
+        $(document).on('click', '#submit', function() {
+            // 如果符合条件，则提交
+            msg.alert('局主正在确定谁来参加，请等待客服通知');
+
+        });
+    });
+</script>

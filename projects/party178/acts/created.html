@@ -1,0 +1,62 @@
+---
+layout: default
+nav: profile
+title: 我发起的局
+---
+
+<div class="collect">
+    <div class="ui-tab ui-tab2">
+        <ul class="ui-tab-nav ui-border-b2" id="tab">
+            <li class="party-active" tab-target="now">
+                <span>正在进行</span>
+            </li>
+            <li tab-target="before"><span>往期活动</span></li>
+        </ul>
+        <div id="now" class="ui-tab-content">
+            <div class="index">
+                <div class="thumbnail ui-border-b">
+                    <div class="pic">
+                        <a href="detail.html"><img src="http://hello13.net/projects/party178/static/img/activity.png" /></a>
+                    </div>
+                    <div class="caption">
+                        <div class="link" data-href="">
+                            <!-- 第一标题 -->
+                            <h3>行走意大利，寻找旅行的意义</h3>
+                            <!-- 第二标题 -->
+                            <!-- <p class="f-16 mb5">地道湖南湘味，正宗家乡食材，只为&ldquo;怕不辣&rdquo;&nbsp;&nbsp;&nbsp; </p> -->
+                            <p class="mb5"><i class="icon-date"></i><span class="f-14 c-lgray2">组局时间：2015-09-23 19:00 星期三</span></p>
+                            <div class="rel">
+                                <span class="f-22 c-gold">198元</span><span class="f-14 c-lgray2">/位</span>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- thumbnail end -->
+            </div>
+        </div>
+        <div id="before" class="ui-tab-content" style="display: none;">
+            <div class="index">
+                <div class="thumbnail ui-border-b">
+                    <div class="pic">
+                        <a href="detail.html"><img src="http://hello13.net/projects/party178/static/img/activity2.png" /></a>
+                    </div>
+                    <div class="caption">
+                        <div class="link" data-href="">
+                            <!-- 第一标题 -->
+                            <h3>神的孩子都去尼泊尔</h3>
+                            <p class="mb5"><i class="icon-date"></i><span class="f-14 c-lgray2">组局时间：2015-09-23 19:00 星期三</span></p>
+                            <div class="rel">
+                                <span class="f-22 c-gold">198元</span><span class="f-14 c-lgray2">/位</span>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- thumbnail end -->
+            </div>
+        </div>
+    </div><!-- tabs end -->
+</div><!-- container end -->
+
+<script>
+    require(['util/tab'], function(tab) {
+        tab('#tab');
+    });
+</script>

@@ -1,51 +1,11 @@
-<!DOCTYPE HTML>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>        
-        178       
-        
-           | 完善手机号
-        
-        </title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
-        <meta name="format-detection" content="telephone=no, email=no" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+---
+layout: default
+nav: profile
+title: 完善手机号
+action: 保存
+---
 
-        <!-- common css -->
-        <link rel="stylesheet" type="text/css" href="static/css/common.css">
-        <link rel="stylesheet" type="text/css" href="static/css/screen.css">
-        <link rel="stylesheet" type="text/css" href="static/css/party.css">
-        <!-- common css end -->
-
-        <script src="static/js/lib/require.js"></script>
-        <script>
-            require.config({
-                paths: {
-                    zepto: 'static/js/lib/zepto.min'
-                },
-                shim: {
-                    zepto: {
-                        exports: '$'
-                    }
-                }
-            });
-        </script>
-    </head>
-    <body ontouchstart="">
-        <header class="navbar ui-border-b">
-    <div class="pos pos-left party-back">
-        <a href=""><i class="icon-arrowleft"></i></a>
-    </div>
-    <h2 class="hdtitle ui-nowrap">完善手机号</h2>
-    
-    <div class="pos pos-right c-lgray l-gold">
-        <a>保存</a>
-    </div>
-    
-</header><!-- header end -->
-        <div class="user user-form2 mt-30 user-mobile">
+<div class="user user-form2 mt-30 user-mobile">
     <div class="ui-form-item">
         <input type="text" name="phone" placeholder="请输入手机号" maxlength="11" autocomplete="off"/>
         <a class="ui-btn btn-code" id="send_code">发送验证码</a>
@@ -74,20 +34,3 @@
 
 </body>
 </html>
-
-
-        <script>
-            require(['zepto'], function($) {
-                //添加列表链接
-                $('.link-list li').on('click', function(){
-                    location.href= $(this).data('href');
-                });
-
-                $('.party-back').on('click', function(){
-                    history.back();
-                });
-            });
-        </script>
-    </body>
-</html>
-                    

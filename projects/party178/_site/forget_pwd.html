@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> 
+        178       
+        
+           | 找回密码
+        
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+        <meta name="format-detection" content="telephone=no, email=no" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+        <!-- common css -->
+        <link rel="stylesheet" type="text/css" href="http://hello13.net/projects/party178/static/css/common.css">
+        <link rel="stylesheet" type="text/css" href="http://hello13.net/projects/party178/static/css/screen.css">
+        <link rel="stylesheet" type="text/css" href="http://hello13.net/projects/party178/static/css/party.css">
+        <!-- common css end -->
+
+        <script src="http://hello13.net/projects/party178/static/js/lib/require.js"></script>
+        <script>
+            require.config({
+                baseUrl: 'http://hello13.net/projects/party178/static/js',
+                paths: {
+                    zepto: 'lib/zepto',
+                    fastclick: 'util/fastclick'
+                },
+                shim: {
+                    zepto: { exports: '$' },
+                    fastclick: { exports: 'fastclick' }
+                }
+            });
+        </script>
+    </head>
+    <body ontouchstart="">
+        
+            <header class="navbar ui-border-b">
+    <div class="pos pos-left party-back">
+        <i class="icon-arrowleft"></i>
+    </div>
+    <h2 class="hdtitle ui-nowrap">找回密码</h2>
+    
+    <div class="pos pos-right c-lgray l-gold">
+        <a class="page-action">下一步</a>
+    </div>
+    
+</header><!-- header end -->
+        
+        <div class="user user-form2 mt-30 user-new-psw psw-find">
+    <div class="ui-form-item">
+        <input type="text" name="phone" placeholder="输入注册手机号" maxlength="11" autocomplete="off"/>
+        <a class="ui-btn ui-btn-primary" id="send_code" href="#"><span style="display:inline;">发送验证码</span></a>
+    </div>
+    <div class="ui-form-item">
+        <input type="text" name="validation_code" placeholder="输入验证码" maxlength="4" autocomplete="off"/>
+    </div>
+</div><!-- user psw new end -->
+
+<script>
+	require(['zepto'], function() {
+		$('.page-action').attr('href', '/users/password.html');
+	});
+</script>
+
+
+
+        <script>
+            require(['zepto','fastclick'], function($, fc) {
+
+                //选择城市
+                $(document).on('click', '#selectCityBtn, #selectCity', function(){
+                    $("#selectCity").toggleClass("open");
+                });
+
+                //添加列表链接
+                $(document).on('click', '.link-list li', function(){
+                    location.href = $(this).data('href');
+                });
+
+                $(document).on('click', '.party-back', function(e){
+
+                    window.history.back();
+                });
+
+                fc.attach(document.body);
+            });
+        </script>
+    </body>
+</html>
+                    

@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> 
+        178       
+        
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+        <meta name="format-detection" content="telephone=no, email=no" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+        <!-- common css -->
+        <link rel="stylesheet" type="text/css" href="http://hello13.net/projects/party178/static/css/common.css">
+        <link rel="stylesheet" type="text/css" href="http://hello13.net/projects/party178/static/css/screen.css">
+        <link rel="stylesheet" type="text/css" href="http://hello13.net/projects/party178/static/css/party.css">
+        <!-- common css end -->
+
+        <script src="http://hello13.net/projects/party178/static/js/lib/require.js"></script>
+        <script>
+            require.config({
+                baseUrl: 'http://hello13.net/projects/party178/static/js',
+                paths: {
+                    zepto: 'lib/zepto',
+                    fastclick: 'util/fastclick'
+                },
+                shim: {
+                    zepto: { exports: '$' },
+                    fastclick: { exports: 'fastclick' }
+                }
+            });
+        </script>
+    </head>
+    <body ontouchstart="">
+        
+        
+        <div id="dialogBg2" class="dialog-bg">
+    <div id="dialog2" class="animated">
+        <div class="dialog-top"><a class="btn-dialog party-back">关闭</a></div>
+        <div class="logo-lg ac"><img src="/static/img/logo.png" alt="178"/></div>
+        <ul class="user-form">
+            <li>
+                <div class="ui-form-item ui-border-b">
+                    <input type="text" name="name" placeholder="昵称" maxlength="8" autocomplete="off" />
+                </div>
+            </li>
+            <li>
+                <div class="ui-form-item ui-border-b">
+                     <input type="text" name="phone" placeholder="手机号" maxlength="11" autocomplete="off" />
+                </div>
+            </li>
+            <li>
+                <div class="ui-form-item ui-border-b">
+                    <input type="password"  name="password" placeholder="密码" maxlength="8" autocomplete="off" />
+                </div>
+            </li>
+            <li>
+                <div class="ui-form-item ui-border-b">
+                    <input type="password" name="password_confirm" placeholder="确认密码" maxlength="8" autocomplete="off" />
+                </div>
+            </li>
+            <li><input type="submit" value="注册" class="mt-30 mb-20 ui-btn-lg ui-btn-primary" >
+            <li class="ac l-lgray4"><a href="forget_pwd.html">忘记密码</a></li>
+            <li class="ac l-lgray4"><a href="signin.html">登陆</a></li>
+            </ul>
+    </div>
+</div><!-- reg end -->
+
+
+        <script>
+            require(['zepto','fastclick'], function($, fc) {
+
+                //选择城市
+                $(document).on('click', '#selectCityBtn, #selectCity', function(){
+                    $("#selectCity").toggleClass("open");
+                });
+
+                //添加列表链接
+                $(document).on('click', '.link-list li', function(){
+                    location.href = $(this).data('href');
+                });
+
+                $(document).on('click', '.party-back', function(e){
+
+                    window.history.back();
+                });
+
+                fc.attach(document.body);
+            });
+        </script>
+    </body>
+</html>
+                    

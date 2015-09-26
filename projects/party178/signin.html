@@ -1,0 +1,53 @@
+---
+layout: default
+nav: sign
+---
+
+<div id="dialogBg" class="dialog-bg">
+    <div id="dialog" class="animated">
+		<div class="dialog-top"><a class="btn-dialog party-back">关闭</a></div>
+        <div class="logo-lg ac"><img src="http://hello13.net/projects/party178/static/img/logo.png" alt="178" /></div>
+			<ul class="user-form">
+				<li>
+					<div class="ui-form-item ui-border-b">
+						<input type="text" name="phone" placeholder="手机号" maxlength="11" autocomplete="off" />
+					</div>
+				</li>
+				<li>
+					<div class="ui-form-item ui-border-b">
+						<input type="password" name="password" placeholder="密码" maxlength="10" autocomplete="off" />
+					</div>
+				</li>
+				<li> <input type="submit" class="mt-30 mb-20 ui-btn-lg ui-btn-primary" value="登录">
+				<li class="ac l-lgray4"><a href="forget_pwd.html">忘记密码</a></li>
+				<li class="ac l-lgray4"><a href="signup.html">注册账号</a></li>
+			</ul>
+        </div>
+    </div>
+</div><!-- login end -->
+
+<script>
+	require(['zepto','util/msg'], function($, msg) {
+		$('input[type=submit]').on('click', function() {
+			var $phone = $('input[name=phone]'),
+				$pwd = $('input[name=password]');
+
+			if( !$phone.val() ) {
+				msg.alert('请输入手机号码');
+				return;
+			}
+
+			if( !/^1[3|5|7|8][0-9]{9}$/ig.test($phone.val()) ) {
+				msg.alert('请输入正确的手机号码');
+				return;
+			}
+
+			if( !$pwd.val() ) {
+				msg.alert('请输入密码');
+				return;
+			}
+
+			location.href = '/';
+		});
+	});
+</script>

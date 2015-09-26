@@ -1,0 +1,23 @@
+---
+layout: default
+nav: profile
+title: 找回密码
+action: 下一步
+---
+
+<div class="user user-form2 mt-30 user-new-psw psw-find">
+    <div class="ui-form-item">
+        <input type="text" name="phone" placeholder="输入注册手机号" maxlength="11" autocomplete="off"/>
+        <a class="ui-btn ui-btn-primary" id="send_code" href="#"><span style="display:inline;">发送验证码</span></a>
+    </div>
+    <div class="ui-form-item">
+        <input type="text" name="validation_code" placeholder="输入验证码" maxlength="4" autocomplete="off"/>
+    </div>
+</div><!-- user psw new end -->
+
+<script>
+	require(['zepto'], function() {
+		$('.page-action').attr('href', '/users/password.html');
+	});
+</script>
+

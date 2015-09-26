@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> 
+        178       
+        
+           | 星座
+        
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+        <meta name="format-detection" content="telephone=no, email=no" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+        <!-- common css -->
+        <link rel="stylesheet" type="text/css" href="http://hello13.net/projects/party178/static/css/common.css">
+        <link rel="stylesheet" type="text/css" href="http://hello13.net/projects/party178/static/css/screen.css">
+        <link rel="stylesheet" type="text/css" href="http://hello13.net/projects/party178/static/css/party.css">
+        <!-- common css end -->
+
+        <script src="http://hello13.net/projects/party178/static/js/lib/require.js"></script>
+        <script>
+            require.config({
+                baseUrl: 'http://hello13.net/projects/party178/static/js',
+                paths: {
+                    zepto: 'lib/zepto',
+                    fastclick: 'util/fastclick'
+                },
+                shim: {
+                    zepto: { exports: '$' },
+                    fastclick: { exports: 'fastclick' }
+                }
+            });
+        </script>
+    </head>
+    <body ontouchstart="">
+        
+            <header class="navbar ui-border-b">
+    <div class="pos pos-left party-back">
+        <i class="icon-arrowleft"></i>
+    </div>
+    <h2 class="hdtitle ui-nowrap">星座</h2>
+    
+    <div class="pos pos-right c-lgray l-gold">
+        <a class="page-action">保存</a>
+    </div>
+    
+</header><!-- header end -->
+        
+        <div class="user user-form2 mt-30">
+    <div class="ui-form-item">
+        <label for="#">星座</label>
+        <div class="ui-form-item">
+			<div class="ui-form-item">
+	            <div class="ui-select">
+	                <select name="constellation">
+						<option  value="水瓶座">水瓶座</option>
+						<option  value="双鱼座">双鱼座</option>
+						<option  value="白羊座">白羊座</option>
+						<option  value="金牛座">金牛座</option>
+						<option  value="双子座">双子座</option>
+						<option  value="巨蟹座">巨蟹座</option>
+						<option  value="狮子座">狮子座</option>
+						<option  value="处女座">处女座</option>
+						<option  value="天秤座">天秤座</option>
+						<option  value="天蝎座">天蝎座</option>
+						<option  value="射手座">射手座</option>
+						<option  value="摩羯座">摩羯座</option>
+	                </select>
+	            </div>
+	        </div>
+        </div>
+    </div>
+</div><!-- user name end -->
+
+        <script>
+            require(['zepto','fastclick'], function($, fc) {
+
+                //选择城市
+                $(document).on('click', '#selectCityBtn, #selectCity', function(){
+                    $("#selectCity").toggleClass("open");
+                });
+
+                //添加列表链接
+                $(document).on('click', '.link-list li', function(){
+                    location.href = $(this).data('href');
+                });
+
+                $(document).on('click', '.party-back', function(e){
+
+                    window.history.back();
+                });
+
+                fc.attach(document.body);
+            });
+        </script>
+    </body>
+</html>
+                    

@@ -1,0 +1,19 @@
+baseurl:     /
+url:         http://localhost:4000
+source:      .
+destination: ./_site
+encoding:    utf-8
+permalink:   /:title
+highlighter: pygments
+markdown:    rdiscount
+
+paginate: 10
+paginate_path: '/posts/:num'
+
+excerpt_separator: "\n\n\n"
+
+#Basic Configuration
+title:       178
+
+author:
+  name: 有田十三

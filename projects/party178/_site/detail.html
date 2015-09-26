@@ -1,0 +1,272 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> 
+        178       
+        
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+        <meta name="format-detection" content="telephone=no, email=no" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+        <!-- common css -->
+        <link rel="stylesheet" type="text/css" href="http://hello13.net/projects/party178/static/css/common.css">
+        <link rel="stylesheet" type="text/css" href="http://hello13.net/projects/party178/static/css/screen.css">
+        <link rel="stylesheet" type="text/css" href="http://hello13.net/projects/party178/static/css/party.css">
+        <!-- common css end -->
+
+        <script src="http://hello13.net/projects/party178/static/js/lib/require.js"></script>
+        <script>
+            require.config({
+                baseUrl: 'http://hello13.net/projects/party178/static/js',
+                paths: {
+                    zepto: 'lib/zepto',
+                    fastclick: 'util/fastclick'
+                },
+                shim: {
+                    zepto: { exports: '$' },
+                    fastclick: { exports: 'fastclick' }
+                }
+            });
+        </script>
+    </head>
+    <body ontouchstart="">
+        
+            <header class="navbar ui-border-b">
+    <div id="selectCityBtn" class="pos pos-left l-gray">
+        <a class="l-city">北京<i class="icon-arrowdown"></i></a>
+    </div>
+    <h2 class="hdtitle ui-nowrap">
+        <a href="acts/create.html">
+            <img class="logo" src="http://hello13.net/projects/party178/static/img/logo.png" alt="178" />发起邀约
+        </a>
+    </h2>
+    <!-- 若未登录，则不显示此div -->
+    <div class="navbar-user pos pos-right c-lgray l-lgray">
+        <div class="nav-user">
+            <a href="users/home.html">
+                <div class="avatar-hd">
+                    <!-- 若登录为提交头像则显示照相机，否则显示头像 -->
+                    <!-- <img src="static/img/icon-photo.jpg" /> -->
+                    <img src="http://hello13.net/projects/party178/static/img/avatar.png" />
+                </div>
+            </a>
+        </div>
+    </div>
+</header><!-- header end -->
+        
+        <div class="c">
+	<div class="details">
+		<div class="thumbnail">
+			<a href=""><img src="/static/img/activity.png" alt=""></a>
+		</div><!-- banner end -->
+		<div class="caption">
+			<h3>行走意大利，寻找旅行的意义</h3>
+			<div class="pdlr-15">
+				<!-- sub title -->
+				<!-- <p class="details-des f-16">地道湖南湘味，正宗家乡食材，只为“怕不辣”&nbsp;&nbsp;&nbsp;</p> -->
+				<p class="cf pdb-15 ui-border-b">
+					<span class="f-22 c-gold">RMB198元</span><span class="f-14 c-lgray2">/位</span>
+				</p>
+			</div>
+			<div class="date-wrap">
+				<div class="pdlr-15">
+					<p><i class="icon-date"></i><span class="f-16 c-lgray2">组局时间：</span></p>
+				</div>
+				<ul class="date-list ui-grid-halve">
+					<li>
+						<span class="active">
+							2015-09-23 19:00 PM
+						</span>
+					</li>
+				</ul>
+			</div>
+			<ul class="details-address link-list ui-list ui-list-link">
+				<li class="ui-border-tb" data-href="">
+					<div class="ui-avatar-ss">
+						<i class="icon-lg icon-lg-map">地址</i>
+					</div>
+					<div class="ui-list-info">
+						<span class="f-16 c-lgray2">朝阳区安贞门地铁站附近</span>
+					</div>
+				</li>
+			</ul>
+			<ul class="details-ft friends-tiled ui-list">
+				<li>
+					<div class="ui-avatar-wrap">
+						<span class="ui-avatar-tiled">
+							<img src="http://tp2.sinaimg.cn/5539596589/180/5737096243/0" alt="">
+						</span>
+						<span class="ui-avatar-tiled"></span>
+					</div>
+					<div class="ui-list-info f-14 c-lgray4">
+						<span><span class="c-gold">5~7</span>人成局
+						<br>
+						<span>已报名<span class="c-gold">1</span>人</span>
+					</span></div>
+				</li>
+			</ul>
+			<div class="btn-wrap2">
+				<a class="ui-btn-lg ui-btn-primary" href="/acts/join.html">参加活动</a>
+				<div class="date-wrap2 ac">
+					<span class="f-14 c-lgray4">报名截止时间：2015-09-22 19:00 星期二</span>
+				</div>
+			</div>
+		</div>
+		<div class="container tab-wrap">
+			<div class="tab-intro ui-tab">
+				<div class="pin-wrapper" style="height: 70px;">
+					<ul class="pinned ui-tab-nav ui-border-b2 l-gray" id="tab" style="width: 100%;">
+						<li class="party-active" tab-target="organizer" style="padding: 5px;">
+							<a>
+								<div class="tab-ico">
+									<i class="icon-lg icon-lg-user"></i>
+								</div>
+								<div class="tab-txt">发起者介绍</div>
+							</a>
+						</li>
+						<li tab-target="activity" style="padding: 5px;">
+							<a>
+								<div class="tab-ico">
+									<i class="icon-lg icon-lg-food"></i>
+								</div>
+								<div class="tab-txt">活动介绍</div>
+							</a>
+						</li>
+						<li tab-target="comment" style="padding: 5px;">
+							<a>
+								<div class="tab-ico">
+									<i class="icon-lg icon-lg-bell"></i>
+								</div>
+								<div class="tab-txt">评价(10)</div>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div id="organizer" class="ui-tab-content details-user" style="display: block;">
+					<div class="ui-avatar-one">
+						<span style="background-image:url(http://tp3.sinaimg.cn/1642351362/180/5728706692/0)"></span>
+					</div>
+					<div class="nick-name">肉肉</div>
+					<div class="details-user-info">
+						<p>姓名：<span>女</span></p>
+						<p>年龄：<span>27岁</span></p>
+						<p>星座：<span>天蝎座</span></p>
+						<p>公司：<span>丰田汽车公司（TOYOTA MOTOR）</span></p>
+						<p>毕业院校：<span>哈佛大学</span></p>
+						<p>专业：<span>工程管理</span></p>
+					</div>
+				</div>
+				<div id="activity" class="ui-tab-content details-user-info" style="display: none;">
+					<div class="fmenu-picwrap">
+						<div class="thumbnail">
+						</div>
+						</div><!-- pic -->
+						<div class="fmenu">
+							<div class="bg-fmenu bg-fmenu-hd"></div>
+							<dl>
+								<dt>凉菜</dt>
+								<dd>冰镇花螺</dd>
+								<dd>凉拌莴笋丝</dd>
+							</dl>
+							<dl>
+								<dt>热菜</dt>
+								<dd>姜辣猪蹄</dd>
+								<dd>剁椒鱼头</dd>
+								<dd>油焖大虾</dd>
+								<dd>小米辣爆炒鱿鱼须</dd>
+								<dd>粉蒸肉</dd>
+								<dd>烤韭菜酿辣椒</dd>
+								<dd>豆豉炒空心菜梗</dd>
+							</dl>
+							<dl>
+								<dt>汤</dt>
+								<dd>鱼丸蛋皮银鱼汤</dd>
+							</dl>
+							<dl>
+								<dt>甜品</dt>
+								<dd>糖油粑粑</dd>
+							</dl>
+							<dl>
+								<dt>饮品</dt>
+								<dd>甜酒冲蛋</dd>
+							</dl>
+							<div class="bg-fmenu bg-fmenu-ft"></div>
+						</div>
+					</div>
+				<div id="comment" class="ui-tab-content tab-cmt" style="display: none;">
+					<ul class="ui-list">
+						<li class="ui-border-b">
+							<div class="ui-avatar-s">
+								<span style="background-image:url(http://wx.qlogo.cn/mmopen/K1WOBicALjcYEJjJfX8YicSqFicicib30Fkic1tic5wrDMfCrGG9ibnhzXib0uATUzSw9YeIkMWxTvh5PzwicByXroamHGwtqI50GEabp9/0)"></span>
+							</div>
+							<div class="ui-list-info">
+								<div class="cmt-info cf">
+									<span class="fl c-gold">amy李</span>
+									<span class="fr c-lgray3">2015-09-17 19:58:38</span>
+								</div>
+								<p>满分10分，菜好分量足，每道菜都很用心，主人很细心，走时还送了煮花生伴手礼。想吃地道湘菜的同志们赶紧下单吧！</p>
+								<div id="fakeCrop" class="my-gallery cmt-thumb" data-pswp-uid="3"></div><!-- thumb -->
+							</div>
+						</li>
+						<li class="ui-border-b">
+							<div class="ui-avatar-s">
+								<span style="background-image:url(http://wx.qlogo.cn/mmopen/PiajxSqBRaELZkibCd3u5nS7zGKjaVKO23h648LcmdRNIhNhx3K3JXTbvoprvEjOwPsW5VEP2mYSXxa25zkZ9nmA/0)"></span>
+							</div>
+							<div class="ui-list-info">
+								<div class="cmt-info cf">
+									<span class="fl c-gold">某小贝</span>
+									<span class="fr c-lgray3">2015-09-16 23:34:54</span>
+								</div>
+								<p>Host年轻貌美，还没见到面就先被头像秒到。阿姨手艺超赞，人还特热情。因为美食认识到新的朋友，聊的都很开心。哦哦，重点是菜很好吃很正宗，哈哈，回来发现一顿饭肥了3斤。下回想吃口味虾，估计今年没戏了</p>
+								<div id="fakeCrop" class="my-gallery cmt-thumb" data-pswp-uid="4"></div><!-- thumb -->
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div><!-- tab end -->
+	</div><!-- thumbnail end -->
+</div><!-- container end -->
+<div id="selectCity" class="overlay-slidedown">
+    <div class="city-wrap">
+        <h4>选择服务的城市</h4>
+        <ul>
+            <li><a href="/mobile?city=北京">北京</a></li>
+            <li><a href="/mobile?city=上海">上海</a></li>
+        </ul>
+    </div>
+</div>
+
+<script>
+	require(['util/tab'], function(tab) {
+		tab('#tab');
+	});
+</script>
+
+        <script>
+            require(['zepto','fastclick'], function($, fc) {
+
+                //选择城市
+                $(document).on('click', '#selectCityBtn, #selectCity', function(){
+                    $("#selectCity").toggleClass("open");
+                });
+
+                //添加列表链接
+                $(document).on('click', '.link-list li', function(){
+                    location.href = $(this).data('href');
+                });
+
+                $(document).on('click', '.party-back', function(e){
+
+                    window.history.back();
+                });
+
+                fc.attach(document.body);
+            });
+        </script>
+    </body>
+</html>
+                    

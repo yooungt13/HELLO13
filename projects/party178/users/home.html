@@ -1,0 +1,40 @@
+---
+layout: default
+nav: profile
+title: 个人中心
+---
+
+<ul class="link-list user-index ui-list ui-list-link">
+    <li class="ui-border-b" data-href="/users/profile.html">
+        <div class="ui-avatar">
+            <span style="background-image:url(/static/img/icon-photo.jpg)"></span>
+        </div>
+        <div class="ui-list-info">
+            <h4 class="ui-nowrap">有田十三</h4>
+            <p class="mt-5">
+                <span class="c-lgray4">个人信息完善度</span>
+                <span class="c-gold">40%</span>
+            </p>
+        </div>
+    </li>
+    <li class="ui-border-b" data-href="/acts/joined.html">
+        <p>我参与的局</p>
+        <div class="badge-r"><span class="c-gold">10</span></div>
+    </li>
+        <li class="ui-border-b" data-href="/acts/created.html">
+        <p>我发起的局</p>
+        <div class="badge-r"><span class="c-gold">0</span></div>
+    </li>
+    <div class="ui-border-b" id="grouper" style="padding: 25px 15px;">
+        <p>3v3 Grouper的玩法</p>
+    </div>
+</ul><!-- user end -->
+
+
+<script>
+require(['zepto','util/msg'], function($, msg) {
+    $(document).on('click', '#grouper', function() {
+        msg.alert('3对3:发起人和参加人各带两个朋友参加哦<br/>同理2对2,就是各带一个');
+    });
+});
+</script>

@@ -5,7 +5,7 @@
         <title> 
         178       
         
-           | 密码
+           | 活动类型
         
         </title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
@@ -40,7 +40,7 @@
     <div class="pos pos-left party-back">
         <i class="icon-arrowleft"></i>
     </div>
-    <h2 class="hdtitle ui-nowrap">密码</h2>
+    <h2 class="hdtitle ui-nowrap">活动类型</h2>
     
     <div class="pos pos-right c-lgray l-gold">
         <a class="page-action">保存</a>
@@ -48,18 +48,21 @@
     
 </header><!-- header end -->
         
-        <div class="user user-form2 mt-30 user-new-psw">
+        <div class="user user-form2 mt-30">
     <div class="ui-form-item">
-        <input type="password" placeholder="当前密码" />
+        <label for="#">类型</label>
+        <div class="ui-form-item">
+            <div class="ui-select">
+                <select name="type">
+                    <option value="酒会">酒会</option>
+                    <option value="私厨">私厨</option>
+                    <option value="旅行">旅行</option>
+                    <option value="户外">户外</option>
+                </select>
+            </div>
+        </div>
     </div>
-    <div class="ui-form-item">
-        <input type="password" name='password' placeholder="新密码" />
-    </div>
-    <div class="ui-form-item">
-        <input type="password" placeholder="确认密码" />
-    </div>
-</div><!-- user psw new end -->
-
+</div><!-- user name end -->
 
         <script>
             require(['zepto','fastclick'], function($, fc) {

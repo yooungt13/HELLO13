@@ -12,52 +12,55 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
         <!-- common css -->
-        <link rel="stylesheet" type="text/css" href="static/css/common.css">
-        <link rel="stylesheet" type="text/css" href="static/css/screen.css">
-        <link rel="stylesheet" type="text/css" href="static/css/party.css">
+        <link rel="stylesheet" type="text/css" href="http://hello13.net/projects/party178/static/css/common.css">
+        <link rel="stylesheet" type="text/css" href="http://hello13.net/projects/party178/static/css/screen.css">
+        <link rel="stylesheet" type="text/css" href="http://hello13.net/projects/party178/static/css/party.css">
         <!-- common css end -->
 
-        <script src="static/js/lib/require.js"></script>
+        <script src="http://hello13.net/projects/party178/static/js/lib/require.js"></script>
         <script>
             require.config({
+                baseUrl: 'http://hello13.net/projects/party178/static/js',
                 paths: {
-                    zepto: 'static/js/lib/zepto.min'
+                    zepto: 'lib/zepto',
+                    fastclick: 'util/fastclick'
                 },
                 shim: {
-                    zepto: {
-                        exports: '$'
-                    }
+                    zepto: { exports: '$' },
+                    fastclick: { exports: 'fastclick' }
                 }
             });
         </script>
     </head>
     <body ontouchstart="">
-        <header class="navbar ui-border-b">
+        
+            <header class="navbar ui-border-b">
     <div id="selectCityBtn" class="pos pos-left l-gray">
         <a class="l-city">北京<i class="icon-arrowdown"></i></a>
     </div>
     <h2 class="hdtitle ui-nowrap">
-        <a href="">
-            <img class="logo" src="static/img/logo.png" alt="178" />发起邀约
+        <a href="acts/create.html" style="color:#000;">
+            <img class="logo" src="http://hello13.net/projects/party178/static/img/logo.png" alt="178" />178发起邀约
         </a>
     </h2>
     <!-- 若未登录，则不显示此div -->
     <div class="navbar-user pos pos-right c-lgray l-lgray">
         <div class="nav-user">
-            <a href="settings.html">
+            <a href="users/home.html">
                 <div class="avatar-hd">
                     <!-- 若登录为提交头像则显示照相机，否则显示头像 -->
                     <!-- <img src="static/img/icon-photo.jpg" /> -->
-                    <img src="static/img/avatar.png" />
+                    <img src="http://hello13.net/projects/party178/static/img/avatar.png" />
                 </div>
             </a>
         </div>
     </div>
 </header><!-- header end -->
+        
         <div class="c">
 	<div class="details">
 		<div class="thumbnail">
-			<a href=""><img src="static/img/activity.png" alt=""></a>
+			<a href=""><img src="http://hello13.net/projects/party178/static/img/activity.png" alt=""></a>
 		</div><!-- banner end -->
 		<div class="caption">
 			<h3>行走意大利，寻找旅行的意义</h3>
@@ -93,44 +96,47 @@
 			<ul class="details-ft friends-tiled ui-list">
 				<li>
 					<div class="ui-avatar-wrap">
+						<span class="ui-avatar-tiled">
+							<img src="http://tp2.sinaimg.cn/5539596589/180/5737096243/0" alt="">
+						</span>
 						<span class="ui-avatar-tiled"></span>
 					</div>
 					<div class="ui-list-info f-14 c-lgray4">
 						<span><span class="c-gold">5~7</span>人成局
 						<br>
-						<span>已报名<span class="c-gold">0</span>人</span>
+						<span>已报名<span class="c-gold">1</span>人</span>
 					</span></div>
 				</li>
 			</ul>
 			<div class="btn-wrap2">
-				<a class="ui-btn-lg ui-btn-primary" href="">参加饭局</a>
+				<a class="ui-btn-lg ui-btn-primary" id="submit">参加活动</a>
 				<div class="date-wrap2 ac">
 					<span class="f-14 c-lgray4">报名截止时间：2015-09-22 19:00 星期二</span>
 				</div>
 			</div>
 		</div>
 		<div class="container tab-wrap">
-			<div id="Tab1" class="tab-intro ui-tab">
+			<div class="tab-intro ui-tab">
 				<div class="pin-wrapper" style="height: 70px;">
-					<ul class="pinned ui-tab-nav ui-border-b2 l-gray" style="width: 100%;">
-						<li style="padding: 5px;">
-							<a class="selected" href="#Tab1-1">
+					<ul class="pinned ui-tab-nav ui-border-b2 l-gray" id="tab" style="width: 100%;">
+						<li class="party-active" tab-target="organizer" style="padding: 5px;">
+							<a>
 								<div class="tab-ico">
 									<i class="icon-lg icon-lg-user"></i>
 								</div>
 								<div class="tab-txt">发起者介绍</div>
 							</a>
 						</li>
-						<li style="padding: 5px;">
-							<a href="#Tab1-2">
+						<li tab-target="activity" style="padding: 5px;">
+							<a>
 								<div class="tab-ico">
 									<i class="icon-lg icon-lg-food"></i>
 								</div>
 								<div class="tab-txt">活动介绍</div>
 							</a>
 						</li>
-						<li style="padding: 5px;">
-							<a href="#Tab1-3">
+						<li tab-target="comment" style="padding: 5px;">
+							<a>
 								<div class="tab-ico">
 									<i class="icon-lg icon-lg-bell"></i>
 								</div>
@@ -139,7 +145,7 @@
 						</li>
 					</ul>
 				</div>
-				<div id="Tab1-1" class="ui-tab-content details-user" style="display: block;">
+				<div id="organizer" class="ui-tab-content details-user" style="display: block;">
 					<div class="ui-avatar-one">
 						<span style="background-image:url(http://tp3.sinaimg.cn/1642351362/180/5728706692/0)"></span>
 					</div>
@@ -153,7 +159,7 @@
 						<p>专业：<span>工程管理</span></p>
 					</div>
 				</div>
-				<div id="Tab1-2" class="ui-tab-content details-user-info" style="display: none;">
+				<div id="activity" class="ui-tab-content details-user-info" style="display: none;">
 					<div class="fmenu-picwrap">
 						<div class="thumbnail">
 						</div>
@@ -190,7 +196,7 @@
 							<div class="bg-fmenu bg-fmenu-ft"></div>
 						</div>
 					</div>
-				<div id="Tab1-3" class="ui-tab-content tab-cmt" style="display: none;">
+				<div id="comment" class="ui-tab-content tab-cmt" style="display: none;">
 					<ul class="ui-list">
 						<li class="ui-border-b">
 							<div class="ui-avatar-s">
@@ -235,18 +241,34 @@
 </div>
 
 <script>
-	
+	require(['util/tab', 'util/msg'], function(tab, msg) {
+		tab('#tab');
+
+        $(document).on('click', '#submit', function() {
+            // 如果符合条件，则提交
+            msg.alert('局主正在确定谁来参加，请等待客服通知');
+        });
+    });
 </script>
 
-        <!-- common js -->
-        <script src=""></script>
-        <!-- common js end -->
         <script>
-            require(['zepto'], function($) {
+            require(['zepto','fastclick'], function($, fc) {
+
                 //选择城市
-                $("#selectCityBtn, #selectCity").click(function(){
+                $(document).on('click', '#selectCityBtn, #selectCity', function(){
                     $("#selectCity").toggleClass("open");
                 });
+
+                //添加列表链接
+                $(document).on('click', '.link-list li', function(){
+                    location.href = $(this).data('href');
+                });
+
+                $(document).on('click', '.party-back', function(e){
+                    window.history.back();
+                });
+
+                fc.attach(document.body);
             });
         </script>
     </body>

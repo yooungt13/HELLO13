@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>        
+        <title> 
         178       
         
            | 修改头像
@@ -14,37 +14,40 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
         <!-- common css -->
-        <link rel="stylesheet" type="text/css" href="static/css/common.css">
-        <link rel="stylesheet" type="text/css" href="static/css/screen.css">
-        <link rel="stylesheet" type="text/css" href="static/css/party.css">
+        <link rel="stylesheet" type="text/css" href="http://hello13.net/projects/party178/static/css/common.css">
+        <link rel="stylesheet" type="text/css" href="http://hello13.net/projects/party178/static/css/screen.css">
+        <link rel="stylesheet" type="text/css" href="http://hello13.net/projects/party178/static/css/party.css">
         <!-- common css end -->
 
-        <script src="static/js/lib/require.js"></script>
+        <script src="http://hello13.net/projects/party178/static/js/lib/require.js"></script>
         <script>
             require.config({
+                baseUrl: 'http://hello13.net/projects/party178/static/js',
                 paths: {
-                    zepto: 'static/js/lib/zepto.min'
+                    zepto: 'lib/zepto',
+                    fastclick: 'util/fastclick'
                 },
                 shim: {
-                    zepto: {
-                        exports: '$'
-                    }
+                    zepto: { exports: '$' },
+                    fastclick: { exports: 'fastclick' }
                 }
             });
         </script>
     </head>
     <body ontouchstart="">
-        <header class="navbar ui-border-b">
+        
+            <header class="navbar ui-border-b">
     <div class="pos pos-left party-back">
-        <a href=""><i class="icon-arrowleft"></i></a>
+        <i class="icon-arrowleft"></i>
     </div>
     <h2 class="hdtitle ui-nowrap">修改头像</h2>
     
     <div class="pos pos-right c-lgray l-gold">
-        <a>保存</a>
+        <a class="page-action">保存</a>
     </div>
     
 </header><!-- header end -->
+        
         <div class="user mt-30">
     <div class="photo ac">
         <div class="btn-file">
@@ -55,15 +58,23 @@
 
 
         <script>
-            require(['zepto'], function($) {
-                //添加列表链接
-                $('.link-list li').on('click', function(){
-                    location.href= $(this).data('href');
+            require(['zepto','fastclick'], function($, fc) {
+
+                //选择城市
+                $(document).on('click', '#selectCityBtn, #selectCity', function(){
+                    $("#selectCity").toggleClass("open");
                 });
 
-                $('.party-back').on('click', function(){
-                    history.back();
+                //添加列表链接
+                $(document).on('click', '.link-list li', function(){
+                    location.href = $(this).data('href');
                 });
+
+                $(document).on('click', '.party-back', function(e){
+                    window.history.back();
+                });
+
+                fc.attach(document.body);
             });
         </script>
     </body>

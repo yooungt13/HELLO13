@@ -2023,7 +2023,7 @@ li.ui-list-item-link:after {
 
 .index .thumbnail .pic {
     position: relative;
-    min-height: 235px;
+    min-height: 200px;
 }
 .index .thumbnail .pic .soldout {
     display: block;

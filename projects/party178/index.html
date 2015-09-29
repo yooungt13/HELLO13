@@ -12,53 +12,56 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
         <!-- common css -->
-        <link rel="stylesheet" type="text/css" href="static/css/common.css">
-        <link rel="stylesheet" type="text/css" href="static/css/screen.css">
-        <link rel="stylesheet" type="text/css" href="static/css/party.css">
+        <link rel="stylesheet" type="text/css" href="http://hello13.net/projects/party178/static/css/common.css">
+        <link rel="stylesheet" type="text/css" href="http://hello13.net/projects/party178/static/css/screen.css">
+        <link rel="stylesheet" type="text/css" href="http://hello13.net/projects/party178/static/css/party.css">
         <!-- common css end -->
 
-        <script src="static/js/lib/require.js"></script>
+        <script src="http://hello13.net/projects/party178/static/js/lib/require.js"></script>
         <script>
             require.config({
+                baseUrl: 'http://hello13.net/projects/party178/static/js',
                 paths: {
-                    zepto: 'static/js/lib/zepto.min'
+                    zepto: 'lib/zepto',
+                    fastclick: 'util/fastclick'
                 },
                 shim: {
-                    zepto: {
-                        exports: '$'
-                    }
+                    zepto: { exports: '$' },
+                    fastclick: { exports: 'fastclick' }
                 }
             });
         </script>
     </head>
     <body ontouchstart="">
-        <header class="navbar ui-border-b">
+        
+            <header class="navbar ui-border-b">
     <div id="selectCityBtn" class="pos pos-left l-gray">
         <a class="l-city">北京<i class="icon-arrowdown"></i></a>
     </div>
     <h2 class="hdtitle ui-nowrap">
-        <a href="">
-            <img class="logo" src="static/img/logo.png" alt="178" />发起邀约
+        <a href="acts/create.html" style="color:#000;">
+            <img class="logo" src="http://hello13.net/projects/party178/static/img/logo.png" alt="178" />178发起邀约
         </a>
     </h2>
     <!-- 若未登录，则不显示此div -->
     <div class="navbar-user pos pos-right c-lgray l-lgray">
         <div class="nav-user">
-            <a href="settings.html">
+            <a href="users/home.html">
                 <div class="avatar-hd">
                     <!-- 若登录为提交头像则显示照相机，否则显示头像 -->
                     <!-- <img src="static/img/icon-photo.jpg" /> -->
-                    <img src="static/img/avatar.png" />
+                    <img src="http://hello13.net/projects/party178/static/img/avatar.png" />
                 </div>
             </a>
         </div>
     </div>
 </header><!-- header end -->
+        
         <div class="c">
     <div class="index">
         <div class="thumbnail ui-border-b">
             <div class="pic">
-                <a href="detail.html"><img src="static/img/activity.png" /></a>
+                <a href="detail.html"><img class="party-lazy" src="http://hello13.net/projects/party178/static/img/activity.png" /></a>
             </div>
             <div class="caption">
                 <div class="link" data-href="">
@@ -74,7 +77,7 @@
                                 <span class="f-14 c-lgray5">三里屯</span>
                             </span>
                             <span class="icon-indexwrap abs f-14 c-lgray6 avatar">
-                                <img src="/static/img/avatar.png" alt="">
+                                <img src="http://tp2.sinaimg.cn/1744702633/180/5728223407/0" alt="">
                             </span>
                         </div>
                     </div>
@@ -99,7 +102,7 @@
                                 <span class="f-14 c-lgray5">三里屯</span>
                             </span>
                             <span class="icon-indexwrap abs f-14 c-lgray6 avatar">
-                                <img src="/static/img/avatar.png" alt="">
+                                <img src="http://tp4.sinaimg.cn/1729370543/180/5681988346/0" alt="">
                             </span>
                         </div>
                     </div>
@@ -118,15 +121,32 @@
     </div>
 </div>
 
-        <!-- common js -->
-        <script src=""></script>
-        <!-- common js end -->
+<script>
+    // require(['zepto','util/lazyload'], function($) {
+    //     $('.party-lazy').lazyload({
+    //         effect : "fadeIn"
+    //     });
+    // });
+</script>
+
         <script>
-            require(['zepto'], function($) {
+            require(['zepto','fastclick'], function($, fc) {
+
                 //选择城市
-                $("#selectCityBtn, #selectCity").click(function(){
+                $(document).on('click', '#selectCityBtn, #selectCity', function(){
                     $("#selectCity").toggleClass("open");
                 });
+
+                //添加列表链接
+                $(document).on('click', '.link-list li', function(){
+                    location.href = $(this).data('href');
+                });
+
+                $(document).on('click', '.party-back', function(e){
+                    window.history.back();
+                });
+
+                fc.attach(document.body);
             });
         </script>
     </body>

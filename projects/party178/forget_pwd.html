@@ -5,7 +5,7 @@
         <title> 
         178       
         
-           | 密码
+           | 找回密码
         
         </title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
@@ -40,25 +40,30 @@
     <div class="pos pos-left party-back">
         <i class="icon-arrowleft"></i>
     </div>
-    <h2 class="hdtitle ui-nowrap">密码</h2>
+    <h2 class="hdtitle ui-nowrap">找回密码</h2>
     
     <div class="pos pos-right c-lgray l-gold">
-        <a class="page-action">保存</a>
+        <a class="page-action">下一步</a>
     </div>
     
 </header><!-- header end -->
         
-        <div class="user user-form2 mt-30 user-new-psw">
+        <div class="user user-form2 mt-30 user-new-psw psw-find">
     <div class="ui-form-item">
-        <input type="password" placeholder="当前密码" />
+        <input type="text" name="phone" placeholder="输入注册手机号" maxlength="11" autocomplete="off"/>
+        <a class="ui-btn ui-btn-primary" id="send_code" href="#"><span style="display:inline;">发送验证码</span></a>
     </div>
     <div class="ui-form-item">
-        <input type="password" name='password' placeholder="新密码" />
-    </div>
-    <div class="ui-form-item">
-        <input type="password" placeholder="确认密码" />
+        <input type="text" name="validation_code" placeholder="输入验证码" maxlength="4" autocomplete="off"/>
     </div>
 </div><!-- user psw new end -->
+
+<script>
+	require(['zepto'], function() {
+		$('.page-action').attr('href', 'http://hello13.net/projects/party178/users/password.html');
+	});
+</script>
+
 
 
         <script>

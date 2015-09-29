@@ -5,8 +5,6 @@
         <title> 
         178       
         
-           | 密码
-        
         </title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
         <meta name="format-detection" content="telephone=no, email=no" />
@@ -36,29 +34,38 @@
     </head>
     <body ontouchstart="">
         
-            <header class="navbar ui-border-b">
-    <div class="pos pos-left party-back">
-        <i class="icon-arrowleft"></i>
-    </div>
-    <h2 class="hdtitle ui-nowrap">密码</h2>
-    
-    <div class="pos pos-right c-lgray l-gold">
-        <a class="page-action">保存</a>
-    </div>
-    
-</header><!-- header end -->
         
-        <div class="user user-form2 mt-30 user-new-psw">
-    <div class="ui-form-item">
-        <input type="password" placeholder="当前密码" />
+        <div id="dialogBg2" class="dialog-bg">
+    <div id="dialog2" class="animated">
+        <div class="dialog-top"><a class="btn-dialog party-back">关闭</a></div>
+        <div class="logo-lg ac"><img src="http://hello13.net/projects/party178/static/img/logo.png" alt="178"/></div>
+        <ul class="user-form">
+            <li>
+                <div class="ui-form-item ui-border-b">
+                    <input type="text" name="name" placeholder="昵称" maxlength="8" autocomplete="off" />
+                </div>
+            </li>
+            <li>
+                <div class="ui-form-item ui-border-b">
+                     <input type="text" name="phone" placeholder="手机号" maxlength="11" autocomplete="off" />
+                </div>
+            </li>
+            <li>
+                <div class="ui-form-item ui-border-b">
+                    <input type="password"  name="password" placeholder="密码" maxlength="8" autocomplete="off" />
+                </div>
+            </li>
+            <li>
+                <div class="ui-form-item ui-border-b">
+                    <input type="password" name="password_confirm" placeholder="确认密码" maxlength="8" autocomplete="off" />
+                </div>
+            </li>
+            <li><input type="submit" value="注册" class="mt-30 mb-20 ui-btn-lg ui-btn-primary" >
+            <li class="ac l-lgray4"><a href="forget_pwd.html">忘记密码</a></li>
+            <li class="ac l-lgray4"><a href="signin.html">登陆</a></li>
+            </ul>
     </div>
-    <div class="ui-form-item">
-        <input type="password" name='password' placeholder="新密码" />
-    </div>
-    <div class="ui-form-item">
-        <input type="password" placeholder="确认密码" />
-    </div>
-</div><!-- user psw new end -->
+</div><!-- reg end -->
 
 
         <script>

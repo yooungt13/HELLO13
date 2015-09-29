@@ -1,3 +1,30 @@
 .party-back {
 	
 }
+
+.party-email {
+	padding-right: 110px;
+}
+
+.party-active a {
+    border-bottom: 2px #3dd6d1 solid;
+}
+
+.party-active span {
+	display: inline-block;
+	width: 100%;
+	color: #3dd6d1;
+    border-bottom: 2px #3dd6d1 solid;
+    box-sizing: border-box;
+    height: 45px;
+}
+
+.party-text-weak {
+	color: #999;
+	font-size: 14px;
+}
+
+.party-lazy {
+	width: 355px;
+	height: 200px;
+}

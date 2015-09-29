@@ -21,7 +21,7 @@ Usage
 -----
 
 First, you should get A key from Amap for developers, and add a script into page file.
-> <script src="http://webapi.amap.com/maps?v=1.3&key=YOURKEY"></script>
+> http://webapi.amap.com/maps?v=1.3&key=YOURKEY
 
 Then, you can use addressSearch after using addressSearch.js
 

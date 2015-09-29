@@ -543,6 +543,15 @@ footer {
         }
     }
 
+    .tags {
+        span {
+            font-size: .16rem;
+            font-style: italic;
+            display: inline-block;
+            margin-left: .05rem;
+        }
+    }
+
     &:last-child {
         border-bottom: none;
     }

@@ -372,6 +372,11 @@ footer {
     margin-bottom: .12rem; }
   .project .preview img {
     width: 100%; }
+  .project .tags span {
+    font-size: .16rem;
+    font-style: italic;
+    display: inline-block;
+    margin-left: .05rem; }
   .project:last-child {
     border-bottom: none; }
 

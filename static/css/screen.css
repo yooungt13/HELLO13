@@ -123,7 +123,8 @@ nav {
           text-decoration: underline; }
 
 article {
-  min-height: 50%; }
+  min-height: 50%;
+  padding-top: .24rem; }
 
 section {
   font-size: 110%;
@@ -186,36 +187,21 @@ footer {
       border-color: #ddd;
       cursor: not-allowed; }
 
-.github-fork img {
-  position: fixed;
-  top: 0;
-  right: 0;
-  border: 0;
-  z-index: 100; }
-
 /*****************************************************************************/
 .content {
   min-height: 3rem; }
   .content img {
     margin: .1rem 0; }
 
-.related {
-  margin-top: .3rem;
-  margin-bottom: .1rem; }
-  .related h2 {
-    margin-bottom: .1rem; }
-  .related ul li {
-    background: white; }
-
 .posts {
   list-style-type: none;
   width: 100%; }
   .posts .post {
-    background: #ddd;
     border-radius: .05rem;
-    padding: 0.12rem 0.12rem;
+    padding: 0 0 0.12rem;
     margin-bottom: .12rem;
-    width: 100%; }
+    width: 100%;
+    border-bottom: 1px dashed #ccc; }
     .posts .post .title {
       margin: 0;
       line-height: 1.7;
@@ -253,8 +239,6 @@ footer {
       text-align: right; }
       .posts .post .more:after {
         content: ""; }
-    .posts .post:first-child {
-      margin-top: .24rem; }
     .posts .post:last-child {
       margin-bottom: 0; }
   .posts span {
@@ -265,20 +249,13 @@ footer {
 .highlight {
   -webkit-font-smoothing: subpixel-antialiased; }
 
-.wrap_proj {
-  background: #000;
-  border-radius: .05rem;
-  margin-bottom: .2rem;
-  padding: .16rem; }
-  .wrap_proj:hover {
-    transform: perspective(600px) translateZ(30px); }
-  .wrap_proj a {
-    color: white;
-    text-decoration: none; }
-  .wrap_proj .preview {
-    padding-top: .15rem; }
-    .wrap_proj .preview img {
-      width: 100%; }
+.related {
+  margin-top: .3rem;
+  margin-bottom: .1rem; }
+  .related h2 {
+    margin-bottom: .1rem; }
+  .related ul li {
+    background: white; }
 
 .backToTop {
   display: none;
@@ -298,7 +275,16 @@ footer {
     content: "";
     font-size: .16rem; }
 
-/*****************************************************************************/
+.github-fork img {
+  position: fixed;
+  top: 0;
+  right: 0;
+  border: 0;
+  z-index: 100; }
+
+/**
+ * Page Css
+ ****************************************************************************/
 .preload {
   z-index: 999;
   width: 100%;
@@ -373,7 +359,37 @@ footer {
     -webkit-animation-iteration-count: infinite;
     animation-iteration-count: infinite; }
 
-/*****************************************************************************/
+.project {
+  padding: 0 0 0.12rem;
+  margin-bottom: .12rem;
+  border-bottom: 1px dashed #ccc; }
+  .project a {
+    text-decoration: none; }
+  .project .title {
+    font-size: .16rem;
+    color: black;
+    display: inline-block;
+    margin-bottom: .12rem; }
+  .project .preview img {
+    width: 100%; }
+  .project:last-child {
+    border-bottom: none; }
+
+/**
+ * Common Defination
+ ****************************************************************************/
+.text-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+
+.center {
+  width: 100%;
+  margin: 0 auto; }
+
+/**
+ * Icon Defination
+ ****************************************************************************/
 .icon {
   font-family: "fontawesome"; }
 
@@ -392,7 +408,9 @@ footer {
 .icon-angle-right:before {
   content: ""; }
 
-/*****************************************************************************/
+/**
+ * Media Query
+ ***************************************************************************/
 @font-face {
   font-family: "fontawesome";
   src: url("../font/fontawesome-webfont.woff?v=4.4.0") format("woff"); }

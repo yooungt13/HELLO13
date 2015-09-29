@@ -179,6 +179,7 @@ nav {
 
 article {
     min-height: 50%;
+    padding-top: .24rem;
 }
 
 section {
@@ -267,16 +268,6 @@ footer {
     }
 }
 
-.github-fork {
-    img {
-        position: fixed;
-        top: 0;
-        right: 0;
-        border: 0;
-        z-index:100;
-    }
-}
-
 /*****************************************************************************/
 
 .content {
@@ -287,31 +278,17 @@ footer {
     }
 }
 
-.related {
-    margin-top: .3rem;
-    margin-bottom: .1rem;
-
-    h2 {
-        margin-bottom: .1rem;
-    }
-
-    ul {
-        li {
-            background: white;
-        }
-    }
-}
-
 .posts {
     list-style-type: none;
     width: 100%;
 
     .post {
-        background: #ddd;
+        // background: #ddd;
         border-radius: .05rem;
-        padding: .12rem .12rem;
+        padding: 0 0 .12rem;
         margin-bottom: .12rem;
         width: 100%;
+        border-bottom: 1px dashed #ccc;
 
         .title {
             margin: 0;
@@ -374,10 +351,6 @@ footer {
             }
         }
 
-        &:first-child {
-            margin-top: .24rem;
-        }
-
         &:last-child {
             margin-bottom: 0;
         }
@@ -395,26 +368,17 @@ footer {
     -webkit-font-smoothing: subpixel-antialiased;
 }
 
-.wrap_proj {
-    background: $black;
-    border-radius: .05rem;
-    margin-bottom: .2rem;
-    padding: .16rem;
+.related {
+    margin-top: .3rem;
+    margin-bottom: .1rem;
 
-    &:hover {
-        transform: perspective(600px) translateZ(30px);
+    h2 {
+        margin-bottom: .1rem;
     }
 
-    a {
-        color: white;
-        text-decoration: none;
-    }
-
-    .preview {
-        padding-top: .15rem;
-
-        img {
-            width: 100%;
+    ul {
+        li {
+            background: white;
         }
     }
 }
@@ -440,8 +404,19 @@ footer {
     }
 }
 
+.github-fork {
+    img {
+        position: fixed;
+        top: 0;
+        right: 0;
+        border: 0;
+        z-index:100;
+    }
+}
 
-/*****************************************************************************/
+/**
+ * Page Css
+ ****************************************************************************/
 
 .preload {
     z-index: 999;
@@ -541,7 +516,56 @@ footer {
     }
 }
 
-/*****************************************************************************/
+
+.project {
+    padding: 0 0 .12rem;
+    margin-bottom: .12rem;
+    border-bottom: 1px dashed #ccc;
+
+    // &:hover {
+    //     transform: perspective(600px) translateZ(30px);
+    // }
+
+    a {
+        text-decoration: none;
+    }
+
+    .title {
+        font-size: .16rem;
+        color: black;
+        display: inline-block;
+        margin-bottom: .12rem;
+    }
+
+    .preview {
+        img {
+            width: 100%;
+        }
+    }
+
+    &:last-child {
+        border-bottom: none;
+    }
+}
+
+/**
+ * Common Defination
+ ****************************************************************************/
+
+.text-ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.center {
+    width: 100%;
+    margin: 0 auto;
+}
+
+/**
+ * Icon Defination
+ ****************************************************************************/
 
 .icon {
     font-family: $fa-font-name;
@@ -567,7 +591,9 @@ footer {
     content: $fa-var-angle-right;
 }
 
-/*****************************************************************************/
+/**
+ * Media Query
+ ***************************************************************************/
 
 @font-face {
     font-family: $fa-font-name;

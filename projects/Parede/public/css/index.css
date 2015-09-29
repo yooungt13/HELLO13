@@ -6,7 +6,7 @@
 }
 
 html, body {
-	height: 100%; 
+	height: 100%;
 	-webkit-font-smoothing: antialiased;
 }
 
@@ -14,7 +14,7 @@ h1, h2, h3, h4, h5, h6 {
 	font-size: 100%;
 }
 
-body, button, input, select, textarea { 
+body, button, input, select, textarea {
 	font:12px/1.5 Helvetica, arial, freesans, clean, sans-serif;
 	color:#333;
 	text-align: center;
@@ -52,7 +52,7 @@ section {
 	margin: 0 auto;
 	min-height: 500px;
 	overflow: hidden;
-	padding: 10px; 
+	padding: 10px;
 
 }
 
@@ -64,7 +64,7 @@ section {
 	margin-top: -422px;
 	float: right;
 	width: 220px;
-	border: 2px solid #999;
+	border: 1px solid #999;
 	background: #fff;
 	padding: 20px;
 	-webkit-transition: all 0.8s ease;
@@ -90,7 +90,7 @@ section {
 	width: 208px;
 	border-radius: 2px;
 	-webkit-border-radius: 2px;
-	text-align: left;			
+	text-align: left;
 }
 
 .persistency {
@@ -168,7 +168,7 @@ section {
 
 footer {
 	border-top: 1px solid #ccc;
-	padding: 20px 0 50px 0; 
+	padding: 20px 0 50px 0;
 	width: 60%;
 	margin: 0 auto;
 	color: #ccc;

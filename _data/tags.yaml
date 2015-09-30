@@ -1,0 +1,26 @@
+- slug: js
+  name: JS
+
+- slug: requirejs
+  name: Requirejs
+
+- slug: gulp
+  name: Gulp
+
+- slug: sprites
+  name: Sprites
+
+- slug: css
+  name: Css
+
+- slug: html
+  name: Html
+
+- slug: github
+  name: GitHub
+
+- slug: prototype
+  name: Prototype
+
+- slug: oo
+  name: OrientedObject

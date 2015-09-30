@@ -1,9 +1,8 @@
 baseurl:     /
-url:         http://localhost:4000
 source:      .
 destination: ./_site
 encoding:    utf-8
-permalink:   /:title
+permalink:   /posts/:title
 highlighter: pygments
 markdown:    rdiscount
 

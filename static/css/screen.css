@@ -240,7 +240,8 @@ footer {
       .posts .post .more:after {
         content: ""; }
     .posts .post:last-child {
-      margin-bottom: 0; }
+      margin-bottom: 0;
+      border-bottom: none; }
   .posts span {
     color: #aaa;
     font-family: sans-serif, Courier New, "Lucida Grande";

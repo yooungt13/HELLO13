@@ -30,7 +30,7 @@ keywords: 有田十三,javascript,web,github,blog
                         <i class="icon icon-tags"></i>
                     {% endif %}
                     {% for tag in post.tags %}
-                        <a class="tag" href="/posts/{{ tag }}/">{{ tag }}</a>
+                        <a class="tag" href="/tags/{{ tag | downcase }}/">{{ tag }}</a>
                     {% endfor %}
                 {% endif %}
             </p><!--

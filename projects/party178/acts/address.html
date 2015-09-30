@@ -2,8 +2,8 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title> 
-        178       
+        <title>
+        178
         
            | 地址
         
@@ -52,7 +52,12 @@
     <div class="ui-form-item">
         <label for="#">地址</label>
         <div class="ui-form-item">
-            <input class="ar" name="address" type="text" placeholder="北京" />
+            <div class="ui-select">
+                <select name="address">
+                    <option value="北京">北京</option>
+                    <option value="上海">上海</option>
+                </select>
+            </div>
         </div>
     </div>
 </div><!-- user name end -->
@@ -74,9 +79,12 @@
                     window.history.back();
                 });
 
+                $(document).on('click', '.party-action', function(e){
+                    // todo
+                });
+
                 fc.attach(document.body);
             });
         </script>
     </body>
 </html>
-                    

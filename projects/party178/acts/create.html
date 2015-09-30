@@ -2,8 +2,8 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title> 
-        178       
+        <title>
+        178
         
            | 发起邀约
         
@@ -46,13 +46,13 @@
         
         <div class="user-info">
     <ul class="link-list ui-list ui-list-link">
-        <li class="ui-border-b" data-href="type.html" style="padding: 25px 0;">
+        <li class="ui-border-b" data-href="name.html" style="padding: 20px 0;">
+            <p>活动名称</p>
+            <div class="badge-r"><span class="c-lgray4">一起去看流星雨</span></div>
+        </li>
+        <li class="ui-border-b" data-href="type.html">
             <p>活动类型</p>
             <div class="badge-r"><span class="c-lgray4">酒会</span></div>
-        </li>
-        <li class="ui-border-b" data-href="address.html">
-            <p>地址</p>
-            <div class="badge-r"><span class="c-lgray4">北京</span></div>
         </li>
         <li class="ui-border-b" data-href="date.html">
             <p>活动时间</p>
@@ -61,6 +61,10 @@
         <li class="ui-border-b" data-href="number.html">
             <p>人数</p><span class="party-text-weak">（注：需带一位朋友）</span>
             <div class="badge-r"><span class="c-lgray4">2v2</span></div>
+        </li>
+        <li class="ui-border-b" data-href="address.html">
+            <p>地址</p>
+            <div class="badge-r"><span class="c-lgray4">北京</span></div>
         </li>
         <li class="ui-border-b" data-href="poi.html">
             <p>商圈</p>
@@ -73,6 +77,20 @@
     </ul>
     <a class="ui-btn-lg ui-btn-primary mt-30" id="submit">发起邀约</a>
 </div><!-- user info end -->
+
+<script>
+    require(['zepto','util/msg'], function($, msg) {
+        $(document).on('click', '#submit', function() {
+            // 如果符合条件，则提交
+            var text = '一起去看流星雨<br/>类型：酒会<br/>地址：北京<br/>活动时间：2015-09-12<br/>人数：2v2<br/>商圈：三里屯<br/>费用：AA制'
+
+            msg.confirm(text, {}, {
+                okText: '取消',
+                cancelText: '确认'
+            });
+        });
+    });
+</script>
 
 
         <script>
@@ -92,9 +110,12 @@
                     window.history.back();
                 });
 
+                $(document).on('click', '.party-action', function(e){
+                    // todo
+                });
+
                 fc.attach(document.body);
             });
         </script>
     </body>
 </html>
-                    

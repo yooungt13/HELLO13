@@ -248,7 +248,7 @@
 </script>
 
         <script>
-            require(['zepto','fastclick'], function($, fc) {
+            require(['zepto','fastclick', 'util/msg'], function($, fc, msg) {
 
                 //选择城市
                 $(document).on('click', '#selectCityBtn, #selectCity', function(){
@@ -266,6 +266,9 @@
 
                 $(document).on('click', '.party-action', function(e){
                     // todo
+                    msg.alert('保存成功', function() {
+                        window.history.back();
+                    });
                 });
 
                 fc.attach(document.body);

@@ -25,6 +25,13 @@ gulp.task('server', function(cb) {
 
 });
 
+gulp.task('build', function(cb) {
+    // build Jekyll
+    exec('jekyll build').stdout.on('data', function(chunk) {
+        console.log(chunk);
+    });
+});
+
 gulp.task('sass', function() {
     // Gets all files ending with .scss in static/scss and children dirs
     return gulp.src('static/scss/*.scss')
@@ -70,10 +77,10 @@ gulp.task('useref', function(){
         .pipe(gulp.dest('./'));
 });
 
-gulp.task('backup', function(){
+gulp.task('copy2hello13', function(){
     // prefix前缀个数，保存目录避免在_layout下创建_layout
-    return gulp.src('_layouts/default.html')
-        .pipe(copy('backup', {prefix:1}));
+    return gulp.src('_site/**')
+        .pipe(copy('../HELLO13/projects/party178', {prefix:1}));
 });
 
 // push到github
@@ -90,7 +97,7 @@ gulp.task('push2git', function(){
 });
 
 gulp.task('deploy', function(){
-    runSequence('useref', 'push2git', function(err){
+    runSequence('useref', 'build', 'copy2hello13', function(err){
         if(err) {
             console.log('Deploy error: ' + err);
             return;

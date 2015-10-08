@@ -1,0 +1,29 @@
+{
+  "name": "HELLO13",
+  "version": "1.0.0",
+  "homepage": "https://hello13.net",
+  "authors": [
+    "有田十三"
+  ],
+  "description": "Thanks for comming and Please star and fork in Github if u like here.",
+  "main": "index.html",
+  "moduleType": [],
+  "keywords": [
+    "hello13"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "~1.1.4",
+    "firebase": "~2.3.1",
+    "zepto": "~1.1.6",
+    "fastclick": "~1.0.6"
+  }
+}

@@ -42,13 +42,30 @@ gulp.task('sprite', function() {
     var spriteOutput =
         gulp.src("static/img/icon/*.png")
             .pipe(sprite({
-                imgName: "sprite.png",
-                cssName: "sprite.css",
-                imgPath: "/static/img/sprite.png"
+                imgName: 'sprite.png',
+                cssName: 'sprite.css',
+                imgPath: '/static/img/sprite.png'
             }));
 
-    spriteOutput.css.pipe(gulp.dest("static/css"));
-    spriteOutput.img.pipe(gulp.dest("static/img"));
+    spriteOutput.css.pipe(gulp.dest('static/css'));
+    spriteOutput.img.pipe(gulp.dest('static/img'));
+});
+
+// 连接线上数据库
+// ref: https://www.firebase.com/account/#/
+gulp.task('firebase', function() {
+    var Firebase = require('firebase');
+
+    // Get a database reference to our posts
+    var url = 'https://hello13.firebaseio.com/',
+        ref = new Firebase(url);
+
+    // Attach an asynchronous callback to read the data at our posts reference
+    ref.on('value', function(snapshot) {
+        console.log(snapshot.val());
+    }, function (errorObject) {
+      console.log('The read failed: ' + errorObject.code);
+    });
 });
 
 /**

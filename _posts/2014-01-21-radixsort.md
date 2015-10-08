@@ -1,6 +1,6 @@
 ---
 layout: post
-title: RadixSort
+title: Radix Sort
 tag: DataStructure
 addr: Sysu, Guangzhou
 ---

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: InsertSort
+title: Insert Sort
 tag: DataStructure
 addr: Sysu, Guangzhou
 ---

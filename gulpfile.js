@@ -28,12 +28,12 @@ gulp.task('server', function(cb) {
 gulp.task('sass', function() {
     // Gets all files ending with .scss in static/scss and children dirs
     return gulp.src('static/scss/*.scss')
-    .pipe(sass())
-    .pipe(gulp.dest('static/css'));
+        .pipe(sass())
+        .pipe(gulp.dest('static/css'));
 });
 
 // Gulp watch syntax
-gulp.task('watch', function(){
+gulp.task('watch', function() {
     // watchers
     gulp.watch('static/scss/*.scss', ['sass']);
 });
@@ -41,11 +41,11 @@ gulp.task('watch', function(){
 gulp.task('sprite', function() {
     var spriteOutput =
         gulp.src("static/img/icon/*.png")
-            .pipe(sprite({
-                imgName: 'sprite.png',
-                cssName: 'sprite.css',
-                imgPath: '/static/img/sprite.png'
-            }));
+        .pipe(sprite({
+            imgName: 'sprite.png',
+            cssName: 'sprite.css',
+            imgPath: '/static/img/sprite.png'
+        }));
 
     spriteOutput.css.pipe(gulp.dest('static/css'));
     spriteOutput.img.pipe(gulp.dest('static/img'));
@@ -53,18 +53,29 @@ gulp.task('sprite', function() {
 
 // 连接线上数据库
 // ref: https://www.firebase.com/account/#/
-gulp.task('firebase', function() {
-    var Firebase = require('firebase');
+var Firebase = require('firebase'),
+    FIREBASE_URL = 'https://hello13.firebaseio.com/',
+    fref = new Firebase(FIREBASE_URL);
 
-    // Get a database reference to our posts
-    var url = 'https://hello13.firebaseio.com/',
-        ref = new Firebase(url);
-
+gulp.task('getdata', function() {
     // Attach an asynchronous callback to read the data at our posts reference
-    ref.on('value', function(snapshot) {
+    fref.on('value', function(snapshot) {
         console.log(snapshot.val());
-    }, function (errorObject) {
-      console.log('The read failed: ' + errorObject.code);
+    }, function(errorObject) {
+        console.log('The read failed: ' + errorObject.code);
+    });
+});
+
+gulp.task('setdata', function() {
+
+    var data = require('./static/json/firebase-data.json');
+
+    fref.set(data, function(err) {
+        if (err) {
+            console.log('Data of firebase update failed');
+        } else {
+            console.log('Data of firebase update succeeded');
+        }
     });
 });
 
@@ -73,10 +84,12 @@ gulp.task('firebase', function() {
  */
 
 // 压缩、合并资源文件
-gulp.task('useref', function(){
+gulp.task('useref', function() {
     var assets = useref.assets();
 
-    return gulp.src('_layouts/default.html', {base:'./'})
+    return gulp.src('_layouts/default.html', {
+            base: './'
+        })
         .pipe(assets)
         // Minifies only if it's a CSS file
         .pipe(gulpif('*.css', minifyCSS()))
@@ -87,17 +100,19 @@ gulp.task('useref', function(){
         .pipe(gulp.dest('./'));
 });
 
-gulp.task('backup', function(){
+gulp.task('backup', function() {
     // prefix前缀个数，保存目录避免在_layout下创建_layout
     return gulp.src('_layouts/default.html')
-        .pipe(copy('backup', {prefix:1}));
+        .pipe(copy('backup', {
+            prefix: 1
+        }));
 });
 
 // push到github
-gulp.task('push2git', function(){
+gulp.task('push2git', function() {
     var cmd = 'git add .;git commit -m "Gulp Deploy.";git push origin';
     exec(cmd, function(err, stdout) {
-        if(err) {
+        if (err) {
             console.log('Git push:' + err);
         } else {
             console.log(stdout);
@@ -106,9 +121,9 @@ gulp.task('push2git', function(){
     });
 });
 
-gulp.task('deploy', function(){
-    runSequence('useref', 'push2git', function(err){
-        if(err) {
+gulp.task('deploy', function() {
+    runSequence('useref', 'push2git', function(err) {
+        if (err) {
             console.log('Deploy error: ' + err);
             return;
         }

@@ -38,6 +38,7 @@ gulp.task('watch', function() {
     gulp.watch('static/scss/*.scss', ['sass']);
 });
 
+// 生成雪碧图
 gulp.task('sprite', function() {
     var spriteOutput =
         gulp.src("static/img/icon/*.png")
@@ -77,6 +78,20 @@ gulp.task('setdata', function() {
             console.log('Data of firebase update succeeded');
         }
     });
+});
+
+gulp.task('vulcanize', function() {
+    var vulcanize = require('gulp-vulcanize');
+
+    return gulp.src('static/elements/friend-list/index.html')
+        .pipe(vulcanize({
+            abspath: '',
+            excludes: [],
+            stripExcludes: false,
+            inlineScripts: true,
+            inlineCss: true,
+        }))
+        .pipe(gulp.dest('static/elements/friend-list'));
 });
 
 /**

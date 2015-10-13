@@ -1,5 +1,5 @@
 .party-back {
-	
+
 }
 
 .party-email {
@@ -27,4 +27,13 @@
 .party-lazy {
 	width: 355px;
 	height: 200px;
+}
+
+.party-avatar-wrap {
+	padding: 1px 0;
+}
+
+.party-choosed {
+	border: 1px solid #3dd6d1;
+	margin-top: -1px;
 }

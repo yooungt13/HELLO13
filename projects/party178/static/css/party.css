@@ -37,3 +37,21 @@
 	border: 1px solid #3dd6d1;
 	margin-top: -1px;
 }
+
+div.party-avatar {
+	width: 96px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+img.party-avatar-img {
+	width:96px;
+	height:96px;
+	display:block;
+}
+
+input.party-avatar-input {
+	position: static;
+	margin-top: -96px;
+	display: block;
+}

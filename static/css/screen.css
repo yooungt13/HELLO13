@@ -142,7 +142,7 @@ footer {
   border-top: 1px solid #ddd;
   overflow: hidden;
   text-align: justify;
-  padding-top: .12rem; }
+  padding: 0.12rem 0 0.36rem; }
   footer .contact {
     display: inline-block;
     width: 50%; }
@@ -408,7 +408,7 @@ footer {
 .icon-quote-left:before {
   content: ""; }
 
-.icon-quote-right:before {
+.icon-quote-right:after {
   content: ""; }
 
 .icon-angle-right:before {

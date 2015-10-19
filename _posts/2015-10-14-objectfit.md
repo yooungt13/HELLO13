@@ -4,7 +4,7 @@ title: Object-fit - CSS3
 tag: [CSS]
 addr: Meituan, Beijing
 description: Object-fit - CSS3
-keywords: js,css,css3,object-fit,object-position,有田十三
+keywords: css,css3,object-fit,object-position,有田十三
 ---
 
 In the responsive design, image processing adaptive is everyone's problem.I found the same problem at work, images of our users' avatar aren't square so that I must be make sure these images fill the container adaptivly.

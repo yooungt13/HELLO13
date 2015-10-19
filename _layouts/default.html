@@ -44,7 +44,11 @@
         <!-- iPhone 6 startup image -->
         <link rel="apple-touch-startup-image" href="https://placehold.it/750x1294">
 
-        <link rel="stylesheet" href="/static/css/screen.min.css">
+        <!--build:css /static/css/screen.min.css-->
+        <link rel="stylesheet" href="/static/css/screen.css" media="screen, projection" />
+        <link rel="stylesheet" href="/static/css/syntax.css" />
+        <link rel="stylesheet" href="/static/css/md.css" media="screen, projection" />
+        <!--endbuild-->
     </head>
     <body>
         <header>
@@ -83,7 +87,11 @@
             </footer>
         </section>
 
-        <script src="/static/js/page.min.js"></script>
+        <!--build:js /static/js/page.min.js -->
+        <script src="/static/components/zepto/zepto.min.js"></script>
+        <script src="/static/components/fastclick/lib/fastclick.js"></script>
+        <script src="/static/js/page.js"></script>
+        <!-- endbuild -->
 
         <!--*********************************************************-->
         <!--******************Copyright @有田十三**********************-->

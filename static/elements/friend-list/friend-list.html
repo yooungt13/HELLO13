@@ -2,15 +2,12 @@
 <link rel="import" href="../contact-card/contact-card.html">
 
 <dom-module id="friend-list">
+    <link rel="import" type="css" href="./friend-list.css">
     <template>
-        <firebase-collection data="{{data}}"
-                          location="https://hello13.firebaseio.com/friends">
+        <firebase-collection data="{{data}}" location="https://hello13.firebaseio.com/friends">
         </firebase-collection>
         <template is="dom-repeat" items="{{data}}">
-            <contact-card>
-                <img src="{{item.url}}">
-                <span>{{item.name}}</span>
-            </contact-card>
+            <contact-card friend="{{item}}"></contact-card>
         </template>
     </template>
     <script>

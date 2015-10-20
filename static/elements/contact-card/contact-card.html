@@ -1,19 +1,26 @@
 <link rel="import" href="../../components/polymer/polymer.html">
-<!-- <link rel="import" href="../../components/iron-icon/iron-icon.html"> -->
-<!-- <link rel="import" href="../../components/iron-icons/iron-icons.html"> -->
 
 <dom-module id="contact-card">
     <link rel="import" type="css" href="./contact-card.css">
     <template>
-        <content></content>
-        <!-- <iron-icon icon="star" hidden$="{{!starred}}"></iron-icon> -->
+        <div class="card">
+            <div class="item-cell" >
+                <div class="img-wrapper">
+                    <img src="{{friend.url}}"/>
+                </div>
+            </div>
+            <div class="item-cell desc-wrapper">
+                <div class="desc">
+                    <div class="name">{{friend.name}}</div>
+                    <div class="stars">*** 4.5</div>
+                    <div class="detail">{{friend.title}}</div>
+                </div>
+            </div>
+        </div>
     </template>
     <script>
         Polymer({
-            is: 'contact-card',
-            properties: {
-                starred: Boolean
-            }
+            is: 'contact-card'
         });
     </script>
 </dom-module>

@@ -1,29 +1,88 @@
 :host {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
     -webkit-box-align: center;
     -webkit-align-items: center;
     -ms-flex-align: center;
     align-items: center;
+
+    overflow: hidden;
+    width: 100%;
+    display: table-row;
+    margin-bottom: .24rem;
 }
-:host::content > img {
-    width: .5rem;
-    height: .5rem;
+
+:host::content .card {
+    width: 100%;
+    margin: .24rem 0;
+}
+
+:host::content .item-cell {
+    display: table-cell;
+    vertical-align: middle;
+    font-size: .28rem;
+}
+
+:host::content .img-wrapper {
     border-radius: 50%;
+    display: inline-block;
+    overflow: hidden;
+    margin: 0 .2rem 0 .24rem;
+    background: url('http://p0.meituan.net/apollo/82833593fb8c4e88f438a76062a6087e2156.png') center;
+    background-size: 100%;
+    width: 1rem;
+    height: 1rem;
 }
-:host::content > span {
-    font-family: Roboto, 'Helvetica Neue', Helvetica, sans-serif;
-    margin: .24rem;
-    -webkit-box-flex: 1;
-    -webkit-flex-grow: 1;
-    -ms-flex-positive: 1;
-    flex-grow: 1;
+
+:host::content .img-wrapper img {
+    width: 1rem;
+    height: 1rem;
+    object-fit: cover;
+    vertical-align: middle;
+    border: none;
 }
-:host::content > iron-icon {
-    color: #9E9E9E;
+
+:host::content .desc-wrapper {
+    width: 100%;
 }
-[hidden] {
-    display: none;
+
+:host::content .desc-wrapper .desc {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: .3rem;
+    width: 60%;
+
+/*    .name {
+        line-height: .3rem;
+        font-size: .3rem;
+        color: #333;
+    }
+
+    .stars {
+        font-size: .22rem;
+        color: #fdb338;
+        line-height: .42rem;
+    }
+
+    .detail {
+        font-size: .26rem;
+        line-height: .3rem;
+        color: #666;
+    }*/
+}
+
+:host::content .desc-wrapper .desc .name {
+    line-height: .3rem;
+    font-size: .3rem;
+    color: #333;
+}
+
+:host::content .desc-wrapper .desc .stars {
+    font-size: .22rem;
+    color: #fdb338;
+    line-height: .42rem;
+}
+
+:host::content .desc-wrapper .desc .detail {
+    font-size: .26rem;
+    line-height: .3rem;
+    color: #666;
 }

@@ -1,16 +1,8 @@
-2015-10-22 15:14:00
-2015-10-22 15:15:00
-2015-10-22 15:16:00
-2015-10-22 15:17:00
-2015-10-22 15:18:00
-2015-10-22 15:24:00
-fatal: Not a git repository (or any of the parent directories): .git
-fatal: Not a git repository (or any of the parent directories): .git
-fatal: Not a git repository (or any of the parent directories): .git
-fatal: Not a git repository (or any of the parent directories): .git
-2015-10-22 15:25:00
-fatal: Not a git repository (or any of the parent directories): .git
-fatal: Not a git repository (or any of the parent directories): .git
-fatal: Not a git repository (or any of the parent directories): .git
-fatal: Not a git repository (or any of the parent directories): .git
 2015-10-22 15:26:00
+[master 21aa629] Crontab daily ush.
+ 1 file changed, 16 insertions(+), 5 deletions(-)
+ rewrite shell/crontab.log (100%)
+Already up-to-date.
+To git@github.com:yooungt13/yooungt13.github.com
+   e918da7..21aa629  master -> master
+2015-10-22 15:27:00

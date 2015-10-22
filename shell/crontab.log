@@ -1,8 +1,14 @@
 2015-10-22 15:26:00
-[master 21aa629] Crontab daily ush.
+[master 21aa629] Crontab daily push.
  1 file changed, 16 insertions(+), 5 deletions(-)
  rewrite shell/crontab.log (100%)
 Already up-to-date.
 To git@github.com:yooungt13/yooungt13.github.com
    e918da7..21aa629  master -> master
 2015-10-22 15:27:00
+[master 62e4d2e] Crontab daily push.
+ 1 file changed, 8 insertions(+), 16 deletions(-)
+ rewrite shell/crontab.log (97%)
+To git@github.com:yooungt13/yooungt13.github.com
+   21aa629..62e4d2e  master -> master
+2015-10-22 19:47:00

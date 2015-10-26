@@ -125,7 +125,7 @@ gulp.task('backup', function() {
 
 // push到github
 gulp.task('push2git', function() {
-    var cmd = 'git add .;git commit -m "Gulp Deploy.";git push origin';
+    var cmd = 'git add .;git commit -m "Gulp deploy.";git pull origin;git push origin';
     exec(cmd, function(err, stdout) {
         if (err) {
             console.log('Git push:' + err);

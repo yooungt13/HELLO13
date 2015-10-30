@@ -96,3 +96,20 @@ hint: its remote counterpart. Integrate the remote changes (e.g.
 hint: 'git pull ...') before pushing again.
 hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 2015-10-30 10:47:01
+[master 6120d92] Crontab daily push.
+ 1 file changed, 17 insertions(+)
+From github.com:yooungt13/yooungt13.github.com
+   5d5b26f..4f50342  master     -> origin/master
+   5d5b26f..7ff659b  develop    -> origin/develop
+error: Your local changes to the following files would be overwritten by merge:
+	shell/crontab.log
+Please, commit your changes or stash them before you can merge.
+Aborting
+To git@github.com:yooungt13/yooungt13.github.com.git
+ ! [rejected]        master -> master (non-fast-forward)
+error: failed to push some refs to 'git@github.com:yooungt13/yooungt13.github.com.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+2015-10-30 10:55:01

@@ -1,8 +1,8 @@
-cd /Users/hello13/Documents/Proj/HELLO13
+cd /root/proj/HELLO13/shell
 
-date "+%Y-%m-%d %H:%M:%S" >> ./shell/crontab.log
+date "+%Y-%m-%d %H:%M:%S" >> ./crontab.log
 
-git add -f ./shell/crontab.log
+git add -f ./crontab.log
 git commit -m 'Crontab daily push.'
 git pull origin
 git push origin

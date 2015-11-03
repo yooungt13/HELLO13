@@ -15,7 +15,7 @@ keywords: 有田十三,javascript,web,github,blog
             {% assign random = random | divided_by:2.5 | replace: '.', '' %}
         {% endif%}
         <li style="font-size: .{{random}}rem;">
-            <a href="/tags/{{title}}">
+            <a href="/tags/{{title | downcase}}">
                 <span>{{ title | downcase | replace:" ","-" }}</span>
             </a>
         </li>

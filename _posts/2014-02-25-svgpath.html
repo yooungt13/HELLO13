@@ -1,15 +1,14 @@
 ---
 layout: post
 title: Draw a Moving Line
-tag: CSS
+tag: [CSS, Animation]
 addr: Sysu, Guangzhou
-
 ---
 
 <strong>原文链接：</strong> <a href="http://www.webhek.com/animated-line-drawing-in-svg/">[传送门]</a><br>
 <br>
 <div class="containner">
-	<svg height="30%" width="30%" onclick="RunLine();">
+	<svg height="30%" width="100%" onclick="RunLine();">
 		<path d="M43 74
 		C43 74 41 74 41 74
 		C41 79 43 74 46 84
@@ -43,7 +42,7 @@ SVG里用来定义路径的格式堪比正则表达式的怪异：<br><br>
 	C1 101 21 124 46 124
 	C76 124 101 101 101 74
 	C101 40 76 14 46 14"
-	style="fill:white;stroke:black;stroke-width:2"/>
+	style="fill:black;stroke:white;stroke-width:2"/>
 {% endhighlight %}
 <br>
 属性d里的每一部分都是告诉浏览器生成一个动作，比如移动到某一个点，开始画一条线，画一个贝齐尔弧线，等等。<br>

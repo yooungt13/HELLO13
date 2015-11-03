@@ -1,9 +1,8 @@
 ---
 layout: post
 title: HTML5+JavaScript实现Flappy Bird
-tag: JS
+tag: [JS, Html, Animation]
 addr: Sysu, Guangzhou
-
 ---
 
 游戏截图

@@ -1,0 +1,117 @@
+2015-10-22 15:26:00
+[master 21aa629] Crontab daily push.
+ 1 file changed, 16 insertions(+), 5 deletions(-)
+ rewrite shell/crontab.log (100%)
+Already up-to-date.
+To git@github.com:yooungt13/yooungt13.github.com
+   e918da7..21aa629  master -> master
+2015-10-22 15:27:00
+[master 62e4d2e] Crontab daily push.
+ 1 file changed, 8 insertions(+), 16 deletions(-)
+ rewrite shell/crontab.log (97%)
+To git@github.com:yooungt13/yooungt13.github.com
+   21aa629..62e4d2e  master -> master
+2015-10-22 19:47:00
+[master 1d14a6d] Crontab daily push.
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+Already up-to-date.
+To git@github.com:yooungt13/yooungt13.github.com
+   62e4d2e..1d14a6d  master -> master
+2015-10-22 19:49:00
+[master 505417b] Crontab daily push.
+ 1 file changed, 6 insertions(+)
+Already up-to-date.
+To git@github.com:yooungt13/yooungt13.github.com
+   1d14a6d..505417b  master -> master
+2015-10-23 10:27:00
+[master bc33f0e] Crontab daily push.
+ 1 file changed, 6 insertions(+)
+Already up-to-date.
+To git@github.com:yooungt13/yooungt13.github.com
+   505417b..bc33f0e  master -> master
+2015-10-23 10:45:00
+[master 9b69e64] Crontab daily push.
+ 1 file changed, 6 insertions(+)
+Already up-to-date.
+To git@github.com:yooungt13/yooungt13.github.com
+   bc33f0e..9b69e64  master -> master
+2015-10-27 08:30:01
+[master 3462536] Crontab daily push.
+ 1 file changed, 1 insertion(+)
+Already up-to-date.
+To git@github.com:yooungt13/yooungt13.github.com.git
+   1a68d5f..3462536  master -> master
+2015-10-28 08:30:01
+[master 3f9aa39] Crontab daily push.
+ 1 file changed, 6 insertions(+)
+Warning: Permanently added the RSA host key for IP address '192.30.252.131' to the list of known hosts.
+Already up-to-date.
+To git@github.com:yooungt13/yooungt13.github.com.git
+   3462536..3f9aa39  master -> master
+2015-10-29 08:30:01
+[master 855ffd6] Crontab daily push.
+ 1 file changed, 7 insertions(+)
+Already up-to-date.
+To git@github.com:yooungt13/yooungt13.github.com.git
+   3f9aa39..855ffd6  master -> master
+2015-10-30 08:30:01
+[master 4152fe1] Crontab daily push.
+ 1 file changed, 6 insertions(+)
+From github.com:yooungt13/yooungt13.github.com
+   855ffd6..5d5b26f  master     -> origin/master
+   911319b..5d5b26f  develop    -> origin/develop
+error: Your local changes to the following files would be overwritten by merge:
+	shell/crontab.log
+Please, commit your changes or stash them before you can merge.
+Aborting
+To git@github.com:yooungt13/yooungt13.github.com.git
+ ! [rejected]        master -> master (non-fast-forward)
+error: failed to push some refs to 'git@github.com:yooungt13/yooungt13.github.com.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+2015-10-30 10:47:01
+[master 6120d92] Crontab daily push.
+ 1 file changed, 17 insertions(+)
+From github.com:yooungt13/yooungt13.github.com
+   5d5b26f..4f50342  master     -> origin/master
+   5d5b26f..7ff659b  develop    -> origin/develop
+error: Your local changes to the following files would be overwritten by merge:
+	shell/crontab.log
+Please, commit your changes or stash them before you can merge.
+Aborting
+To git@github.com:yooungt13/yooungt13.github.com.git
+ ! [rejected]        master -> master (non-fast-forward)
+error: failed to push some refs to 'git@github.com:yooungt13/yooungt13.github.com.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+2015-10-30 10:55:01
+[master 8192f00] Crontab daily push.
+ 1 file changed, 17 insertions(+)
+error: Your local changes to the following files would be overwritten by merge:
+	shell/crontab.log
+Please, commit your changes or stash them before you can merge.
+Aborting
+To git@github.com:yooungt13/yooungt13.github.com.git
+ ! [rejected]        master -> master (non-fast-forward)
+error: failed to push some refs to 'git@github.com:yooungt13/yooungt13.github.com.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+2015-10-31 08:30:01
+[master e89acf7] Crontab daily push.
+ 1 file changed, 1 insertion(+)
+Already up-to-date.
+To git@github.com:yooungt13/yooungt13.github.com.git
+   6fc4fef..e89acf7  master -> master
+2015-11-01 08:30:01
+[master 15f763a] Crontab daily push.
+ 1 file changed, 6 insertions(+)
+Already up-to-date.
+To git@github.com:yooungt13/yooungt13.github.com.git
+   e89acf7..15f763a  master -> master
+2015-11-02 08:30:01

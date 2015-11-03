@@ -59,6 +59,26 @@ async1(function(){..})
     })
 {% endhighlight%}
 
+Let's break it down on what Promise is doing for us here:
+
+1. Flattened callbacks
+2. Return values from asynchronous function
+3. Throw and Catch exceptions
+
+With flattened code hierarchy, the code are now much more readable. But that's just the by-product of Promise. The main thing about Promise is that it helps us achieve (2) and (3). Achieving (2) and (3) is important because that is what synchronous function can do for us.
+
+For Promise to make (2) and (3) work, the asynchronous function itself should __return a Promise Object__. This Promise object has two methods, `done` and `fail`. The methods will later be called depending on the state (fulflled || rejected) of the Promise Object.
+
+{% highlight javascript linenos %}
+asyncWithPromise() // Returns a promise object
+    .done(function(){ // if object's state is fulfilled, go here
+        ...
+    })
+    .fail(function(){ // if object's state is rejected, go here
+        ...
+    })
+{% endhighlight%}
+
 ## Generators
 
 Generators, like Promise, is also one of the features in ES6 that can manage asynchronous programming. The great thing about Generators is that it can work hand-in-hand with Promise to bring us closer to synchronous programming.
@@ -78,12 +98,37 @@ gn.next(); // 1.5 Object{ value: 2, done: false }
 gn.next(); // 2.5 Object{ value: undefined, done: true }
 {% endhighlight%}
 
-It also could be `yield promise`.
-
-### Run-to-completion
-
 Javascript function are expected to run-to-completion - This means once the function starts running, it will run to the end of the function. However, Generators allow us to interrupt this execution and switch to other tasks before returning back to the last interrupted task.
 
-The weird-looking function *() is to inform the Javascript interpreter that this is a special generator function type while yield is the cue to interrupt the function.
+The weird-looking `function *()` is to inform the Javascript interpreter that this is a special generator function type while `yield` is the cue to interrupt the function.
 
-When the code enter the function, it will hit console.log('1') first. It then continues to the next line which hit the yield expression. This pauses the function and allow other code to run which in this case is console.log('2'). But once lowerCasePromise's Promise has resolved, the paused function resumes and it continue to the last line of the function, console.log(str).
+### With Promise
+
+It also could be `yield promise`.
+
+{% highlight javascript linenos %}
+// define promise
+var Promise = function() {
+    return $.getJSON('http://hello13.net',{
+        data:JSON.stringify({data:'serverData'}),
+        type:'json'
+    });
+}
+
+// define generator
+function * Generator() {
+    console.log('generator start');
+    var data = yield Promise();
+    console.log(data);
+}
+
+var g = new Generator(),
+    promise = g.next().value;
+
+promise.done(function(data) {
+    g.next(data);
+})
+{% endhighlight%}
+
+
+When the code enter the function, it will hit `console.log('generator start')` first. It then continues to the next line which hit the `yield` expression. This pauses the function and allow other code to run. But once promise is done and call `g.next(data)`, the paused function resumes and it continue to the last line of the function `console.log(data)`, and the data is `serverData`.

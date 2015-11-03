@@ -47,6 +47,9 @@ table {
   font-size: inherit;
   font: 100%; }
 
+ul {
+  list-style: none; }
+
 header {
   width: 100%;
   height: .44rem;
@@ -110,7 +113,8 @@ nav {
       font-size: .16rem;
       height: .44rem;
       line-height: .44rem;
-      padding: 0 0.06rem; }
+      padding: 0 0.06rem;
+      cursor: pointer; }
       nav .menu dl a {
         color: #777; }
         nav .menu dl a:link, nav .menu dl a:visited, nav .menu dl a:hover, nav .menu dl a:active {
@@ -191,7 +195,8 @@ footer {
 .content {
   min-height: 3rem; }
   .content img {
-    margin: .1rem 0; }
+    margin: .1rem 0;
+    width: 100%; }
 
 .posts {
   list-style-type: none;
@@ -246,6 +251,14 @@ footer {
     color: #aaa;
     font-family: sans-serif, Courier New, "Lucida Grande";
     font-size: 80%; }
+
+ul.tags {
+  margin: 0.12rem 0 0.24rem; }
+  ul.tags li {
+    display: inline-block;
+    line-height: .3rem;
+    margin: 0 0.02rem;
+    cursor: pointer; }
 
 .highlight {
   -webkit-font-smoothing: subpixel-antialiased; }
@@ -360,6 +373,10 @@ footer {
     -webkit-animation-iteration-count: infinite;
     animation-iteration-count: infinite; }
 
+.bg {
+  width: 100%;
+  margin-top: -.24rem; }
+
 .project {
   padding: 0 0 0.12rem;
   margin-bottom: .12rem;
@@ -421,7 +438,11 @@ footer {
   font-family: "fontawesome";
   src: url("../font/fontawesome-webfont.woff?v=4.4.0") format("woff"); }
 
-@media only screen and (max-device-width: 667px) and (orientation: portrait) {
+@media only screen and (max-width: 1080px) and (orientation: portrait) {
+  .github-fork {
+    display: none; } }
+
+@media only screen and (max-width: 667px) and (orientation: portrait) {
   * {
     box-sizing: border-box; }
   header, nav, section {
@@ -469,5 +490,10 @@ footer {
           header .menu-expand .menu-list dl:hover a {
             color: #fff;
             text-decoration: underline; }
+  .bg {
+    margin: -0.24rem 0 0 -0.24rem;
+    width: -webkit-calc(100% + .48rem);
+    width: -moz-calc(100% + .48rem);
+    width: calc(100% + .48rem); }
   .github-fork {
     display: none; } }

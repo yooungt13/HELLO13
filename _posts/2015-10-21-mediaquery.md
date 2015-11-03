@@ -11,7 +11,7 @@ Using media queries in `.pic-container` for responsive web design, I collect a s
 
 <!--more-->
 
-## Sets of device-width
+### Sets of device-width
 
 | device  | device-width | device-pixel-ratio |
 | :------ | :----------- | :----------------- |

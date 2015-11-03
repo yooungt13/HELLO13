@@ -56,12 +56,15 @@ keywords: 有田十三,javascript,web,github,blog
                 <li class="disabled"><span>&laquo;</span></li>
             {% endif %}
             {% for page in (1..paginator.total_pages) %}
-                {% if page == paginator.page %}
-                    <li class="active"><span>{{ page }}</span></li>
-                {% elsif page == 1 %}
-                    <li><a href="/posts/">1</a></li>
-                {% else %}
-                    <li><a href="{{ site.paginate_path | replace: ':num', page }}/">{{ page }}</a></li>
+                {% assign offset = page | minus:paginator.page %}
+                {% if offset > -3 and offset < 3 %}
+                    {% if page == paginator.page %}
+                        <li class="active"><span>{{ page }}</span></li>
+                    {% elsif page == 1 %}
+                        <li><a href="/posts/">1</a></li>
+                    {% else %}
+                        <li><a href="{{ site.paginate_path | replace: ':num', page }}/">{{ page }}</a></li>
+                    {% endif %}
                 {% endif %}
             {% endfor %}
             {% if paginator.next_page %}

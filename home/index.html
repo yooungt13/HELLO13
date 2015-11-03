@@ -4,15 +4,22 @@ description: Thanks for comming and Please star and fork in Github if u like my 
 keywords: 有田十三,javascript,web,github,blog
 ---
 
-<!-- <script src="/static/components/webcomponentsjs/webcomponents-lite.min.js"></script>
-<link rel="import" href="/static/elements/friend-list/friend-list.html">
- -->
-<div class="markdown-body">
-	<strong style="color:#ff0000;">[Top]</strong> &nbsp; <a href="/posts/howtonewblog">How to new blog();</a></li>
-
-	<div style="min-height: 400px;">
-    	<!-- <friend-list></friend-list> -->
-	</div>
-
-	<br/>
+<div class="home">
+    <img class="bg" src="/static/img/bg.jpg">
+    <ul class="tags">
+    {% for tag in site.tags %}
+        {% assign title = tag | first %}
+        {% assign posts_size = tag | last | size%}
+        {% assign random =  title | size %}
+        {% if random > 3 and random < 10 %}
+            {% assign random = random | divided_by:2.5 | replace: '.', '' %}
+        {% endif%}
+        <li style="font-size: .{{random}}rem;">
+            <a href="/tags/{{title}}">
+                <span>{{ title | downcase | replace:" ","-" }}</span>
+            </a>
+        </li>
+    {% endfor %}
+    </ul>
 </div>
+

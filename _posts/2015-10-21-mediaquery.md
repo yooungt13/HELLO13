@@ -22,20 +22,17 @@ Using media queries in `.pic-container` for responsive web design, I collect a s
 | Nexus 6 | 412*658 | 3.5x |
 | iphone6-plus | 414*736 | 3x |
 
-
-
 ## Variables in queries
 
 Divided into 4:
 
 {% highlight sass linenos %}
 /* device-min-width */
-i$break-ip4: 320px;
+$break-ip4: 320px;
 $break-sumsung: 360px;
 $break-ip6: 375px;
 $break-ip6-plus: 412px;
 {% endhighlight%}
-
 
 ## Variables in queries, using @content
 

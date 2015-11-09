@@ -13,7 +13,7 @@
 
     function setEvent() {
         /** back to the top**/
-        var $trigger = $('<div class="backToTop icon"></div>');
+        var $trigger = $('<div class="backToTop icon icon-up-big"></div>');
         $('body').append($trigger);
 
         $trigger.on('click', function() {

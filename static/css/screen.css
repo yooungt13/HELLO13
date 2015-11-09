@@ -224,12 +224,12 @@ footer {
       line-height: 1.4;
       margin: .05rem 0; }
       .posts .post .date + p:before {
-        font-family: "fontawesome";
-        content: "";
+        font-family: 'fontello';
+        content: '\e801';
         margin-right: .12rem; }
       .posts .post .date + p:after {
-        font-family: "fontawesome";
-        content: "";
+        font-family: 'fontello';
+        content: '\e802';
         margin-left: .12rem; }
     .posts .post .tags {
       display: inline-block;
@@ -246,8 +246,6 @@ footer {
       display: inline-block;
       width: 20%;
       text-align: right; }
-      .posts .post .more:after {
-        content: ""; }
     .posts .post:last-child {
       margin-bottom: 0;
       border-bottom: none; }
@@ -290,7 +288,6 @@ ul.tags {
   cursor: pointer;
   border: 2px solid white; }
   .backToTop:before {
-    content: "";
     font-size: .16rem; }
 
 .github-fork img {
@@ -416,31 +413,71 @@ ul.tags {
 /**
  * Icon Defination
  ****************************************************************************/
+@font-face {
+  font-family: 'fontello';
+  src: url("../font/fontello.eot?26946344");
+  src: url("../font/fontello.eot?26946344#iefix") format("embedded-opentype"), url("../font/fontello.woff?26946344") format("woff"), url("../font/fontello.ttf?26946344") format("truetype"), url("../font/fontello.svg?26946344#fontello") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
 .icon {
-  font-family: "fontawesome"; }
+  font-family: 'fontello'; }
 
 .icon-tag:before {
-  content: ""; }
+  content: '\e800'; }
 
-.icon-tags:before {
-  content: ""; }
-
+/* '' */
 .icon-quote-left:before {
-  content: ""; }
+  content: '\e801'; }
 
-.icon-quote-right:after {
-  content: ""; }
+/* '' */
+.icon-quote-right:before {
+  content: '\e802'; }
 
-.icon-angle-right:before {
-  content: ""; }
+/* '' */
+.icon-up-big:before {
+  content: '\e803'; }
 
+/* '' */
+.icon-down-big:before {
+  content: '\e804'; }
+
+/* '' */
+.icon-left-big:before {
+  content: '\e805'; }
+
+/* '' */
+.icon-right-big:after {
+  content: '\e806'; }
+
+/* '' */
+.icon-menu:before {
+  content: '\e807'; }
+
+/* '' */
+.icon-tags:before {
+  content: '\e808'; }
+
+/* '' */
+.icon-angle-left:before {
+  content: '\e809'; }
+
+/* '' */
+.icon-angle-right:after {
+  content: '\e80a'; }
+
+/* '' */
+.icon-angle-up:before {
+  content: '\e80b'; }
+
+/* '' */
+.icon-angle-down:before {
+  content: '\e80c'; }
+
+/* '' */
 /**
  * Media Query
  ***************************************************************************/
-@font-face {
-  font-family: "fontawesome";
-  src: url("../font/fontawesome-webfont.woff?v=4.4.0") format("woff"); }
-
 @media only screen and (max-width: 1080px) and (orientation: portrait) {
   .github-fork {
     display: none; } }
@@ -467,8 +504,6 @@ ul.tags {
       display: inline-block;
       font-size: .24rem;
       line-height: .44rem; }
-      header .menu .menu-icon:before {
-        content: ""; }
     header .menu .menu-list {
       display: none; }
   header .menu-expand {

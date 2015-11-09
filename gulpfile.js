@@ -22,7 +22,17 @@ gulp.task('server', function(cb) {
     });
 
     gulp.watch('static/scss/**/*.scss', ['sass']);
+});
 
+gulp.task('build', function(cb) {
+    // build Jekyll
+    exec('jekyll build', function(err, stdout) {
+        if (err) {
+            console.log('Jekyll build: ' + err);
+        } else {
+            console.log(stdout);
+        }
+    });
 });
 
 gulp.task('sass', function() {
@@ -147,7 +157,7 @@ gulp.task('copy2cloud', function() {
 
     exec(cmd, function(err, stdout) {
         if (err) {
-            console.log('Git push:' + err);
+            console.log('Git push: ' + err);
         } else {
             console.log('Copy complete.');
         }
@@ -158,9 +168,8 @@ gulp.task('deploy', function() {
     runSequence('useref', 'push2git', function(err) {
         if (err) {
             console.log('Deploy error: ' + err);
-            return;
+        } else {
+            console.log('Deploy complete.');
         }
-
-        console.log('Deploy complete.');
     });
 });

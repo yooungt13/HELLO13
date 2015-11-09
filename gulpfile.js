@@ -136,6 +136,24 @@ gulp.task('push2git', function() {
     });
 });
 
+// deploy到美团云
+gulp.task('copy2cloud', function() {
+
+    var SERVER_URL = 'root@43.241.219.90',
+        LOCAL_PATH = '/Users/hello13/Documents/Proj/HELLO13/_site/*',
+        REMOTE_PATH = '/usr/share/nginx/html';
+
+    var cmd = 'scp -r ' + LOCAL_PATH + ' ' + SERVER_URL + ':' + REMOTE_PATH;
+
+    exec(cmd, function(err, stdout) {
+        if (err) {
+            console.log('Git push:' + err);
+        } else {
+            console.log('Copy complete.');
+        }
+    });
+});
+
 gulp.task('deploy', function() {
     runSequence('useref', 'push2git', function(err) {
         if (err) {

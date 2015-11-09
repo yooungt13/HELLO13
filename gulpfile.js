@@ -15,7 +15,7 @@ var runSequence = require('run-sequence');
  * 开发环境
  */
 
-gulp.task('server', function(cb) {
+gulp.task('server', function() {
     // build Jekyll
     exec('jekyll serve').stdout.on('data', function(chunk) {
         console.log(chunk);
@@ -24,13 +24,14 @@ gulp.task('server', function(cb) {
     gulp.watch('static/scss/**/*.scss', ['sass']);
 });
 
-gulp.task('build', function(cb) {
+gulp.task('build', function(end) {
     // build Jekyll
     exec('jekyll build', function(err, stdout) {
         if (err) {
             console.log('Jekyll build: ' + err);
         } else {
             console.log(stdout);
+            end();
         }
     });
 });
@@ -142,12 +143,11 @@ gulp.task('push2git', function() {
         } else {
             console.log(stdout);
         }
-
     });
 });
 
 // deploy到美团云
-gulp.task('copy2cloud', function() {
+gulp.task('cp2cloud', function() {
 
     var SERVER_URL = 'root@43.241.219.90',
         LOCAL_PATH = '/Users/hello13/Documents/Proj/HELLO13/_site/*',
@@ -165,7 +165,7 @@ gulp.task('copy2cloud', function() {
 });
 
 gulp.task('deploy', function() {
-    runSequence('useref', 'push2git', function(err) {
+    runSequence('useref', 'build', 'push2git', function(err) {
         if (err) {
             console.log('Deploy error: ' + err);
         } else {

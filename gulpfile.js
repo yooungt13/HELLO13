@@ -135,19 +135,20 @@ gulp.task('backup', function() {
 });
 
 // push到github
-gulp.task('push2git', function() {
+gulp.task('push2git', function(end) {
     var cmd = 'git add .;git commit -m "Gulp deploy.";git pull origin;git push origin';
     exec(cmd, function(err, stdout) {
         if (err) {
             console.log('Git push:' + err);
         } else {
             console.log(stdout);
+            end();
         }
     });
 });
 
 // deploy到美团云
-gulp.task('cp2cloud', function() {
+gulp.task('cp2cloud', function(end) {
 
     var SERVER_URL = 'root@43.241.219.90',
         LOCAL_PATH = '/Users/hello13/Documents/Proj/HELLO13/_site/*',
@@ -160,16 +161,18 @@ gulp.task('cp2cloud', function() {
             console.log('Git push: ' + err);
         } else {
             console.log('Copy complete.');
+            end();
         }
     });
 });
 
-gulp.task('deploy', function() {
-    runSequence('useref', 'build', 'push2git', function(err) {
+gulp.task('deploy', function(end) {
+    runSequence('useref', 'build', 'push2git', 'cp2cloud', function(err) {
         if (err) {
             console.log('Deploy error: ' + err);
         } else {
             console.log('Deploy complete.');
+            end();
         }
     });
 });

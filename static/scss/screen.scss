@@ -15,6 +15,11 @@
     padding: 0;
 }
 
+::selection {
+    background: #262a30;
+    color: #fff;
+}
+
 html {
     font-size: 100px;
     height: 100%;
@@ -536,7 +541,6 @@ ul.tags {
 
 .bg {
     width: 100%;
-    margin-top: -.24rem;
 }
 
 .project {

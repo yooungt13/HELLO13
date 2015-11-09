@@ -9,6 +9,10 @@
   margin: 0;
   padding: 0; }
 
+::selection {
+  background: #262a30;
+  color: #fff; }
+
 html {
   font-size: 100px;
   height: 100%;
@@ -76,7 +80,7 @@ nav {
   width: 100%;
   max-width: 8rem;
   box-sizing: border-box;
-  padding: 0 0.24rem;
+  padding: 0 .24rem;
   display: inline-block;
   height: .44rem;
   color: #333; }
@@ -113,7 +117,7 @@ nav {
       font-size: .16rem;
       height: .44rem;
       line-height: .44rem;
-      padding: 0 0.06rem;
+      padding: 0 .06rem;
       cursor: pointer; }
       nav .menu dl a {
         color: #777; }
@@ -137,7 +141,7 @@ section {
   max-width: 8rem;
   box-sizing: border-box;
   margin: 0 auto;
-  padding: 0.44rem 0.24rem 0;
+  padding: .44rem .24rem 0;
   line-height: 1.5em; }
 
 footer {
@@ -146,7 +150,7 @@ footer {
   border-top: 1px solid #ddd;
   overflow: hidden;
   text-align: justify;
-  padding: 0.12rem 0 0.36rem; }
+  padding: .12rem 0 .36rem; }
   footer .contact {
     display: inline-block;
     width: 50%; }
@@ -203,7 +207,7 @@ footer {
   width: 100%; }
   .posts .post {
     border-radius: .05rem;
-    padding: 0 0 0.12rem;
+    padding: 0 0 .12rem;
     margin-bottom: .12rem;
     width: 100%;
     border-bottom: 1px dashed #ccc; }
@@ -253,11 +257,11 @@ footer {
     font-size: 80%; }
 
 ul.tags {
-  margin: 0.12rem 0 0.24rem; }
+  margin: .12rem 0 .24rem; }
   ul.tags li {
     display: inline-block;
     line-height: .3rem;
-    margin: 0 0.02rem;
+    margin: 0 .02rem;
     cursor: pointer; }
 
 .highlight {
@@ -374,11 +378,10 @@ ul.tags {
     animation-iteration-count: infinite; }
 
 .bg {
-  width: 100%;
-  margin-top: -.24rem; }
+  width: 100%; }
 
 .project {
-  padding: 0 0 0.12rem;
+  padding: 0 0 .12rem;
   margin-bottom: .12rem;
   border-bottom: 1px dashed #ccc; }
   .project a {
@@ -472,7 +475,7 @@ ul.tags {
     border-radius: .05rem;
     border: 1px solid #e8e8e8;
     background-color: white;
-    padding: 0 0.1rem 0.1rem;
+    padding: 0 .1rem .1rem;
     margin-right: -.11rem;
     margin-top: .02rem; }
     header .menu-expand .menu-icon {
@@ -491,7 +494,7 @@ ul.tags {
             color: #fff;
             text-decoration: underline; }
   .bg {
-    margin: -0.24rem 0 0 -0.24rem;
+    margin: -.24rem 0 0 -.24rem;
     width: -webkit-calc(100% + .48rem);
     width: -moz-calc(100% + .48rem);
     width: calc(100% + .48rem); }

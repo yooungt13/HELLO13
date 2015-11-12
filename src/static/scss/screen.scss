@@ -666,6 +666,11 @@ ul.tags {
                 display: inline-block;
                 font-size: .24rem;
                 line-height: .44rem;
+
+                &:before {
+                    font-family: 'fontello';
+                    content: '\e807';
+                }
             }
 
             .menu-list {

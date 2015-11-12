@@ -29,14 +29,39 @@
         <!-- iPhone 6 startup image -->
         <link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)" href="/static/img/start-up.png">
 
-        <link rel="stylesheet" href="/static/css/screen.min.css">
+        <!--build:css /static/css/screen.min.css-->
+        <link rel="stylesheet" href="/static/css/screen.css" media="screen, projection" />
+        <link rel="stylesheet" href="/static/css/syntax.css" />
+        <link rel="stylesheet" href="/static/css/md.css" media="screen, projection" />
+        <!--endbuild-->
+
+        <script>
+            var requirejs = {
+                __require: [],
+                __requirejsConfig: {
+                    baseUrl: 'http://localhost:4000',
+                    prefix: '/static/js/',
+                    revision: {
+                        'lib/zepto.js': 'b2b2b2',
+                        'lib/fastclick.js': 'c3c3c3',
+                        'page.js': 'a1a1a1'
+                    },
+                    combo: {
+                        // url: 'http://static.hello13.net/combo?f='
+                        url: 'http://localhost:3030/combo?f='
+                    }
+                }
+            }, require = function() {
+                requirejs.__require.push(arguments)
+            };
+        </script>
     </head>
     <body>
         <header>
             <nav>
                 <div class="slogan"><a href="/">{{ site.title }}</a></div>
                 <div class="menu">
-                    <span class="menu-icon icon icon-menu" id='menu'></span>
+                    <span class="menu-icon" id='menu'></span>
                     <div class="menu-list">
                         <dl><a href="/home">Home</a></dl>
                         <dl><a href="/posts">Posts</a></dl>
@@ -68,7 +93,12 @@
             </footer>
         </section>
 
-        <script src="/static/js/page.min.js"></script>
+        <script>
+            require(['page.js'], function(page) {
+                page.init();
+            });
+        </script>
+        <script src="/static/js/lib/truck.js" async></script>
 
         <!--*********************************************************-->
         <!--******************Copyright @有田十三**********************-->

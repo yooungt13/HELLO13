@@ -3,7 +3,6 @@
 /**
  * requirejs.config( {
  *     baseUrl: // [String] 基本路径 http|https|ftp
- *     shim: // [Object] 针对zepto plugin等内容不能AMD包装但是又有依赖的
  *     cachePrefix: // [String] 缓存的前缀
  *     cacheKey: // [String] 缓存Key
  *     revision: // [Object] 文件名对应版本号 {key: md5}
@@ -16,18 +15,10 @@
  *     }
  * } )
  *
- *
- * History:
- *      1. 将之前的init改为loaded，loaded改为executed，并在loaded与executed之间增加executing，来修复嵌套加载时的bug
- *
  */
 
-;(function (win, doc, undefined){
-    //'use strict';
-
-    var LOG_STATIC = 'STATIC';
-    var LOG_ERROR = 'ERROR';
-    var MT = win.MT;
+;(function (win, doc, undefined) {
+    'use strict';
 
     var __defineQueue = [];
     var uniformIndex = 0;
@@ -37,20 +28,6 @@
 
     if (win.define && win.define.amd) return false;
 
-    function sendStat (statObj) {
-        if (window.MT && MT.log) {
-            MT.log.send(LOG_STATIC, {
-                cate: "truck",
-                loadCount: statObj.xhrCount + statObj.lsCount,
-                sumSize: statObj.xhrSize + statObj.lsSize,
-                duration: new Date().getTime() - statObj.startTime,
-                xhrCount: statObj.xhrCount,
-                lsCount: statObj.lsCount,
-                xhrSize: statObj.xhrSize,
-                lsSize: statObj.lsSize
-            }, 0.1);
-        }
-    }
     // 通用方法集
     util = {
         isFunction: function (fun) {
@@ -199,7 +176,6 @@
                 override = false;
             util.extend(options, defaults, override);
 
-            /*
             if (options.revrev && options.revision && LS.isSupported) {
                 LS.setItem('revstore', JSON.stringify(options.revision));
                 document.cookie = "revrev=" + options.revrev + "; expires=" + new Date(new Date().getTime() + 999900000).toGMTString() + "; path=/";
@@ -213,7 +189,6 @@
             } else if (options.revrev && options.combo && !options.combo.deps) {
                 options.combo.deps = JSON.parse(LS.getItem('depsstore'));
             }
-            */
 
             return this.config = options;
         },
@@ -264,15 +239,15 @@
             /*jshint forin:false*/
             for (k in rev) {
                 isFresh = rev.hasOwnProperty(k)
-                    && (
-                    rses.hasOwnProperty(k)
-                        // 判断版本号一致
-                        && (v = rev[k]) === rses[k].v
-                        // localStorage中存在这个文件
-                        && localStorage[config.cachePrefix + k]
-                        // 校验文件长度一致
-                        && (localStorage[config.cachePrefix + k].length === rses[k].l)
-                    );
+                && (
+                rses.hasOwnProperty(k)
+                    // 判断版本号一致
+                && (v = rev[k]) === rses[k].v
+                    // localStorage中存在这个文件
+                && localStorage[config.cachePrefix + k]
+                    // 校验文件长度一致
+                && (localStorage[config.cachePrefix + k].length === rses[k].l)
+                );
 
                 if (!isFresh) {
                     rses[k] = undefined;
@@ -376,7 +351,7 @@
             } else {
                 //有模块需要加载，开始加载
                 var combo = requirejs.config.combo;
-                if (combo) {
+                if (combo && combo.deps) {
                     //取得模块的直接和间接依赖
                     var deps = util.depExtend(this.depend, combo.deps);
                 } else {
@@ -452,7 +427,7 @@
     // loader模块
     requirejs = {
 
-        version: '0.2.2',
+        version: '0.2.1',
 
         /*
          * 已知的模块列表
@@ -562,18 +537,14 @@
                 if (assets.resources[moduleList[i].id]) {
                     var src = assets.getCachedItem(moduleList[i]);
                     if (src.replace(/\s+/, '')) {
-                        that._geval(src, moduleList[i].id);
+                        that._geval(src);
                     } else {
                         console.error(moduleList[i].id + ' is blank');
-                        MT.log.send(LOG_ERROR, {
-                            cate: "module_blank",
-                            error: moduleList[i].id
-                        });
                     }
                     moduleList[i].callback = __defineQueue[0].callback;
                     moduleList[i].depend = __defineQueue[0].depend;
-                    moduleList[i].loaded();
                     __defineQueue = [];
+                    moduleList[i].loaded();
                     moduleList.splice(i, 1);
                     i--;
 
@@ -605,14 +576,7 @@
                         }
 
                         if (text) {
-                            if (moduleList.length !== (codes.length - 1)) {
-                                MT.log.send(LOG_ERROR, {
-                                    cate: "module_length_error",
-                                    url: url + toLoadUrl.join(';')
-                                });
-                            } else {
-                                assets.updateCachedItem(moduleList[i], codes[i + 1]);
-                            }
+                            assets.updateCachedItem(moduleList[i], codes[i + 1]);
                         }
                         moduleList[i].loaded();
                     }
@@ -621,7 +585,6 @@
                     //stat
                     statObj.xhrSize = text && text.length;
                     statObj.xhrCount = toLoadUrl.length;
-                    sendStat(statObj);
                 });
             } else if (moduleList.length != 0) {
                 //否则每个独立加载
@@ -640,7 +603,6 @@
             } else {
                 statObj.xhrCount = 0;
                 statObj.xhrSize = 0;
-                sendStat(statObj);
             }
         },
 

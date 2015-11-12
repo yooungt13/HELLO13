@@ -1,5 +1,5 @@
-/_site/
 /node_modules
-/static/components
+/deploy/
+/src/static/components
 *.log
 *.out

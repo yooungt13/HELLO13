@@ -1,6 +1,6 @@
 baseurl:     /
-source:      .
-destination: ./_site
+source:      ./src
+destination: ./deploy
 encoding:    utf-8
 permalink:   /posts/:title
 highlighter: pygments

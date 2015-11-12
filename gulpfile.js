@@ -21,7 +21,7 @@ gulp.task('server', function() {
         console.log(chunk);
     });
 
-    gulp.watch('static/scss/**/*.scss', ['sass']);
+    gulp.watch('src/static/scss/**/*.scss', ['sass']);
 });
 
 gulp.task('build', function(end) {
@@ -37,30 +37,30 @@ gulp.task('build', function(end) {
 });
 
 gulp.task('sass', function() {
-    // Gets all files ending with .scss in static/scss and children dirs
-    return gulp.src('static/scss/*.scss')
+    // Gets all files ending with .scss in src/static/scss and children dirs
+    return gulp.src('src/static/scss/*.scss')
         .pipe(sass())
-        .pipe(gulp.dest('static/css'));
+        .pipe(gulp.dest('src/static/css'));
 });
 
 // Gulp watch syntax
 gulp.task('watch', function() {
     // watchers
-    gulp.watch('static/scss/*.scss', ['sass']);
+    gulp.watch('src/static/scss/*.scss', ['sass']);
 });
 
 // 生成雪碧图
 gulp.task('sprite', function() {
     var spriteOutput =
-        gulp.src("static/img/icon/*.png")
+        gulp.src("src/static/img/icon/*.png")
         .pipe(sprite({
             imgName: 'sprite.png',
             cssName: 'sprite.css',
-            imgPath: '/static/img/sprite.png'
+            imgPath: '/src/static/img/sprite.png'
         }));
 
-    spriteOutput.css.pipe(gulp.dest('static/css'));
-    spriteOutput.img.pipe(gulp.dest('static/img'));
+    spriteOutput.css.pipe(gulp.dest('src/static/css'));
+    spriteOutput.img.pipe(gulp.dest('src/static/img'));
 });
 
 // 连接线上数据库
@@ -80,7 +80,7 @@ gulp.task('getdata', function() {
 
 gulp.task('setdata', function() {
 
-    var data = require('./static/json/firebase-data.json');
+    var data = require('./src/static/json/firebase-data.json');
 
     fref.set(data, function(err) {
         if (err) {
@@ -94,7 +94,7 @@ gulp.task('setdata', function() {
 gulp.task('vulcanize', function() {
     var vulcanize = require('gulp-vulcanize');
 
-    return gulp.src('static/elements/friend-list/index.html')
+    return gulp.src('src/static/elements/friend-list/index.html')
         .pipe(vulcanize({
             abspath: '',
             excludes: [],
@@ -102,7 +102,7 @@ gulp.task('vulcanize', function() {
             inlineScripts: true,
             inlineCss: true,
         }))
-        .pipe(gulp.dest('static/elements/friend-list'));
+        .pipe(gulp.dest('src/static/elements/friend-list'));
 });
 
 /**
@@ -148,7 +148,7 @@ gulp.task('push2git', function(end) {
 });
 
 // deploy到美团云
-gulp.task('cp2cloud', function(end) {
+gulp.task('cp2cloud', ['build'], function(end) {
 
     var SERVER_URL = 'root@43.241.219.90',
         LOCAL_PATH = '/Users/hello13/Documents/Proj/HELLO13/_site/*',
@@ -166,8 +166,18 @@ gulp.task('cp2cloud', function(end) {
     });
 });
 
+gulp.task('truck', function(end) {
+    /*
+    1、在/src目录中，生成文件配置文件config.json，包括文件的MD5信息（版本信息）
+    2、将/src文件copy至发布环境/deploy，根据版本信息重命名文件
+    3、为所有文件增加数据元信息 \/*__meta__*\/
+    4、扫描所有文件，生成文件依赖关系树
+    5、生成版本号
+    */
+});
+
 gulp.task('deploy', function(end) {
-    runSequence('useref', 'build', 'push2git', 'cp2cloud', function(err) {
+    runSequence('useref', 'push2git', 'cp2cloud', function(err) {
         if (err) {
             console.log('Deploy error: ' + err);
         } else {

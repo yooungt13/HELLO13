@@ -10,6 +10,9 @@ var gulpif = require('gulp-if');
 
 var runSequence = require('run-sequence');
 
+var RevAll = require('gulp-rev-all');
+
+
 /**
  * 线上发布
  */
@@ -67,7 +70,21 @@ gulp.task('push2git', function(end) {
     });
 });
 
-gulp.task('build', function(end) {
+// 生成MD5版本号config.json
+gulp.task('md5', function() {
+
+    var revAll = new RevAll({
+        fileNameManifest: 'manifest.json'
+    });
+
+    return gulp.src('src/static/js/**/*')
+        .pipe(revAll.revision())
+        .pipe(revAll.manifestFile())
+        .pipe(gulp.dest('src/_includes'));
+});
+
+// 生成线上文件
+gulp.task('build', ['md5'], function(end) {
     // build Jekyll
     exec('jekyll build', function(err, stdout) {
         if (err) {
@@ -79,11 +96,25 @@ gulp.task('build', function(end) {
     });
 });
 
+// 构建/deploy目录下资源文件
+gulp.task('uglify', ['build'], function() {
+
+    var revAll = new RevAll({
+        // 不更新require中js
+        dontUpdateReference: [ '.js']
+    });
+
+    return gulp.src('deploy/static/js/**/*')
+        .pipe(revAll.revision())
+        .pipe(uglify())
+        .pipe(gulp.dest('deploy/static/js'));
+});
+
 // deploy到美团云
 gulp.task('cp2cloud', ['build'], function(end) {
 
     var SERVER_URL = 'root@43.241.219.90',
-        LOCAL_PATH = '/Users/hello13/Documents/Proj/HELLO13/_site/*',
+        LOCAL_PATH = '/Users/hello13/Documents/Proj/HELLO13/deploy/*',
         REMOTE_PATH = '/usr/share/nginx/html';
 
     var cmd = 'scp -r ' + LOCAL_PATH + ' ' + SERVER_URL + ':' + REMOTE_PATH;

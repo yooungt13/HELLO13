@@ -41,11 +41,7 @@
                 __requirejsConfig: {
                     baseUrl: 'http://localhost:4000',
                     prefix: '/static/js/',
-                    revision: {
-                        'lib/zepto.js': 'b2b2b2',
-                        'lib/fastclick.js': 'c3c3c3',
-                        'page.js': 'a1a1a1'
-                    },
+                    revision: {% include manifest.json %},
                     combo: {
                         // url: 'http://static.hello13.net/combo?f='
                         url: 'http://localhost:3030/combo?f='

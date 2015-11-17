@@ -4,6 +4,5 @@
   "lib/truck.js": "c4d5192a",
   "lib/zepto.js": "10c89684",
   "util/autocomp.js": "c4d8ce84",
-  "util/box.js": "5ac874d0",
-  "util/dateselect.js": "f61cb37f"
+  "util/box.js": "5ac874d0"
 }

@@ -5,7 +5,6 @@ var exec = require('child_process').exec;
 /**
  * 开发环境
  */
-
 gulp.task('server', function() {
     // build Jekyll
     exec('jekyll serve').stdout.on('data', function(chunk) {

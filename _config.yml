@@ -10,6 +10,7 @@ paginate: 10
 paginate_path: '/posts/:num'
 
 excerpt_separator: "\n\n\n"
+isDev: false
 
 #Basic Configuration
 title:       Hello13

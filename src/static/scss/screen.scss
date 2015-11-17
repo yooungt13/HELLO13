@@ -2,6 +2,9 @@
 @import "base/colors";
 @import "base/icons";
 
+@import "md";
+@import "syntax";
+
 /*****************************************************************************/
 /*
 /* Common
@@ -611,19 +614,19 @@ ul.tags {
     font-family: 'fontello';
 }
 
-.icon-tag:before { content: '\e800'; } /* '' */
-.icon-quote-left:before { content: '\e801'; } /* '' */
-.icon-quote-right:before { content: '\e802'; } /* '' */
-.icon-up-big:before { content: '\e803'; } /* '' */
-.icon-down-big:before { content: '\e804'; } /* '' */
-.icon-left-big:before { content: '\e805'; } /* '' */
-.icon-right-big:after { content: '\e806'; } /* '' */
-.icon-menu:before { content: '\e807'; } /* '' */
-.icon-tags:before { content: '\e808'; } /* '' */
-.icon-angle-left:before { content: '\e809'; } /* '' */
-.icon-angle-right:after { content: '\e80a'; } /* '' */
-.icon-angle-up:before { content: '\e80b'; } /* '' */
-.icon-angle-down:before { content: '\e80c'; } /* '' */
+.icon-tag:before { content: '\e800'; }
+.icon-quote-left:before { content: '\e801'; }
+.icon-quote-right:before { content: '\e802'; }
+.icon-up-big:before { content: '\e803'; }
+.icon-down-big:before { content: '\e804'; }
+.icon-left-big:before { content: '\e805'; }
+.icon-right-big:after { content: '\e806'; }
+.icon-menu:before { content: '\e807'; }
+.icon-tags:before { content: '\e808'; }
+.icon-angle-left:before { content: '\e809'; }
+.icon-angle-right:after { content: '\e80a'; }
+.icon-angle-up:before { content: '\e80b'; }
+.icon-angle-down:before { content: '\e80c'; }
 
 /**
  * Media Query

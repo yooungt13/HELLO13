@@ -1,6 +1,7 @@
 var gulp = require('gulp');
-var sass = require('gulp-sass');
 var exec = require('child_process').exec;
+
+var sass = require('gulp-sass');
 
 /**
  * 开发环境

@@ -1,9 +1,10 @@
 var gulp = require('gulp');
 var exec = require('child_process').exec;
 
-var uglify = require('gulp-uglify');
-var minify = require('gulp-minify-css');
-var sprite = require('gulp.spritesmith');
+var uglify = require('gulp-uglify'),
+    minify = require('gulp-minify-css'),
+    sprite = require('gulp.spritesmith'),
+    rename = require('gulp-rename');
 
 var RevAll = require('gulp-rev-all');
 
@@ -54,10 +55,7 @@ gulp.task('build', ['md5'], function(end) {
 /*
     构建/deploy目录下js文件
     1、在/src目录中，生成文件配置文件config.json，包括文件的MD5信息（版本信息）
-    2、将/src文件copy至发布环境/deploy，根据版本信息重命名文件
-    3、为所有文件增加数据元信息 \/*__meta__*\/
-    4、扫描所有文件，生成文件依赖关系树
-    5、生成版本号
+    2、将/src文件build至发布环境/deploy，根据版本信息重命名文件
 */
 gulp.task('scripts', ['build'], function() {
 
@@ -77,5 +75,8 @@ gulp.task('styles', ['build'], function(end) {
 
     return gulp.src('deploy/static/css/**/*')
         .pipe(minify())
+        .pipe(rename({ suffix: '.min' }))
         .pipe(gulp.dest('deploy/static/css'));
 });
+
+

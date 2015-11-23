@@ -28,7 +28,6 @@ gulp.task('sprite', function() {
 
 // 生成MD5版本号revision.json
 gulp.task('md5', function() {
-
     var revAll = new RevAll({
         fileNameManifest: 'revision.json'
     });
@@ -58,7 +57,6 @@ gulp.task('build', ['md5'], function(end) {
     2、将/src文件build至发布环境/deploy，根据版本信息重命名文件
 */
 gulp.task('scripts', ['build'], function() {
-
     var revAll = new RevAll({
         // 不更新require中js
         dontUpdateReference: ['.js']
@@ -72,7 +70,6 @@ gulp.task('scripts', ['build'], function() {
 
 // 构建/deploy目录下css文件
 gulp.task('styles', ['build'], function(end) {
-
     return gulp.src('deploy/static/css/**/*')
         .pipe(minify())
         .pipe(rename({ suffix: '.min' }))

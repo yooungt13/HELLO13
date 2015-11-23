@@ -17,7 +17,8 @@
  *
  */
 
-;(function (win, doc, undefined) {
+;
+(function(win, doc, undefined) {
     'use strict';
 
     var __defineQueue = [];
@@ -30,19 +31,25 @@
 
     // 通用方法集
     util = {
-        isFunction: function (fun) {
+        isFunction: function(fun) {
             return Object.prototype.toString.call(fun) === '[object Function]';
         },
 
         //根据全局的依赖关系图，得到某几个被依赖模块的所有间接依赖，然后对这些依赖的模块根据依赖关系进行排序
-        depExtend: function (deps, depGraph) {
+        depExtend: function(deps, depGraph) {
             function extDeps(nodeName, save) {
                 if (!save[nodeName]) {
                     // 如果没有该模块的静态依赖信息，则忽略（可能是turck内部模块或者还未编译）
                     if (!depGraph[nodeName]) {
-                        save[nodeName] = {count: 0, link: []};
+                        save[nodeName] = {
+                            count: 0,
+                            link: []
+                        };
                     } else {
-                        save[nodeName] = {count: 0, link: depGraph[nodeName]};
+                        save[nodeName] = {
+                            count: 0,
+                            link: depGraph[nodeName]
+                        };
                     }
                     for (var i = 0; i < save[nodeName].link.length; i++) {
                         extDeps(save[nodeName].link[i], save);
@@ -89,7 +96,7 @@
          * @param override
          * @return {*}
          */
-        extend: function (target, source, override) {
+        extend: function(target, source, override) {
             for (var k in source) {
                 if (k.indexOf(0) !== '_' && ((!override && !target[k]) || override)) {
                     target[k] = source[k];
@@ -103,7 +110,7 @@
          * 获取baseUrl
          * @return {*}
          */
-        baseUrl: (function () {
+        baseUrl: (function() {
             var DIRNAME_RE = /[^?#]*\//,
                 scripts = doc.scripts,
                 loaderScript = doc.getElementById('truckjsnode') || scripts[scripts.length - 1];
@@ -115,9 +122,11 @@
          * @param isSupported 浏览器是否支持localStoarge
          * @return {Boolean} 条目数组
          */
-        isSupported: (function () {
+        isSupported: (function() {
             try {
-                if(!('localStorage' in window && window['localStorage'])){return false}
+                if (!('localStorage' in window && window['localStorage'])) {
+                    return false
+                }
                 localStorage.setItem('~_~', 1);
                 localStorage.removeItem('~_~');
             } catch (err) {
@@ -130,7 +139,7 @@
          * @param {String} key 需要查询的条目名称
          * @return {String} 条目数组
          */
-        getItem: function (key) {
+        getItem: function(key) {
             try {
                 return localStorage.getItem(key);
             } catch (e) {}
@@ -140,7 +149,7 @@
          * @param {String} key 需要设置的条目名称
          * @param {val} 要设置的值
          */
-        setItem: function (key, val) {
+        setItem: function(key, val) {
             try {
                 localStorage.setItem(key, val);
             } catch (e) {}
@@ -149,12 +158,13 @@
          * @method removeItem 删除一个条目
          * @param {String} key 需要删除的key
          */
-        removeItem: function (key) {
+        removeItem: function(key) {
             try {
                 localStorage.removeItem(key);
             } catch (e) {}
         }
-    }
+    };
+
     /**
      * 资源模块
      * @moduleInstance
@@ -166,7 +176,7 @@
          * @param [options]
          * @return {*}
          */
-        config: function (options) {
+        config: function(options) {
             var defaults = {
                     cacheKey: 'rslist',
                     cachePrefix: 's~',
@@ -181,7 +191,10 @@
                 document.cookie = "revrev=" + options.revrev + "; expires=" + new Date(new Date().getTime() + 999900000).toGMTString() + "; path=/";
             } else if (options.revrev && !options.revision) {
                 options.revision = JSON.parse(LS.getItem('revstore'));
-                if(!options.revision){document.cookie = "revrev=0; path=/";location.href=location.href}
+                if (!options.revision) {
+                    document.cookie = "revrev=0; path=/";
+                    location.href = location.href
+                }
             }
             //配置版本号从ls里面读取
             if (options.revrev && options.combo && options.combo.deps) {
@@ -195,7 +208,7 @@
 
         resources: null,
 
-        initialize: function () {
+        initialize: function() {
             var that = this,
                 config;
 
@@ -230,23 +243,23 @@
          * 更新整个缓存
          * @private
          */
-        _updateWholeCache: function () {
+        _updateWholeCache: function() {
             var that = this,
                 config = that.config,
                 rses = that.resources,
-                rev = config.revision, k, v, isFresh;
+                rev = config.revision,
+                k, v, isFresh;
 
             /*jshint forin:false*/
             for (k in rev) {
-                isFresh = rev.hasOwnProperty(k)
-                && (
-                rses.hasOwnProperty(k)
+                isFresh = rev.hasOwnProperty(k) && (
+                    rses.hasOwnProperty(k)
                     // 判断版本号一致
-                && (v = rev[k]) === rses[k].v
+                    && (v = rev[k]) === rses[k].v
                     // localStorage中存在这个文件
-                && localStorage[config.cachePrefix + k]
+                    && localStorage[config.cachePrefix + k]
                     // 校验文件长度一致
-                && (localStorage[config.cachePrefix + k].length === rses[k].l)
+                    && (localStorage[config.cachePrefix + k].length === rses[k].l)
                 );
 
                 if (!isFresh) {
@@ -256,7 +269,7 @@
             }
         },
 
-        updateCachedItem: function (moduleInstance, src) {
+        updateCachedItem: function(moduleInstance, src) {
 
             if (!LS.isSupported) {
                 return false;
@@ -273,13 +286,13 @@
                 l: src.length
             };
             //如果存在其resvision才存储
-            if (resources[id].v){
+            if (resources[id].v) {
                 LS.setItem(config.cachePrefix + id, src);
                 LS.setItem(config.cachePrefix + config.cacheKey, JSON.stringify(resources));
             }
         },
 
-        getCachedItem: function (moduleInstance) {
+        getCachedItem: function(moduleInstance) {
             return LS.getItem(this.config.cachePrefix + moduleInstance.id);
         }
     };
@@ -287,7 +300,7 @@
     /**********
      * 模块类
      *********/
-    var Module = function (params) {
+    var Module = function(params) {
         this.id = params.id || "anonymous";
         this.callback = params.callback || null;
         //模块的静态依赖关系
@@ -307,25 +320,24 @@
         /**
          * 模块已经初始化，等待被加载            ,占坑
          **/
-        inited: function () {
-        },
+        inited: function() {},
 
         //模块开始加载                        ,占坑
-        loading: function () {
+        loading: function() {
             if (this.status == "inited") {
                 requirejs.loadModules([this]);
             }
         },
 
         //模块已经加载完成
-        loaded: function () {
-            if(this.status == "loading" || this.status == "inited"){
+        loaded: function() {
+            if (this.status == "loading" || this.status == "inited") {
                 this.status = "loaded";
                 this.depending();
             }
         },
         //模块开始加载依赖
-        depending: function () {
+        depending: function() {
             //如果一个模块已经加载完成，则忽略
             if (this.status != "loaded") {
                 return;
@@ -376,23 +388,23 @@
 
                 }
                 var statObj = {
-                    sumCount: deps.length,
-                    startTime: new Date().getTime(),
-                    lsCount: 0,
-                    lsSize: 0
-                }
-                //加载所有需要远程加载的模块
+                        sumCount: deps.length,
+                        startTime: new Date().getTime(),
+                        lsCount: 0,
+                        lsSize: 0
+                    }
+                    //加载所有需要远程加载的模块
                 requirejs.loadModules(waitingModule, statObj);
             }
         },
         //模块依赖已经加载完成，可以执行
-        ready: function () {
+        ready: function() {
             var that = this;
             if (this.status == "depending" && this.requireing.length == 0) {
                 this.status = "ready";
                 this.executing();
                 //当一个模块已经ready时，查看依赖该模块的模块是否也ready
-                setTimeout(function () {
+                setTimeout(function() {
                     for (var i = 0; i < that.following.length; i++) {
                         var followdModule = that.following[i];
                         followdModule.requireing.splice(followdModule.requireing.indexOf(that), 1);
@@ -405,7 +417,7 @@
             }
         },
         //模块执行中
-        executing: function () {
+        executing: function() {
             if (this.status === 'ready') {
                 this.status = 'executing';
 
@@ -419,7 +431,7 @@
             }
         },
         //模块执行完成
-        executed: function () {
+        executed: function() {
             this.status = 'executed';
         }
     }
@@ -439,7 +451,7 @@
          * @param {Module} moduleInstance
          * @return null
          */
-        addModule: function (moduleInstance) {
+        addModule: function(moduleInstance) {
             this.moduleList[moduleInstance.id] = moduleInstance;
         },
 
@@ -448,7 +460,7 @@
          * @param {string} [id]
          * @return {Module}
          */
-        getModule: function (id) {
+        getModule: function(id) {
             return this.moduleList[id];
         },
 
@@ -457,7 +469,7 @@
          * @param [options]
          * @return {{baseUrl: *}}
          */
-        config: function (options) {
+        config: function(options) {
             var defaults = {
                     baseUrl: util.baseUrl
                 },
@@ -468,16 +480,19 @@
             return this.config = defaults;
         },
 
-        define: function (depend, callback) {
+        define: function(depend, callback) {
             if (util.isFunction(depend)) {
                 callback = depend;
                 depend = [];
             }
             //define的时候吧callback记录下来即可，在文件执行完成后onDepended统一处理
-            __defineQueue.push({callback: callback, depend: depend});
+            __defineQueue.push({
+                callback: callback,
+                depend: depend
+            });
         },
 
-        require: function (depend, callback) {
+        require: function(depend, callback) {
             //depend可以不写，默认为空
             if (util.isFunction(depend)) {
                 callback = depend;
@@ -513,7 +528,7 @@
         /**
          * 把id转换为url。如果模块带md5,则返回带md5的url
          **/
-        id2Url: function (id) {
+        id2Url: function(id) {
             var md5 = "";
             var ids = id.split('.');
             var idlen = ids.length;
@@ -528,7 +543,7 @@
         /**
          * 加载模块
          **/
-        loadModules: function (moduleList, statObj) {
+        loadModules: function(moduleList, statObj) {
             var that = this;
             var combo = this.config.combo;
             //先检测有哪些模块在localStorage中，如果存在则直接实用localStorage
@@ -562,7 +577,7 @@
                     moduleList[i].status = "loading";
                 }
 
-                this._fetchByXHR(url + toLoadUrl.join(';'), function (text) {
+                this._fetchByXHR(url + toLoadUrl.join(';'), function(text) {
                     //加载后所有的模块都会吧模块定义函数依次放入__defineQueue，这里按顺序将模块的定义函数放入模块并执行即可
                     if (text) {
                         var codes = text.split(/\/\*___meta___.*\*\//);
@@ -588,9 +603,9 @@
                 });
             } else if (moduleList.length != 0) {
                 //否则每个独立加载
-                moduleList.forEach(function (dep) {
+                moduleList.forEach(function(dep) {
                     dep.status = "loading";
-                    that._fetchByXHR(that.config.baseUrl + that.id2Url(dep.id), function (text) {
+                    that._fetchByXHR(that.config.baseUrl + that.id2Url(dep.id), function(text) {
                         dep.callback = __defineQueue[0].callback;
                         dep.depend = __defineQueue[0].depend;
                         if (text) {
@@ -612,12 +627,12 @@
          * @return {Array}
          * @private
          */
-        getResults: function (dependencies) {
+        getResults: function(dependencies) {
             var that = this,
                 exports = [],
                 mod;
 
-            dependencies.forEach(function (did) {
+            dependencies.forEach(function(did) {
                 mod = that.getModule(did);
 
                 // 如果mod执行后有返回结果
@@ -637,18 +652,18 @@
          * @param errback
          * @private
          */
-        _fetchByXHR: function (url, callback, name) {
+        _fetchByXHR: function(url, callback, name) {
             var that = this,
                 xhr = new XMLHttpRequest(),
                 protocol = /^([\w]+:)\/\//.test(url) ? RegExp.$1 : window.location.protocol;
 
             xhr.open('GET', url, true);
-            xhr.onreadystatechange = function () {
+            xhr.onreadystatechange = function() {
                 if (xhr.readyState == 4) {
                     if ((xhr.status >= 200 && xhr.status < 300) || xhr.status === 304 || (xhr.status === 0 && protocol === 'file:')) {
                         xhr.onreadystatechange = null;
-                        if(name && xhr.responseText.indexOf('define') == -1) {
-                            if(name.indexOf("css.js") != -1) {
+                        if (name && xhr.responseText.indexOf('define') == -1) {
+                            if (name.indexOf("css.js") != -1) {
                                 that._geval('define([],function(){var s=document.createElement("style");s.innerHTML=' + JSON.stringify(xhr.responseText) + ';document.head.appendChild(s);});', name);
                             } else {
                                 that._geval('define([],function(){return ' + JSON.stringify(xhr.responseText) + ';});');
@@ -672,7 +687,7 @@
          * @param [errback] {Function}
          * @private
          */
-        _fetchByInject: function (url, callback) {
+        _fetchByInject: function(url, callback) {
             var script = doc.createElement("script"),
                 logSt = Date.now(),
                 s = document.getElementsByTagName('script')[0];
@@ -680,7 +695,7 @@
             script.type = 'text/javascript';
             script.async = true;
             script.src = url;
-            script.onload = function () {
+            script.onload = function() {
                 callback();
             };
 
@@ -694,7 +709,7 @@
          * @return {Object}
          * @private
          */
-        _geval: function (src, name) {
+        _geval: function(src, name) {
             /*jshint evil:true */
             // for IE
             try {
@@ -709,23 +724,27 @@
         }
     };
 
-    win.require = function () {
+    win.require = function() {
         requirejs.require.apply(requirejs, arguments);
     };
-    win.define = function () {
+    win.define = function() {
         requirejs.define.apply(requirejs, arguments);
     };
     // AMD 规范要求
     win.define.amd = {};
     //ls作为已经可用的模块加入
-    new Module({id: "LocalStorage", status: "executed", result: LS});
+    new Module({
+        id: "LocalStorage",
+        status: "executed",
+        result: LS
+    });
     //加载已有的require
     if (win.requirejs && win.requirejs.__requirejsConfig) {
         requirejs.config(win.requirejs.__requirejsConfig);
     }
     if (win.requirejs && win.requirejs.__require) {
-        var load = function () {
-            setTimeout(function () {
+        var load = function() {
+            setTimeout(function() {
                 for (var i = 0; i < win.requirejs.__require.length; i++) {
                     require(win.requirejs.__require[i][0], win.requirejs.__require[i][1]);
                 }

@@ -8,7 +8,7 @@ tags = raw_input("Enter tags(split by ','): ")
 more = raw_input("Enter more content: ")
 
 # create post
-fo = open("../_posts/"+name, "wb")
+fo = open("../src/_posts/"+name, "wb")
 fo.write( "---\n\
 layout: post\n\
 title: " + title.title() + "\n\
@@ -25,7 +25,7 @@ fo.close()
 # create tag
 for tag in tags.split(','):
 	tag = tag.strip()
-	fo = open("../tags/" + tag.lower() + ".md", "wb")
+	fo = open("../src/tags/" + tag.lower() + ".md", "wb")
 	fo.write("---\n\
 layout: tags\n\
 title: Hello 13 | " + tag.title() + "\n\

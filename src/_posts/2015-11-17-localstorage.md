@@ -17,4 +17,8 @@ The [localStorage](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/local
 
 1. Apart from being an old way of saving data, Cookies give you a limit of 4096 bytes (4095, actually) - its per cookie. Local Storage is as big as 5MB per domain.
 2. LocalStorage is an implementation of the Storage Interface. It stores data with no expiration date, and gets cleared only through JavaScript, or clearing the Browser Cache / Locally Stored Data - unlike cookie expiry.
+3. Cookies will be carried in head of every http request from browser to server, but ls's data only stored in broswer.
 
+### Using LocalStorage
+
+![img](http://i.imgur.com/v9o1kNy.png?1)

@@ -21,4 +21,79 @@ The [localStorage](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/local
 
 ### Using LocalStorage
 
+Here's a graph,
 ![img](http://i.imgur.com/v9o1kNy.png?1)
+
+When build the site, the version info, md5 will insert into `__requirejsConfig` and be stored in ls. If `revision[id]` in the page is diff compare to that in ls, it will sent request to load. Otherwise, load from ls directly.
+
+{% highlight html linenos %}
+<script>
+var requirejs = {
+    __require: [],
+    __requirejsConfig: {
+        revision: {
+            "page.js": "f32af19d",
+            "lib/fastclick.js": "6e9d3b0d",
+            "lib/truck.js": "c4d5192a",
+            "lib/zepto.js": "10c89684"
+        },
+        combo: {
+            url: 'http://static.hello13.net/combo?f='
+        },
+        prefix: '/static/js/'
+    }
+}, require = function() {
+    requirejs.__require.push(arguments)
+};
+</script>
+{% endhighlight %}
+
+{% highlight javascript linenos %}
+var LS = {
+    /*
+     * @param isSupported 浏览器是否支持localStoarge
+     * @return {Boolean} 条目数组
+     */
+    isSupported: (function() {
+        try {
+            if (!('localStorage' in window && window['localStorage'])) {
+                return false
+            }
+            localStorage.setItem('~_~', 1);
+            localStorage.removeItem('~_~');
+        } catch (err) {
+            return false;
+        }
+        return true;
+    })(),
+    /*
+     * @method getItem 相对于原生的localStorage，屏蔽了错误
+     * @param {String} key 需要查询的条目名称
+     * @return {String} 条目数组
+     */
+    getItem: function(key) {
+        try {
+            return localStorage.getItem(key);
+        } catch (e) {}
+    },
+    /*
+     * @method setItem 相对于原生的localStorage，屏蔽了错误
+     * @param {String} key 需要设置的条目名称
+     * @param {val} 要设置的值
+     */
+    setItem: function(key, val) {
+        try {
+            localStorage.setItem(key, val);
+        } catch (e) {}
+    },
+    /*
+     * @method removeItem 删除一个条目
+     * @param {String} key 需要删除的key
+     */
+    removeItem: function(key) {
+        try {
+            localStorage.removeItem(key);
+        } catch (e) {}
+    }
+};
+{% endhighlight %}

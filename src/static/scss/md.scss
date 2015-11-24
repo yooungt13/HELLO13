@@ -91,12 +91,13 @@
 }
 
 .markdown-body a {
-  color: #4078c0;
+  color: #4078c0 !important;
   text-decoration: none;
 }
 
 .markdown-body a:hover,
 .markdown-body a:active {
+  color: #4078c0 !important;
   text-decoration: underline;
 }
 
@@ -164,6 +165,7 @@
   padding: 0;
   margin-top: 0;
   margin-bottom: 0;
+  list-style: inherit;
 }
 
 .markdown-body ol ol,

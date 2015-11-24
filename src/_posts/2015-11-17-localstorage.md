@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Front-End Engineering：Cache Management Of Truckjs
+title: Front-End Engineering：Cache Management
 tag: [LocalStorage,Truckjs,Engineering]
 addr: Meituan, Beijing
-description: Front-End Engineering：Cache Management Of Truckjs
+description: Front-End Engineering：Cache Management
 keywords: localstorage,truckjs,engineering,有田十三
 ---
 
@@ -24,7 +24,7 @@ The [localStorage](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/local
 Here's a graph,
 ![img](http://i.imgur.com/v9o1kNy.png?1)
 
-When build the site, the version info, md5 will insert into `__requirejsConfig` and be stored in ls. If `revision[id]` in the page is diff compare to that in ls, it will sent request to load. Otherwise, load from ls directly.
+When build the site, the revision and md5 will insert into `__requirejsConfig` and be stored in ls after loaded. If `revision[id]` in the page is diff compare to that in ls, it will sent request to load. Otherwise, load from ls directly.
 
 {% highlight html linenos %}
 <script>
@@ -47,6 +47,7 @@ var requirejs = {
 };
 </script>
 {% endhighlight %}
+
 
 {% highlight javascript linenos %}
 var LS = {

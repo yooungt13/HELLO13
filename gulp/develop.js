@@ -25,5 +25,5 @@ gulp.task('sass', function() {
 // Gulp watch syntax
 gulp.task('watch', function() {
     // watchers
-    gulp.watch('src/static/scss/*.scss', ['sass']);
+    gulp.watch('src/static/scss/**/*.scss', ['sass']);
 });

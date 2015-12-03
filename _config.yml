@@ -10,7 +10,11 @@ paginate: 10
 paginate_path: '/posts/:num'
 
 excerpt_separator: "\n\n\n"
-isDev: true
+
+#Dev Static
+DEV: true
+# STATIC_HOST: 'http://static.hello13.net'
+STATIC_HOST: 'http://43.241.219.90:80'
 
 #Basic Configuration
 title:       Hello13

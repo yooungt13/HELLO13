@@ -23,7 +23,7 @@
         <!-- iPhone 6 startup image -->
         <link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)" href="/static/img/start-up.png">
 
-        {% if site.isDev %}
+        {% if site.DEV %}
         <link rel="stylesheet" href="/static/css/screen.css" media="screen, projection" />
         {% else %}
         <link rel="stylesheet" href="http://static.hello13.net/static/css/screen.min.css" media="screen, projection" />
@@ -33,12 +33,12 @@
             var requirejs = {
                 __require: [],
                 __requirejsConfig: {
-                {% if site.isDev %}
+                {% if site.DEV %}
                     baseUrl: 'http://localhost:4000',
                 {% else %}
                     revision: {% include revision.json %},
                     combo: {
-                        url: 'http://static.hello13.net/combo?f='
+                        url: '{{ site.STATIC_HOST }}/combo?f='
                     },
                 {% endif %}
                     prefix: '/static/js/'
@@ -90,7 +90,7 @@
                 page.init();
             });
         </script>
-        <script src="http://static.hello13.net/static/js/lib/truck.c4d5192a.js" async></script>
+        <script src="{{ site.STATIC_HOST }}/static/js/lib/truck.c4d5192a.js" async></script>
 
         <!--*********************************************************-->
         <!--******************Copyright @有田十三**********************-->

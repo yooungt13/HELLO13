@@ -10,7 +10,7 @@ keywords: 有田十三,javascript,web,github,blog
             <li class="post">
                 {% if post.content contains '<!--more-->' %}
                     <p class="title">
-                        <a href="{{ post.url }}">{{ post.title | upcase }}</a>
+                        <a href="{{ post.url }}/">{{ post.title | upcase }}</a>
                     </p>
                     <p class="date">
                         <span>{{ post.date | date_to_string }}, {{ post.addr }}</span>
@@ -18,7 +18,7 @@ keywords: 有田十三,javascript,web,github,blog
                     {{ post.content | split:'<!--more-->' | first }}
                 {% else %}
                     <p class="title">
-                        <span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title | upcase }}</a>
+                        <span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}/">{{ post.title | upcase }}</a>
                     </p>
                 {% endif %}
                 <p class="tags">
@@ -34,7 +34,7 @@ keywords: 有田十三,javascript,web,github,blog
                     {% endif %}
                 </p><!--
              --><p class="more icon icon-angle-right">
-                    <a href="{{ post.url }}">More</a>
+                    <a href="{{ post.url }}/">More</a>
                 </p>
             </li>
         {% endfor %}

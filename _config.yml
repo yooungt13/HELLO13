@@ -5,6 +5,11 @@ encoding:    utf-8
 permalink:   /posts/:title
 highlighter: pygments
 markdown:    rdiscount
+rdiscount:
+  extensions:
+    - autolink
+    - footnotes
+    - smart
 
 paginate: 10
 paginate_path: '/posts/:num'
@@ -14,7 +19,7 @@ excerpt_separator: "\n\n\n"
 #Dev Static
 DEV: true
 # STATIC_HOST: 'http://static.hello13.net'
-STATIC_HOST: 'http://43.241.219.90:80'
+STATIC_HOST: 'http://43.241.219.90:3030'
 
 #Basic Configuration
 title:       Hello13

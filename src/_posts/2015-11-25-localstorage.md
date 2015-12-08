@@ -7,7 +7,7 @@ description: Front-End Engineering：Cache Management
 keywords: localstorage,truckjs,engineering,有田十三
 ---
 
-In modular programming, some modules may be requested more times which lead to extra costs. So the module should be stored after loaded first time to prevent repeate requests.
+In modular programming, some modules may create unnecessary HTTP requests and wasted JavaScript execution if it is not cached. So the modules should be stored after loaded at first time.
 
 <!--more-->
 
@@ -19,13 +19,36 @@ The [localStorage](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/local
 2. LocalStorage is an implementation of the Storage Interface. It stores data with no expiration date, and gets cleared only through JavaScript, or clearing the Browser Cache / Locally Stored Data - unlike cookie expiry.
 3. Cookies will be carried in head of every http request from browser to server, but ls's data only stored in broswer.
 
-### Using LocalStorage
+#### Using LocalStorage
 
-Here's a graph,
-![img](http://i.imgur.com/v9o1kNy.png?1)
+Here's a graph of cache flow,
+![img](/static/img/post/ls-0.png)
 
 When build the site, the revision and md5 will insert into `__requirejsConfig` and be stored in ls after loaded. If `revision[id]` in the page is diff compare to that in ls, it will sent request to load. Otherwise, load from ls directly.
 
+Codes of template like this,
+{% highlight html linenos %}
+<script>
+    var requirejs = {
+        __require: [],
+        __requirejsConfig: {
+        { % if site.DEV % }
+            baseUrl: 'http://localhost:4000',
+        { % else % }
+            revision: { % include revision.json % },
+            combo: {
+                url: '{ { site.STATIC_HOST } }/combo?f='
+            },
+        { % endif % }
+            prefix: '/static/js/'
+        }
+    }, require = function() {
+        requirejs.__require.push(arguments)
+    };
+</script>
+{% endhighlight %}
+
+And codes of the built page like this,
 {% highlight html linenos %}
 <script>
 var requirejs = {
@@ -48,53 +71,13 @@ var requirejs = {
 </script>
 {% endhighlight %}
 
+#### Network Loading
 
-{% highlight javascript linenos %}
-var LS = {
-    /*
-     * @param isSupported 浏览器是否支持localStoarge
-     * @return {Boolean} 条目数组
-     */
-    isSupported: (function() {
-        try {
-            if (!('localStorage' in window && window['localStorage'])) {
-                return false
-            }
-            localStorage.setItem('~_~', 1);
-            localStorage.removeItem('~_~');
-        } catch (err) {
-            return false;
-        }
-        return true;
-    })(),
-    /*
-     * @method getItem 相对于原生的localStorage，屏蔽了错误
-     * @param {String} key 需要查询的条目名称
-     * @return {String} 条目数组
-     */
-    getItem: function(key) {
-        try {
-            return localStorage.getItem(key);
-        } catch (e) {}
-    },
-    /*
-     * @method setItem 相对于原生的localStorage，屏蔽了错误
-     * @param {String} key 需要设置的条目名称
-     * @param {val} 要设置的值
-     */
-    setItem: function(key, val) {
-        try {
-            localStorage.setItem(key, val);
-        } catch (e) {}
-    },
-    /*
-     * @method removeItem 删除一个条目
-     * @param {String} key 需要删除的key
-     */
-    removeItem: function(key) {
-        try {
-            localStorage.removeItem(key);
-        } catch (e) {}
-    }
-};
-{% endhighlight %}
+After the first visit, codes will be stored in the ls and could be found from the ls next time. `LS`(util of truckjs) will compare the version between that of ls and the revision of page, then decide wheather need to send a request to get new codes from server.
+![img](/static/img/post/ls-2.png)
+![img](/static/img/post/ls-1.png)
+
+Which comes to high rate of cache hitting and saves the bind width without extra requests in conclusion.
+![img](/static/img/post/ls-3.png)
+
+

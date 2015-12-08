@@ -26,7 +26,7 @@
         {% if site.DEV %}
         <link rel="stylesheet" href="/static/css/screen.css" media="screen, projection" />
         {% else %}
-        <link rel="stylesheet" href="http://static.hello13.net/static/css/screen.min.css" media="screen, projection" />
+        <link rel="stylesheet" href="{{ site.STATIC_HOST }}/static/css/screen.min.css" media="screen, projection" />
         {% endif %}
 
         <script>
@@ -55,10 +55,10 @@
                 <div class="menu">
                     <span class="menu-icon" id='menu'></span>
                     <div class="menu-list">
-                        <dl><a href="/home">Home</a></dl>
-                        <dl><a href="/posts">Posts</a></dl>
-                        <dl><a href="/projects">Projects</a></dl>
-                        <dl><a href="/posts/me">About Me</a></dl>
+                        <dl><a href="/home/">Home</a></dl>
+                        <dl><a href="/posts/">Posts</a></dl>
+                        <dl><a href="/projects/">Projects</a></dl>
+                        <dl><a href="/posts/me/">About Me</a></dl>
                     </div>
                 </div>
             </nav>

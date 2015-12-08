@@ -23,7 +23,7 @@
         <!-- iPhone 6 startup image -->
         <link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)" href="/static/img/start-up.png">
 
-        {% if site.DEV %}
+        {% if site.ENV == 'develop' %}
         <link rel="stylesheet" href="/static/css/screen.css" media="screen, projection" />
         {% else %}
         <link rel="stylesheet" href="{{ site.STATIC_HOST }}/static/css/screen.min.css" media="screen, projection" />
@@ -33,7 +33,7 @@
             var requirejs = {
                 __require: [],
                 __requirejsConfig: {
-                {% if site.DEV %}
+                {% if site.ENV == 'develop' %}
                     baseUrl: 'http://localhost:4000',
                 {% else %}
                     revision: {% include revision.json %},

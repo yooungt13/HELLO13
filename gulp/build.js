@@ -1,23 +1,23 @@
-var gulp = require('gulp');
-var exec = require('child_process').exec;
+"use strict";
 
-var uglify = require('gulp-uglify'),
+let gulp = require('gulp');
+let exec = require('child_process').exec;
+
+let uglify = require('gulp-uglify'),
     minify = require('gulp-minify-css'),
     sprite = require('gulp.spritesmith'),
     rename = require('gulp-rename'),
     imagemin = require('gulp-imagemin');
 
-var RevAll = require('gulp-rev-all');
+let RevAll = require('gulp-rev-all');
 
 /**
  * 构建过程
  */
 
-
-
- // 生成雪碧图
-gulp.task('sprite', function() {
-    var spriteOutput =
+// 生成雪碧图
+gulp.task('sprite', () => {
+    let spriteOutput =
         gulp.src("src/static/img/icon/*.png")
         .pipe(sprite({
             imgName: 'sprite.png',
@@ -30,8 +30,8 @@ gulp.task('sprite', function() {
 });
 
 // 生成MD5版本号revision.json
-gulp.task('md5', function() {
-    var revAll = new RevAll({
+gulp.task('md5', () => {
+    let revAll = new RevAll({
         fileNameManifest: 'revision.json'
     });
 
@@ -41,10 +41,24 @@ gulp.task('md5', function() {
         .pipe(gulp.dest('src/_includes'));
 });
 
+// 切换环境
+gulp.task('env', () => {
+    const ENV = 'production';
+
+    exec('sed -i.tmp \'s/^ENV:.*$/ENV: ' + ENV + '/\' _config.yml', (err, stdout) => {
+        if (err) {
+            console.log('Switch env: ' + err);
+        } else {
+            console.log(stdout);
+            end();
+        }
+    });
+});
+
 // 生成线上文件
-gulp.task('build', ['md5'], function(end) {
+gulp.task('build', ['md5'], (end) => {
     // build Jekyll
-    exec('jekyll build', function(err, stdout) {
+    exec('jekyll build', (err, stdout) => {
         if (err) {
             console.log('Jekyll build: ' + err);
         } else {
@@ -59,8 +73,8 @@ gulp.task('build', ['md5'], function(end) {
     1、在/src目录中，生成文件配置文件revison.json，包括文件的MD5信息（版本信息）
     2、将/src文件build至发布环境/deploy，根据版本信息重命名文件
 */
-gulp.task('scripts', ['build'], function() {
-    var revAll = new RevAll({
+gulp.task('scripts', ['build'], () => {
+    let revAll = new RevAll({
         // 不更新require中js
         dontUpdateReference: ['.js']
     });
@@ -72,20 +86,20 @@ gulp.task('scripts', ['build'], function() {
 });
 
 // 构建/deploy目录下css文件
-gulp.task('styles', ['build'], function(end) {
+gulp.task('styles', ['build'], (end) => {
     return gulp.src('deploy/static/css/**/*')
         .pipe(minify())
-        .pipe(rename({ suffix: '.min' }))
+        .pipe(rename({
+            suffix: '.min'
+        }))
         .pipe(gulp.dest('deploy/static/css'));
 });
 
 // 构建/deploy目录下img文件
-gulp.task('images', ['build'], function(end) {
+gulp.task('images', ['build'], (end) => {
     return gulp.src('deploy/static/img/post/*')
         .pipe(imagemin({
             optimizationLevel: 1
         }))
         .pipe(gulp.dest('deploy/static/img/post'));
 });
-
-

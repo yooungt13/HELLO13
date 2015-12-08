@@ -9,8 +9,10 @@ let sass = require('gulp-sass');
  * 开发环境
  */
 gulp.task('server', () => {
-    // build Jekyll
-    exec('jekyll serve').stdout.on('data', (chunk) => {
+    // let cmd = 'sed -ig \'s/^ENV:.*$/ENV: develop/\' _config.yml';
+    let cmd = 'jekyll serve';
+
+    exec(cmd).stdout.on('data', (chunk) => {
         console.log(chunk);
     });
 
@@ -28,10 +30,4 @@ gulp.task('sass', () => {
 gulp.task('watch', () => {
     // watchers
     gulp.watch('src/static/scss/**/*.scss', ['sass']);
-});
-
-gulp.task('node', () => {
-    let env = process.env.NODE_ENV || 'production';
-    console.log(env);
-    process.exit(0);
 });

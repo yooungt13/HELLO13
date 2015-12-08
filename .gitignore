@@ -3,3 +3,4 @@
 /src/static/components
 *.log
 *.out
+*.tmp

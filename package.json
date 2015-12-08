@@ -5,7 +5,7 @@
   "main": "gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "sed -i.tmp 's/^ENV:.*$/ENV: develop/' _config.yml && jekyll serve && exit 1 && gulp watch"
+    "start": "gulp server"
   },
   "repository": {
     "type": "git",

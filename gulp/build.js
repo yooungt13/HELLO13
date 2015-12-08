@@ -45,7 +45,7 @@ gulp.task('md5', () => {
 gulp.task('env', () => {
     const ENV = 'production';
 
-    exec('sed -i.tmp \'s/^ENV:.*$/ENV: ' + ENV + '/\' _config.yml', (err, stdout) => {
+    exec('sed -i.tmp \'s/^ENV:.*$/ENV: ' + ENV + '/\' _config.yml && rm _config.yml.tmp', (err, stdout) => {
         if (err) {
             console.log('Switch env: ' + err);
         } else {

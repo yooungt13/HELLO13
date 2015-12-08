@@ -12,13 +12,13 @@ let runSequence = require('run-sequence');
 const SERVER_URL = 'root@43.241.219.90';
 
 // 将build好的资源文件deploy至静态服务器
-gulp.task('cp2static', ['scripts', 'styles', 'images'], function(end) {
+gulp.task('cp2static', ['scripts', 'styles', 'images'], (end) => {
     const LOCAL_PATH = '/Users/hello13/Documents/Proj/HELLO13/deploy/static/*',
         REMOTE_PATH = '/root/proj/combo/static';
 
     let cmd = 'scp -r ' + LOCAL_PATH + ' ' + SERVER_URL + ':' + REMOTE_PATH;
 
-    exec(cmd, function(err, stdout) {
+    exec(cmd, (err, stdout) => {
         if (err) {
             console.log('Copy2Static failed: ' + err);
         } else {
@@ -29,13 +29,13 @@ gulp.task('cp2static', ['scripts', 'styles', 'images'], function(end) {
 });
 
 // 将build好的文件deploy至服务端
-gulp.task('cp2server', ['cp2static'], function(end) {
+gulp.task('cp2server', ['cp2static'], (end) => {
     const LOCAL_PATH = '/Users/hello13/Documents/Proj/HELLO13/deploy/*',
         REMOTE_PATH = '/usr/share/nginx/html';
 
     let cmd = 'scp -r ' + LOCAL_PATH + ' ' + SERVER_URL + ':' + REMOTE_PATH;
 
-    exec(cmd, function(err, stdout) {
+    exec(cmd, (err, stdout) => {
         if (err) {
             console.log('Copy2Server failed: ' + err);
         } else {
@@ -46,8 +46,8 @@ gulp.task('cp2server', ['cp2static'], function(end) {
 });
 
 // 执行发布过程
-gulp.task('deploy', function(end) {
-    runSequence('cp2server', function(err) {
+gulp.task('deploy', (end) => {
+    runSequence('cp2server', (err) => {
         if (err) {
             console.log('Deploy error: ' + err);
         } else {
@@ -60,9 +60,9 @@ gulp.task('deploy', function(end) {
 });
 
 // push到github
-gulp.task('push2git', function(end) {
+gulp.task('push2git', (end) => {
     let cmd = 'git add .;git commit -m "Gulp deploy.";git pull origin;git push origin';
-    exec(cmd, function(err, stdout) {
+    exec(cmd, (err, stdout) => {
         if (err) {
             console.log('Git push:' + err);
         } else {

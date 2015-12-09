@@ -45,8 +45,7 @@ let switchEnv = (ENV) => {
         if (err) {
             console.log('Switch env: ' + err);
         } else {
-            console.log(stdout);
-            end();
+            console.log('Switch env: ' + ENV );
         }
     });
 }

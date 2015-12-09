@@ -1,26 +1,28 @@
-var gulp = require('gulp');
-var vulcanize = require('gulp-vulcanize');
+"use strict";
+
+let gulp = require('gulp');
+let vulcanize = require('gulp-vulcanize');
 
 // 连接线上数据库
 // ref: https://www.firebase.com/account/#/
-var Firebase = require('firebase'),
+let Firebase = require('firebase'),
     FIREBASE_URL = 'https://hello13.firebaseio.com/',
     fref = new Firebase(FIREBASE_URL);
 
-gulp.task('getdata', function() {
+gulp.task('getdata', () => {
     // Attach an asynchronous callback to read the data at our posts reference
-    fref.on('value', function(snapshot) {
+    fref.on('value', (snapshot) => {
         console.log(snapshot.val());
-    }, function(errorObject) {
+    }, (errorObject) => {
         console.log('The read failed: ' + errorObject.code);
     });
 });
 
-gulp.task('setdata', function() {
+gulp.task('setdata', () => {
 
-    var data = require('./src/static/json/firebase-data.json');
+    let data = require('./src/static/json/firebase-data.json');
 
-    fref.set(data, function(err) {
+    fref.set(data, (err) => {
         if (err) {
             console.log('Data of firebase update failed');
         } else {
@@ -29,7 +31,7 @@ gulp.task('setdata', function() {
     });
 });
 
-gulp.task('vulcanize', function() {
+gulp.task('vulcanize', () => {
 
     return gulp.src('src/static/elements/friend-list/index.html')
         .pipe(vulcanize({

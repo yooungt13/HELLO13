@@ -29,7 +29,7 @@ for tag in tags.split(','):
 	fo.write("---\n\
 layout: tags\n\
 title: Hello 13 | " + tag.title() + "\n\
-tag: " + tag.title() + "\n\
+tag: " + tag + "\n\
 permalink: /tags/" + tag.lower() + "/\n\
 ---\n")
 	fo.close()

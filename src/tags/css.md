@@ -1,6 +1,6 @@
 ---
 layout: tags
 title: Hello 13 | Css
-tag: Css
+tag: CSS
 permalink: /tags/css/
 ---

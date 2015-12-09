@@ -42,21 +42,20 @@ gulp.task('md5', () => {
 });
 
 // 切换环境
-gulp.task('env', () => {
+gulp.task('env', (end) => {
     const ENV = 'production';
 
     exec('sed -i.tmp \'s/^ENV:.*$/ENV: ' + ENV + '/\' _config.yml && rm _config.yml.tmp', (err, stdout) => {
         if (err) {
             console.log('Switch env: ' + err);
         } else {
-            console.log(stdout);
             end();
         }
     });
 });
 
 // 生成线上文件
-gulp.task('build', ['md5'], (end) => {
+gulp.task('build', ['env','md5'], (end) => {
     // build Jekyll
     exec('jekyll build', (err, stdout) => {
         if (err) {

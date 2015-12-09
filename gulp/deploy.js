@@ -20,7 +20,6 @@ gulp.task('cp2static', ['scripts', 'styles', 'images'], (end) => {
         if (err) {
             console.log('Copy2Static failed: ' + err);
         } else {
-            console.log('Copy2Static complete.');
             end();
         }
     });
@@ -37,7 +36,6 @@ gulp.task('cp2server', ['cp2static'], (end) => {
         if (err) {
             console.log('Copy2Server failed: ' + err);
         } else {
-            console.log('Copy2Server complete.');
             end();
         }
     });
@@ -46,7 +44,6 @@ gulp.task('cp2server', ['cp2static'], (end) => {
 // 执行发布过程
 gulp.task('deploy', ['cp2static', 'cp2server'], () => {
     console.log('Deploy complete.');
-    process.exit(0);
 });
 
 // push到github

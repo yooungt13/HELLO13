@@ -16,7 +16,7 @@ paginate_path: '/posts/:num'
 
 excerpt_separator: "\n\n\n"
 
-ENV: develop
+ENV: production
 # STATIC_HOST: 'http://static.hello13.net'
 STATIC_HOST: 'http://43.241.219.90:3030'
 

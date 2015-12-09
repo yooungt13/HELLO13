@@ -5,7 +5,7 @@ keywords: 有田十三,javascript,web,github,blog
 ---
 
 <div class="home">
-    <img class="bg" src="/static/img/bg.jpg">
+    <img class="bg" src="{{ site.STATIC_HOST }}/static/img/bg.jpg">
     <ul class="tags">
     {% for tag in site.tags %}
         {% assign title = tag | first %}
@@ -15,7 +15,7 @@ keywords: 有田十三,javascript,web,github,blog
             {% assign random = random | divided_by:2.5 | replace: '.', '' %}
         {% endif%}
         <li style="font-size: .{{random}}rem;">
-            <a href="/tags/{{title | downcase}}">
+            <a href="/tags/{{title | downcase}}/">
                 <span>{{ title | downcase | replace:" ","-" }}</span>
             </a>
         </li>

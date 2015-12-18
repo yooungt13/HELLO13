@@ -4,6 +4,7 @@ define([
 
     // init pages
     function init() {
+
         if(!isMobile()) {
             setGitfork();
         } else {
@@ -42,6 +43,14 @@ define([
                 }
             }
         });
+    }
+
+    function setHeader() {
+        var isWebview = true;
+        if( isWebview ) {
+            $('header').hide();
+            $('section').css('padding', '0 .24rem');
+        }
     }
 
     function setGA() {

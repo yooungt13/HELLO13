@@ -29,6 +29,33 @@
         <link rel="stylesheet" href="{{ site.STATIC_HOST }}/static/css/screen.min.css" media="screen, projection" />
         {% endif %}
 
+        <!-- Hide header if webview-->
+        <script>
+            var isWebview = getQueryString('f');
+
+            if( isWebview ) {
+                var css = 'header { display: none; } section { padding: 0 .24rem }',
+                    head = document.head || document.getElementsByTagName('head')[0],
+                    style = document.createElement('style');
+
+                style.type = 'text/css';
+                if (style.styleSheet){
+                  style.styleSheet.cssText = css;
+                } else {
+                  style.appendChild(document.createTextNode(css));
+                }
+
+                head.appendChild(style);
+            }
+
+            function getQueryString(field, url) {
+                var href = url ? url : window.location.href;
+                var reg = new RegExp( '[?&]' + field + '=([^&#]*)', 'i' );
+                var string = reg.exec(href);
+                return string ? string[1] : null;
+            };
+        </script>
+
         <script>
             var requirejs = {
                 __require: [],

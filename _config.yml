@@ -7,7 +7,7 @@ highlighter: pygments
 markdown:    rdiscount
 rdiscount:
   extensions:
-    - autolink
+    # - autolink
     - footnotes
     - smart
 

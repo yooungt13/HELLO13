@@ -1164,7 +1164,24 @@ ul.tags {
   100% {
     -webkit-transform: scale3d(0.5, 0.5, 0.5);
     transform: scale3d(0.5, 0.5, 0.5); } }
+  .preload .wthum {
+    position: absolute;
+    width: 102px;
+    height: 102px;
+    border-radius: 60px;
+    left: 50%;
+    top: 30%;
+    margin: -51px;
+    background: #39bbab; }
   .preload .waitthum {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 340px;
+    left: 50%;
+    top: 30%;
+    margin: -100px;
+    background: rgba(57, 187, 171, 0.4);
     -webkit-animation-name: waitthum;
     animation-name: waitthum;
     -webkit-animation-duration: 2s;

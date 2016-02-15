@@ -30,30 +30,7 @@
         {% endif %}
 
         <!-- Hide header if webview-->
-        <script>
-            var isWebview = getQueryString('f');
-
-            if( isWebview ) {
-                var css = 'header { display: none; } section { padding: 0 .24rem }',
-                    head = document.head || document.getElementsByTagName('head')[0],
-                    style = document.createElement('style');
-
-                style.type = 'text/css';
-                if (style.styleSheet){
-                  style.styleSheet.cssText = css;
-                } else {
-                  style.appendChild(document.createTextNode(css));
-                }
-
-                head.appendChild(style);
-            }
-
-            function getQueryString(field, url) {
-                var href = url ? url : window.location.href;
-                var reg = new RegExp( '[?&]' + field + '=([^&#]*)', 'i' );
-                var string = reg.exec(href);
-                return string ? string[1] : null;
-            };
+        <script>var isWebview=getQueryString("f");if(isWebview){var css="header { display: none; } section { padding: 0 .24rem }",head=document.head||document.getElementsByTagName("head")[0],style=document.createElement("style");style.type="text/css";if(style.styleSheet){style.styleSheet.cssText=css}else{style.appendChild(document.createTextNode(css))}head.appendChild(style)}function getQueryString(field,url){var href=url?url:window.location.href;var reg=new RegExp("[?&]"+field+"=([^&#]*)","i");var string=reg.exec(href);return string?string[1]:null};
         </script>
 
         <script>
@@ -62,13 +39,14 @@
                 __requirejsConfig: {
                 {% if site.ENV == 'develop' %}
                     baseUrl: 'http://localhost:4000',
+                    prefix: '/static/js/'
                 {% else %}
                     revision: {% include revision.json %},
                     combo: {
                         url: '{{ site.STATIC_HOST }}/combo?f='
                     },
-                {% endif %}
                     prefix: '/js/'
+                {% endif %}
                 }
             }, require = function() {
                 requirejs.__require.push(arguments)

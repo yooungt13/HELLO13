@@ -4,6 +4,7 @@
 
 @import "md";
 @import "syntax";
+@import "eve";
 
 /*****************************************************************************/
 /*
@@ -573,7 +574,7 @@ ul.tags {
 }
 
 .project {
-    padding: 0 0 .12rem;
+    padding: 0;
     margin-bottom: .12rem;
     border-bottom: 1px dashed #ccc;
 
@@ -593,12 +594,13 @@ ul.tags {
     }
 
     .preview {
-        img {
-            width: 100%;
-        }
+        height: 2.3rem;
+        overflow: hidden;
     }
 
     .tags {
+        margin: .06rem;
+
         span {
             font-size: .16rem;
             font-style: italic;

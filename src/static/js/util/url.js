@@ -17,7 +17,7 @@ define([], function() {
                 query = location.search;
             };
 
-            if( !query) return params;
+            if (!query) return params;
 
             // 取？后的string
             if (query.indexOf('?') == 0) {
@@ -34,11 +34,17 @@ define([], function() {
         },
         /**
          * stringify参数
-         * @param  {[type]} obj [description]
-         * @return {[type]}     [description]
+         * @param  {Object} params 参数
+         * @return {String}
          */
-        stringify: function(obj) {
-            // body...
+        stringify: function(params) {
+            var arr = [];
+
+            Object.keys(params).forEach(function(key) {
+                arr.push(key + '=' + params[key]);
+            });
+
+            return arr.join('&');
         }
     }
 });

@@ -63,8 +63,6 @@ define(["lib/zepto.js"], function($) {
     $window.resize(unveilAll);
 
     return function(dom) {
-        console.log(dom);
-
         // 懒加载当前dom图片
         // 若不需加载则缓存在待加载列表中
         if (!unveil(dom)) {

@@ -1,9 +1,12 @@
 {
-  "page.js": "e2f93898",
+  "page.js": "7b886323",
   "com/test.js": "5ec9a8ce",
+  "com/unveil.js": "bc192050",
   "lib/fastclick.js": "6e9d3b0d",
   "lib/truck.js": "873b2929",
   "lib/zepto.js": "10c89684",
   "util/autocomp.js": "c4d8ce84",
-  "util/box.js": "5ac874d0"
+  "util/box.js": "5ac874d0",
+  "util/hidebar.js": "718a15e6",
+  "util/url.js": "9e507c7b"
 }

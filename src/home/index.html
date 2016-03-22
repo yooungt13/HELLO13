@@ -12,7 +12,7 @@ keywords: 有田十三,javascript,web,github,blog
         {% assign posts_size = tag | last | size%}
         {% assign random =  title | size %}
         {% if random > 3 and random < 10 %}
-            {% assign random = random | divided_by:2.5 | replace: '.', '' %}
+            {% assign random = random | divided_by:1.25 | replace: '.', '' %}
         {% endif%}
         <li style="font-size: .{{random}}rem;">
             <a href="/tags/{{title | downcase}}/">

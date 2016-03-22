@@ -829,7 +829,7 @@ html {
 
 body {
   height: 100%;
-  font: 0.16rem "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font: 0.32rem "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: 300;
   *font-size: small;
   text-align: center;
@@ -839,8 +839,8 @@ body {
 
 h1 {
   font-size: 100%;
-  margin-top: .3rem;
-  margin-bottom: .12rem; }
+  margin-top: .6rem;
+  margin-bottom: .24rem; }
 
 h1, h2, h3, h4, h5, h6 {
   font-size: 100%; }
@@ -864,7 +864,7 @@ ul {
 
 header {
   width: 100%;
-  height: .44rem;
+  height: .88rem;
   overflow: visible;
   position: fixed;
   top: 0;
@@ -886,11 +886,11 @@ header {
 nav {
   margin: 0 auto;
   width: 100%;
-  max-width: 8rem;
+  max-width: 16rem;
   box-sizing: border-box;
   padding: 0 .24rem;
   display: inline-block;
-  height: .44rem;
+  height: .88rem;
   color: #333; }
   nav .slogan {
     float: left;
@@ -898,8 +898,8 @@ nav {
     text-align: left; }
     nav .slogan a {
       color: #333;
-      font-size: .24rem;
-      line-height: .44rem;
+      font-size: .48rem;
+      line-height: .88rem;
       font-weight: 700; }
     nav .slogan:hover {
       animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
@@ -919,13 +919,13 @@ nav {
   nav .menu {
     float: right;
     display: inline;
-    line-height: .44rem; }
+    line-height: .88rem; }
     nav .menu dl {
       float: left;
-      font-size: .16rem;
-      height: .44rem;
-      line-height: .44rem;
-      padding: 0 .06rem;
+      font-size: .32rem;
+      height: .88rem;
+      line-height: .88rem;
+      padding: 0 .12rem;
       cursor: pointer; }
       nav .menu dl a {
         color: #777; }
@@ -943,22 +943,21 @@ article {
   padding-top: .24rem; }
 
 section {
-  font-size: 110%;
   text-align: left;
   width: 100%;
-  max-width: 8rem;
+  max-width: 16rem;
   box-sizing: border-box;
   margin: 0 auto;
-  padding: .44rem .24rem 0;
+  padding: .88rem .24rem 0;
   line-height: 1.5em; }
 
 footer {
-  font-size: .14rem;
+  font-size: .28rem;
   color: #666;
   border-top: 1px solid #ddd;
   overflow: hidden;
   text-align: justify;
-  padding: .12rem 0 .36rem; }
+  padding: .24rem 0 .72rem; }
   footer .contact {
     display: inline-block;
     width: 50%; }
@@ -972,7 +971,7 @@ footer {
   .pagination ul {
     display: inline-block;
     padding-left: 0;
-    margin-bottom: .12rem;
+    margin-bottom: .24rem;
     border-radius: 0; }
     .pagination ul li {
       display: inline; }
@@ -983,8 +982,8 @@ footer {
         text-decoration: none;
         margin-left: -1px;
         cursor: pointer;
-        height: .3rem;
-        width: .3rem;
+        height: .6rem;
+        width: .6rem;
         border-radius: 50%; }
         .pagination ul li a:hover, .pagination ul li span:hover {
           color: #000;
@@ -1008,47 +1007,50 @@ footer {
 
 /*****************************************************************************/
 .content {
-  min-height: 3rem; }
+  min-height: 6rem; }
   .content img {
-    margin: .1rem 0;
+    margin: .2rem 0;
     width: 100%; }
   .content .anchor {
-    padding-top: .4rem;
-    margin-top: -.4rem;
+    padding-top: .8rem;
+    margin-top: -.8rem;
     position: static; }
 
 .posts {
   list-style-type: none;
   width: 100%; }
   .posts .post {
-    border-radius: .05rem;
-    padding: 0 0 .12rem;
-    margin-bottom: .12rem;
+    border-radius: .1rem;
+    padding: 0 0 .24rem;
+    margin-bottom: .24rem;
     width: 100%;
     border-bottom: 1px dashed #ccc; }
     .posts .post .title {
+      font-size: .32rem;
       margin: 0;
       line-height: 1.7;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis; }
     .posts .post .date {
-      margin-top: -.05rem; }
+      font-size: .28rem;
+      margin-top: -.1rem; }
     .posts .post .date + p {
-      font-size: 90%;
+      font-size: .28rem;
       line-height: 1.4;
-      margin: .05rem 0; }
+      margin: .1rem 0; }
       .posts .post .date + p:before {
         font-family: 'fontello';
         content: '\e801';
-        margin-right: .12rem; }
+        margin-right: .24rem; }
       .posts .post .date + p:after {
         font-family: 'fontello';
         content: '\e802';
-        margin-left: .12rem; }
+        margin-left: .24rem; }
     .posts .post .tags {
       display: inline-block;
-      width: 80%; }
+      width: 80%;
+      font-size: .28rem; }
       .posts .post .tags .tag {
         color: #428bca;
         text-decoration: none;
@@ -1070,40 +1072,43 @@ footer {
     font-size: 80%; }
 
 ul.tags {
-  margin: .12rem 0 .24rem; }
+  margin: .24rem 0 .48rem; }
   ul.tags li {
     display: inline-block;
-    line-height: .3rem;
-    margin: 0 .02rem;
+    line-height: .6rem;
+    margin: 0 .04rem;
     cursor: pointer; }
 
 .highlight {
   -webkit-font-smoothing: subpixel-antialiased; }
 
 .related {
-  margin-top: .3rem;
-  margin-bottom: .1rem; }
+  margin-top: .6rem;
+  margin-bottom: .2rem; }
   .related h2 {
-    margin-bottom: .1rem; }
-  .related ul li {
-    background: white; }
+    font-size: .28rem;
+    margin-bottom: .2rem; }
+  .related ul {
+    font-size: .24rem; }
+    .related ul li {
+      background: white; }
 
 .backToTop {
   display: none;
-  width: .3rem;
-  height: .3rem;
-  line-height: .26rem;
+  width: .6rem;
+  height: .6rem;
+  line-height: .52rem;
   background-color: #000;
   border-radius: 50%;
   color: #fff;
   text-align: center;
   position: fixed;
-  right: .22rem;
-  bottom: .4rem;
+  right: .24rem;
+  bottom: .8rem;
   cursor: pointer;
   border: 2px solid white; }
   .backToTop:before {
-    font-size: .16rem; }
+    font-size: .32rem; }
 
 .github-fork img {
   position: fixed;
@@ -1211,25 +1216,25 @@ ul.tags {
 
 .project {
   padding: 0;
-  margin-bottom: .12rem;
+  margin-bottom: .24rem;
   border-bottom: 1px dashed #ccc; }
   .project a {
     text-decoration: none; }
   .project .title {
-    font-size: .16rem;
+    font-size: .32rem;
     color: black;
     display: inline-block;
-    margin-bottom: .12rem; }
+    margin-bottom: .24rem; }
   .project .preview {
-    height: 2.3rem;
+    height: 4.6rem;
     overflow: hidden; }
   .project .tags {
-    margin: .06rem; }
+    margin: .12rem; }
     .project .tags span {
-      font-size: .16rem;
+      font-size: .32rem;
       font-style: italic;
       display: inline-block;
-      margin-left: .05rem; }
+      margin-left: .1rem; }
   .project:last-child {
     border-bottom: none; }
 
@@ -1256,7 +1261,8 @@ ul.tags {
   font-style: normal; }
 
 .icon {
-  font-family: 'fontello'; }
+  font-family: 'fontello';
+  font-style: normal; }
 
 .icon-tag:before {
   content: '\e800'; }
@@ -1304,7 +1310,7 @@ ul.tags {
   .github-fork {
     display: none; } }
 
-@media only screen and (max-width: 667px) and (orientation: portrait) {
+@media only screen and (max-width: 750px) and (orientation: portrait) {
   * {
     box-sizing: border-box; }
   header, nav, section {
@@ -1324,39 +1330,34 @@ ul.tags {
     user-select: none; }
     header .menu .menu-icon {
       display: inline-block;
-      font-size: .24rem;
-      line-height: .44rem; }
+      font-size: .48rem;
+      line-height: .88rem; }
       header .menu .menu-icon:before {
         font-family: 'fontello';
         content: '\e807'; }
     header .menu .menu-list {
       display: none; }
   header .menu-expand {
-    border-radius: .05rem;
-    border: 1px solid #e8e8e8;
+    border-radius: .1rem;
+    border: .01rem solid #e8e8e8;
     background-color: white;
-    padding: 0 .1rem .1rem;
-    margin-right: -.11rem;
-    margin-top: .02rem; }
+    padding: 0 .19rem .12rem;
+    margin-right: -.2rem;
+    margin-top: .04rem; }
     header .menu-expand .menu-icon {
-      margin-top: -.03rem; }
+      margin-top: -.05rem; }
     header .menu-expand .menu-list {
       display: block;
       overflow: hidden; }
       header .menu-expand .menu-list dl {
         float: none;
-        line-height: .24rem;
-        height: .24rem;
+        line-height: .48rem;
+        height: .48rem;
         padding: 0; }
-        header .menu-expand .menu-list dl:hover {
-          background: transparent; }
-          header .menu-expand .menu-list dl:hover a {
-            color: #fff;
-            text-decoration: underline; }
   .bg {
-    margin: -.24rem 0 0 -.24rem;
-    width: -webkit-calc(100% + .48rem);
-    width: -moz-calc(100% + .48rem);
-    width: calc(100% + .48rem); }
+    margin: -.48rem 0 0 -.48rem;
+    width: -webkit-calc(100% + .96rem);
+    width: -moz-calc(100% + .96rem);
+    width: calc(100% + .96rem); }
   .github-fork {
     display: none; } }

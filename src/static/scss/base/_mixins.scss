@@ -1,0 +1,184 @@
+// Center-align a block level element
+
+@mixin center-block() {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+// Clearfix
+//
+// For modern browsers
+// 1. The space content is one way to avoid an Opera bug when the
+//    contenteditable attribute is included anywhere else in the document.
+//    Otherwise it causes space to appear at the top and bottom of elements
+//    that are clearfixed.
+// 2. The use of `table` rather than `block` is only necessary if using
+//    `:before` to contain the top-margins of child elements.
+//
+// Source: http://nicolasgallagher.com/micro-clearfix-hack/
+
+@mixin clearfix() {
+    &:before,
+    &:after {
+        content: " "; // 1
+        display: table; // 2
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+// flex box
+@mixin display-flex() {
+    display: -webkit-box;  // 老版本语法: Safari,  iOS, Android browser, older WebKit browsers.
+    display: -moz-box;    // 老版本语法: Firefox (buggy)
+    display: -ms-flexbox;  // 混合版本语法: IE 10
+    display: -webkit-flex;  // 新版本语法： Chrome 21+
+    display: flex;       // 新版本语法： Opera 12.1, Firefox 22+
+}
+
+@mixin flex-box($direction, $justify, $align) {
+    @include display-flex();
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+@mixin flex($flex) {
+    -webkit-box-flex: $flex;      // OLD - iOS 6-, Safari 3.1-6
+    -moz-box-flex: $flex;         // OLD - Firefox 19-
+    -webkit-flex: $flex;          // Chrome
+    -ms-flex: $flex;              // IE 10
+    flex: $flex;
+}
+
+// WebKit-style focus
+@mixin tab-focus() {
+    // Default
+    outline: thin dotted;
+    // WebKit
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+}
+
+@mixin text-hide() {
+    font: #{0/0} a;
+    color: transparent;
+    text-shadow: none;
+    background-color: transparent;
+    border: 0;
+}
+
+// --- Single side border-radius
+@mixin border-top-radius($radius) {
+    border-top-right-radius: $radius;
+    border-top-left-radius: $radius;
+}
+@mixin border-right-radius($radius) {
+    border-bottom-right-radius: $radius;
+    border-top-right-radius: $radius;
+}
+@mixin border-bottom-radius($radius) {
+    border-bottom-right-radius: $radius;
+    border-bottom-left-radius: $radius;
+}
+@mixin border-left-radius($radius) {
+    border-bottom-left-radius: $radius;
+    border-top-left-radius: $radius;
+}
+
+// 单行文本，超出部分以...显示
+@mixin text-ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+// 多行文本，超出部分以...显示
+// 注意：只适用webkit内核的浏览器
+// @see https://css-tricks.com/line-clampin/
+@mixin text-multiline-ellipsis($lineNumber) {
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: $lineNumber;
+    -webkit-box-orient: vertical;
+}
+
+@mixin align-center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+@mixin box-sizing($boxSizing) {
+    -webkit-box-sizing: $boxSizing;
+    -moz-box-sizing: $boxSizing;
+    box-sizing: $boxSizing;
+}
+
+@mixin transition($prop, $time) {
+    -webkit-transition: $prop $time;
+    -moz-transition: $prop $time;
+    -ms-transition: $prop $time;
+    -o-transition: $prop $time;
+    transition: $prop $time;
+}
+
+@mixin transform($transform) {
+    transform: $transform;
+    -webkit-transform: $transform;
+    -ms-transform: $transform;
+}
+
+@mixin user-select($userSelect){
+    -webkit-user-select: $userSelect;
+    -moz-user-select: $userSelect;
+    -ms-user-select: $userSelect;
+    user-select: $userSelect;
+}
+
+@mixin text-size-adjust($sizeAdjust){
+    -webkit-text-size-adjust: $sizeAdjust;
+    -moz-text-size-adjust: $sizeAdjust;
+    -ms-text-size-adjust: $sizeAdjust;
+    -o-text-size-adjust: $sizeAdjust;
+    text-size-adjust: $sizeAdjust;
+}
+
+// 移动端设备尺寸适配
+$break-ip4: 320px;
+$break-sumsung: 360px;
+$break-ip6: 375px;
+$break-google-nexus: 384px;
+$break-ip6-plus: 412px;
+$break-huawei-p6: 720px;
+
+@mixin respond-to($media) {
+    @if $media == ip4 {
+        @media only screen and (min-device-width: $break-ip4) and (max-device-width: $break-sumsung - 1) { @content; }
+    }
+    @else if $media == sumsung {
+        @media only screen and (min-device-width: $break-sumsung) and (max-device-width: $break-ip6 - 1) { @content; }
+    }
+    @else if $media == ip6 {
+        @media only screen and (min-device-width: $break-ip6) and (max-device-width: $break-ip6-plus - 1) { @content; }
+    }
+    @else if $media == google-nexus {
+        @media only screen and (min-device-width: $break-google-nexus) and (max-device-width: $break-ip6-plus - 1) { @content; }
+    }
+    @else if $media == ip6-plus {
+        @media only screen and (min-device-width: $break-ip6-plus) and (max-device-width: $break-huawei-p6 - 1) { @content; }
+    }
+    @else if $media == huawei-p6 {
+        @media only screen and (min-device-width: $break-huawei-p6) { @content; }
+    }
+}
+
+@mixin margin($top:0,$right:0,$bottom:0,$left:0) {
+    margin:$top $right $bottom $left;
+}

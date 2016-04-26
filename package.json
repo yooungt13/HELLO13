@@ -5,7 +5,9 @@
   "main": "gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "gulp server"
+    "start": "gulp server",
+    "dev": "gulp develop",
+    "deploy": "gulp production"
   },
   "repository": {
     "type": "git",

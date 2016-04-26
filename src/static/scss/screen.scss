@@ -1,5 +1,6 @@
 @import "base/variables";
 @import "base/mixins";
+@import "base/icons";
 
 @import "md";
 @import "syntax";
@@ -463,41 +464,28 @@ ul.tags {
     left: 0px;
     top: 0px;
     background: white;
-    // background-image: url('../img/bg.jpg');
     background-size: 100%;
 
-    .pie {
-        position: absolute;
-        width: 240px;
-        height: 240px;
-        border-radius: 150px;
-        clip: rect(0px,120px,240px,0px);
-        background: rgba(175,228,221,1);
-        left: 50%;
-        top: 30%;
-        margin: -120px;
-    }
-
     .persent {
-        margin-top: 180px;
-        text-indent: 6px;
+        margin-top: 3.6rem;
+        text-indent: .12rem;
         position: absolute;
         top: 30%;
         width: 100%;
         left: 0;
         color: rgb(180,180,180);
-        font-size: .16rem;
+        font-size: .32rem;
         text-align: center;
     }
 
     .covert {
         position: absolute;
-        width: 100px;
-        height: 100px;
+        width: 2rem;
+        height: 2rem;
         border-radius: 50%;
         left: 50%;
         top: 30%;
-        margin: -50px;
+        margin: -1rem;
         overflow: hidden;
 
         .cover {
@@ -543,23 +531,23 @@ ul.tags {
 
     .wthum {
         position: absolute;
-        width: 102px;
-        height: 102px;
-        border-radius: 60px;
+        width: 2.04rem;
+        height: 2.04rem;
+        border-radius: 1.2rem;
         left: 50%;
         top: 30%;
-        margin: -51px;
+        margin: -1.02rem;
         background: rgb(57, 187, 171);
     }
 
     .waitthum {
         position: absolute;
-        width: 200px;
-        height: 200px;
-        border-radius: 340px;
+        width: 4rem;
+        height: 4rem;
+        border-radius: 6.8rem;
         left: 50%;
         top: 30%;
-        margin: -100px;
+        margin: -2rem;
         background: rgba(57, 187, 171, 0.4);
 
         -webkit-animation-name: waitthum;
@@ -632,39 +620,6 @@ ul.tags {
     width: 100%;
     margin: 0 auto;
 }
-
-/**
- * Icon Defination
- ****************************************************************************/
-@font-face {
-    font-family: 'fontello';
-    src: url('../font/fontello.eot?26946344');
-    src: url('../font/fontello.eot?26946344#iefix') format('embedded-opentype'),
-         url('../font/fontello.woff?26946344') format('woff'),
-         url('../font/fontello.ttf?26946344') format('truetype'),
-         url('../font/fontello.svg?26946344#fontello') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-
-.icon {
-    font-family: 'fontello';
-    font-style: normal;
-}
-
-.icon-tag:before { content: '\e800'; }
-.icon-quote-left:before { content: '\e801'; }
-.icon-quote-right:before { content: '\e802'; }
-.icon-up-big:before { content: '\e803'; }
-.icon-down-big:before { content: '\e804'; }
-.icon-left-big:before { content: '\e805'; }
-.icon-right-big:after { content: '\e806'; }
-.icon-menu:before { content: '\e807'; }
-.icon-tags:before { content: '\e808'; }
-.icon-angle-left:before { content: '\e809'; }
-.icon-angle-right:after { content: '\e80a'; }
-.icon-angle-up:before { content: '\e80b'; }
-.icon-angle-down:before { content: '\e80c'; }
 
 /**
  * Media Query

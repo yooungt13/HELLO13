@@ -33,13 +33,14 @@ keywords: 有田十三,javascript,web,github,blog
                         {% endfor %}
                     {% endif %}
                 </p><!--
-             --><p class="more icon icon-angle-right">
+             --><p class="more">
                     <a href="{{ post.url }}/">More</a>
+                    <i class="icon icon-angle-right"></i>
                 </p>
             </li>
         {% endfor %}
     {% else %}
-        <p style="margin-bottom:.24rem;">There are no posts for this tag.</p>
+        <p style="margin-bottom:.48rem;">There are no posts for this tag.</p>
     {% endif %}
 </ul>
 

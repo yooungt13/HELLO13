@@ -1,0 +1,95 @@
+/**
+ * Media Query
+ ***************************************************************************/
+
+@media only screen and(max-width: 1080px) and(orientation : portrait){
+    .github-fork {
+        display: none;
+    }
+}
+
+@media only screen and(max-width: 750px) and(orientation : portrait) {
+    * {
+        box-sizing: border-box;
+    }
+
+    header, nav, section {
+        width: 100%;
+    }
+
+    header {
+        .slogan {
+            display: block;
+        }
+
+        .menu {
+            display: inline-block;
+            text-decoration: none;
+            text-rendering: auto;
+            text-align: right;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+
+            .menu-icon {
+                display: inline-block;
+                font-size: .48rem;
+                line-height: .88rem;
+
+                &:before {
+                    font-family: 'fontello';
+                    content: '\e807';
+                }
+            }
+
+            .menu-list {
+                display: none;
+            }
+        }
+
+        .menu-expand {
+            border-radius: .1rem;
+            border: .01rem solid #e8e8e8;
+            background-color: white;
+            padding: 0 .19rem .12rem;
+            margin-right: -.2rem;
+            margin-top: .04rem;
+
+            .menu-icon {
+                margin-top: -.05rem;
+            }
+
+            .menu-list {
+                display: block;
+                overflow: hidden;
+
+                dl {
+                    float: none;
+                    line-height: .48rem;
+                    height: .48rem;
+                    padding: 0;
+                }
+            }
+        }
+    }
+
+    .bg {
+        margin: -.48rem 0 0 -.48rem;
+        width: -webkit-calc(100% + .96rem);
+        width: -moz-calc(100% + .96rem);
+        width: calc(100% + .96rem);
+    }
+
+    .github-fork {
+        display: none;
+    }
+
+    .project {
+        .preview {
+            height: 4.6rem;
+        }
+    }
+}

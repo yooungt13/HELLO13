@@ -1269,7 +1269,7 @@ ul.tags {
     display: inline-block;
     margin-bottom: .24rem; }
   .project .preview {
-    height: 4.6rem;
+    height: 8rem;
     overflow: hidden; }
   .project .tags {
     margin: .12rem; }
@@ -1350,4 +1350,6 @@ ul.tags {
     width: -moz-calc(100% + .96rem);
     width: calc(100% + .96rem); }
   .github-fork {
-    display: none; } }
+    display: none; }
+  .project .preview {
+    height: 4.6rem; } }

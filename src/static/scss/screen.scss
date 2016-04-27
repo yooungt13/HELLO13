@@ -586,7 +586,7 @@ ul.tags {
     }
 
     .preview {
-        height: 4.6rem;
+        height: 8rem;
         overflow: hidden;
     }
 
@@ -708,5 +708,11 @@ ul.tags {
 
     .github-fork {
         display: none;
+    }
+
+    .project {
+        .preview {
+            height: 4.6rem;
+        }
     }
 }

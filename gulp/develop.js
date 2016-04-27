@@ -2,7 +2,6 @@
 
 let gulp = require('gulp');
 let exec = require('child_process').exec;
-let spawn = require('child_process').spawn;
 var argv = require('minimist')(process.argv.slice(2));
 
 let sass = require('gulp-sass');

@@ -67,7 +67,4 @@ gulp.task('push2git', (end) => {
     });
 });
 
-gulp.task('param', () => {
-    console.log(argv);
-});
 

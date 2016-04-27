@@ -609,7 +609,25 @@ ul.tags {
 
 .weparty {
     dl {
-        ul {
+
+        h3 {
+            font-size: .4rem;
+            line-height: 1;
+            display: block;
+            margin-top: .6rem;
+            margin-bottom: .2rem;
+        }
+
+        h4 {
+            font-size: .32rem;
+            color: #333;
+            line-height: 1;
+            display: block;
+            margin-bottom: .2rem;
+        }
+
+        .ui {
+
             li {
                 height: 4.6rem;
                 overflow: hidden;
@@ -618,6 +636,21 @@ ul.tags {
 
             .design {
                 height: 8.8rem;
+            }
+        }
+
+        .page {
+            font-size: 0;
+            margin-right: -.24rem;
+
+            li {
+                width: 2.25rem;
+                height: 2.25rem;
+                margin-right: .13rem;
+
+                display: inline-block;
+                overflow: hidden;
+                @include box-sizing(border-box);
             }
         }
     }
@@ -637,4 +670,6 @@ ul.tags {
     width: 100%;
     margin: 0 auto;
 }
+
+
 

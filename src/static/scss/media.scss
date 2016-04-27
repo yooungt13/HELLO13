@@ -78,9 +78,9 @@
 
     .bg {
         margin: -.48rem 0 0 -.48rem;
-        width: -webkit-calc(100% + .96rem);
-        width: -moz-calc(100% + .96rem);
-        width: calc(100% + .96rem);
+        width: -webkit-calc(100% + .96rem)!important;
+        width: -moz-calc(100% + .96rem)!important;
+        width: calc(100% + .96rem)!important;
     }
 
     .github-fork {
@@ -89,7 +89,7 @@
 
     .project {
         .preview {
-            height: 4.6rem;
+            height: 4.6rem!important;
         }
     }
 }

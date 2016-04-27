@@ -913,13 +913,13 @@
         padding: 0; }
   .bg {
     margin: -.48rem 0 0 -.48rem;
-    width: -webkit-calc(100% + .96rem);
-    width: -moz-calc(100% + .96rem);
-    width: calc(100% + .96rem); }
+    width: -webkit-calc(100% + .96rem) !important;
+    width: -moz-calc(100% + .96rem) !important;
+    width: calc(100% + .96rem) !important; }
   .github-fork {
     display: none; }
   .project .preview {
-    height: 4.6rem; } }
+    height: 4.6rem !important; } }
 
 /*****************************************************************************/
 /*
@@ -1342,13 +1342,40 @@ ul.tags {
   .project:last-child {
     border-bottom: none; }
 
-.weparty dl ul li {
+.weparty dl h3 {
+  font-size: .4rem;
+  line-height: 1;
+  display: block;
+  margin-top: .6rem;
+  margin-bottom: .2rem; }
+
+.weparty dl h4 {
+  font-size: .32rem;
+  color: #333;
+  line-height: 1;
+  display: block;
+  margin-bottom: .2rem; }
+
+.weparty dl .ui li {
   height: 4.6rem;
   overflow: hidden;
   margin-bottom: .2rem; }
 
-.weparty dl ul .design {
+.weparty dl .ui .design {
   height: 8.8rem; }
+
+.weparty dl .page {
+  font-size: 0;
+  margin-right: -.24rem; }
+  .weparty dl .page li {
+    width: 2.25rem;
+    height: 2.25rem;
+    margin-right: .13rem;
+    display: inline-block;
+    overflow: hidden;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box; }
 
 /**
  * Common Defination

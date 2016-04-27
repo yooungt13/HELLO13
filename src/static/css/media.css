@@ -50,10 +50,10 @@
         height: .48rem;
         padding: 0; }
   .bg {
-    margin: -.48rem 0 0 -.48rem;
-    width: -webkit-calc(100% + .96rem) !important;
-    width: -moz-calc(100% + .96rem) !important;
-    width: calc(100% + .96rem) !important; }
+    margin: -.24rem 0 0 -.24rem;
+    width: -webkit-calc(100% + .48rem) !important;
+    width: -moz-calc(100% + .48rem) !important;
+    width: calc(100% + .48rem); }
   .github-fork {
     display: none; }
   .project .preview {

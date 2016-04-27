@@ -2,7 +2,7 @@
 @import "base/mixins";
 @import "base/icons";
 
-@import "md";
+@import "md.rem";
 @import "syntax";
 @import "eve";
 @import "media";
@@ -161,7 +161,6 @@ nav {
         display: inline;
         line-height: .88rem;
 
-
         dl {
             float: left;
             font-size: .32rem;
@@ -175,17 +174,6 @@ nav {
 
                 &:link, &:visited, &:hover, &:active {
                     color: #777;
-                }
-            }
-
-            &:hover {
-                background: #000;
-                transition: 1s ease-out;
-                // transition: 1s cubic-bezier(.25,.1,.2,3);
-
-                a {
-                    color: #fff;
-                    text-decoration: underline;
                 }
             }
         }
@@ -317,7 +305,7 @@ footer {
         border-bottom: 1px dashed #ccc;
 
         .title {
-            font-size: .32rem;
+            font-size: 110%;
             margin: 0;
             line-height: 1.7;
             white-space: nowrap;
@@ -326,12 +314,11 @@ footer {
         }
 
         .date {
-            font-size: .28rem;
             margin-top: -.1rem;
         }
 
         .date + p {
-            font-size: .28rem;
+            font-size: 90%;
             line-height: 1.4;
             margin: .1rem 0;
 
@@ -410,12 +397,12 @@ ul.tags {
     margin-bottom: .2rem;
 
     h2 {
-        font-size: .28rem;
+        font-size: .36rem;
         margin-bottom: .2rem;
     }
 
     ul {
-        font-size: .24rem;
+        // font-size: .24rem;
 
         li {
             background: white;

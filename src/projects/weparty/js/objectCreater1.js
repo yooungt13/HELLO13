@@ -1,8 +1,0 @@
-function emActivity(){
-	
-}
-
-
-function applyActivity(){
-
-}

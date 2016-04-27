@@ -22,6 +22,7 @@ define([
         setBack2Top();
         setGA();
         setDataCom();
+        setStandalone();
     }
 
     function setEvent() {
@@ -151,6 +152,15 @@ define([
         }
         if ("require" in window) {
             __setupCom(document)
+        }
+    }
+
+    function setStandalone() {
+        if (window.navigator.standalone) { // WebApp Mode
+            $document.on('click', 'a', function(e) {
+                e.preventDefault();
+                location.href = $(this).attr('href');
+            });
         }
     }
 

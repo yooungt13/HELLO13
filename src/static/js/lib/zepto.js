@@ -981,7 +981,10 @@ var Zepto = (function() {
     $.zepto = zepto
 
     return $
-})()
+})();
+
+window.Zepto = Zepto;
+window.$ === undefined && (window.$ = Zepto);
 
 // Extensions
 // Zepto event listener
@@ -1282,7 +1285,57 @@ var Zepto = (function() {
         event.initEvent(type, bubbles, true)
         return compatible(event)
     }
-})(Zepto)
+})(Zepto);
+
+// Zepto isPlainObject data
+;(function (a) {
+    function g(f, g) {
+        var i = f[e], j = i && b[i];
+        if (g === undefined)return j || h(f);
+        if (j) {
+            if (g in j)return j[g];
+            var k = d(g);
+            if (k in j)return j[k]
+        }
+        return c.call(a(f), g)
+    }
+
+    function h(c, f, g) {
+        var h = c[e] || (c[e] = ++a.uuid), j = b[h] || (b[h] = i(c));
+        return f !== undefined && (j[d(f)] = g), j
+    }
+
+    function i(b) {
+        var c = {};
+        return a.each(b.attributes || f, function (b, e) {
+            e.name.indexOf("data-") == 0 && (c[d(e.name.replace("data-", ""))] = a.zepto.deserializeValue(e.value))
+        }), c
+    }
+
+    var b = {}, c = a.fn.data, d = a.camelCase, e = a.expando = "Zepto" + +(new Date), f = [];
+    a.fn.data = function (b, c) {
+        return c === undefined ? a.isPlainObject(b) ? this.each(function (c, d) {
+            a.each(b, function (a, b) {
+                h(d, a, b)
+            })
+        }) : this.length == 0 ? undefined : g(this[0], b) : this.each(function () {
+            h(this, b, c)
+        })
+    }, a.fn.removeData = function (c) {
+        return typeof c == "string" && (c = c.split(/\s+/)), this.each(function () {
+            var f = this[e], g = f && b[f];
+            g && a.each(c || g, function (a) {
+                delete g[c ? d(this) : a]
+            })
+        })
+    }, ["remove", "empty"].forEach(function (b) {
+        var c = a.fn[b];
+        a.fn[b] = function () {
+            var a = this.find("*");
+            return b === "remove" && (a = a.add(this)), a.removeData(), c.call(this)
+        }
+    })
+})(Zepto);
 
 if (typeof define === 'function' && define.amd) {
     define(function() {

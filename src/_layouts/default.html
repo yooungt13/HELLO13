@@ -54,7 +54,7 @@
                 __require: [],
                 __requirejsConfig: {
                 {% if site.ENV == 'develop' %}
-                    baseUrl: 'http://localhost:4000',
+                    baseUrl: 'http://{{ site.host }}:4000',
                     prefix: '/static/js/'
                 {% else %}
                     revision: {% include revision.json %},

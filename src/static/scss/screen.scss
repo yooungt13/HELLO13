@@ -2,9 +2,10 @@
 @import "base/mixins";
 @import "base/icons";
 
-@import "md";
+@import "md.rem";
 @import "syntax";
 @import "eve";
+@import "media";
 
 /*****************************************************************************/
 /*
@@ -160,7 +161,6 @@ nav {
         display: inline;
         line-height: .88rem;
 
-
         dl {
             float: left;
             font-size: .32rem;
@@ -174,17 +174,6 @@ nav {
 
                 &:link, &:visited, &:hover, &:active {
                     color: #777;
-                }
-            }
-
-            &:hover {
-                background: #000;
-                transition: 1s ease-out;
-                // transition: 1s cubic-bezier(.25,.1,.2,3);
-
-                a {
-                    color: #fff;
-                    text-decoration: underline;
                 }
             }
         }
@@ -316,7 +305,7 @@ footer {
         border-bottom: 1px dashed #ccc;
 
         .title {
-            font-size: .32rem;
+            font-size: 110%;
             margin: 0;
             line-height: 1.7;
             white-space: nowrap;
@@ -325,12 +314,11 @@ footer {
         }
 
         .date {
-            font-size: .28rem;
             margin-top: -.1rem;
         }
 
         .date + p {
-            font-size: .28rem;
+            font-size: 90%;
             line-height: 1.4;
             margin: .1rem 0;
 
@@ -409,12 +397,12 @@ ul.tags {
     margin-bottom: .2rem;
 
     h2 {
-        font-size: .28rem;
+        font-size: .36rem;
         margin-bottom: .2rem;
     }
 
     ul {
-        font-size: .24rem;
+        // font-size: .24rem;
 
         li {
             background: white;
@@ -606,6 +594,55 @@ ul.tags {
     }
 }
 
+.weparty {
+    dl {
+
+        h3 {
+            font-size: .4rem;
+            line-height: 1;
+            display: block;
+            margin-top: .6rem;
+            margin-bottom: .2rem;
+        }
+
+        h4 {
+            font-size: .32rem;
+            color: #333;
+            line-height: 1;
+            display: block;
+            margin-bottom: .2rem;
+        }
+
+        .ui {
+
+            li {
+                height: 4.6rem;
+                overflow: hidden;
+                margin-bottom: .2rem;
+            }
+
+            .design {
+                height: 8.8rem;
+            }
+        }
+
+        .page {
+            font-size: 0;
+            margin-right: -.24rem;
+
+            li {
+                width: 2.25rem;
+                height: 2.25rem;
+                margin-right: .13rem;
+
+                display: inline-block;
+                overflow: hidden;
+                @include box-sizing(border-box);
+            }
+        }
+    }
+}
+
 /**
  * Common Defination
  ****************************************************************************/
@@ -621,98 +658,5 @@ ul.tags {
     margin: 0 auto;
 }
 
-/**
- * Media Query
- ***************************************************************************/
 
-@media only screen and(max-width: 1080px) and(orientation : portrait){
-    .github-fork {
-        display: none;
-    }
-}
 
-@media only screen and(max-width: 750px) and(orientation : portrait) {
-    * {
-        box-sizing: border-box;
-    }
-
-    header, nav, section {
-        width: 100%;
-    }
-
-    header {
-        .slogan {
-            display: block;
-        }
-
-        .menu {
-            display: inline-block;
-            text-decoration: none;
-            text-rendering: auto;
-            text-align: right;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-
-            .menu-icon {
-                display: inline-block;
-                font-size: .48rem;
-                line-height: .88rem;
-
-                &:before {
-                    font-family: 'fontello';
-                    content: '\e807';
-                }
-            }
-
-            .menu-list {
-                display: none;
-            }
-        }
-
-        .menu-expand {
-            border-radius: .1rem;
-            border: .01rem solid #e8e8e8;
-            background-color: white;
-            padding: 0 .19rem .12rem;
-            margin-right: -.2rem;
-            margin-top: .04rem;
-
-            .menu-icon {
-                margin-top: -.05rem;
-            }
-
-            .menu-list {
-                display: block;
-                overflow: hidden;
-
-                dl {
-                    float: none;
-                    line-height: .48rem;
-                    height: .48rem;
-                    padding: 0;
-                }
-            }
-        }
-    }
-
-    .bg {
-        margin: -.48rem 0 0 -.48rem;
-        width: -webkit-calc(100% + .96rem);
-        width: -moz-calc(100% + .96rem);
-        width: calc(100% + .96rem);
-    }
-
-    .github-fork {
-        display: none;
-    }
-
-    .project {
-        .preview {
-            height: 4.6rem;
-        }
-    }
-}

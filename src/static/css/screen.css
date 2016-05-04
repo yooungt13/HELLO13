@@ -61,7 +61,7 @@
   color: #333;
   overflow: hidden;
   font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
-  font-size: 16px;
+  font-size: .32rem;
   line-height: 1.6;
   word-wrap: break-word; }
 
@@ -123,7 +123,7 @@
   box-sizing: border-box; }
 
 .markdown-body input {
-  font: 13px/1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+  font: .26rem/1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
 
 .markdown-body a {
   color: #4078c0 !important;
@@ -136,7 +136,7 @@
 
 .markdown-body hr {
   height: 0;
-  margin: 15px 0;
+  margin: .3rem 0;
   overflow: hidden;
   background: transparent;
   border: 0;
@@ -157,27 +157,27 @@
 .markdown-body h4,
 .markdown-body h5,
 .markdown-body h6 {
-  margin-top: 15px;
-  margin-bottom: 15px;
+  margin-top: .3rem;
+  margin-bottom: .3rem;
   line-height: 1.1; }
 
 .markdown-body h1 {
-  font-size: 30px; }
+  font-size: .6rem; }
 
 .markdown-body h2 {
-  font-size: 21px; }
+  font-size: .42rem; }
 
 .markdown-body h3 {
-  font-size: 16px; }
+  font-size: .32rem; }
 
 .markdown-body h4 {
-  font-size: 14px; }
+  font-size: .28rem; }
 
 .markdown-body h5 {
-  font-size: 12px; }
+  font-size: .24rem; }
 
 .markdown-body h6 {
-  font-size: 11px; }
+  font-size: .22rem; }
 
 .markdown-body blockquote {
   margin: 0; }
@@ -204,18 +204,18 @@
 
 .markdown-body code {
   font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
-  font-size: 12px; }
+  font-size: .24rem; }
 
 .markdown-body pre {
   margin-top: 0;
   margin-bottom: 0;
-  font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+  font: .24rem Consolas, "Liberation Mono", Menlo, Courier, monospace; }
 
 .markdown-body .select::-ms-expand {
   opacity: 0; }
 
 .markdown-body .octicon {
-  font: normal normal normal 16px/1 octicons-anchor;
+  font: normal normal normal .32rem/1 octicons-anchor;
   display: inline-block;
   text-decoration: none;
   text-rendering: auto;
@@ -244,9 +244,9 @@
   top: 0;
   left: 0;
   display: block;
-  padding-right: 6px;
-  padding-left: 30px;
-  margin-left: -30px; }
+  padding-right: .12rem;
+  padding-left: .6rem;
+  margin-left: -.6rem; }
 
 .markdown-body .anchor:focus {
   outline: none; }
@@ -259,7 +259,7 @@
 .markdown-body h6 {
   position: relative;
   margin-top: 1em;
-  margin-bottom: 16px;
+  margin-bottom: .32rem;
   font-weight: bold;
   line-height: 1.4; }
 
@@ -279,8 +279,8 @@
 .markdown-body h4:hover .anchor,
 .markdown-body h5:hover .anchor,
 .markdown-body h6:hover .anchor {
-  padding-left: 8px;
-  margin-left: -30px;
+  padding-left: .16rem;
+  margin-left: -.6rem;
   text-decoration: none; }
 
 .markdown-body h1:hover .anchor .octicon-link,
@@ -343,15 +343,15 @@
 .markdown-body table,
 .markdown-body pre {
   margin-top: 0;
-  margin-bottom: 16px; }
+  margin-bottom: .32rem; }
 
 .markdown-body p {
   /*text-align: justify;*/ }
 
 .markdown-body hr {
-  height: 4px;
+  height: .08rem;
   padding: 0;
-  margin: 16px 0;
+  margin: .32rem 0;
   background-color: #e7e7e7;
   border: 0 none; }
 
@@ -367,26 +367,26 @@
   margin-bottom: 0; }
 
 .markdown-body li > p {
-  margin-top: 16px; }
+  margin-top: .32rem; }
 
 .markdown-body dl {
   padding: 0; }
 
 .markdown-body dl dt {
   padding: 0;
-  margin-top: 16px;
+  margin-top: .32rem;
   font-size: 1em;
   font-style: italic;
   font-weight: bold; }
 
 .markdown-body dl dd {
-  padding: 0 16px;
-  margin-bottom: 16px; }
+  padding: 0 .32rem;
+  margin-bottom: .32rem; }
 
 .markdown-body blockquote {
-  padding: 0 15px;
+  padding: 0 .3rem;
   color: #777;
-  border-left: 4px solid #ddd; }
+  border-left: .04rem solid #ddd; }
 
 .markdown-body blockquote > :first-child {
   margin-top: 0; }
@@ -406,7 +406,7 @@
 
 .markdown-body table th,
 .markdown-body table td {
-  padding: 6px 13px;
+  padding: .12rem .26rem;
   border: 1px solid #ddd; }
 
 .markdown-body table tr {
@@ -427,7 +427,7 @@
   margin: 0;
   font-size: 85%;
   background-color: rgba(0, 0, 0, 0.04);
-  border-radius: 3px; }
+  border-radius: .06rem; }
 
 .markdown-body code:before,
 .markdown-body code:after {
@@ -444,16 +444,16 @@
   border: 0; }
 
 .markdown-body .highlight {
-  margin-bottom: 16px; }
+  margin-bottom: .32rem; }
 
 .markdown-body .highlight pre,
 .markdown-body pre {
-  padding: 16px;
+  padding: .32rem;
   overflow: auto;
   font-size: 85%;
   line-height: 1.45;
   background-color: #f7f7f7;
-  border-radius: 3px; }
+  border-radius: .03rem; }
 
 .markdown-body .highlight pre {
   margin-bottom: 0;
@@ -479,15 +479,15 @@
 
 .markdown-body kbd {
   display: inline-block;
-  padding: 3px 5px;
-  font-size: 11px;
-  line-height: 10px;
+  padding: .06rem .1rem;
+  font-size: .22rem;
+  line-height: .2rem;
   color: #555;
   vertical-align: middle;
   background-color: #fcfcfc;
   border: solid 1px #ccc;
   border-bottom-color: #bbb;
-  border-radius: 3px;
+  border-radius: .03rem;
   box-shadow: inset 0 -1px 0 #bbb; }
 
 .markdown-body .pl-c {
@@ -571,22 +571,22 @@
 
 .markdown-body kbd {
   display: inline-block;
-  padding: 3px 5px;
-  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
-  line-height: 10px;
+  padding: .06rem .1rem;
+  font: .22rem Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  line-height: .2rem;
   color: #555;
   vertical-align: middle;
   background-color: #fcfcfc;
   border: solid 1px #ccc;
   border-bottom-color: #bbb;
-  border-radius: 3px;
+  border-radius: .06rem;
   box-shadow: inset 0 -1px 0 #bbb; }
 
 .markdown-body .task-list-item {
   list-style-type: none; }
 
 .markdown-body .task-list-item + .task-list-item {
-  margin-top: 3px; }
+  margin-top: .06rem; }
 
 .markdown-body .task-list-item input {
   margin: 0 0.35em 0.25em -1.6em;
@@ -860,6 +860,121 @@
     -ms-transform: translate(-50%, -50%);
     -moz-transform: translate(-50%, -50%); }
 
+.albumContainer {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: #000;
+  z-index: 1000;
+  display: none; }
+  .albumContainer .page {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    overflow: hidden;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    -ms-box-align: center;
+    -ms-flex-pack: justify; }
+    .albumContainer .page img {
+      display: block;
+      background-color: transparent !important; }
+  .albumContainer .current {
+    z-index: 2; }
+  .albumContainer .prev {
+    -webkit-transform: translateX(-105%);
+    -ms-transform: translateX(-105%); }
+  .albumContainer .prev2 {
+    -webkit-transform: translateX(-210%);
+    -ms-transform: translateX(-210%); }
+  .albumContainer .next {
+    -webkit-transform: translateX(105%);
+    -ms-transform: translateX(105%); }
+  .albumContainer .next2 {
+    -webkit-transform: translateX(210%);
+    -ms-transform: translateX(210%); }
+  .albumContainer .page-number-container {
+    z-index: 2;
+    position: absolute;
+    color: white;
+    font-size: .4rem;
+    left: 0;
+    top: 0;
+    text-align: center;
+    width: 100%;
+    line-height: .8rem;
+    background: rgba(0, 0, 0, 0.5); }
+
+.automove .page {
+  -webkit-transition: -webkit-transform .3s; }
+
+/**
+ * Media Query
+ ***************************************************************************/
+@media only screen and (max-width: 1080px) and (orientation: portrait) {
+  .github-fork {
+    display: none; } }
+
+@media only screen and (max-width: 750px) and (orientation: portrait) {
+  * {
+    box-sizing: border-box; }
+  header, nav, section {
+    width: 100%; }
+  header .slogan {
+    display: block; }
+  header .menu {
+    display: inline-block;
+    text-decoration: none;
+    text-rendering: auto;
+    text-align: right;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; }
+    header .menu .menu-icon {
+      display: inline-block;
+      font-size: .48rem;
+      line-height: .88rem; }
+      header .menu .menu-icon:before {
+        font-family: 'fontello';
+        content: '\e807'; }
+    header .menu .menu-list {
+      display: none; }
+  header .menu-expand {
+    border-radius: .1rem;
+    border: .01rem solid #e8e8e8;
+    background-color: white;
+    padding: 0 .19rem .12rem;
+    margin-right: -.2rem;
+    margin-top: .04rem; }
+    header .menu-expand .menu-icon {
+      margin-top: -.05rem; }
+    header .menu-expand .menu-list {
+      display: block;
+      overflow: hidden; }
+      header .menu-expand .menu-list dl {
+        float: none;
+        line-height: .48rem;
+        height: .48rem;
+        padding: 0; }
+  .bg {
+    margin: -.24rem 0 0 -.24rem;
+    width: -webkit-calc(100% + .48rem) !important;
+    width: -moz-calc(100% + .48rem) !important;
+    width: calc(100% + .48rem); }
+  .github-fork {
+    display: none; }
+  .project .preview {
+    height: 4.6rem !important; } }
+
 /*****************************************************************************/
 /*
 /* Common
@@ -984,12 +1099,6 @@ nav {
         color: #777; }
         nav .menu dl a:link, nav .menu dl a:visited, nav .menu dl a:hover, nav .menu dl a:active {
           color: #777; }
-      nav .menu dl:hover {
-        background: #000;
-        transition: 1s ease-out; }
-        nav .menu dl:hover a {
-          color: #fff;
-          text-decoration: underline; }
 
 article {
   min-height: 50%;
@@ -1079,17 +1188,16 @@ footer {
     width: 100%;
     border-bottom: 1px dashed #ccc; }
     .posts .post .title {
-      font-size: .32rem;
+      font-size: 110%;
       margin: 0;
       line-height: 1.7;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis; }
     .posts .post .date {
-      font-size: .28rem;
       margin-top: -.1rem; }
     .posts .post .date + p {
-      font-size: .28rem;
+      font-size: 90%;
       line-height: 1.4;
       margin: .1rem 0; }
       .posts .post .date + p:before {
@@ -1139,12 +1247,10 @@ ul.tags {
   margin-top: .6rem;
   margin-bottom: .2rem; }
   .related h2 {
-    font-size: .28rem;
+    font-size: .36rem;
     margin-bottom: .2rem; }
-  .related ul {
-    font-size: .24rem; }
-    .related ul li {
-      background: white; }
+  .related ul li {
+    background: white; }
 
 .backToTop {
   display: none;
@@ -1281,6 +1387,41 @@ ul.tags {
   .project:last-child {
     border-bottom: none; }
 
+.weparty dl h3 {
+  font-size: .4rem;
+  line-height: 1;
+  display: block;
+  margin-top: .6rem;
+  margin-bottom: .2rem; }
+
+.weparty dl h4 {
+  font-size: .32rem;
+  color: #333;
+  line-height: 1;
+  display: block;
+  margin-bottom: .2rem; }
+
+.weparty dl .ui li {
+  height: 4.6rem;
+  overflow: hidden;
+  margin-bottom: .2rem; }
+
+.weparty dl .ui .design {
+  height: 8.8rem; }
+
+.weparty dl .page {
+  font-size: 0;
+  margin-right: -.24rem; }
+  .weparty dl .page li {
+    width: 2.25rem;
+    height: 2.25rem;
+    margin-right: .13rem;
+    display: inline-block;
+    overflow: hidden;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box; }
+
 /**
  * Common Defination
  ****************************************************************************/
@@ -1292,64 +1433,3 @@ ul.tags {
 .center {
   width: 100%;
   margin: 0 auto; }
-
-/**
- * Media Query
- ***************************************************************************/
-@media only screen and (max-width: 1080px) and (orientation: portrait) {
-  .github-fork {
-    display: none; } }
-
-@media only screen and (max-width: 750px) and (orientation: portrait) {
-  * {
-    box-sizing: border-box; }
-  header, nav, section {
-    width: 100%; }
-  header .slogan {
-    display: block; }
-  header .menu {
-    display: inline-block;
-    text-decoration: none;
-    text-rendering: auto;
-    text-align: right;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none; }
-    header .menu .menu-icon {
-      display: inline-block;
-      font-size: .48rem;
-      line-height: .88rem; }
-      header .menu .menu-icon:before {
-        font-family: 'fontello';
-        content: '\e807'; }
-    header .menu .menu-list {
-      display: none; }
-  header .menu-expand {
-    border-radius: .1rem;
-    border: .01rem solid #e8e8e8;
-    background-color: white;
-    padding: 0 .19rem .12rem;
-    margin-right: -.2rem;
-    margin-top: .04rem; }
-    header .menu-expand .menu-icon {
-      margin-top: -.05rem; }
-    header .menu-expand .menu-list {
-      display: block;
-      overflow: hidden; }
-      header .menu-expand .menu-list dl {
-        float: none;
-        line-height: .48rem;
-        height: .48rem;
-        padding: 0; }
-  .bg {
-    margin: -.48rem 0 0 -.48rem;
-    width: -webkit-calc(100% + .96rem);
-    width: -moz-calc(100% + .96rem);
-    width: calc(100% + .96rem); }
-  .github-fork {
-    display: none; }
-  .project .preview {
-    height: 4.6rem; } }

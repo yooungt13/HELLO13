@@ -1,0 +1,32 @@
+/**
+ * Icon Defination
+ ****************************************************************************/
+@font-face {
+    font-family: 'fontello';
+    src: url('../font/fontello.eot?26946344');
+    src: url('../font/fontello.eot?26946344#iefix') format('embedded-opentype'),
+         url('../font/fontello.woff?26946344') format('woff'),
+         url('../font/fontello.ttf?26946344') format('truetype'),
+         url('../font/fontello.svg?26946344#fontello') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.icon {
+    font-family: 'fontello';
+    font-style: normal;
+}
+
+.icon-tag:before { content: '\e800'; }
+.icon-quote-left:before { content: '\e801'; }
+.icon-quote-right:before { content: '\e802'; }
+.icon-up-big:before { content: '\e803'; }
+.icon-down-big:before { content: '\e804'; }
+.icon-left-big:before { content: '\e805'; }
+.icon-right-big:after { content: '\e806'; }
+.icon-menu:before { content: '\e807'; }
+.icon-tags:before { content: '\e808'; }
+.icon-angle-left:before { content: '\e809'; }
+.icon-angle-right:after { content: '\e80a'; }
+.icon-angle-up:before { content: '\e80b'; }
+.icon-angle-down:before { content: '\e80c'; }

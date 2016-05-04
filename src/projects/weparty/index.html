@@ -1,125 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-    <link rel="stylesheet" href="./css/bootstrap.css"/>
-	<link rel="stylesheet" href="./css/screen.css">
-    <script charset="utf-8" src="http://map.qq.com/api/js?v=2.exp"></script>
-    <script src="lib/jquery/jquery.js"></script>
-    <script src="lib/bootstrap.min.js"></script>
-    <script src="lib/jquery-validate/jqueryValidate.js"></script>
-    <script src="js/indexControl.js"></script>
-</head>
-<body>
-	<header>
-		<div class="nav">
-			<div class="nav_center">
-				<ul>
-					<li style="border:0;">有田十三</li>
-					<li>我的活动</li>
-					<li>退出</li>
-				</ul>
-			</div>
-		</div>
-		<div class="master">
-			<p   class="logo"></p>
-			<div class="operators">
-				<button id="btnAddAct" class="btn btn-primary">点击放置图标</button>
-				<button id="btnReflash" class="btn btn-success">刷新现有事件</button>
-				<button id="btnLocate" class="btn btn-info">定位现在位置</button>
-			</div>
-		</div>
-	</header>
-	<section>
-		<div class="center">
-			<div class="intro"></div>
-			<div class="map_wrap">
-				<div class="right">
-					<div style="overflow:hidden;">
-                        <button class="submit" id="btnSearchLocate"></button>      
-						<input type="text" class="search" placeholder="请输入完整地址或公交/地铁站名" id="inputSearchLocate" autocomplete="off">		
-					</div>
-					<div id="divCurrentScreenAct">
-						<h1>附近的活动</h1>
-						<table>
-							<tbody>
+---
+layout: default
+title: Hello 13 | Webparty
+description: Thanks for comming and Please star and fork in Github if u like my blog.
+keywords: 有田十三,javascript,web,github,blog
+---
 
-							</tbody>
-						</table>
-					</div>
-				</div>
-				<div class="left">
-					<div id="mapTest">
-                </div>
-				</div>
-			</div>
-            <div id="divLogin">
-                <div class="icon">
-                    <img src="./img/icon.png" alt="">
-                </div>
-                <form role="form" id="formLogin" class="form-horizontal col-sm-8">
-                    <div class="form-group">
-                        <div class="col-sm-10 title">
-                            登陆
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-10 form-item">
-                            <p>用户名</p>
-                            <input type="email" name="username" class="form-control" id="username" placeholder="用户名">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-10 form-item">
-                            <input type="password" name="contactinfo" class="form-control" id="contactinfo" placeholder="密码">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-10 form-item">
-                            <button id="btnLogin" type="submit">Sign in</button>
-                        </div>
-                    </div>
-                </form>
-                <div style="clear: both"></div>
-            </div>
-		</div>
+<dd class="weparty">
+    <dl>
+        <h3 style="margin-top: 0;">UI Design</h3>
+        <ul class="ui">
+            <li class="design eve-imgbox" data-com="unveil" data-src="//static.hello13.net/img/proj/weparty/design.png"></li>
+            <li class="eve-imgbox" data-com="unveil" data-src="//static.hello13.net/img/proj/weparty/adfront.png"></li>
+            <li class="eve-imgbox" data-com="unveil" data-src="//static.hello13.net/img/proj/weparty/adback.png"></li>
+        </ul>
+    </dl>
+    <dl>
+        <h3>Pages view</h3>
+        <h4>Homepage</h4>
+        <ul class="page" data-com="album" data-pics="//static.hello13.net/img/proj/weparty/page/login.png,//static.hello13.net/img/proj/weparty/page/map.png">
+            <li class="eve-imgbox" data-com="unveil" data-src="//static.hello13.net/img/proj/weparty/page/login.png" data-page="0"></li>
+            <li class="eve-imgbox" data-com="unveil" data-src="//static.hello13.net/img/proj/weparty/page/map.png" data-page="1"></li>
+        </ul>
+        <h4>Search and Check Act</h4>
+        <ul class="page" data-com="album" data-pics="//static.hello13.net/img/proj/weparty/page/search.png,//static.hello13.net/img/proj/weparty/page/list.png,//static.hello13.net/img/proj/weparty/page/act_detail.png,//static.hello13.net/img/proj/weparty/page/join.png,//static.hello13.net/img/proj/weparty/page/join_reason.png,//static.hello13.net/img/proj/weparty/page/wait.png">
+            <li class="eve-imgbox" data-com="unveil" data-src="//static.hello13.net/img/proj/weparty/page/search.png" data-page="0"></li>
+            <li class="eve-imgbox" data-com="unveil" data-src="//static.hello13.net/img/proj/weparty/page/list.png" data-page="1"></li>
+            <li class="eve-imgbox" data-com="unveil" data-src="//static.hello13.net/img/proj/weparty/page/act_detail.png" data-page="2"></li>
+            <li class="eve-imgbox" data-com="unveil" data-src="//static.hello13.net/img/proj/weparty/page/join.png" data-page="3"></li>
+            <li class="eve-imgbox" data-com="unveil" data-src="//static.hello13.net/img/proj/weparty/page/join_reason.png" data-page="4"></li>
+            <li class="eve-imgbox" data-com="unveil" data-src="//static.hello13.net/img/proj/weparty/page/wait.png" data-page="5"></li>
+        </ul>
+        <h4>Create Act</h4>
+        <ul class="page" data-com="album" data-pics="//static.hello13.net/img/proj/weparty/page/create_act.png,//static.hello13.net/img/proj/weparty/page/input_detail.png,//static.hello13.net/img/proj/weparty/page/owner.png,//static.hello13.net/img/proj/weparty/page/check_member_detail.png">
+            <li class="eve-imgbox" data-com="unveil" data-src="//static.hello13.net/img/proj/weparty/page/create_act.png" data-page="0"></li>
+            <li class="eve-imgbox" data-com="unveil" data-src="//static.hello13.net/img/proj/weparty/page/input_detail.png" data-page="1"></li>
+            <li class="eve-imgbox" data-com="unveil" data-src="//static.hello13.net/img/proj/weparty/page/owner.png" data-page="2"></li>
+            <li class="eve-imgbox" data-com="unveil" data-src="//static.hello13.net/img/proj/weparty/page/check_member_detail.png" data-page="3"></li>
+        </ul>
+    </dl>
+    <dl>
+        <h3>Warnings and Alerts</h3>
+        <ul class="page" data-com="album" data-pics="//static.hello13.net/img/proj/weparty/msg/join_succ.png,//static.hello13.net/img/proj/weparty/msg/join_error.png,//static.hello13.net/img/proj/weparty/msg/unstable.png,//static.hello13.net/img/proj/weparty/msg/location.png,//static.hello13.net/img/proj/weparty/msg/searching.png,//static.hello13.net/img/proj/weparty/msg/login_succ.png,//static.hello13.net/img/proj/weparty/msg/login_error.png">
+            <li class="eve-imgbox" data-com="unveil" data-src="//static.hello13.net/img/proj/weparty/msg/join_succ.png" data-page="0"></li>
+            <li class="eve-imgbox" data-com="unveil" data-src="//static.hello13.net/img/proj/weparty/msg/join_error.png" data-page="1"></li>
+            <li class="eve-imgbox" data-com="unveil" data-src="//static.hello13.net/img/proj/weparty/msg/unstable.png" data-page="2"></li>
+            <li class="eve-imgbox" data-com="unveil" data-src="//static.hello13.net/img/proj/weparty/msg/location.png" data-page="3"></li>
+            <li class="eve-imgbox" data-com="unveil" data-src="//static.hello13.net/img/proj/weparty/msg/searching.png" data-page="4"></li>
+            <li class="eve-imgbox" data-com="unveil" data-src="//static.hello13.net/img/proj/weparty/msg/login_succ.png" data-page="5"></li>
+            <li class="eve-imgbox" data-com="unveil" data-src="//static.hello13.net/img/proj/weparty/msg/login_error.png" data-page="6"></li>
+        </ul>
+    </dl>
+</dd>
 
+<script>
+    require(['lib/zepto.js'], function($){
+        $(document).on('click', 'li', fixGallery);
 
-	</section>
-    <!-- Modal -->
-    <div class="modal fade " id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog ">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <h1 class="modal-title" id="myModalLabel">添加事件</h1>
-                </div>
-                <div class="modal-body">
-                    <p><button style="width: 100%" id="btnChooseLocate" class="btn btn-primary">点击发起活动</button></p>
-                    <form  id="formAddAct" class="form-horizontal">
-                        <p><input class="form-control" type="text" name="title" placeholder="标题"></p>
-                        <p><input class="form-control" type="text" name="content" placeholder="内容"></p>
-                        <p><input class="form-control" type="text" name="addrname" placeholder="地点详情"></p>
-                        <p><input class="form-control" type="text" name="num_people" placeholder="人数"></p>
-                        <p><input class="form-control" type="text" name="tags" placeholder="标签"></p>
-                        <p><input class="form-control" type="text" name="start_time" placeholder="开始时间"></p>
-                        <p><input  class="form-control" type="text" name="end_time" placeholder="结束时间"></p>
-                        <p><input  class="form-control" type="text" name="longitude" placeholder="经度" readonly></p>
-                        <p><input  class="form-control" type="text" name="latitude" placeholder="纬度" readonly></p>
+        /*
+         ** 修复相册插件的当前页码不准确
+         */
+        function fixGallery() {
+            var self = $(this);
+            var curImgNum = +self.data('page') + 1;
+            var $cPage = $('.page-number-container').find('.cpage');
 
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" id="btnCancleForm" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" id="btnPostForm" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <footer>
-        <p>Copyright © 2014 <a class="ref" href="https://github.com/yooungt13">WeParty</a></p>
-    </footer>
-
-</body>
-</html>
+            $cPage.text(curImgNum);
+        }
+    });
+</script>

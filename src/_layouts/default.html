@@ -10,7 +10,7 @@
         <meta name="description" content="{{ page.description }}" />
         <meta name="keywords" content="{{ page.keywords | join: ',' }}" />
         <!-- Mobile Specific Metas ================================================== -->
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"> -->
 
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
@@ -20,14 +20,30 @@
         <link rel="apple-touch-icon" sizes="120x120" href="/static/img/favicon/apple-icon-120x120.png">
         <link rel="icon" type="image/png" sizes="96x96" href="/static/img/favicon/favicon-96x96.png">
 
-        <!-- iPhone 6 startup image -->
-        <link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)" href="/static/img/start-up.png">
-
         {% if site.ENV == 'develop' %}
         <link rel="stylesheet" href="/static/css/screen.css" media="screen, projection" />
         {% else %}
         <link rel="stylesheet" href="{{ site.STATIC_HOST }}/css/screen.min.css" media="screen, projection" />
         {% endif %}
+
+        <script type="text/javascript">
+            //根据屏幕大小及dpi调整缩放和大小
+            (function() {
+                var scale = 1.0;
+                var ratio = 1;
+
+                var ua = navigator.userAgent;
+                var isChrome = ua.match(/Chrome\/([\d.]+)/) || ua.match(/CriOS\/([\d.]+)/);
+
+                if (window.devicePixelRatio >= 2 && !isChrome) {
+                    scale *= 0.5;
+                    ratio *= 2;
+                }
+                var text = '<meta name="viewport" content="initial-scale=' + scale + ', maximum-scale=' + scale +', minimum-scale=' + scale + ', width=device-width, user-scalable=no" />';
+                document.write(text);
+                document.documentElement.style.fontSize = 50*ratio + "px";
+            })();
+        </script>
 
         <!-- Hide header if webview-->
         <script>var isWebview=getQueryString("f");if(isWebview){var css="header { display: none; } section { padding: 0 .24rem }",head=document.head||document.getElementsByTagName("head")[0],style=document.createElement("style");style.type="text/css";if(style.styleSheet){style.styleSheet.cssText=css}else{style.appendChild(document.createTextNode(css))}head.appendChild(style)}function getQueryString(field,url){var href=url?url:window.location.href;var reg=new RegExp("[?&]"+field+"=([^&#]*)","i");var string=reg.exec(href);return string?string[1]:null};
@@ -38,7 +54,7 @@
                 __require: [],
                 __requirejsConfig: {
                 {% if site.ENV == 'develop' %}
-                    baseUrl: 'http://localhost:4000',
+                    baseUrl: 'http://{{ site.host }}:4000',
                     prefix: '/static/js/'
                 {% else %}
                     revision: {% include revision.json %},

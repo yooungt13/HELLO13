@@ -860,6 +860,60 @@
     -ms-transform: translate(-50%, -50%);
     -moz-transform: translate(-50%, -50%); }
 
+.albumContainer {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: #000;
+  z-index: 1000;
+  display: none; }
+  .albumContainer .page {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    overflow: hidden;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    -ms-box-align: center;
+    -ms-flex-pack: justify; }
+    .albumContainer .page img {
+      display: block;
+      background-color: transparent !important; }
+  .albumContainer .current {
+    z-index: 2; }
+  .albumContainer .prev {
+    -webkit-transform: translateX(-105%);
+    -ms-transform: translateX(-105%); }
+  .albumContainer .prev2 {
+    -webkit-transform: translateX(-210%);
+    -ms-transform: translateX(-210%); }
+  .albumContainer .next {
+    -webkit-transform: translateX(105%);
+    -ms-transform: translateX(105%); }
+  .albumContainer .next2 {
+    -webkit-transform: translateX(210%);
+    -ms-transform: translateX(210%); }
+  .albumContainer .page-number-container {
+    z-index: 2;
+    position: absolute;
+    color: white;
+    font-size: .4rem;
+    left: 0;
+    top: 0;
+    text-align: center;
+    width: 100%;
+    line-height: .8rem;
+    background: rgba(0, 0, 0, 0.5); }
+
+.automove .page {
+  -webkit-transition: -webkit-transform .3s; }
+
 /**
  * Media Query
  ***************************************************************************/

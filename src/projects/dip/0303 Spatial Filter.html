@@ -1,43 +1,28 @@
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>0303 Spatial Filter</title>
+---
+layout: default
+title: Hello 13 | 0303 Spatial Filter
+---
 
-</head>
-<body>
-	<div style="float:left;">
-		<img id='original' title='Before'/>
-		<p>Before Processing</p>
-	</div>
-	<div style="float:left;">&nbsp;&nbsp;&nbsp;</div>
-	<div style="float:left;">
-		<canvas id="canvas" title='After'></canvas>
-		<p>After Processing with the mask(1,1,1,1,1,1,1,1,1)</p>
-	</div>
-	<script src="./public/javascripts/dip_core.js"></script>
-	<script src="./public/javascripts/fft.js"></script>
-	<script src="./public/javascripts/dip_tool.js"></script>
-	<script>
-		var img = document.getElementById("original");
-		img.onload = function(){
-			var mat = imread(img);
-			var h = [1,4,1,4,16,4,1,4,1];
-			var h1 = [1,1,1,1,1,1,1,1,1];
-			var mat2 = spatialFilter(RGBA2Gray(mat),h1);
+<link rel="stylesheet" href="/static/css/dip.css"/>
+<div class="preview">
+    <div>
+        <p>Before Processing</p>
+        <img id='original' title='Before'/>
+    </div>
+    <div>
+        <p>After Processing with the mask(1,1,1,1,1,1,1,1,1)</p>
+        <canvas id="canvas" title='After'></canvas>
+    </div>
+</div>
+<script>
+    require(['util/dip.js'], function(DIP){
+        var img = document.getElementById("original");
+        img.src = "./public/images/a.jpg";
+        img.onload = function(){
+            var h = [1,4,1,4,16,4,1,4,1];
+            var h1 = [1,1,1,1,1,1,1,1,1];
 
-			imshow(mat2);
-		};
-		img.src = "./public/images/a.jpg";
-
-		var canvas = document.getElementById("canvas"),
-			ctx = canvas.getContext("2d");
-
-		function imshow( mat ){
-			canvas.width = mat.col;
-			canvas.height = mat.row;
-			ctx.putImageData( RGBA2ImageData(mat), 0, 0 );
-		}
-	</script>	
-</body>
-</html>
+            DIP.init(this).act('gray').act('spatialFilter', h1).show();
+        };
+    });
+</script>

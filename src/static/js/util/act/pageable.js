@@ -2,7 +2,6 @@
  实现翻页功能
  by gyx
  */
-1;
 define([
     'util/act/gesture.js',
     'util/act/page.js',

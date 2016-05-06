@@ -7,22 +7,18 @@ title: Hello 13 | 0303 Spatial Filter
 <div class="preview">
     <div>
         <p>Before Processing</p>
-        <img id='original' title='Before'/>
+        <img title="Before" src="./public/images/a.jpg"/>
     </div>
     <div>
         <p>After Processing with the mask(1,1,1,1,1,1,1,1,1)</p>
-        <canvas id="canvas" title='After'></canvas>
+        <canvas title="After"></canvas>
     </div>
 </div>
 <script>
     require(['util/dip.js'], function(DIP){
-        var img = document.getElementById("original");
-        img.src = "./public/images/a.jpg";
-        img.onload = function(){
-            var h = [1,4,1,4,16,4,1,4,1];
-            var h1 = [1,1,1,1,1,1,1,1,1];
+        var h = [1,4,1,4,16,4,1,4,1];
+        var h1 = [1,1,1,1,1,1,1,1,1];
 
-            DIP.init(this).act('gray').act('spatialFilter', h1).show();
-        };
+        DIP.init().act('gray').act('spatialFilter', h1).show();
     });
 </script>

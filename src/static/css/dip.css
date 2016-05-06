@@ -29,6 +29,10 @@
   .preview p {
     line-height: 1;
     margin-bottom: .1rem; }
+    .preview p label {
+      color: red; }
+  .preview img {
+    max-width: 100%; }
 
 .canvas {
   max-width: 100%; }

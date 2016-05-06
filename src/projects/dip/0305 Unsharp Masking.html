@@ -7,19 +7,15 @@ title: Hello 13 | 0305 Unsharp Masking
 <div class="preview">
     <div>
         <p>Before Processing</p>
-        <img id='original' title='Before'/>
+        <img title="Before" src="./public/images/moon.jpg" />
     </div>
     <div>
         <p>After Processing with Unsharp Mask*2</p>
-        <canvas id="canvas" title='After'></canvas>
+        <canvas title="After"></canvas>
     </div>
 </div>
 <script>
     require(['util/dip.js'], function(DIP) {
-        var img = document.getElementById("original");
-        img.src = "./public/images/moon.jpg";
-        img.onload = function(){
-            DIP.init(this).act('unsharp', 1).show();
-        };
+        DIP.init().act('unsharp', 1).show();
     });
 </script>

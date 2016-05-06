@@ -1,41 +1,22 @@
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>0402 Fourier Spectrum and Average Value</title>
+---
+layout: default
+title: Hello 13 | 0402 Fourier Spectrum and Average Value
+---
 
-</head>
-<body>
-	<div style="float:left;">
-		<img id='original' title='Before'/>
-		<p>The Spatial Image</p>
-	</div>
-	<div style="float:left;">&nbsp;&nbsp;&nbsp;</div>
-	<div style="float:left;">
-		<canvas id="canvas" title='After'></canvas>
-		<p>The Spectrum</p>
-	</div>
-	<script src="./public/javascripts/dip_core.js"></script>
-	<script src="./public/javascripts/fft.js"></script>
-	<script src="./public/javascripts/dip_tool.js"></script>
-	<script>
-		var img = document.getElementById("original");
-		img.onload = function(){
-			var mat = imread(img);
-			var mat2 = fourier( mat );
-
-			imshow(mat2);
-		};
-		img.src = "./public/images/a128.jpg";
-
-		var canvas = document.getElementById("canvas"),
-			ctx = canvas.getContext("2d");
-
-		function imshow( mat ){
-			canvas.width = mat.col;
-			canvas.height = mat.row;
-			ctx.putImageData( RGBA2ImageData(mat), 0, 0 );
-		}
-	</script>	
-</body>
-</html>
+<link rel="stylesheet" href="/static/css/dip.css"/>
+<div class="preview">
+    <div>
+        <p>The Spatial Image</p>
+        <img title="Before" src="./public/images/a128.jpg" />
+    </div>
+    <div>
+        <p>The Spectrum</p>
+        <canvas title="After"></canvas>
+    </div>
+    <p>cost: <label id="cost">0</label>ms</p>
+</div>
+<script>
+    require(['util/dip.js'], function(DIP) {
+        DIP.init().act('fourier').show();
+    });
+</script>

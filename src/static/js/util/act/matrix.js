@@ -61,7 +61,6 @@ define(['util/act/fft.js'], function(FFT) {
 
     // 将RGB数据灰度化
     function RGBA2Gray(mat) {
-        console.log(arguments);
         var dst = new Matrix(mat.row, mat.col),
             data = dst.data,
             data2 = mat.data;
@@ -98,7 +97,7 @@ define(['util/act/fft.js'], function(FFT) {
             data2 = mat.data;
 
         var offset = 0;
-        for (i = 0; i < row * col * 4; i += 4) {
+        for (var i = 0; i < row * col * 4; i += 4) {
             if (!(i % (4 * col))) { //alert(i);
                 offset++;
             }
@@ -602,7 +601,9 @@ define(['util/act/fft.js'], function(FFT) {
         var dst = new Matrix(mat.row, mat.col);
         var mn = mat.data.length / 4;
 
-        var rh = gh = bh = [],
+        var rh = [],
+            gh = [],
+            bh = [],
             k = 256;
         while (k--) rh[k] = gh[k] = bh[k] = 0;
 

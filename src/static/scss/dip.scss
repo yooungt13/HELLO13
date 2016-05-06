@@ -32,6 +32,14 @@
     p {
         line-height: 1;
         margin-bottom: .1rem;
+
+        label {
+            color: red;
+        }
+    }
+
+    img {
+        max-width: 100%;
     }
 }
 

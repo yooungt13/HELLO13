@@ -1,0 +1,44 @@
+---
+layout: default
+title: Hello 13 | 0603 Image Enhancement by Histogram Processing
+---
+
+<link rel="stylesheet" href="/static/css/dip.css"/>
+<div class="ops">
+    <button data-type="gray">RGB2Gray</button>
+    <button data-type="reverseColor">Reverse</button>
+    <button data-type="histogram">Histogram</button>
+    <button data-type="laplacian">Laplacian</button>
+</div>
+<div class="ops">
+    <button data-type="medianFilter">Median</button>
+    <button data-type="harmonicFilter">Harmonic</button>
+    <button data-type="pseudoColor">Pseudo</button>
+    <button data-type="colorImgHE">Colorful</button>
+</div>
+<div class="preview">
+    <div>
+        <p>Before Processing</p>
+        <img title="Before" src="./public/images/01.jpeg" />
+    </div>
+    <div>
+        <p>After Processing</p>
+        <canvas title="After"></canvas>
+    </div>
+    <p>cost: <label id="cost">0</label>ms</p>
+</div>
+<script>
+    require(['util/dip.js'], function(DIP) {
+        DIP.init().act('gray').act('unsharp', 1.5).show();
+        // DIP.init().act('log', 15).show();
+
+        $(document).on('click', 'button', function() {
+            var $this = $(this);
+
+            $('button').removeClass('active');
+            $this.addClass('active');
+
+            DIP.init().act($this.data('type')).show();
+        });
+    });
+</script>

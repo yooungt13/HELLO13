@@ -1,0 +1,48 @@
+@import "base/mixins";
+
+.ops {
+    @include display-flex();
+    margin-bottom: .2rem;
+
+    button {
+        font-size: .3rem;
+        color: #333;
+        height: .5rem;
+        line-height: .5rem;
+        margin-right: .12rem;
+        border-radius: .04rem;
+        border: 1px solid #000;
+        appearance: none;
+
+        @include flex(1);
+
+        &:last-child {
+            margin: 0;
+        }
+    }
+
+    .active {
+        font-weight: 700;
+    }
+}
+
+.preview {
+    margin-bottom: .2rem;
+
+    p {
+        line-height: 1;
+        margin-bottom: .1rem;
+
+        label {
+            color: red;
+        }
+    }
+
+    img {
+        max-width: 100%;
+    }
+}
+
+.canvas {
+    max-width: 100%;
+}

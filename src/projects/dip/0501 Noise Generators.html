@@ -1,56 +1,39 @@
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>0501 Noise Generators</title>
+---
+layout: default
+title: Hello 13 | 0501 Noise Generators
+---
 
-</head>
-<body>
-	<div>
-		<div style="float:left;"><button onclick="change(1);">Guassian Noise</button></div>
-		<div><button onclick="change(2);">Salt-and-Pepper Noise</button></div>
-	</div>
-	<div style="float:left;">
-		<img id='original' title='Before'/>
-		<p>Before Processing</p>
-	</div>
-	<div style="float:left;">&nbsp;&nbsp;&nbsp;</div>
-	<div style="float:left;">
-		<canvas id="canvas" title='After'></canvas>
-		<p>After Processing</p>
-	</div>
-	<script src="./public/javascripts/dip_core.js"></script>
-	<script src="./public/javascripts/fft.js"></script>
-	<script src="./public/javascripts/dip_tool.js"></script>
-	<script>
-		var type = 1;
-		var img = document.getElementById("original");
-		img.onload = function(){
-			var mat = imread(img);
-			var mat2;
-			switch(type){
-				case 1: mat2 = gsNoise(mat,0,1); break;
-				case 2: mat2 = sapNoise(mat,0.1,0.1); break;
+<link rel="stylesheet" href="/static/css/dip.css"/>
+<div class="ops">
+    <button data-type="1">Guassian Noise</button>
+    <button data-type="2">Salt-and-Pepper Noise</button>
+</div>
+<div class="preview">
+    <div>
+        <p>Before processing</p>
+        <img title="Before" src="./public/images/noise1.jpg" />
+    </div>
+    <div>
+        <p>After processing</p>
+        <canvas title="After"></canvas>
+    </div>
+    <p>cost:<label id="cost">0</label>ms</p>
+</div>
+<script>
+    require(['lib/zepto.js','util/dip.js'], function($, DIP) {
+        DIP.init().act('gsNoise', 0, 1).show();
+
+        $(document).on('click', 'button', function() {
+            var $this = $(this);
+
+            $('button').removeClass('active');
+            $this.addClass('active');
+
+			switch($this.data('type')){
+				case 1: DIP.init().act('gsNoise', 0, 1).show(); break;
+				case 2: DIP.init().act('sapNoise', 0.1, 0.1).show(); break;
 				default: break;
 			}
-
-			imshow(mat2);
-		};
-		img.src = "./public/images/noise1.jpg";
-
-		var canvas = document.getElementById("canvas"),
-			ctx = canvas.getContext("2d");
-
-		function imshow( mat ){
-			canvas.width = mat.col;
-			canvas.height = mat.row;
-			ctx.putImageData( RGBA2ImageData(mat), 0, 0 );
-		}
-
-		function change(id){
-			type = id;
-			img.src = "./public/images/noise"+id+".jpg";
-		}
-	</script>	
-</body>
-</html>
+        });
+    });
+</script>

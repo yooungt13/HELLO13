@@ -8,7 +8,7 @@
     "start": "gulp server",
     "dev": "gulp server --env develop",
     "preview": "gulp preview --env preview",
-    "deploy": "gulp server --env production"
+    "deploy": "gulp deploy --env production"
   },
   "repository": {
     "type": "git",

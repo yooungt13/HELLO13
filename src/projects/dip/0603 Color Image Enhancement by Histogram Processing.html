@@ -1,34 +1,22 @@
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>DIP Project</title>
+---
+layout: default
+title: Hello 13 | 0603 Image Enhancement by Histogram Processing
+---
 
-</head>
-<body>
-	<img id='original' title='Before'/>
-	<canvas id="canvas" title='After'></canvas>
-	<script src="./public/javascripts/dip_core.js"></script>
-	<script src="./public/javascripts/fft.js"></script>
-	<script src="./public/javascripts/dip_tool.js"></script>
-	<script>
-		var img = document.getElementById("original");
-		img.onload = function(){
-			var mat = imread(img);
-			var mat2 = colorImgHE(mat);
-
-			imshow(mat2);
-		};
-		img.src = "./public/images/stream.jpg";
-
-		var canvas = document.getElementById("canvas"),
-			ctx = canvas.getContext("2d");
-
-		function imshow( mat ){
-			canvas.width = mat.col;
-			canvas.height = mat.row;
-			ctx.putImageData( RGBA2ImageData(mat), 0, 0 );
-		}
-	</script>	
-</body>
-</html>
+<link rel="stylesheet" href="/static/css/dip.css"/>
+<div class="preview">
+    <div>
+        <p>Before Processing</p>
+        <img title="Before" src="./public/images/stream.jpg" />
+    </div>
+    <div>
+        <p>After Processing</p>
+        <canvas title="After"></canvas>
+    </div>
+    <p>cost: <label id="cost">0</label>ms</p>
+</div>
+<script>
+    require(['util/dip.js'], function(DIP) {
+        DIP.init().act('colorImgHE').show();
+    });
+</script>

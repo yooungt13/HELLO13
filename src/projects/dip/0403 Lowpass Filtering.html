@@ -1,41 +1,38 @@
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>0403 Lowpass Filtering</title>
+---
+layout: default
+title: Hello 13 | 0403 Lowpass Filtering
+---
 
-</head>
-<body>
-	<div style="float:left;">
-		<img id='original' title='Before'/>
-		<p>Before processing</p>
-	</div>
-	<div style="float:left;">&nbsp;&nbsp;&nbsp;</div>
-	<div style="float:left;">
-		<canvas id="canvas" title='After'></canvas>
-		<p>After processing with Glpf</p>
-	</div>
-	<script src="./public/javascripts/dip_core.js"></script>
-	<script src="./public/javascripts/fft.js"></script>
-	<script src="./public/javascripts/dip_tool.js"></script>
-	<script>
-		var img = document.getElementById("original");
-		img.onload = function(){
-			var mat = imread(img);
-			var mat2 = glpfilter( mat,200 );
+<link rel="stylesheet" href="/static/css/dip.css"/>
+<p>Filter Threshold:</p>
+<div class="ops">
+    <button data-threshold="100">100</button>
+    <button data-threshold="200">200</button>
+    <button data-threshold="500">500</button>
+    <button data-threshold="1000">1000</button>
+</div>
+<div class="preview">
+    <div>
+        <p>Before processing</p>
+        <img title="Before" src="./public/images/a128.jpg" />
+    </div>
+    <div>
+        <p>After processing with Glpf</p>
+        <canvas title="After"></canvas>
+    </div>
+    <p>cost: <label id="cost">0</label>ms</p>
+</div>
+<script>
+    require(['lib/zepto.js','util/dip.js'], function($, DIP) {
+        DIP.init().act('glpfilter', 200).show();
 
-			imshow(mat2);
-		};
-		img.src = "./public/images/a128.jpg";
+        $(document).on('click', 'button', function() {
+            var $this = $(this);
 
-		var canvas = document.getElementById("canvas"),
-			ctx = canvas.getContext("2d");
+            $('button').removeClass('active');
+            $this.addClass('active');
 
-		function imshow( mat ){
-			canvas.width = mat.col;
-			canvas.height = mat.row;
-			ctx.putImageData( RGBA2ImageData(mat), 0, 0 );
-		}
-	</script>	
-</body>
-</html>
+	        DIP.init().act('glpfilter', $this.data('threshold')).show();
+        });
+    });
+</script>

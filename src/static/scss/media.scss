@@ -8,7 +8,7 @@
     }
 }
 
-@media only screen and(max-width: 750px) and(orientation : portrait) {
+@media only screen and(max-width: 828px) and(orientation : portrait) {
     * {
         box-sizing: border-box;
     }
@@ -77,6 +77,7 @@
     }
 
     .bg {
+        height: 3.85rem!important;
         margin: -.24rem 0 0 -.24rem;
         width: -webkit-calc(100% + .48rem)!important;
         width: -moz-calc(100% + .48rem)!important;

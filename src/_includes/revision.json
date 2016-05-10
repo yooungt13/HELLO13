@@ -1,12 +1,19 @@
 {
-  "page.js": "7b886323",
-  "com/test.js": "5ec9a8ce",
-  "com/unveil.js": "5c22aa1b",
+  "page.js": "033a5aab",
+  "com/album.js": "731e8349",
+  "com/test.js": "15637546",
+  "com/unveil.js": "f031d2f5",
   "lib/fastclick.js": "6e9d3b0d",
   "lib/truck.js": "873b2929",
-  "lib/zepto.js": "10c89684",
+  "lib/zepto.js": "7b14eb05",
   "util/autocomp.js": "c4d8ce84",
   "util/box.js": "5ac874d0",
+  "util/dip.js": "8c7641d6",
   "util/hidebar.js": "718a15e6",
-  "util/url.js": "9e507c7b"
+  "util/url.js": "9e507c7b",
+  "util/act/fft.js": "05a19b51",
+  "util/act/gesture.js": "0f975d71",
+  "util/act/matrix.js": "7fc3e663",
+  "util/act/page.js": "1e595416",
+  "util/act/pageable.js": "9fb71634"
 }

@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "gulp server",
     "dev": "gulp server --env develop",
-    "deploy": "gulp server --env production"
+    "preview": "gulp preview --env preview",
+    "deploy": "gulp deploy --env production"
   },
   "repository": {
     "type": "git",

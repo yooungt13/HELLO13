@@ -24,7 +24,7 @@ title: Hello 13 | 0302 Histogram Equalization
     require(['lib/zepto.js', 'util/dip.js'], function($, DIP){
 
         var img = document.getElementById('original');
-        img.src = "./public/images/h03.jpg";
+        img.src = "./public/img/h03.jpg";
         img.onload = function(){
             DIP.init(this).act('gray').act('histogram').show();
         };
@@ -37,7 +37,7 @@ title: Hello 13 | 0302 Histogram Equalization
             $this.addClass('active');
 
             // 切换图片
-            img.src = './public/images/h0' + $this.data('id') +'.jpg';
+            img.src = './public/img/h0' + $this.data('id') +'.jpg';
         });
     });
 </script>

@@ -8,12 +8,12 @@
   "lib/zepto.js": "7b14eb05",
   "util/autocomp.js": "c4d8ce84",
   "util/box.js": "5ac874d0",
-  "util/dip.js": "8c7641d6",
+  "util/dip.js": "6aadf593",
   "util/hidebar.js": "718a15e6",
   "util/url.js": "9e507c7b",
-  "util/act/fft.js": "05a19b51",
+  "util/act/fft.js": "a82ccd7c",
   "util/act/gesture.js": "0f975d71",
-  "util/act/matrix.js": "7fc3e663",
+  "util/act/matrix.js": "478dd6b7",
   "util/act/page.js": "1e595416",
   "util/act/pageable.js": "9fb71634"
 }

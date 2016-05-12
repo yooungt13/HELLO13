@@ -5,7 +5,7 @@
   .github-fork {
     display: none; } }
 
-@media only screen and (max-width: 750px) and (orientation: portrait) {
+@media only screen and (max-width: 828px) and (orientation: portrait) {
   * {
     box-sizing: border-box; }
   header, nav, section {

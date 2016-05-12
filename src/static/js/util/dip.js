@@ -1,3 +1,10 @@
+/**
+ * 数字图像处理 工具函数
+ * @author youngtian
+ * @date   2016.05.04
+ * @param  {Object} Matrix 矩阵数据结构及其操作方法
+ * @return {Object} DIP 图像处理接口
+ */
 define(['util/act/matrix.js'], function(Matrix) {
     var DIP = {
         canvas: null,
@@ -58,14 +65,6 @@ define(['util/act/matrix.js'], function(Matrix) {
 
             return this;
         },
-        draw: function() {
-            this.ctx.fillText('processing', 50, 50);
-        },
-        // 输出图片数据
-        show: function() {
-            this.ctx.putImageData(this._transform(this.matrix), 0, 0);
-            return this;
-        },
         // 将RGB数据转化为图像数据
         _transform: function() {
             var width = this.matrix.col,
@@ -73,6 +72,11 @@ define(['util/act/matrix.js'], function(Matrix) {
                 imageData = this.ctx.createImageData(width, height);
             imageData.data.set(this.matrix.data);
             return imageData;
+        },
+        // 输出图片数据
+        show: function() {
+            this.ctx.putImageData(this._transform(this.matrix), 0, 0);
+            return this;
         }
     }
 

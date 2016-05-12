@@ -2,7 +2,7 @@
 
 let gulp = require('gulp');
 let exec = require('child_process').exec;
-var argv = require('minimist')(process.argv.slice(2));
+let argv = require('minimist')(process.argv.slice(2));
 
 let sass = require('gulp-sass');
 
@@ -11,7 +11,7 @@ let sass = require('gulp-sass');
  */
 gulp.task('server', () => {
 
-    var env = argv.env || 'develop';
+    let env = argv.env || 'develop';
 
     // 切换环境并启动服务
     switchEnv(env);

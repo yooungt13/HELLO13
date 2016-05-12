@@ -1,3 +1,9 @@
+/**
+ * 快速傅里叶算法实现
+ * @author youngtian
+ * @date   2016.05.04
+ * @return {Object} fft 快速傅里叶算法函数
+ */
 define([], function() {
     var Complex = function(real, imaginary) {
         if (arguments.length == 0) {

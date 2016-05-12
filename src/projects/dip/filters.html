@@ -29,7 +29,7 @@ title: Hello 13 | 0603 Image Enhancement by Histogram Processing
 </div>
 <script>
     require(['util/dip.js'], function(DIP) {
-        DIP.init().act('gray').act('unsharp', 1.5).show();
+        DIP.init().act('colorImgHE').show();
         // DIP.init().act('log', 15).show();
 
         $(document).on('click', 'button', function() {

@@ -1,3 +1,10 @@
+/**
+ * 矩阵数据结构及其操作方法
+ * @author youngtian
+ * @date   2016.05.04
+ * @param  {Object} fft 快速傅里叶变换方法 插件
+ * @return {Object} Matrix 矩阵数据结构及其操作方法
+ */
 define(['util/act/fft.js'], function(FFT) {
     // 定义矩阵类
     function Matrix(row, col, data, buffer) {
@@ -19,6 +26,7 @@ define(['util/act/fft.js'], function(FFT) {
         }
     }
 
+    // 矩阵操作
     Matrix.prototype = {
         getHistogram: getHistogram,
         gray: RGBA2Gray,

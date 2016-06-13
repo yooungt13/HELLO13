@@ -30,7 +30,8 @@ gulp.task('cp2server', ['cp2static'], (end) => {
     let env = argv.env || 'develop';
 
     const LOCAL_PATH = '/Users/hello13/Documents/Proj/HELLO13/deploy/*',
-          REMOTE_PATH = (env === 'production') ? '/usr/share/nginx/html' : '/usr/share/nginx/preview';
+          REMOTE_PATH = '/usr/share/nginx/html';
+          // REMOTE_PATH = (env === 'production') ? '/usr/share/nginx/html' : '/usr/share/nginx/preview';
 
     let cmd = 'scp -r ' + LOCAL_PATH + ' ' + SERVER_URL + ':' + REMOTE_PATH;
 
